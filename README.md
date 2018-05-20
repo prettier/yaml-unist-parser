@@ -4,7 +4,7 @@
 [![build](https://img.shields.io/travis/ikatyang/yaml-unist-parser/master.svg)](https://travis-ci.org/ikatyang/yaml-unist-parser/builds)
 [![coverage](https://img.shields.io/codecov/c/github/ikatyang/yaml-unist-parser/master.svg)](https://codecov.io/gh/ikatyang/yaml-unist-parser)
 
-A YAML parser that produces output compatible with Unist
+A YAML parser that produces output compatible with [unist](https://github.com/syntax-tree/unist)
 
 [Changelog](https://github.com/ikatyang/yaml-unist-parser/blob/master/CHANGELOG.md)
 
