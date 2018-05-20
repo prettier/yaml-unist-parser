@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`"   123   " 1`] = `
+plain (1:4 ~ 1:7)
+1 | ···123···¶
+  |    ^^^
+<plain value="123" />
+`;

@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`"-   " 1`] = `
+sequence (1:1 ~ 1:2)
+1 | -···¶
+  | ^
+<sequence>
+  <sequenceItem>
+    <null />
+  </sequenceItem>
+</sequence>
+`;
+
+exports[`"-   " 2`] = `
+sequenceItem (1:1 ~ 1:2)
+1 | -···¶
+  | ^
+<sequenceItem>
+  <null />
+</sequenceItem>
+`;
+
+exports[`"- 123  " 1`] = `
+sequence (1:1 ~ 1:6)
+1 | -·123··¶
+  | ^^^^^
+<sequence>
+  <sequenceItem>
+    <plain value="123" />
+  </sequenceItem>
+</sequence>
+`;
+
+exports[`"- 123  " 2`] = `
+sequenceItem (1:1 ~ 1:6)
+1 | -·123··¶
+  | ^^^^^
+<sequenceItem>
+  <plain value="123" />
+</sequenceItem>
+`;
+
+exports[`"- 123  \\n- 456  " 1`] = `
+sequence (1:1 ~ 2:6)
+1 | -·123··¶
+  | ^^^^^^^^
+2 | -·456··¶
+  | ^^^^^
+<sequence>
+  <sequenceItem>
+    <plain value="123" />
+  </sequenceItem>
+  <sequenceItem>
+    <plain value="456" />
+  </sequenceItem>
+</sequence>
+`;
+
+exports[`"- 123  \\n- 456  " 2`] = `
+sequenceItem (1:1 ~ 1:6)
+1 | -·123··¶
+  | ^^^^^
+2 | -·456··¶
+<sequenceItem>
+  <plain value="123" />
+</sequenceItem>
+`;
+
+exports[`"- 123  \\n- 456  " 3`] = `
+sequenceItem (2:1 ~ 2:6)
+1 | -·123··¶
+2 | -·456··¶
+  | ^^^^^
+<sequenceItem>
+  <plain value="456" />
+</sequenceItem>
+`;

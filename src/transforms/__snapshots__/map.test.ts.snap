@@ -1,0 +1,403 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`":   " 1`] = `
+mapping (1:1 ~ 1:2)
+1 | :···¶
+  | ^
+<mapping>
+  <mappingItem>
+    <mappingKey>
+      <null />
+    </mappingKey>
+    <mappingValue>
+      <null />
+    </mappingValue>
+  </mappingItem>
+</mapping>
+`;
+
+exports[`":   " 2`] = `
+mappingItem (1:1 ~ 1:2)
+1 | :···¶
+  | ^
+<mappingItem>
+  <mappingKey>
+    <null />
+  </mappingKey>
+  <mappingValue>
+    <null />
+  </mappingValue>
+</mappingItem>
+`;
+
+exports[`":   " 3`] = `
+mappingKey (1:1 ~ 1:1)
+1 | :···¶
+  | ~
+<mappingKey>
+  <null />
+</mappingKey>
+`;
+
+exports[`":   " 4`] = `
+mappingValue (1:1 ~ 1:2)
+1 | :···¶
+  | ^
+<mappingValue>
+  <null />
+</mappingValue>
+`;
+
+exports[`": 123  " 1`] = `
+mapping (1:1 ~ 1:6)
+1 | :·123··¶
+  | ^^^^^
+<mapping>
+  <mappingItem>
+    <mappingKey>
+      <null />
+    </mappingKey>
+    <mappingValue>
+      <plain value="123" />
+    </mappingValue>
+  </mappingItem>
+</mapping>
+`;
+
+exports[`": 123  " 2`] = `
+mappingItem (1:1 ~ 1:6)
+1 | :·123··¶
+  | ^^^^^
+<mappingItem>
+  <mappingKey>
+    <null />
+  </mappingKey>
+  <mappingValue>
+    <plain value="123" />
+  </mappingValue>
+</mappingItem>
+`;
+
+exports[`": 123  " 3`] = `
+mappingKey (1:1 ~ 1:1)
+1 | :·123··¶
+  | ~
+<mappingKey>
+  <null />
+</mappingKey>
+`;
+
+exports[`": 123  " 4`] = `
+mappingValue (1:1 ~ 1:6)
+1 | :·123··¶
+  | ^^^^^
+<mappingValue>
+  <plain value="123" />
+</mappingValue>
+`;
+
+exports[`"? a  \\n: 123  \\n? b  \\n: 456  " 1`] = `
+mapping (1:1 ~ 4:6)
+1 | ?·a··¶
+  | ^^^^^^
+2 | :·123··¶
+  | ^^^^^^^^
+3 | ?·b··¶
+  | ^^^^^^
+4 | :·456··¶
+  | ^^^^^
+<mapping>
+  <mappingItem>
+    <mappingKey>
+      <plain value="a" />
+    </mappingKey>
+    <mappingValue>
+      <plain value="123" />
+    </mappingValue>
+  </mappingItem>
+  <mappingItem>
+    <mappingKey>
+      <plain value="b" />
+    </mappingKey>
+    <mappingValue>
+      <plain value="456" />
+    </mappingValue>
+  </mappingItem>
+</mapping>
+`;
+
+exports[`"? a  \\n: 123  \\n? b  \\n: 456  " 2`] = `
+mappingItem (1:1 ~ 2:6)
+1 | ?·a··¶
+  | ^^^^^^
+2 | :·123··¶
+  | ^^^^^
+3 | ?·b··¶
+4 | :·456··¶
+<mappingItem>
+  <mappingKey>
+    <plain value="a" />
+  </mappingKey>
+  <mappingValue>
+    <plain value="123" />
+  </mappingValue>
+</mappingItem>
+`;
+
+exports[`"? a  \\n: 123  \\n? b  \\n: 456  " 3`] = `
+mappingItem (3:1 ~ 4:6)
+1 | ?·a··¶
+2 | :·123··¶
+3 | ?·b··¶
+  | ^^^^^^
+4 | :·456··¶
+  | ^^^^^
+<mappingItem>
+  <mappingKey>
+    <plain value="b" />
+  </mappingKey>
+  <mappingValue>
+    <plain value="456" />
+  </mappingValue>
+</mappingItem>
+`;
+
+exports[`"? a  \\n: 123  \\n? b  \\n: 456  " 4`] = `
+mappingKey (1:1 ~ 1:4)
+1 | ?·a··¶
+  | ^^^
+2 | :·123··¶
+3 | ?·b··¶
+4 | :·456··¶
+<mappingKey>
+  <plain value="a" />
+</mappingKey>
+`;
+
+exports[`"? a  \\n: 123  \\n? b  \\n: 456  " 5`] = `
+mappingKey (3:1 ~ 3:4)
+1 | ?·a··¶
+2 | :·123··¶
+3 | ?·b··¶
+  | ^^^
+4 | :·456··¶
+<mappingKey>
+  <plain value="b" />
+</mappingKey>
+`;
+
+exports[`"? a  \\n: 123  \\n? b  \\n: 456  " 6`] = `
+mappingValue (2:1 ~ 2:6)
+1 | ?·a··¶
+2 | :·123··¶
+  | ^^^^^
+3 | ?·b··¶
+4 | :·456··¶
+<mappingValue>
+  <plain value="123" />
+</mappingValue>
+`;
+
+exports[`"? a  \\n: 123  \\n? b  \\n: 456  " 7`] = `
+mappingValue (4:1 ~ 4:6)
+1 | ?·a··¶
+2 | :·123··¶
+3 | ?·b··¶
+4 | :·456··¶
+  | ^^^^^
+<mappingValue>
+  <plain value="456" />
+</mappingValue>
+`;
+
+exports[`"a:   " 1`] = `
+mapping (1:1 ~ 1:3)
+1 | a:···¶
+  | ^^
+<mapping>
+  <mappingItem>
+    <mappingKey>
+      <plain value="a" />
+    </mappingKey>
+    <mappingValue>
+      <null />
+    </mappingValue>
+  </mappingItem>
+</mapping>
+`;
+
+exports[`"a:   " 2`] = `
+mappingItem (1:1 ~ 1:3)
+1 | a:···¶
+  | ^^
+<mappingItem>
+  <mappingKey>
+    <plain value="a" />
+  </mappingKey>
+  <mappingValue>
+    <null />
+  </mappingValue>
+</mappingItem>
+`;
+
+exports[`"a:   " 3`] = `
+mappingKey (1:1 ~ 1:2)
+1 | a:···¶
+  | ^
+<mappingKey>
+  <plain value="a" />
+</mappingKey>
+`;
+
+exports[`"a:   " 4`] = `
+mappingValue (1:2 ~ 1:3)
+1 | a:···¶
+  |  ^
+<mappingValue>
+  <null />
+</mappingValue>
+`;
+
+exports[`"a: 123  " 1`] = `
+mapping (1:1 ~ 1:7)
+1 | a:·123··¶
+  | ^^^^^^
+<mapping>
+  <mappingItem>
+    <mappingKey>
+      <plain value="a" />
+    </mappingKey>
+    <mappingValue>
+      <plain value="123" />
+    </mappingValue>
+  </mappingItem>
+</mapping>
+`;
+
+exports[`"a: 123  " 2`] = `
+mappingItem (1:1 ~ 1:7)
+1 | a:·123··¶
+  | ^^^^^^
+<mappingItem>
+  <mappingKey>
+    <plain value="a" />
+  </mappingKey>
+  <mappingValue>
+    <plain value="123" />
+  </mappingValue>
+</mappingItem>
+`;
+
+exports[`"a: 123  " 3`] = `
+mappingKey (1:1 ~ 1:2)
+1 | a:·123··¶
+  | ^
+<mappingKey>
+  <plain value="a" />
+</mappingKey>
+`;
+
+exports[`"a: 123  " 4`] = `
+mappingValue (1:2 ~ 1:7)
+1 | a:·123··¶
+  |  ^^^^^
+<mappingValue>
+  <plain value="123" />
+</mappingValue>
+`;
+
+exports[`"a: 123  \\nb: 456  " 1`] = `
+mapping (1:1 ~ 2:7)
+1 | a:·123··¶
+  | ^^^^^^^^^
+2 | b:·456··¶
+  | ^^^^^^
+<mapping>
+  <mappingItem>
+    <mappingKey>
+      <plain value="a" />
+    </mappingKey>
+    <mappingValue>
+      <plain value="123" />
+    </mappingValue>
+  </mappingItem>
+  <mappingItem>
+    <mappingKey>
+      <plain value="b" />
+    </mappingKey>
+    <mappingValue>
+      <plain value="456" />
+    </mappingValue>
+  </mappingItem>
+</mapping>
+`;
+
+exports[`"a: 123  \\nb: 456  " 2`] = `
+mappingItem (1:1 ~ 1:7)
+1 | a:·123··¶
+  | ^^^^^^
+2 | b:·456··¶
+<mappingItem>
+  <mappingKey>
+    <plain value="a" />
+  </mappingKey>
+  <mappingValue>
+    <plain value="123" />
+  </mappingValue>
+</mappingItem>
+`;
+
+exports[`"a: 123  \\nb: 456  " 3`] = `
+mappingItem (2:1 ~ 2:7)
+1 | a:·123··¶
+2 | b:·456··¶
+  | ^^^^^^
+<mappingItem>
+  <mappingKey>
+    <plain value="b" />
+  </mappingKey>
+  <mappingValue>
+    <plain value="456" />
+  </mappingValue>
+</mappingItem>
+`;
+
+exports[`"a: 123  \\nb: 456  " 4`] = `
+mappingKey (1:1 ~ 1:2)
+1 | a:·123··¶
+  | ^
+2 | b:·456··¶
+<mappingKey>
+  <plain value="a" />
+</mappingKey>
+`;
+
+exports[`"a: 123  \\nb: 456  " 5`] = `
+mappingKey (2:1 ~ 2:2)
+1 | a:·123··¶
+2 | b:·456··¶
+  | ^
+<mappingKey>
+  <plain value="b" />
+</mappingKey>
+`;
+
+exports[`"a: 123  \\nb: 456  " 6`] = `
+mappingValue (1:2 ~ 1:7)
+1 | a:·123··¶
+  |  ^^^^^
+2 | b:·456··¶
+<mappingValue>
+  <plain value="123" />
+</mappingValue>
+`;
+
+exports[`"a: 123  \\nb: 456  " 7`] = `
+mappingValue (2:2 ~ 2:7)
+1 | a:·123··¶
+2 | b:·456··¶
+  |  ^^^^^
+<mappingValue>
+  <plain value="456" />
+</mappingValue>
+`;

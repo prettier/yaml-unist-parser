@@ -1,0 +1,103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`">+\\n  123\\n  456\\n\\n\\n" 1`] = `
+blockFolded (1:1 ~ 6:1)
+1 | >+¶
+  | ^^^
+2 | ··123¶
+  | ^^^^^^
+3 | ··456¶
+  | ^^^^^^
+4 | ¶
+  | ^
+5 | ¶
+  | ^
+6 | ¶
+  | ^
+<blockFolded chomping="keep" indent=undefined value="123 456\\n\\n\\n" />
+`;
+
+exports[`">\\n  123\\n  456\\n\\n\\n" 1`] = `
+blockFolded (1:1 ~ 6:1)
+1 | >¶
+  | ^^
+2 | ··123¶
+  | ^^^^^^
+3 | ··456¶
+  | ^^^^^^
+4 | ¶
+  | ^
+5 | ¶
+  | ^
+6 | ¶
+  | ^
+<blockFolded chomping="clip" indent=undefined value="123 456\\n" />
+`;
+
+exports[`">-\\n  123\\n  456\\n\\n\\n" 1`] = `
+blockFolded (1:1 ~ 6:1)
+1 | >-¶
+  | ^^^
+2 | ··123¶
+  | ^^^^^^
+3 | ··456¶
+  | ^^^^^^
+4 | ¶
+  | ^
+5 | ¶
+  | ^
+6 | ¶
+  | ^
+<blockFolded chomping="strip" indent=undefined value="123 456" />
+`;
+
+exports[`">1+\\n  123\\n  456\\n\\n\\n" 1`] = `
+blockFolded (1:1 ~ 6:1)
+1 | >1+¶
+  | ^^^^
+2 | ··123¶
+  | ^^^^^^
+3 | ··456¶
+  | ^^^^^^
+4 | ¶
+  | ^
+5 | ¶
+  | ^
+6 | ¶
+  | ^
+<blockFolded chomping="keep" indent=1 value="  123\\n  456\\n\\n\\n" />
+`;
+
+exports[`">1\\n  123\\n  456\\n\\n\\n" 1`] = `
+blockFolded (1:1 ~ 6:1)
+1 | >1¶
+  | ^^^
+2 | ··123¶
+  | ^^^^^^
+3 | ··456¶
+  | ^^^^^^
+4 | ¶
+  | ^
+5 | ¶
+  | ^
+6 | ¶
+  | ^
+<blockFolded chomping="clip" indent=1 value="  123\\n  456\\n" />
+`;
+
+exports[`">1-\\n  123\\n  456\\n\\n\\n" 1`] = `
+blockFolded (1:1 ~ 6:1)
+1 | >1-¶
+  | ^^^^
+2 | ··123¶
+  | ^^^^^^
+3 | ··456¶
+  | ^^^^^^
+4 | ¶
+  | ^
+5 | ¶
+  | ^
+6 | ¶
+  | ^
+<blockFolded chomping="strip" indent=1 value="  123\\n  456" />
+`;
