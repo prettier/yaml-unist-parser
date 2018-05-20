@@ -14,6 +14,7 @@ export function transformQuoteValue(
     value: quoteValue.strValue as string,
     position: transformRange(quoteValue.valueRange!, context),
     leadingComments: [],
+    middleComments: [],
     trailingComments: [],
   };
 }

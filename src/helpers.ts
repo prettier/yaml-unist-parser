@@ -1,5 +1,11 @@
 import { parse } from "./parse";
-import { Node, Position, Root, YamlUnistNode } from "./types";
+import {
+  CommentAttachable,
+  Node,
+  Position,
+  Root,
+  YamlUnistNode,
+} from "./types";
 
 const RAW = Symbol("raw");
 
@@ -14,8 +20,12 @@ export type TestCaseSelector = (root: Root) => YamlUnistNode | Node;
 export type TestCaseSingle = [string, TestCaseSelector];
 export type TestCaseMulti = [string, TestCaseSelector[]];
 
-export function getFirstContent<T extends YamlUnistNode>() {
-  return (root: Root) => root.children[0].children[1].children[0] as T;
+export function getFirstContent<T extends YamlUnistNode>(): (root: Root) => T;
+export function getFirstContent<T extends YamlUnistNode>(root: Root): T;
+export function getFirstContent<T extends YamlUnistNode>(root?: Root) {
+  return !root
+    ? (_root: Root) => _root.children[0].children[1].children[0] as T
+    : (root.children[0].children[1].children[0] as T);
 }
 
 export function testCases(cases: TestCase[]) {
@@ -55,6 +65,7 @@ function stringifyNode(node: YamlUnistNode | Node): string {
         case "position":
         case "children":
         case "leadingComments":
+        case "middleComments":
         case "trailingComments":
           return false;
         default:
@@ -67,21 +78,25 @@ function stringifyNode(node: YamlUnistNode | Node): string {
     .join(" ");
   const comments =
     "leadingComments" in node
-      ? ([] as string[]).concat(
-          node.leadingComments.map(
-            comment =>
-              `<leadingComment value=${JSON.stringify(comment.value)}>`,
-          ),
-          node.trailingComments.map(
-            comment =>
-              `<trailingComments value=${JSON.stringify(comment.value)}>`,
-          ),
-        )
+      ? (["leadingComments", "middleComments", "trailingComments"] as Array<
+          keyof CommentAttachable
+        >)
+          .map(key =>
+            node[key].map(
+              comment =>
+                `<${key.slice(0, -1)} value=${JSON.stringify(comment.value)}>`,
+            ),
+          )
+          .reduce((a, b) => a.concat(b), [])
       : [];
-  return "children" in node
+  return "children" in node || comments.length !== 0
     ? `<${node.type}${attributes}>\n${indent(
         comments
-          .concat((node.children as YamlUnistNode[]).map(stringifyNode))
+          .concat(
+            "children" in node
+              ? (node.children as YamlUnistNode[]).map(stringifyNode)
+              : [],
+          )
           .join("\n"),
       )}\n</${node.type}>`
     : `<${node.type}${attributes} />`;

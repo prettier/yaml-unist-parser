@@ -1,5 +1,49 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`"!!map\\n #123 \\n&anchor # 456\\na: 123" 1`] = `
+mapping (1:1 ~ 4:7)
+1 | !!map¶
+  | ^^^^^^
+2 | ·#123·¶
+  | ^^^^^^^
+3 | &anchor·#·456¶
+  | ^^^^^^^^^^^^^^
+4 | a:·123¶
+  | ^^^^^^
+<mapping anchor="anchor" tag={"handle":"!!","suffix":"map"}>
+  <middleComment value="123 ">
+  <middleComment value=" 456">
+  <mappingItem>
+    <mappingKey>
+      <plain value="a" />
+    </mappingKey>
+    <mappingValue>
+      <plain value="123" />
+    </mappingValue>
+  </mappingItem>
+</mapping>
+`;
+
+exports[`"!!map\\n #123 \\n&anchor # 456\\na: 123" 2`] = `
+comment (2:2 ~ 2:7)
+1 | !!map¶
+2 | ·#123·¶
+  |  ^^^^^
+3 | &anchor·#·456¶
+4 | a:·123¶
+<comment value="123 " />
+`;
+
+exports[`"!!map\\n #123 \\n&anchor # 456\\na: 123" 3`] = `
+comment (3:9 ~ 3:14)
+1 | !!map¶
+2 | ·#123·¶
+3 | &anchor·#·456¶
+  |         ^^^^^
+4 | a:·123¶
+<comment value=" 456" />
+`;
+
 exports[`":   " 1`] = `
 mapping (1:1 ~ 1:2)
 1 | :···¶

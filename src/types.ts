@@ -30,6 +30,7 @@ export interface Content {
 
 export interface CommentAttachable {
   leadingComments: Comment[];
+  middleComments: Comment[];
   trailingComments: Comment[];
 }
 

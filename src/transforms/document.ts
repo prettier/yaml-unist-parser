@@ -1,7 +1,7 @@
 import assert = require("assert");
 import { Context } from "../transform";
 import { Document, Position } from "../types";
-import { cloneObject, getFirst, getLast } from "../utils";
+import { cloneObject, getLast } from "../utils";
 import { transformRange } from "./range";
 
 export function transformDocument(

@@ -50,6 +50,7 @@ export function transformFlowCollection(
   for (let i = 1; i <= lastIndex; i++) {
     const item = flowCollection.items[i];
 
+    // istanbul ignore if
     if (item === "{" || item === "}" || item === "[" || item === "]") {
       assert(true);
       continue; // convince control flow analysis
@@ -91,6 +92,7 @@ export function transformFlowCollection(
     children,
     position: transformRange(flowCollection.valueRange!, context),
     leadingComments: [],
+    middleComments: [],
     trailingComments: [],
   };
 
@@ -370,6 +372,7 @@ function createMappingKey(
     children: [node],
     position,
     leadingComments: [],
+    middleComments: [],
     trailingComments: [],
   };
 }
@@ -383,6 +386,7 @@ function createMappingValue(
     children: [node],
     position,
     leadingComments: [],
+    middleComments: [],
     trailingComments: [],
   };
 }
@@ -397,6 +401,7 @@ function createMappingItem(
     children: [key, value],
     position,
     leadingComments: [],
+    middleComments: [],
     trailingComments: [],
   };
 }
@@ -410,6 +415,7 @@ function createSequenceItem(
     children: [node],
     position,
     leadingComments: [],
+    middleComments: [],
     trailingComments: [],
   };
 }

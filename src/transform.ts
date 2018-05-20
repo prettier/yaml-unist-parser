@@ -9,15 +9,19 @@ import { transformFlowMap } from "./transforms/flowMap";
 import { transformFlowSeq } from "./transforms/flowSeq";
 import { transformMap } from "./transforms/map";
 import { transformNull } from "./transforms/null";
+import { transformOffset } from "./transforms/offset";
 import { transformPlain } from "./transforms/plain";
 import { transformQuoteDouble } from "./transforms/quoteDouble";
 import { transformQuoteSingle } from "./transforms/quoteSingle";
+import { transformRange } from "./transforms/range";
 import { transformSeq } from "./transforms/seq";
 import {
   Alias,
   BlockFolded,
   BlockLiteral,
   Comment,
+  CommentAttachable,
+  Content,
   Directive,
   Document,
   FlowMapping,
@@ -79,9 +83,75 @@ export function transformNode(node: YamlNode, context: Context): YamlUnistNode {
   }
 
   // TODO: error
-  // TODO: anchor and tag
-  // TODO: comment
+  // TODO: attach leadingComments and trailingComments
 
+  const transformedNode = _transformNode(node, context);
+
+  if (transformedNode.type === "comment") {
+    return transformedNode;
+  }
+
+  let startOffset = transformedNode.position.start.offset;
+  const commentRanges: yaml.Range[] = [];
+
+  node.props.forEach(prop => {
+    const char = context.text[prop.start];
+    switch (char) {
+      case "!": // tag
+      case "&": // anchor
+        if (prop.start < startOffset) {
+          startOffset = prop.start;
+        }
+        break;
+      case "#": // comment
+        commentRanges.push(prop);
+        break;
+      // istanbul ignore next
+      default:
+        throw new Error(`Unexpected leading character ${JSON.stringify(char)}`);
+    }
+  });
+
+  if (startOffset !== transformedNode.position.start.offset) {
+    transformedNode.position.start = transformOffset(startOffset, context);
+  }
+
+  commentRanges.forEach(commentRange => {
+    const { start, end } = commentRange;
+
+    const comment: Comment = {
+      type: "comment",
+      position: transformRange(commentRange, context),
+      value: context.text.slice(commentRange.start + 1, commentRange.end),
+    };
+
+    if (
+      transformedNode.position.start.offset <= start &&
+      transformedNode.position.end.offset >= end
+    ) {
+      (transformedNode as CommentAttachable).middleComments.push(comment);
+    } else {
+      context.comments.push(comment);
+    }
+  });
+
+  const tag = node.tag;
+  if (tag) {
+    (transformedNode as Content).tag = tag;
+  }
+
+  const anchor = node.anchor;
+  if (anchor) {
+    (transformedNode as Content).anchor = anchor;
+  }
+
+  return transformedNode;
+}
+
+function _transformNode(
+  node: Exclude<YamlNode, null>,
+  context: Context,
+): YamlUnistNode {
   // prettier-ignore
   switch (node.type) {
     case "ALIAS": return tranformAlias(node, context);

@@ -17,6 +17,7 @@ export function transformMap(map: yaml.Map, context: Context): Mapping {
     }),
     children,
     leadingComments: [],
+    middleComments: [],
     trailingComments: [],
   };
 }
@@ -62,6 +63,7 @@ function transformMapItems(
               : cloneObject(key.position),
           children: [key],
           leadingComments: [],
+          middleComments: [],
           trailingComments: [],
         });
 
@@ -86,6 +88,7 @@ function transformMapItems(
         }),
         children: [mappingValueNode],
         leadingComments: [],
+        middleComments: [],
         trailingComments: [],
       };
 
@@ -102,6 +105,7 @@ function transformMapItems(
                 end: cloneObject(mappingValue.position.start),
               },
               leadingComments: [],
+              middleComments: [],
               trailingComments: [],
             };
 
@@ -113,6 +117,7 @@ function transformMapItems(
           end: cloneObject(mappingValue.position.end),
         },
         leadingComments: [],
+        middleComments: [],
         trailingComments: [],
       });
     },

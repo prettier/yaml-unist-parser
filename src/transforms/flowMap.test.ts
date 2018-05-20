@@ -23,6 +23,14 @@ testCases([
   ["  { 123 : 456 }  ", selectors],
   ["  { 123, }  ", selectors],
   ["  { 123,, }  ", selectors],
+  [
+    "  !!map\n #123 \n&anchor # 456 \n {}  ",
+    [
+      getFlowMapping(),
+      root => getFirstContent<FlowMapping>(root).middleComments[0],
+      root => getFirstContent<FlowMapping>(root).middleComments[1],
+    ],
+  ],
 ]);
 
 function getFlowMapping() {

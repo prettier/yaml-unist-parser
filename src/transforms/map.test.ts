@@ -8,6 +8,14 @@ testCases([
   ...createTestCases("a: 123  "),
   ...createTestCases("a: 123  \nb: 456  ", true),
   ...createTestCases("? a  \n: 123  \n? b  \n: 456  ", true),
+  [
+    "!!map\n #123 \n&anchor # 456\na: 123",
+    [
+      getMapping(),
+      root => getFirstContent<Mapping>(root).middleComments[0],
+      root => getFirstContent<Mapping>(root).middleComments[1],
+    ],
+  ],
 ]);
 
 function createTestCases(text: string, hasSecondItem = false): TestCase[] {

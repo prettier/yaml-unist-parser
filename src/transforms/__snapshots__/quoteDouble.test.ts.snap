@@ -6,3 +6,35 @@ quoteDouble (1:4 ~ 1:10)
   |    ^^^^^^
 <quoteDouble value="123 " />
 `;
+
+exports[`" !!str # comment 1 \\n &anchor # comment 2 \\n  \\"123\\"   " 1`] = `
+quoteDouble (1:2 ~ 3:8)
+1 | ·!!str·#·comment·1·¶
+  |  ^^^^^^^^^^^^^^^^^^^
+2 | ·&anchor·#·comment·2·¶
+  | ^^^^^^^^^^^^^^^^^^^^^^
+3 | ··"123"···¶
+  | ^^^^^^^
+<quoteDouble anchor="anchor" tag={"handle":"!!","suffix":"str"} value="123">
+  <middleComment value=" comment 1 ">
+  <middleComment value=" comment 2 ">
+</quoteDouble>
+`;
+
+exports[`" !!str # comment 1 \\n &anchor # comment 2 \\n  \\"123\\"   " 2`] = `
+comment (1:8 ~ 1:20)
+1 | ·!!str·#·comment·1·¶
+  |        ^^^^^^^^^^^^
+2 | ·&anchor·#·comment·2·¶
+3 | ··"123"···¶
+<comment value=" comment 1 " />
+`;
+
+exports[`" !!str # comment 1 \\n &anchor # comment 2 \\n  \\"123\\"   " 3`] = `
+comment (2:10 ~ 2:22)
+1 | ·!!str·#·comment·1·¶
+2 | ·&anchor·#·comment·2·¶
+  |          ^^^^^^^^^^^^
+3 | ··"123"···¶
+<comment value=" comment 2 " />
+`;

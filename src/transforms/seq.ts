@@ -33,6 +33,7 @@ export function transformSeq(seq: yaml.Seq, context: Context): Sequence {
       },
       children: [node],
       leadingComments: [],
+      middleComments: [],
       trailingComments: [],
     };
   });
@@ -47,6 +48,7 @@ export function transformSeq(seq: yaml.Seq, context: Context): Sequence {
     }),
     children: sequenceItems,
     leadingComments: [],
+    middleComments: [],
     trailingComments: [],
   };
 }

@@ -20,6 +20,7 @@ export function transformPlain(
       context,
     ),
     leadingComments: [],
+    middleComments: [],
     trailingComments: [],
   };
 }

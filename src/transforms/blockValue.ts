@@ -30,6 +30,7 @@ export function tranformBlockValue(
     indent: hasExplicitBlockIndent ? blockValue.blockIndent! : undefined,
     value: blockValue.strValue!,
     leadingComments: [],
+    middleComments: [],
     trailingComments: [],
   };
 }

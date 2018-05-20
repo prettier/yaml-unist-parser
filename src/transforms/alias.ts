@@ -16,6 +16,7 @@ export function tranformAlias(alias: yaml.Alias, context: Context): Alias {
     ),
     value: alias.rawValue,
     leadingComments: [],
+    middleComments: [],
     trailingComments: [],
   };
 }

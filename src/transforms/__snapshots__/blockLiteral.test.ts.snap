@@ -1,5 +1,42 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`"  !!str &anchor \\n  # comment  \\n|\\n  123\\n  456\\n\\n\\n" 1`] = `
+blockLiteral (1:3 ~ 8:1)
+1 | ··!!str·&anchor·¶
+  |   ^^^^^^^^^^^^^^^
+2 | ··#·comment··¶
+  | ^^^^^^^^^^^^^^
+3 | |¶
+  | ^^
+4 | ··123¶
+  | ^^^^^^
+5 | ··456¶
+  | ^^^^^^
+6 | ¶
+  | ^
+7 | ¶
+  | ^
+8 | ¶
+  | ^
+<blockLiteral anchor="anchor" chomping="clip" indent=undefined tag={"handle":"!!","suffix":"str"} value="123\\n456\\n">
+  <middleComment value=" comment  ">
+</blockLiteral>
+`;
+
+exports[`"  !!str &anchor \\n  # comment  \\n|\\n  123\\n  456\\n\\n\\n" 2`] = `
+comment (2:3 ~ 2:14)
+1 | ··!!str·&anchor·¶
+2 | ··#·comment··¶
+  |   ^^^^^^^^^^^
+3 | |¶
+4 | ··123¶
+5 | ··456¶
+6 | ¶
+7 | ¶
+8 | ¶
+<comment value=" comment  " />
+`;
+
 exports[`"|+\\n  123\\n  456\\n\\n\\n" 1`] = `
 blockLiteral (1:1 ~ 6:1)
 1 | |+¶
