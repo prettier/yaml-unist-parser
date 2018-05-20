@@ -254,6 +254,102 @@ mappingValue (4:1 ~ 4:6)
 </mappingValue>
 `;
 
+exports[`"? abc\\n? def" 1`] = `
+mapping (1:1 ~ 2:6)
+1 | ?·abc¶
+  | ^^^^^^
+2 | ?·def¶
+  | ^^^^^
+<mapping>
+  <mappingItem>
+    <mappingKey>
+      <plain value="abc" />
+    </mappingKey>
+    <mappingValue>
+      <null />
+    </mappingValue>
+  </mappingItem>
+  <mappingItem>
+    <mappingKey>
+      <plain value="def" />
+    </mappingKey>
+    <mappingValue>
+      <null />
+    </mappingValue>
+  </mappingItem>
+</mapping>
+`;
+
+exports[`"? abc\\n? def" 2`] = `
+mappingItem (1:1 ~ 1:6)
+1 | ?·abc¶
+  | ^^^^^
+2 | ?·def¶
+<mappingItem>
+  <mappingKey>
+    <plain value="abc" />
+  </mappingKey>
+  <mappingValue>
+    <null />
+  </mappingValue>
+</mappingItem>
+`;
+
+exports[`"? abc\\n? def" 3`] = `
+mappingItem (2:1 ~ 2:6)
+1 | ?·abc¶
+2 | ?·def¶
+  | ^^^^^
+<mappingItem>
+  <mappingKey>
+    <plain value="def" />
+  </mappingKey>
+  <mappingValue>
+    <null />
+  </mappingValue>
+</mappingItem>
+`;
+
+exports[`"? abc\\n? def" 4`] = `
+mappingKey (1:1 ~ 1:6)
+1 | ?·abc¶
+  | ^^^^^
+2 | ?·def¶
+<mappingKey>
+  <plain value="abc" />
+</mappingKey>
+`;
+
+exports[`"? abc\\n? def" 5`] = `
+mappingKey (2:1 ~ 2:6)
+1 | ?·abc¶
+2 | ?·def¶
+  | ^^^^^
+<mappingKey>
+  <plain value="def" />
+</mappingKey>
+`;
+
+exports[`"? abc\\n? def" 6`] = `
+mappingValue (1:6 ~ 1:6)
+1 | ?·abc¶
+  |      ~
+2 | ?·def¶
+<mappingValue>
+  <null />
+</mappingValue>
+`;
+
+exports[`"? abc\\n? def" 7`] = `
+mappingValue (2:6 ~ 2:6)
+1 | ?·abc¶
+2 | ?·def¶
+  |      ~
+<mappingValue>
+  <null />
+</mappingValue>
+`;
+
 exports[`"a:   " 1`] = `
 mapping (1:1 ~ 1:3)
 1 | a:···¶

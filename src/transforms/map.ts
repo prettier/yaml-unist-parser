@@ -5,6 +5,7 @@ import { cloneObject, getLast } from "../utils";
 import { transformComment } from "./comment";
 import { transformNull } from "./null";
 import { transformOffset } from "./offset";
+import { transformRange } from "./range";
 
 export function transformMap(map: yaml.Map, context: Context): Mapping {
   assert(map.valueRange !== null);
@@ -38,7 +39,6 @@ function transformMapItems(
   return itemsWithoutComments.reduce(
     (reduced, item, index) => {
       if (item.type !== "MAP_VALUE") {
-        assert(index !== itemsWithoutComments.length - 1);
         assert(
           item.type !== "MAP_KEY" ||
             (item.node === null || item.node.type !== "COMMENT"),
@@ -67,7 +67,47 @@ function transformMapItems(
           trailingComments: [],
         });
 
-        return reduced;
+        if (buffer.length === 1 && index !== itemsWithoutComments.length - 1) {
+          return reduced;
+        }
+
+        let unshiftCount = 0;
+
+        if (buffer.length !== 1) {
+          unshiftCount++;
+          assert(itemsWithoutComments[index - 1].type === "MAP_KEY");
+        }
+
+        if (index === itemsWithoutComments.length - 1) {
+          unshiftCount++;
+          assert(itemsWithoutComments[index].type === "MAP_KEY");
+        }
+
+        return reduced.concat(
+          buffer
+            .splice(0, unshiftCount)
+            .map((currentMappingKey): MappingItem => ({
+              type: "mappingItem",
+              children: [
+                currentMappingKey,
+                {
+                  type: "mappingValue",
+                  children: [transformNull()],
+                  position: transformRange(
+                    currentMappingKey.position.end.offset,
+                    context,
+                  ),
+                  leadingComments: [],
+                  middleComments: [],
+                  trailingComments: [],
+                },
+              ],
+              position: cloneObject(currentMappingKey.position),
+              leadingComments: [],
+              middleComments: [],
+              trailingComments: [],
+            })),
+        );
       }
 
       assert(item.valueRange !== null);
