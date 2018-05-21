@@ -1,7 +1,6 @@
 import assert = require("assert");
 import { Context } from "../transform";
 import { Directive } from "../types";
-import { transformRange } from "./range";
 
 export function transformDirective(
   directive: yaml.Directive,
@@ -12,7 +11,7 @@ export function transformDirective(
     type: "directive",
     name: directive.name,
     parameters: directive.parameters,
-    position: transformRange(directive.range!, context),
+    position: context.transformRange(directive.range!),
     leadingComments: [],
     middleComments: [],
     trailingComments: [],

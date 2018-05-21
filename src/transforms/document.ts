@@ -2,7 +2,6 @@ import assert = require("assert");
 import { Context } from "../transform";
 import { Document, DocumentHead, Position } from "../types";
 import { cloneObject, defineCommentParent, getLast } from "../utils";
-import { transformRange } from "./range";
 
 export function transformDocument(
   document: yaml.Document,
@@ -50,7 +49,7 @@ export function transformDocument(
     const end = match
       ? markerIndex + marker.length
       : document.valueRange!.start;
-    return transformRange({ start, end }, context);
+    return context.transformRange({ start, end });
   })(context.text.slice(0, document.valueRange!.start));
 
   const bodyPosition: Position = (text => {
@@ -68,7 +67,7 @@ export function transformDocument(
       : contents.length !== 0
         ? getLast(contents)!.position.end.offset
         : document.valueRange!.start;
-    return transformRange({ start, end }, context);
+    return context.transformRange({ start, end });
   })(context.text.slice(document.valueRange!.end));
 
   const position = cloneObject({

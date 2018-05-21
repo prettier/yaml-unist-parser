@@ -2,7 +2,6 @@ import assert = require("assert");
 import { Context } from "../transform";
 import { Mapping, MappingItem, MappingKey, MappingValue } from "../types";
 import { cloneObject, getLast } from "../utils";
-import { transformRange } from "./range";
 
 export function transformMap(map: yaml.Map, context: Context): Mapping {
   assert(map.valueRange !== null);
@@ -79,9 +78,8 @@ function transformMapItems(
                 {
                   type: "mappingValue",
                   children: [context.transformNode(null)],
-                  position: transformRange(
+                  position: context.transformRange(
                     currentMappingKey.position.end.offset,
-                    context,
                   ),
                   leadingComments: [],
                   middleComments: [],

@@ -1,4 +1,5 @@
-import { Comment, YamlUnistNode } from "./types";
+import { Context } from "./transform";
+import { Comment, Position, YAMLSyntaxError, YamlUnistNode } from "./types";
 
 export function cloneObject<T extends { [key: string]: any }>(x: T): T {
   const newObject: Partial<T> = {};
@@ -19,4 +20,28 @@ export function defineCommentParent(comment: Comment, parent: YamlUnistNode) {
     value: parent,
     enumerable: false,
   });
+}
+
+function createError(message: string, position: Position, context: Context) {
+  const error: Partial<YAMLSyntaxError> = new SyntaxError(message);
+  error.name = "YAMLSyntaxError";
+  error.source = context.text;
+  error.position = position;
+  return error as YAMLSyntaxError;
+}
+
+export function assertSyntaxError(
+  value: boolean,
+  message: string | (() => string),
+  position: Position | (() => Position),
+  context: Context,
+) {
+  if (!value) {
+    // istanbul ignore next
+    throw createError(
+      typeof message === "function" ? message() : message,
+      typeof position === "function" ? position() : position,
+      context,
+    );
+  }
 }

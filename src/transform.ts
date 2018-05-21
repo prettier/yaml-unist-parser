@@ -33,6 +33,8 @@ import {
   MappingValue,
   Null,
   Plain,
+  Point,
+  Position,
   QuoteDouble,
   QuoteSingle,
   Sequence,
@@ -78,6 +80,13 @@ export interface Context {
   comments: Comment[];
   locator: LinesAndColumns;
   transformNode: <T extends YamlNode>(node: T) => YamlToUnist<T>;
+  transformRange: (range: number | { start: number; end: number }) => Position;
+  transformOffset: (offset: number) => Point;
+  assertSyntaxError: (
+    value: boolean,
+    message: string | (() => string),
+    position: Position | (() => Position),
+  ) => void;
 }
 
 export function transformNode<T extends YamlNode>(
@@ -89,7 +98,14 @@ export function transformNode(node: YamlNode, context: Context): YamlUnistNode {
     return transformNull();
   }
 
-  // TODO: error
+  context.assertSyntaxError(
+    node.error === null,
+    () => node.error!.message,
+    () =>
+      context.transformRange(
+        /* istanbul ignore next */ (node.range || node.valueRange)!,
+      ),
+  );
 
   const transformedNode = _transformNode(node, context);
 

@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`throw if node.error is not null 1`] = `
+"Sequence items are not allowed on the same line with map keys
+1 | a:·-·123¶
+  |    ^^^^^"
+`;

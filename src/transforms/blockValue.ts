@@ -1,7 +1,6 @@
 import assert = require("assert");
 import { Context } from "../transform";
 import { BlockValue } from "../types";
-import { transformRange } from "./range";
 
 enum Chomping {
   CLIP = "clip",
@@ -25,13 +24,10 @@ export function tranformBlockValue(
 
   return {
     type: "blockBase",
-    position: transformRange(
-      {
-        start: blockValue.header.start,
-        end: blockValue.valueRange!.end,
-      },
-      context,
-    ),
+    position: context.transformRange({
+      start: blockValue.header.start,
+      end: blockValue.valueRange!.end,
+    }),
     chomping: Chomping[blockValue.chomping],
     indent: hasExplicitBlockIndent ? blockValue.blockIndent! : undefined,
     value: blockValue.strValue!,

@@ -1,7 +1,6 @@
 import assert = require("assert");
 import { Context } from "../transform";
 import { Comment } from "../types";
-import { transformRange } from "./range";
 
 export function transformComment(
   comment: yaml.Comment,
@@ -10,7 +9,7 @@ export function transformComment(
   assert(comment.range !== null);
   return {
     type: "comment",
-    position: transformRange(comment.range!, context),
+    position: context.transformRange(comment.range!),
     value: comment.comment,
   };
 }

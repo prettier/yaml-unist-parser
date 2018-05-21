@@ -2,7 +2,6 @@ import assert = require("assert");
 import { Context } from "../transform";
 import { MappingKey } from "../types";
 import { cloneObject } from "../utils";
-import { transformOffset } from "./offset";
 
 export function transformMapKey(
   mapKey: yaml.MapItem,
@@ -20,7 +19,7 @@ export function transformMapKey(
   return {
     type: "mappingKey",
     position: {
-      start: transformOffset(mapKey.valueRange!.start, context),
+      start: context.transformOffset(mapKey.valueRange!.start),
       end: cloneObject(key.position.end),
     },
     children: [key],

@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Key marker is not allowed to be appeared more than once in the same group 1`] = `
+"Key marker is not allowed to be appeared more than once in the same group
+1 | {·?·?·}¶
+  |     ^"
+`;
+
+exports[`Key marker is not allowed to be behind value marker in the same group 1`] = `
+"Key marker is not allowed to be behind value marker in the same group
+1 | {·:·?·}¶
+  |     ^"
+`;
+
+exports[`Missing flow collection close marker 1`] = `
+"Missing flow collection close marker
+1 | {¶
+  |  ~"
+`;
+
+exports[`Unpaired flow collection close marker 1`] = `
+"Unpaired flow collection close marker
+1 | {]¶
+  |  ~"
+`;
+
+exports[`Value marker is not allowed to be appeared more than once in the same group 1`] = `
+"Value marker is not allowed to be appeared more than once in the same group
+1 | {·:·:·}¶
+  |     ^"
+`;

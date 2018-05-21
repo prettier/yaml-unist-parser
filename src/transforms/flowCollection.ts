@@ -10,8 +10,6 @@ import {
   SequenceItem,
 } from "../types";
 import { cloneObject, getLast } from "../utils";
-import { transformOffset } from "./offset";
-import { transformRange } from "./range";
 
 type ItemBuffer = Array<"," | "?" | ":" | ContentNode>;
 type RangeBuffer = Array<{ start: number; end: number }>;
@@ -22,15 +20,20 @@ export function transformFlowCollection(
 ): FlowCollection {
   assert(flowCollection.valueRange !== null);
 
-  // at least open marker and close marker
-  assert(flowCollection.items.length >= 2);
+  context.assertSyntaxError(
+    flowCollection.items.length >= 2,
+    "Missing flow collection close marker",
+    () => context.transformRange(flowCollection.valueRange!.end - 1),
+  );
 
-  assert(
+  context.assertSyntaxError(
     flowCollection.type === "FLOW_MAP"
       ? flowCollection.items[0] === "{" &&
         getLast(flowCollection.items)! === "}"
       : flowCollection.items[0] === "[" &&
         getLast(flowCollection.items)! === "]",
+    "Unpaired flow collection close marker",
+    () => context.transformRange(flowCollection.valueRange!.end - 1),
   );
 
   let hasColon = false;
@@ -58,13 +61,25 @@ export function transformFlowCollection(
       lastItemStartOffset = comment.position.start.offset;
       lastItemEndOffset = comment.position.end.offset;
     } else {
-      if (item === ":") {
-        assert(!hasColon);
-        hasColon = true;
-      } else if (item === "?") {
-        assert(!hasColon);
-        assert(!hasQuestion);
+      if (item === "?") {
+        context.assertSyntaxError(
+          !hasColon,
+          "Key marker is not allowed to be behind value marker in the same group",
+          () => context.transformRange(getItemRange(item)),
+        );
+        context.assertSyntaxError(
+          !hasQuestion,
+          "Key marker is not allowed to be appeared more than once in the same group",
+          () => context.transformRange(getItemRange(item)),
+        );
         hasQuestion = true;
+      } else if (item === ":") {
+        context.assertSyntaxError(
+          !hasColon,
+          "Value marker is not allowed to be appeared more than once in the same group",
+          () => context.transformRange(getItemRange(item)),
+        );
+        hasColon = true;
       }
       pushBuffer(typeof item === "string" ? item : context.transformNode(item));
     }
@@ -88,28 +103,35 @@ export function transformFlowCollection(
   return {
     type: "flowCollection",
     children,
-    position: transformRange(flowCollection.valueRange!, context),
+    position: context.transformRange(flowCollection.valueRange!),
     leadingComments: [],
     middleComments: [],
     trailingComments: [],
   };
 
   function pushBuffer(item: ItemBuffer[number]) {
-    if (typeof item === "string") {
-      lastItemStartOffset = context.text.indexOf(item, lastItemEndOffset);
-      lastItemEndOffset = lastItemStartOffset + item.length;
-    } else {
-      lastItemStartOffset = item.position.start.offset;
-      lastItemEndOffset = item.position.end.offset;
-    }
+    const { start, end } = getItemRange(item);
 
-    assert(lastItemStartOffset !== -1 && lastItemEndOffset !== -1);
+    lastItemStartOffset = start;
+    lastItemEndOffset = end;
 
     itemBuffer.push(item);
-    rangeBuffer.push({
-      start: lastItemStartOffset,
-      end: lastItemEndOffset,
-    });
+    rangeBuffer.push({ start, end });
+  }
+
+  function getItemRange(item: ItemBuffer[number]) {
+    if (typeof item !== "string") {
+      return {
+        start: item.position.start.offset,
+        end: item.position.end.offset,
+      };
+    }
+
+    const start = context.text.indexOf(item, lastItemEndOffset);
+    return {
+      start,
+      end: start + item.length,
+    };
   }
 }
 
@@ -135,7 +157,7 @@ function transformFlowCollectionItems(
   if (itemBufferWithoutComma.length === 0) {
     // [ , ] or { , }
     assert(itemBuffer.length === 1);
-    const beforeCommaPosition = transformRange(rangeBuffer[0].start, context);
+    const beforeCommaPosition = context.transformRange(rangeBuffer[0].start);
     return type === "FLOW_MAP"
       ? createMappingItem(
           createMappingKey(
@@ -155,15 +177,13 @@ function transformFlowCollectionItems(
       // [ ? ] or [ : ]
       // { ? } or { : }
       const range = rangeBuffer[0];
-      const position = transformRange(range, context);
+      const position = context.transformRange(range);
 
-      const keyPosition = transformRange(
+      const keyPosition = context.transformRange(
         item === "?" ? range : range.start,
-        context,
       );
-      const valuePosition = transformRange(
+      const valuePosition = context.transformRange(
         item === ":" ? range : range.end,
-        context,
       );
       return createMappingItem(
         createMappingKey(context.transformNode(null), keyPosition),
@@ -177,7 +197,7 @@ function transformFlowCollectionItems(
             createMappingKey(item, cloneObject(item.position)),
             createMappingValue(
               context.transformNode(null),
-              transformRange(item.position.end.offset, context),
+              context.transformRange(item.position.end.offset),
             ),
             cloneObject(item.position),
           )
@@ -196,19 +216,16 @@ function transformFlowCollectionItems(
       return createMappingItem(
         createMappingKey(
           context.transformNode(null),
-          transformRange(questionRange, context),
+          context.transformRange(questionRange),
         ),
         createMappingValue(
           context.transformNode(null),
-          transformRange(colonRange, context),
+          context.transformRange(colonRange),
         ),
-        transformRange(
-          {
-            start: questionRange.start,
-            end: colonRange.end,
-          },
-          context,
-        ),
+        context.transformRange({
+          start: questionRange.start,
+          end: colonRange.end,
+        }),
       );
     } else if (questionIndex !== -1) {
       // [ ? 123 ] or { ? 123 }
@@ -216,14 +233,14 @@ function transformFlowCollectionItems(
       const questionRange = rangeBuffer[0];
       const key = itemBufferWithoutComma[1] as ContentNode;
       const keyPosition = {
-        start: transformOffset(questionRange.start, context),
+        start: context.transformOffset(questionRange.start),
         end: cloneObject(key.position.end),
       };
       return createMappingItem(
         createMappingKey(key, keyPosition),
         createMappingValue(
           context.transformNode(null),
-          transformRange(key.position.end.offset, context),
+          context.transformRange(key.position.end.offset),
         ),
         cloneObject(keyPosition),
       );
@@ -232,13 +249,13 @@ function transformFlowCollectionItems(
       const colonRange = rangeBuffer[0];
       const value = itemBufferWithoutComma[1] as ContentNode;
       const valuePosition = {
-        start: transformOffset(colonRange.start, context),
+        start: context.transformOffset(colonRange.start),
         end: cloneObject(value.position.end),
       };
       return createMappingItem(
         createMappingKey(
           context.transformNode(null),
-          transformRange(colonRange.start, context),
+          context.transformRange(colonRange.start),
         ),
         createMappingValue(value, valuePosition),
         cloneObject(valuePosition),
@@ -252,11 +269,11 @@ function transformFlowCollectionItems(
         createMappingKey(key, cloneObject(key.position)),
         createMappingValue(
           context.transformNode(null),
-          transformRange(colonRange, context),
+          context.transformRange(colonRange),
         ),
         {
           start: cloneObject(key.position.start),
-          end: transformOffset(colonRange.end, context),
+          end: context.transformOffset(colonRange.end),
         },
       );
     }
@@ -271,21 +288,15 @@ function transformFlowCollectionItems(
         createMappingKey(key, cloneObject(key.position)),
         createMappingValue(
           value,
-          transformRange(
-            {
-              start: colonRange.start,
-              end: value.position.end.offset,
-            },
-            context,
-          ),
-        ),
-        transformRange(
-          {
-            start: key.position.start.offset,
+          context.transformRange({
+            start: colonRange.start,
             end: value.position.end.offset,
-          },
-          context,
+          }),
         ),
+        context.transformRange({
+          start: key.position.start.offset,
+          end: value.position.end.offset,
+        }),
       );
     } else {
       assert(questionIndex === 0);
@@ -297,19 +308,19 @@ function transformFlowCollectionItems(
         return createMappingItem(
           createMappingKey(
             context.transformNode(null),
-            transformRange(questionRange, context),
+            context.transformRange(questionRange),
           ),
           createMappingValue(
             value,
-            transformRange(
-              { start: colonRange.start, end: value.position.end.offset },
-              context,
-            ),
+            context.transformRange({
+              start: colonRange.start,
+              end: value.position.end.offset,
+            }),
           ),
-          transformRange(
-            { start: questionRange.start, end: value.position.end.offset },
-            context,
-          ),
+          context.transformRange({
+            start: questionRange.start,
+            end: value.position.end.offset,
+          }),
         );
       } else {
         // [ ? 123 : ] or { ? 123 : }
@@ -319,19 +330,19 @@ function transformFlowCollectionItems(
         return createMappingItem(
           createMappingKey(
             key,
-            transformRange(
-              { start: questionRange.start, end: key.position.end.offset },
-              context,
-            ),
+            context.transformRange({
+              start: questionRange.start,
+              end: key.position.end.offset,
+            }),
           ),
           createMappingValue(
             context.transformNode(null),
-            transformRange(colonRange, context),
+            context.transformRange(colonRange),
           ),
-          transformRange(
-            { start: questionRange.start, end: colonRange.end },
-            context,
-          ),
+          context.transformRange({
+            start: questionRange.start,
+            end: colonRange.end,
+          }),
         );
       }
     }
@@ -347,22 +358,22 @@ function transformFlowCollectionItems(
     return createMappingItem(
       createMappingKey(
         key,
-        transformRange(
-          { start: questionRange.start, end: key.position.end.offset },
-          context,
-        ),
+        context.transformRange({
+          start: questionRange.start,
+          end: key.position.end.offset,
+        }),
       ),
       createMappingValue(
         value,
-        transformRange(
-          { start: colonRange.start, end: value.position.end.offset },
-          context,
-        ),
+        context.transformRange({
+          start: colonRange.start,
+          end: value.position.end.offset,
+        }),
       ),
-      transformRange(
-        { start: questionRange.start, end: value.position.end.offset },
-        context,
-      ),
+      context.transformRange({
+        start: questionRange.start,
+        end: value.position.end.offset,
+      }),
     );
   }
 }

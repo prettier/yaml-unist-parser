@@ -1,9 +1,11 @@
+import assert = require("assert");
 import { parse } from "./parse";
 import {
   CommentAttachable,
   Node,
   Position,
   Root,
+  YAMLSyntaxError,
   YamlUnistNode,
 } from "./types";
 
@@ -41,7 +43,9 @@ export function testCases(
 ) {
   cases.forEach(testCase => {
     const [text, selector] = testCase;
-    const root = parse(text);
+    const root = parse(
+      text + (text[text.length - 1] !== "\n" ? "\n" : ""), // to avoid `Node#parse consumed no characters`
+    );
     const selectNodes = ([] as TestCaseSelector[]).concat(selector);
     selectNodes.forEach(selectNode => {
       const nodes = ([] as YamlUnistNode[]).concat(selectNode(root));
@@ -211,4 +215,18 @@ function codeFrameColumns(
 
 function leftpad(text: string, width: number) {
   return " ".repeat(Math.max(0, width - text.length)) + text;
+}
+
+export function testSyntaxError(text: string, message?: string) {
+  try {
+    parse(text);
+  } catch (e) {
+    assert(e.name === "YAMLSyntaxError");
+    const error = e as YAMLSyntaxError;
+    test(message || error.message, () => {
+      expect(
+        error.message + "\n" + codeFrameColumns(error.source, error.position),
+      ).toMatchSnapshot();
+    });
+  }
 }
