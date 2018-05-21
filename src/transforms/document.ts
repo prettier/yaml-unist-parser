@@ -1,7 +1,7 @@
 import assert = require("assert");
 import { Context } from "../transform";
-import { Document, Position } from "../types";
-import { cloneObject, getLast } from "../utils";
+import { Document, DocumentHead, Position } from "../types";
+import { cloneObject, defineCommentParent, getLast } from "../utils";
 import { transformRange } from "./range";
 
 export function transformDocument(
@@ -10,8 +10,32 @@ export function transformDocument(
 ): Document {
   assert(document.valueRange !== null);
 
-  const directives = context.transformNodes(document.directives);
-  const contents = context.transformNodes(document.contents);
+  const directives = document.directives.map(context.transformNode);
+  const lastContinuousCommentCount = directives.reduce(
+    (reduced, node) => (node.type === "comment" ? reduced + 1 : 0),
+    0,
+  );
+  const directivesWithoutNonTrailingComments = directives.filter(
+    (node, index) => {
+      if (
+        index < directives.length - lastContinuousCommentCount &&
+        node.type === "comment"
+      ) {
+        context.comments.push(node);
+        return false;
+      }
+      return true;
+    },
+  );
+
+  const contents = document.contents.map(context.transformNode);
+  const contentsWithoutComments = contents.filter(node => {
+    if (node.type === "comment") {
+      context.comments.push(node);
+      return false;
+    }
+    return true;
+  });
 
   const headPosition: Position = (text => {
     const match = text.match(/(^|\n)---\s*$/);
@@ -52,18 +76,30 @@ export function transformDocument(
     end: bodyPosition.end,
   });
 
+  const documentHead: DocumentHead = {
+    type: "documentHead",
+    children: [],
+    position: headPosition,
+  };
+
+  documentHead.children = directivesWithoutNonTrailingComments.map(
+    directive => {
+      if (directive.type === "comment") {
+        context.comments.push(directive);
+        defineCommentParent(directive, documentHead);
+      }
+      return directive;
+    },
+  );
+
   return {
     type: "document",
     position,
     children: [
-      {
-        type: "documentHead",
-        children: directives,
-        position: headPosition,
-      },
+      documentHead,
       {
         type: "documentBody",
-        children: contents,
+        children: contentsWithoutComments, // handle standalone comment in attach
         position: bodyPosition,
       },
     ],

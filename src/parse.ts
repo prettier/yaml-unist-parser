@@ -1,6 +1,7 @@
 import LinesAndColumns from "lines-and-columns";
 import parseAST from "yaml/dist/ast/parse";
-import { Context, transformNode, transformNodes } from "./transform";
+import { attachComments } from "./attach";
+import { Context, transformNode } from "./transform";
 import { transformRange } from "./transforms/range";
 import { Comment, Root } from "./types";
 
@@ -14,12 +15,18 @@ export function parse(text: string): Root {
     locator,
     comments,
     transformNode: node => transformNode(node, context),
-    transformNodes: nodes => transformNodes(nodes, context),
   };
 
-  return {
+  const root: Root = {
     type: "root",
     position: transformRange({ start: 0, end: text.length }, context),
-    children: context.transformNodes(documents),
+    children: documents.map(context.transformNode),
+    comments,
   };
+
+  if (context.comments.length !== 0) {
+    attachComments(root, context);
+  }
+
+  return root;
 }

@@ -29,8 +29,11 @@ export interface Content {
 }
 
 export interface CommentAttachable {
+  /** comments in front of the node */
   leadingComments: Comment[];
+  /** comments between the node and its tag/anchor */
   middleComments: Comment[];
+  /** comments on the same line of the node */
   trailingComments: Comment[];
 }
 
@@ -54,6 +57,8 @@ export type YamlUnistNode =
   | QuoteDouble
   | Mapping
   | MappingItem
+  | MappingKey
+  | MappingValue
   | Sequence
   | SequenceItem
   | FlowMapping
@@ -84,11 +89,14 @@ export interface Null extends Node {
 export interface Comment extends Node {
   type: "comment";
   value: string;
+  /** @internal non-enumerable */
+  parent?: Extract<YamlUnistNode, CommentAttachable>;
 }
 
 export interface Root extends Parent {
   type: "root";
   children: Document[];
+  comments: Comment[];
 }
 
 export interface Document extends Parent {
@@ -106,7 +114,7 @@ export interface DocumentBody extends Parent {
   children: Array<Comment | ContentNode>;
 }
 
-export interface Directive extends Node {
+export interface Directive extends Node, CommentAttachable {
   type: "directive";
   name: string;
   parameters: string[];

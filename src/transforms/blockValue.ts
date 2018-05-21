@@ -13,7 +13,7 @@ export function tranformBlockValue(
   blockValue: yaml.BlockValue,
   context: Context,
 ): BlockValue {
-  assert(blockValue.range !== null);
+  assert(blockValue.valueRange !== null);
   assert(blockValue.strValue !== null);
 
   const indicatorLength = 1; // | or >
@@ -25,7 +25,13 @@ export function tranformBlockValue(
 
   return {
     type: "blockBase",
-    position: transformRange(blockValue.range!, context),
+    position: transformRange(
+      {
+        start: blockValue.header.start,
+        end: blockValue.valueRange!.end,
+      },
+      context,
+    ),
     chomping: Chomping[blockValue.chomping],
     indent: hasExplicitBlockIndent ? blockValue.blockIndent! : undefined,
     value: blockValue.strValue!,

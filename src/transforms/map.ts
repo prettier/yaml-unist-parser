@@ -2,9 +2,6 @@ import assert = require("assert");
 import { Context } from "../transform";
 import { Mapping, MappingItem, MappingKey, MappingValue } from "../types";
 import { cloneObject, getLast } from "../utils";
-import { transformComment } from "./comment";
-import { transformNull } from "./null";
-import { transformOffset } from "./offset";
 import { transformRange } from "./range";
 
 export function transformMap(map: yaml.Map, context: Context): Mapping {
@@ -29,7 +26,7 @@ function transformMapItems(
 ): MappingItem[] {
   const itemsWithoutComments = items.filter(item => {
     if (item.type === "COMMENT") {
-      context.comments.push(transformComment(item, context));
+      context.comments.push(context.transformNode(item));
       return false;
     }
     return true;
@@ -39,33 +36,22 @@ function transformMapItems(
   return itemsWithoutComments.reduce(
     (reduced, item, index) => {
       if (item.type !== "MAP_VALUE") {
-        assert(
-          item.type !== "MAP_KEY" ||
-            (item.node === null || item.node.type !== "COMMENT"),
-        );
-
-        const key = context.transformNode(
-          item.type === "MAP_KEY"
-            ? (item.node as Exclude<typeof item.node, yaml.Comment>)
-            : (item as Exclude<typeof item, yaml.MapItem>),
-        );
-
-        assert(item.type !== "MAP_KEY" || item.valueRange !== null);
-
-        buffer.push({
-          type: "mappingKey",
-          position:
-            item.type === "MAP_KEY"
-              ? {
-                  start: transformOffset(item.valueRange!.start, context),
-                  end: cloneObject(key.position.end),
-                }
-              : cloneObject(key.position),
-          children: [key],
-          leadingComments: [],
-          middleComments: [],
-          trailingComments: [],
-        });
+        if (item.type === "MAP_KEY") {
+          buffer.push(context.transformNode(item) as MappingKey);
+        } else {
+          const key = context.transformNode(item as Exclude<
+            typeof item,
+            yaml.MapItem
+          >);
+          buffer.push({
+            type: "mappingKey",
+            position: cloneObject(key.position),
+            children: [key],
+            leadingComments: [],
+            middleComments: [],
+            trailingComments: [],
+          });
+        }
 
         if (buffer.length === 1 && index !== itemsWithoutComments.length - 1) {
           return reduced;
@@ -92,7 +78,7 @@ function transformMapItems(
                 currentMappingKey,
                 {
                   type: "mappingValue",
-                  children: [transformNull()],
+                  children: [context.transformNode(null)],
                   position: transformRange(
                     currentMappingKey.position.end.offset,
                     context,
@@ -110,27 +96,7 @@ function transformMapItems(
         );
       }
 
-      assert(item.valueRange !== null);
-      assert(item.node === null || item.node.type !== "COMMENT");
-
-      const mappingValueNode = context.transformNode(item.node as Exclude<
-        typeof item.node,
-        yaml.Comment
-      >);
-      const mappingValue: MappingValue = {
-        type: "mappingValue",
-        position: cloneObject({
-          start: transformOffset(item.valueRange!.start, context),
-          end:
-            mappingValueNode.type === "null"
-              ? transformOffset(item.valueRange!.start + 1, context)
-              : mappingValueNode.position.end,
-        }),
-        children: [mappingValueNode],
-        leadingComments: [],
-        middleComments: [],
-        trailingComments: [],
-      };
+      const mappingValue = context.transformNode(item) as MappingValue;
 
       assert(buffer.length <= 1);
 
@@ -139,7 +105,7 @@ function transformMapItems(
           ? buffer.pop()!
           : {
               type: "mappingKey",
-              children: [transformNull()],
+              children: [context.transformNode(null)],
               position: {
                 start: cloneObject(mappingValue.position.start),
                 end: cloneObject(mappingValue.position.start),

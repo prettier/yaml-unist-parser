@@ -13,5 +13,8 @@ export function transformDirective(
     name: directive.name,
     parameters: directive.parameters,
     position: transformRange(directive.range!, context),
+    leadingComments: [],
+    middleComments: [],
+    trailingComments: [],
   };
 }

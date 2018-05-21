@@ -14,8 +14,10 @@ expect.addSnapshotSerializer({
   print: value => value[RAW].replace(/ +$/gm, ""),
 });
 
+export type Arrayable<T> = T | T[];
+
 export type TestCase = TestCaseSingle | TestCaseMulti;
-export type TestCaseSelector = (root: Root) => YamlUnistNode | Node;
+export type TestCaseSelector = (root: Root) => Arrayable<YamlUnistNode>;
 
 export type TestCaseSingle = [string, TestCaseSelector];
 export type TestCaseMulti = [string, TestCaseSelector[]];
@@ -28,42 +30,73 @@ export function getFirstContent<T extends YamlUnistNode>(root?: Root) {
     : (root.children[0].children[1].children[0] as T);
 }
 
-export function testCases(cases: TestCase[]) {
+export interface SnapshotNodeOptions extends StringifyNodeOptions {
+  codeFrameMaxHeight?: number;
+  selectNodeToStringify?: (node: YamlUnistNode) => YamlUnistNode;
+}
+
+export function testCases(
+  cases: TestCase[],
+  options: SnapshotNodeOptions = {},
+) {
   cases.forEach(testCase => {
     const [text, selector] = testCase;
+    const root = parse(text);
     const selectNodes = ([] as TestCaseSelector[]).concat(selector);
     selectNodes.forEach(selectNode => {
-      test(`${JSON.stringify(text)}`, () => {
-        expect({ [RAW]: snapshotNode(text, selectNode) }).toMatchSnapshot();
+      const nodes = ([] as YamlUnistNode[]).concat(selectNode(root));
+      nodes.forEach(node => {
+        test(`${JSON.stringify(text).slice(0, 60)}`, () => {
+          expect({
+            [RAW]: snapshotNode(text, node, options),
+          }).toMatchSnapshot();
+        });
       });
     });
   });
 }
 
+function getNodeDescription(node: YamlUnistNode) {
+  return `${node.type} (${[
+    `${node.position.start.line}:${node.position.start.column}`,
+    `${node.position.end.line}:${node.position.end.column}`,
+  ].join(" ~ ")})`;
+}
+
 function snapshotNode(
   text: string,
-  selectNode: (root: Root) => YamlUnistNode | Node,
+  node: YamlUnistNode,
+  options: SnapshotNodeOptions = {},
 ) {
-  const root = parse(text);
-  const node = selectNode(root);
+  const { selectNodeToStringify = (x: YamlUnistNode) => x } = options;
+  const stringifiedNode = selectNodeToStringify(node);
   return (
-    `${node.type} (` +
-    `${node.position.start.line}:${node.position.start.column} ~ ` +
-    `${node.position.end.line}:${node.position.end.column}` +
-    ")\n" +
-    codeFrameColumns(text, node.position) +
+    `${getNodeDescription(node)}\n` +
+    codeFrameColumns(text, node.position, options.codeFrameMaxHeight) +
     "\n" +
-    stringifyNode(node)
+    (node !== stringifiedNode
+      ? `${getNodeDescription(stringifiedNode)}\n`
+      : "") +
+    stringifyNode(stringifiedNode, options)
   );
 }
 
-function stringifyNode(node: YamlUnistNode | Node): string {
+export interface StringifyNodeOptions {
+  maxChildrenLevel?: number;
+  maxCommentsLevel?: number;
+}
+
+function stringifyNode(
+  node: YamlUnistNode | Node,
+  options: StringifyNodeOptions = {},
+): string {
   const attributes = Object.keys(node)
     .filter(key => {
       switch (key) {
         case "type":
         case "position":
         case "children":
+        case "comments":
         case "leadingComments":
         case "middleComments":
         case "trailingComments":
@@ -77,6 +110,7 @@ function stringifyNode(node: YamlUnistNode | Node): string {
     .map((attribute, index) => (index === 0 ? " " + attribute : attribute))
     .join(" ");
   const comments =
+    (options.maxCommentsLevel === undefined || options.maxCommentsLevel > 0) &&
     "leadingComments" in node
       ? (["leadingComments", "middleComments", "trailingComments"] as Array<
           keyof CommentAttachable
@@ -93,8 +127,20 @@ function stringifyNode(node: YamlUnistNode | Node): string {
     ? `<${node.type}${attributes}>\n${indent(
         comments
           .concat(
+            (options.maxChildrenLevel === undefined ||
+              options.maxChildrenLevel > 0) &&
             "children" in node
-              ? (node.children as YamlUnistNode[]).map(stringifyNode)
+              ? (node.children as YamlUnistNode[]).map(childNode =>
+                  stringifyNode(childNode, {
+                    ...options,
+                    ...(options.maxChildrenLevel !== undefined && {
+                      maxChildrenLevel: options.maxChildrenLevel - 1,
+                    }),
+                    ...(options.maxCommentsLevel !== undefined && {
+                      maxCommentsLevel: options.maxCommentsLevel - 1,
+                    }),
+                  }),
+                )
               : [],
           )
           .join("\n"),
@@ -109,7 +155,11 @@ function indent(text: string) {
     .join("\n");
 }
 
-function codeFrameColumns(text: string, position: Position) {
+function codeFrameColumns(
+  text: string,
+  position: Position,
+  codeFrameMaxHeight = Infinity,
+) {
   const lines = text.split("\n").map(line => `${line}¶`);
   const markerLines = lines.map((line, index) => {
     if (index < position.start.line - 1 || index > position.end.line - 1) {
@@ -137,16 +187,20 @@ function codeFrameColumns(text: string, position: Position) {
     }
   });
 
+  const start = Math.max(0, position.start.line - 1 - codeFrameMaxHeight);
+  const end = Math.min(lines.length, position.end.line + codeFrameMaxHeight);
+
   const gutterWidth = Math.floor(Math.log10(lines.length)) + 1;
 
   return lines
+    .slice(start, end)
     .reduce(
       (reduced, line, index) => {
-        const gutter = leftpad(`${index + 1}`, gutterWidth);
+        const gutter = leftpad(`${index + 1 + start}`, gutterWidth);
         return reduced.concat(
           `${gutter} | ${line.replace(/ /g, "·")}`,
-          markerLines[index]
-            ? `${" ".repeat(gutterWidth)} | ${markerLines[index]}`
+          markerLines[index + start]
+            ? `${" ".repeat(gutterWidth)} | ${markerLines[index + start]}`
             : [],
         );
       },

@@ -10,8 +10,6 @@ import {
   SequenceItem,
 } from "../types";
 import { cloneObject, getLast } from "../utils";
-import { transformComment } from "./comment";
-import { transformNull } from "./null";
 import { transformOffset } from "./offset";
 import { transformRange } from "./range";
 
@@ -55,7 +53,7 @@ export function transformFlowCollection(
       assert(true);
       continue; // convince control flow analysis
     } else if (typeof item === "object" && item.type === "COMMENT") {
-      const comment = transformComment(item, context);
+      const comment = context.transformNode(item);
       context.comments.push(comment);
       lastItemStartOffset = comment.position.start.offset;
       lastItemEndOffset = comment.position.end.offset;
@@ -140,11 +138,17 @@ function transformFlowCollectionItems(
     const beforeCommaPosition = transformRange(rangeBuffer[0].start, context);
     return type === "FLOW_MAP"
       ? createMappingItem(
-          createMappingKey(transformNull(), cloneObject(beforeCommaPosition)),
-          createMappingValue(transformNull(), cloneObject(beforeCommaPosition)),
+          createMappingKey(
+            context.transformNode(null),
+            cloneObject(beforeCommaPosition),
+          ),
+          createMappingValue(
+            context.transformNode(null),
+            cloneObject(beforeCommaPosition),
+          ),
           beforeCommaPosition,
         )
-      : createSequenceItem(transformNull(), beforeCommaPosition);
+      : createSequenceItem(context.transformNode(null), beforeCommaPosition);
   } else if (itemBufferWithoutComma.length === 1) {
     const item = itemBufferWithoutComma[0];
     if (typeof item === "string") {
@@ -162,8 +166,8 @@ function transformFlowCollectionItems(
         context,
       );
       return createMappingItem(
-        createMappingKey(transformNull(), keyPosition),
-        createMappingValue(transformNull(), valuePosition),
+        createMappingKey(context.transformNode(null), keyPosition),
+        createMappingValue(context.transformNode(null), valuePosition),
         position,
       );
     } else {
@@ -172,7 +176,7 @@ function transformFlowCollectionItems(
         ? createMappingItem(
             createMappingKey(item, cloneObject(item.position)),
             createMappingValue(
-              transformNull(),
+              context.transformNode(null),
               transformRange(item.position.end.offset, context),
             ),
             cloneObject(item.position),
@@ -191,11 +195,11 @@ function transformFlowCollectionItems(
       const colonRange = rangeBuffer[1];
       return createMappingItem(
         createMappingKey(
-          transformNull(),
+          context.transformNode(null),
           transformRange(questionRange, context),
         ),
         createMappingValue(
-          transformNull(),
+          context.transformNode(null),
           transformRange(colonRange, context),
         ),
         transformRange(
@@ -218,7 +222,7 @@ function transformFlowCollectionItems(
       return createMappingItem(
         createMappingKey(key, keyPosition),
         createMappingValue(
-          transformNull(),
+          context.transformNode(null),
           transformRange(key.position.end.offset, context),
         ),
         cloneObject(keyPosition),
@@ -233,7 +237,7 @@ function transformFlowCollectionItems(
       };
       return createMappingItem(
         createMappingKey(
-          transformNull(),
+          context.transformNode(null),
           transformRange(colonRange.start, context),
         ),
         createMappingValue(value, valuePosition),
@@ -247,7 +251,7 @@ function transformFlowCollectionItems(
       return createMappingItem(
         createMappingKey(key, cloneObject(key.position)),
         createMappingValue(
-          transformNull(),
+          context.transformNode(null),
           transformRange(colonRange, context),
         ),
         {
@@ -292,7 +296,7 @@ function transformFlowCollectionItems(
         const value = itemBufferWithoutComma[2] as ContentNode;
         return createMappingItem(
           createMappingKey(
-            transformNull(),
+            context.transformNode(null),
             transformRange(questionRange, context),
           ),
           createMappingValue(
@@ -321,7 +325,7 @@ function transformFlowCollectionItems(
             ),
           ),
           createMappingValue(
-            transformNull(),
+            context.transformNode(null),
             transformRange(colonRange, context),
           ),
           transformRange(

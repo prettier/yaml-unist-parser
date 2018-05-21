@@ -8,6 +8,8 @@ import { transformDocument } from "./transforms/document";
 import { transformFlowMap } from "./transforms/flowMap";
 import { transformFlowSeq } from "./transforms/flowSeq";
 import { transformMap } from "./transforms/map";
+import { transformMapKey } from "./transforms/mapKey";
+import { transformMapValue } from "./transforms/mapValue";
 import { transformNull } from "./transforms/null";
 import { transformOffset } from "./transforms/offset";
 import { transformPlain } from "./transforms/plain";
@@ -15,25 +17,29 @@ import { transformQuoteDouble } from "./transforms/quoteDouble";
 import { transformQuoteSingle } from "./transforms/quoteSingle";
 import { transformRange } from "./transforms/range";
 import { transformSeq } from "./transforms/seq";
+import { transformSeqItem } from "./transforms/seqItem";
 import {
   Alias,
   BlockFolded,
   BlockLiteral,
   Comment,
-  CommentAttachable,
   Content,
   Directive,
   Document,
   FlowMapping,
   FlowSequence,
   Mapping,
+  MappingKey,
+  MappingValue,
   Null,
   Plain,
   QuoteDouble,
   QuoteSingle,
   Sequence,
+  SequenceItem,
   YamlUnistNode,
 } from "./types";
+import { defineCommentParent } from "./utils";
 
 export type YamlNode =
   | null
@@ -46,7 +52,9 @@ export type YamlNode =
   | yaml.Map
   | yaml.PlainValue
   | yaml.QuoteValue
-  | yaml.Seq;
+  | yaml.Seq
+  | yaml.MapItem
+  | yaml.SeqItem;
 
 // prettier-ignore
 export type YamlToUnist<T extends YamlNode> =
@@ -61,6 +69,8 @@ export type YamlToUnist<T extends YamlNode> =
   T extends yaml.PlainValue ? Plain :
   T extends yaml.QuoteValue ? QuoteDouble | QuoteSingle :
   T extends yaml.Seq ? Sequence :
+  T extends yaml.MapItem ? MappingKey | MappingValue :
+  T extends yaml.SeqItem ? SequenceItem :
   never;
 
 export interface Context {
@@ -68,9 +78,6 @@ export interface Context {
   comments: Comment[];
   locator: LinesAndColumns;
   transformNode: <T extends YamlNode>(node: T) => YamlToUnist<T>;
-  transformNodes: <T extends YamlNode>(
-    nodes: T[],
-  ) => Array<Exclude<YamlToUnist<T>, Comment>>;
 }
 
 export function transformNode<T extends YamlNode>(
@@ -83,7 +90,6 @@ export function transformNode(node: YamlNode, context: Context): YamlUnistNode {
   }
 
   // TODO: error
-  // TODO: attach leadingComments and trailingComments
 
   const transformedNode = _transformNode(node, context);
 
@@ -91,7 +97,7 @@ export function transformNode(node: YamlNode, context: Context): YamlUnistNode {
     return transformedNode;
   }
 
-  let startOffset = transformedNode.position.start.offset;
+  let newStartOffset = -1;
   const commentRanges: yaml.Range[] = [];
 
   node.props.forEach(prop => {
@@ -99,8 +105,13 @@ export function transformNode(node: YamlNode, context: Context): YamlUnistNode {
     switch (char) {
       case "!": // tag
       case "&": // anchor
-        if (prop.start < startOffset) {
-          startOffset = prop.start;
+        if (
+          prop.start <
+          (newStartOffset !== -1
+            ? newStartOffset
+            : transformedNode.position.start.offset)
+        ) {
+          newStartOffset = prop.start;
         }
         break;
       case "#": // comment
@@ -112,10 +123,6 @@ export function transformNode(node: YamlNode, context: Context): YamlUnistNode {
     }
   });
 
-  if (startOffset !== transformedNode.position.start.offset) {
-    transformedNode.position.start = transformOffset(startOffset, context);
-  }
-
   commentRanges.forEach(commentRange => {
     const { start, end } = commentRange;
 
@@ -126,13 +133,15 @@ export function transformNode(node: YamlNode, context: Context): YamlUnistNode {
     };
 
     if (
-      transformedNode.position.start.offset <= start &&
-      transformedNode.position.end.offset >= end
+      "leadingComments" in transformedNode &&
+      newStartOffset !== -1 &&
+      newStartOffset <= start &&
+      transformedNode.position.start.offset >= end
     ) {
-      (transformedNode as CommentAttachable).middleComments.push(comment);
-    } else {
-      context.comments.push(comment);
+      defineCommentParent(comment, transformedNode);
+      transformedNode.middleComments.push(comment);
     }
+    context.comments.push(comment);
   });
 
   const tag = node.tag;
@@ -143,6 +152,10 @@ export function transformNode(node: YamlNode, context: Context): YamlUnistNode {
   const anchor = node.anchor;
   if (anchor) {
     (transformedNode as Content).anchor = anchor;
+  }
+
+  if (newStartOffset !== -1) {
+    transformedNode.position.start = transformOffset(newStartOffset, context);
   }
 
   return transformedNode;
@@ -163,33 +176,14 @@ function _transformNode(
     case "FLOW_MAP": return transformFlowMap(node, context);
     case "FLOW_SEQ": return transformFlowSeq(node, context);
     case "MAP": return transformMap(node, context);
+    case "MAP_KEY": return transformMapKey(node, context);
+    case "MAP_VALUE": return transformMapValue(node, context);
     case "PLAIN": return transformPlain(node, context);
     case "QUOTE_DOUBLE": return transformQuoteDouble(node, context);
     case "QUOTE_SINGLE": return transformQuoteSingle(node, context);
     case "SEQ": return transformSeq(node, context);
+    case "SEQ_ITEM": return transformSeqItem(node, context);
     // istanbul ignore next
     default: throw new Error(`Unexpected node type ${(node as yaml.Node).type}`);
   }
-}
-
-/**
- * transform `YamlNode`s to `YamlUnistNode`s and extract `Comment`s to `context.comments`.
- */
-export function transformNodes<T extends YamlNode>(
-  nodes: T[],
-  context: Context,
-): Array<Exclude<YamlToUnist<T>, Comment>> {
-  return nodes.reduce(
-    (reduced, node) =>
-      node && node.type === "COMMENT"
-        ? (context.comments.push(
-            transformComment(node as yaml.Comment, context),
-          ),
-          reduced)
-        : reduced.concat(
-            // @ts-ignore: not assignable due to unknown reason
-            transformNode(node as Exclude<T, yaml.Comment>, context),
-          ),
-    [] as Array<Exclude<YamlToUnist<T>, Comment>>,
-  );
 }

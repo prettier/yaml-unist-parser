@@ -140,6 +140,54 @@ mappingValue (1:1 ~ 1:6)
 </mappingValue>
 `;
 
+exports[`"? 123" 1`] = `
+mapping (1:1 ~ 1:6)
+1 | ?·123¶
+  | ^^^^^
+<mapping>
+  <mappingItem>
+    <mappingKey>
+      <plain value="123" />
+    </mappingKey>
+    <mappingValue>
+      <null />
+    </mappingValue>
+  </mappingItem>
+</mapping>
+`;
+
+exports[`"? 123" 2`] = `
+mappingItem (1:1 ~ 1:6)
+1 | ?·123¶
+  | ^^^^^
+<mappingItem>
+  <mappingKey>
+    <plain value="123" />
+  </mappingKey>
+  <mappingValue>
+    <null />
+  </mappingValue>
+</mappingItem>
+`;
+
+exports[`"? 123" 3`] = `
+mappingKey (1:1 ~ 1:6)
+1 | ?·123¶
+  | ^^^^^
+<mappingKey>
+  <plain value="123" />
+</mappingKey>
+`;
+
+exports[`"? 123" 4`] = `
+mappingValue (1:6 ~ 1:6)
+1 | ?·123¶
+  |      ~
+<mappingValue>
+  <null />
+</mappingValue>
+`;
+
 exports[`"? a  \\n: 123  \\n? b  \\n: 456  " 1`] = `
 mapping (1:1 ~ 4:6)
 1 | ?·a··¶

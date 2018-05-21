@@ -1,0 +1,1271 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`"\\n# 123\\n%YAML\\n# 456\\n# 789\\n---\\n" 1`] = `
+comment (2:1 ~ 2:6)
+1 | ¶
+2 | #·123¶
+  | ^^^^^
+3 | %YAML¶
+4 | #·456¶
+directive (3:1 ~ 3:6)
+<directive name="YAML" parameters=[]>
+  <leadingComment value=" 123">
+</directive>
+`;
+
+exports[`"\\n# 123\\n%YAML\\n# 456\\n# 789\\n---\\n" 2`] = `
+comment (4:1 ~ 4:6)
+2 | #·123¶
+3 | %YAML¶
+4 | #·456¶
+  | ^^^^^
+5 | #·789¶
+6 | ---¶
+documentHead (2:1 ~ 6:4)
+<documentHead>
+
+</documentHead>
+`;
+
+exports[`"\\n# 123\\n%YAML\\n# 456\\n# 789\\n---\\n" 3`] = `
+comment (5:1 ~ 5:6)
+3 | %YAML¶
+4 | #·456¶
+5 | #·789¶
+  | ^^^^^
+6 | ---¶
+7 | ¶
+documentHead (2:1 ~ 6:4)
+<documentHead>
+
+</documentHead>
+`;
+
+exports[`"\\n- 123\\n- 456\\n  # 789\\n" 1`] = `
+comment (4:3 ~ 4:8)
+2 | -·123¶
+3 | -·456¶
+4 | ··#·789¶
+  |   ^^^^^
+5 | ¶
+documentBody (2:1 ~ 3:6)
+<documentBody>
+
+</documentBody>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 1`] = `
+comment (3:1 ~ 3:81)
+  1 | ¶
+  2 | ---¶
+  3 | #·Collection·Types·#############################################################¶
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | ################################################################################¶
+  5 | ¶
+mapping (8:1 ~ 206:14)
+<mapping>
+  <leadingComment value=" Collection Types #############################################################">
+  <leadingComment value="###############################################################################">
+  <leadingComment value=" http://yaml.org/type/map.html -----------------------------------------------#">
+</mapping>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 2`] = `
+comment (4:1 ~ 4:81)
+  2 | ---¶
+  3 | #·Collection·Types·#############################################################¶
+  4 | ################################################################################¶
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | ¶
+  6 | #·http://yaml.org/type/map.html·-----------------------------------------------#¶
+mapping (8:1 ~ 206:14)
+<mapping>
+  <leadingComment value=" Collection Types #############################################################">
+  <leadingComment value="###############################################################################">
+  <leadingComment value=" http://yaml.org/type/map.html -----------------------------------------------#">
+</mapping>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 3`] = `
+comment (6:1 ~ 6:81)
+  4 | ################################################################################¶
+  5 | ¶
+  6 | #·http://yaml.org/type/map.html·-----------------------------------------------#¶
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 | ¶
+  8 | map:¶
+mapping (8:1 ~ 206:14)
+<mapping>
+  <leadingComment value=" Collection Types #############################################################">
+  <leadingComment value="###############################################################################">
+  <leadingComment value=" http://yaml.org/type/map.html -----------------------------------------------#">
+</mapping>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 4`] = `
+comment (9:3 ~ 9:39)
+  7 | ¶
+  8 | map:¶
+  9 | ··#·Unordered·set·of·key:·value·pairs.¶
+    |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ 10 | ··Block·style:·!!map¶
+ 11 | ····Clark·:·Evans¶
+mapping (10:3 ~ 14:68)
+<mapping>
+  <leadingComment value=" Unordered set of key: value pairs.">
+</mapping>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 5`] = `
+comment (16:1 ~ 16:81)
+ 14 | ··Flow·style:·!!map·{·Clark:·Evans,·Ingy:·döt·Net,·Oren:·Ben-Kiki·}¶
+ 15 | ¶
+ 16 | #·http://yaml.org/type/omap.html·----------------------------------------------#¶
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ 17 | ¶
+ 18 | omap:¶
+mappingItem (18:1 ~ 26:48)
+<mappingItem>
+  <leadingComment value=" http://yaml.org/type/omap.html ----------------------------------------------#">
+</mappingItem>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 6`] = `
+comment (19:3 ~ 19:47)
+ 17 | ¶
+ 18 | omap:¶
+ 19 | ··#·Explicitly·typed·ordered·map·(dictionary).¶
+    |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ 20 | ··Bestiary:·!!omap¶
+ 21 | ····-·aardvark:·African·pig-like·ant·eater.·Ugly.¶
+mapping (20:3 ~ 26:48)
+<mapping>
+  <leadingComment value=" Explicitly typed ordered map (dictionary).">
+</mapping>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 7`] = `
+comment (24:5 ~ 24:11)
+ 22 | ····-·anteater:·South-American·ant·eater.·Two·species.¶
+ 23 | ····-·anaconda:·South-American·constrictor·snake.·Scaly.¶
+ 24 | ····#·Etc.¶
+    |     ^^^^^^
+ 25 | ··#·Flow·style¶
+ 26 | ··Numbers:·!!omap·[·one:·1,·two:·2,·three·:·3·]¶
+mappingItem (26:3 ~ 26:48)
+<mappingItem>
+  <leadingComment value=" Etc.">
+  <leadingComment value=" Flow style">
+</mappingItem>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 8`] = `
+comment (25:3 ~ 25:15)
+ 23 | ····-·anaconda:·South-American·constrictor·snake.·Scaly.¶
+ 24 | ····#·Etc.¶
+ 25 | ··#·Flow·style¶
+    |   ^^^^^^^^^^^^
+ 26 | ··Numbers:·!!omap·[·one:·1,·two:·2,·three·:·3·]¶
+ 27 | ¶
+mappingItem (26:3 ~ 26:48)
+<mappingItem>
+  <leadingComment value=" Etc.">
+  <leadingComment value=" Flow style">
+</mappingItem>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 9`] = `
+comment (28:1 ~ 28:81)
+ 26 | ··Numbers:·!!omap·[·one:·1,·two:·2,·three·:·3·]¶
+ 27 | ¶
+ 28 | #·http://yaml.org/type/pairs.html·---------------------------------------------#¶
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ 29 | ¶
+ 30 | pairs:¶
+mappingItem (30:1 ~ 37:65)
+<mappingItem>
+  <leadingComment value=" http://yaml.org/type/pairs.html ---------------------------------------------#">
+</mappingItem>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 10`] = `
+comment (31:3 ~ 31:28)
+ 29 | ¶
+ 30 | pairs:¶
+ 31 | ··#·Explicitly·typed·pairs.¶
+    |   ^^^^^^^^^^^^^^^^^^^^^^^^^
+ 32 | ··Block·tasks:·!!pairs¶
+ 33 | ····-·meeting:·with·team.¶
+mapping (32:3 ~ 37:65)
+<mapping>
+  <leadingComment value=" Explicitly typed pairs.">
+</mapping>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 11`] = `
+comment (39:1 ~ 39:81)
+ 37 | ··Flow·tasks:·!!pairs·[·meeting:·with·team,·meeting:·with·boss·]¶
+ 38 | ¶
+ 39 | #·http://yaml.org/type/set.html·-----------------------------------------------#¶
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ 40 | ¶
+ 41 | set:¶
+mappingItem (41:1 ~ 48:77)
+<mappingItem>
+  <leadingComment value=" http://yaml.org/type/set.html -----------------------------------------------#">
+</mappingItem>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 12`] = `
+comment (42:3 ~ 42:26)
+ 40 | ¶
+ 41 | set:¶
+ 42 | ··#·Explicitly·typed·set.¶
+    |   ^^^^^^^^^^^^^^^^^^^^^^^
+ 43 | ··baseball·players:·!!set¶
+ 44 | ····?·Mark·McGwire¶
+mapping (43:3 ~ 48:77)
+<mapping>
+  <leadingComment value=" Explicitly typed set.">
+</mapping>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 13`] = `
+comment (47:3 ~ 47:15)
+ 45 | ····?·Sammy·Sosa¶
+ 46 | ····?·Ken·Griffey¶
+ 47 | ··#·Flow·style¶
+    |   ^^^^^^^^^^^^
+ 48 | ··baseball·teams:·!!set·{·Boston·Red·Sox,·Detroit·Tigers,·New·York·Yankees·}¶
+ 49 | ¶
+mappingItem (48:3 ~ 48:77)
+<mappingItem>
+  <leadingComment value=" Flow style">
+</mappingItem>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 14`] = `
+comment (50:1 ~ 50:81)
+ 48 | ··baseball·teams:·!!set·{·Boston·Red·Sox,·Detroit·Tigers,·New·York·Yankees·}¶
+ 49 | ¶
+ 50 | #·http://yaml.org/type/seq.html·-----------------------------------------------#¶
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ 51 | ¶
+ 52 | seq:¶
+mappingItem (52:1 ~ 66:30)
+<mappingItem>
+  <leadingComment value=" http://yaml.org/type/seq.html -----------------------------------------------#">
+</mappingItem>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 15`] = `
+comment (53:3 ~ 53:30)
+ 51 | ¶
+ 52 | seq:¶
+ 53 | ··#·Ordered·sequence·of·nodes¶
+    |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ 54 | ··Block·style:·!!seq¶
+ 55 | ··-·Mercury···#·Rotates·-·no·light/dark·sides.¶
+mapping (54:3 ~ 66:30)
+<mapping>
+  <leadingComment value=" Ordered sequence of nodes">
+</mapping>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 16`] = `
+comment (55:15 ~ 55:47)
+ 53 | ··#·Ordered·sequence·of·nodes¶
+ 54 | ··Block·style:·!!seq¶
+ 55 | ··-·Mercury···#·Rotates·-·no·light/dark·sides.¶
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ 56 | ··-·Venus·····#·Deadliest.·Aptly·named.¶
+ 57 | ··-·Earth·····#·Mostly·dirt.¶
+plain (55:5 ~ 55:12)
+<plain value="Mercury">
+  <trailingComment value=" Rotates - no light/dark sides.">
+</plain>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 17`] = `
+comment (56:15 ~ 56:40)
+ 54 | ··Block·style:·!!seq¶
+ 55 | ··-·Mercury···#·Rotates·-·no·light/dark·sides.¶
+ 56 | ··-·Venus·····#·Deadliest.·Aptly·named.¶
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^
+ 57 | ··-·Earth·····#·Mostly·dirt.¶
+ 58 | ··-·Mars······#·Seems·empty.¶
+plain (56:5 ~ 56:10)
+<plain value="Venus">
+  <trailingComment value=" Deadliest. Aptly named.">
+</plain>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 18`] = `
+comment (57:15 ~ 57:29)
+ 55 | ··-·Mercury···#·Rotates·-·no·light/dark·sides.¶
+ 56 | ··-·Venus·····#·Deadliest.·Aptly·named.¶
+ 57 | ··-·Earth·····#·Mostly·dirt.¶
+    |               ^^^^^^^^^^^^^^
+ 58 | ··-·Mars······#·Seems·empty.¶
+ 59 | ··-·Jupiter···#·The·king.¶
+plain (57:5 ~ 57:10)
+<plain value="Earth">
+  <trailingComment value=" Mostly dirt.">
+</plain>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 19`] = `
+comment (58:15 ~ 58:29)
+ 56 | ··-·Venus·····#·Deadliest.·Aptly·named.¶
+ 57 | ··-·Earth·····#·Mostly·dirt.¶
+ 58 | ··-·Mars······#·Seems·empty.¶
+    |               ^^^^^^^^^^^^^^
+ 59 | ··-·Jupiter···#·The·king.¶
+ 60 | ··-·Saturn····#·Pretty.¶
+plain (58:5 ~ 58:9)
+<plain value="Mars">
+  <trailingComment value=" Seems empty.">
+</plain>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 20`] = `
+comment (59:15 ~ 59:26)
+ 57 | ··-·Earth·····#·Mostly·dirt.¶
+ 58 | ··-·Mars······#·Seems·empty.¶
+ 59 | ··-·Jupiter···#·The·king.¶
+    |               ^^^^^^^^^^^
+ 60 | ··-·Saturn····#·Pretty.¶
+ 61 | ··-·Uranus····#·Where·the·sun·hardly·shines.¶
+plain (59:5 ~ 59:12)
+<plain value="Jupiter">
+  <trailingComment value=" The king.">
+</plain>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 21`] = `
+comment (60:15 ~ 60:24)
+ 58 | ··-·Mars······#·Seems·empty.¶
+ 59 | ··-·Jupiter···#·The·king.¶
+ 60 | ··-·Saturn····#·Pretty.¶
+    |               ^^^^^^^^^
+ 61 | ··-·Uranus····#·Where·the·sun·hardly·shines.¶
+ 62 | ··-·Neptune···#·Boring.·No·rings.¶
+plain (60:5 ~ 60:11)
+<plain value="Saturn">
+  <trailingComment value=" Pretty.">
+</plain>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 22`] = `
+comment (61:15 ~ 61:45)
+ 59 | ··-·Jupiter···#·The·king.¶
+ 60 | ··-·Saturn····#·Pretty.¶
+ 61 | ··-·Uranus····#·Where·the·sun·hardly·shines.¶
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ 62 | ··-·Neptune···#·Boring.·No·rings.¶
+ 63 | ··-·Pluto·····#·You·call·this·a·planet?¶
+plain (61:5 ~ 61:11)
+<plain value="Uranus">
+  <trailingComment value=" Where the sun hardly shines.">
+</plain>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 23`] = `
+comment (62:15 ~ 62:34)
+ 60 | ··-·Saturn····#·Pretty.¶
+ 61 | ··-·Uranus····#·Where·the·sun·hardly·shines.¶
+ 62 | ··-·Neptune···#·Boring.·No·rings.¶
+    |               ^^^^^^^^^^^^^^^^^^^
+ 63 | ··-·Pluto·····#·You·call·this·a·planet?¶
+ 64 | ··Flow·style:·!!seq·[·Mercury,·Venus,·Earth,·Mars,······#·Rocks¶
+plain (62:5 ~ 62:12)
+<plain value="Neptune">
+  <trailingComment value=" Boring. No rings.">
+</plain>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 24`] = `
+comment (63:15 ~ 63:40)
+ 61 | ··-·Uranus····#·Where·the·sun·hardly·shines.¶
+ 62 | ··-·Neptune···#·Boring.·No·rings.¶
+ 63 | ··-·Pluto·····#·You·call·this·a·planet?¶
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^
+ 64 | ··Flow·style:·!!seq·[·Mercury,·Venus,·Earth,·Mars,······#·Rocks¶
+ 65 | ······················Jupiter,·Saturn,·Uranus,·Neptune,·#·Gas¶
+plain (63:5 ~ 63:10)
+<plain value="Pluto">
+  <trailingComment value=" You call this a planet?">
+</plain>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 25`] = `
+comment (64:57 ~ 64:64)
+ 62 | ··-·Neptune···#·Boring.·No·rings.¶
+ 63 | ··-·Pluto·····#·You·call·this·a·planet?¶
+ 64 | ··Flow·style:·!!seq·[·Mercury,·Venus,·Earth,·Mars,······#·Rocks¶
+    |                                                         ^^^^^^^
+ 65 | ······················Jupiter,·Saturn,·Uranus,·Neptune,·#·Gas¶
+ 66 | ······················Pluto·]···························#·Overrated¶
+plain (64:46 ~ 64:50)
+<plain value="Mars">
+  <trailingComment value=" Rocks">
+</plain>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 26`] = `
+comment (65:57 ~ 65:62)
+ 63 | ··-·Pluto·····#·You·call·this·a·planet?¶
+ 64 | ··Flow·style:·!!seq·[·Mercury,·Venus,·Earth,·Mars,······#·Rocks¶
+ 65 | ······················Jupiter,·Saturn,·Uranus,·Neptune,·#·Gas¶
+    |                                                         ^^^^^
+ 66 | ······················Pluto·]···························#·Overrated¶
+ 67 | ¶
+plain (65:48 ~ 65:55)
+<plain value="Neptune">
+  <trailingComment value=" Gas">
+</plain>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 27`] = `
+comment (66:57 ~ 66:68)
+ 64 | ··Flow·style:·!!seq·[·Mercury,·Venus,·Earth,·Mars,······#·Rocks¶
+ 65 | ······················Jupiter,·Saturn,·Uranus,·Neptune,·#·Gas¶
+ 66 | ······················Pluto·]···························#·Overrated¶
+    |                                                         ^^^^^^^^^^^
+ 67 | ¶
+ 68 | ¶
+flowSequence (64:15 ~ 66:30)
+<flowSequence tag={"handle":"!!","suffix":"seq"}>
+  <trailingComment value=" Overrated">
+</flowSequence>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 28`] = `
+comment (69:1 ~ 69:81)
+ 67 | ¶
+ 68 | ¶
+ 69 | #·Scalar·Types·#################################################################¶
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ 70 | ################################################################################¶
+ 71 | ¶
+mappingItem (74:1 ~ 80:10)
+<mappingItem>
+  <leadingComment value=" Scalar Types #################################################################">
+  <leadingComment value="###############################################################################">
+  <leadingComment value=" http://yaml.org/type/bool.html ----------------------------------------------#">
+</mappingItem>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 29`] = `
+comment (70:1 ~ 70:81)
+ 68 | ¶
+ 69 | #·Scalar·Types·#################################################################¶
+ 70 | ################################################################################¶
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ 71 | ¶
+ 72 | #·http://yaml.org/type/bool.html·----------------------------------------------#¶
+mappingItem (74:1 ~ 80:10)
+<mappingItem>
+  <leadingComment value=" Scalar Types #################################################################">
+  <leadingComment value="###############################################################################">
+  <leadingComment value=" http://yaml.org/type/bool.html ----------------------------------------------#">
+</mappingItem>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 30`] = `
+comment (72:1 ~ 72:81)
+ 70 | ################################################################################¶
+ 71 | ¶
+ 72 | #·http://yaml.org/type/bool.html·----------------------------------------------#¶
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ 73 | ¶
+ 74 | bool:¶
+mappingItem (74:1 ~ 80:10)
+<mappingItem>
+  <leadingComment value=" Scalar Types #################################################################">
+  <leadingComment value="###############################################################################">
+  <leadingComment value=" http://yaml.org/type/bool.html ----------------------------------------------#">
+</mappingItem>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 31`] = `
+comment (82:1 ~ 82:81)
+ 80 | ··-·FALSE¶
+ 81 | ¶
+ 82 | #·http://yaml.org/type/float.html·---------------------------------------------#¶
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ 83 | ¶
+ 84 | float:¶
+mappingItem (84:1 ~ 90:21)
+<mappingItem>
+  <leadingComment value=" http://yaml.org/type/float.html ---------------------------------------------#">
+</mappingItem>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 32`] = `
+comment (92:1 ~ 92:81)
+ 90 | ··not·a·number:·.NaN¶
+ 91 | ¶
+ 92 | #·http://yaml.org/type/int.html·-----------------------------------------------#¶
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ 93 | ¶
+ 94 | int:¶
+mappingItem (94:1 ~ 100:25)
+<mappingItem>
+  <leadingComment value=" http://yaml.org/type/int.html -----------------------------------------------#">
+</mappingItem>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 33`] = `
+comment (102:1 ~ 102:81)
+100 | ··sexagesimal:·190:20:30¶
+101 | ¶
+102 | #·http://yaml.org/type/merge.html·---------------------------------------------#¶
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+103 | ¶
+104 | merge:¶
+mappingItem (104:1 ~ 130:26)
+<mappingItem>
+  <leadingComment value=" http://yaml.org/type/merge.html ---------------------------------------------#">
+</mappingItem>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 34`] = `
+comment (110:3 ~ 110:38)
+108 | ··-·&SMALL·{·r:·1·}¶
+109 | ¶
+110 | ··#·All·the·following·maps·are·equal:¶
+    |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+111 | ¶
+112 | ··-·#·Explicit·keys¶
+sequenceItem (112:3 ~ 116:19)
+<sequenceItem>
+  <leadingComment value=" All the following maps are equal:">
+</sequenceItem>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 35`] = `
+comment (112:5 ~ 112:20)
+110 | ··#·All·the·following·maps·are·equal:¶
+111 | ¶
+112 | ··-·#·Explicit·keys¶
+    |     ^^^^^^^^^^^^^^^
+113 | ····x:·1¶
+114 | ····y:·2¶
+mapping (113:5 ~ 116:19)
+<mapping>
+  <leadingComment value=" Explicit keys">
+</mapping>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 36`] = `
+comment (118:5 ~ 118:20)
+116 | ····label:·nothing¶
+117 | ¶
+118 | ··-·#·Merge·one·map¶
+    |     ^^^^^^^^^^^^^^^
+119 | ····<<·:·*CENTER¶
+120 | ····r:·10¶
+mapping (119:5 ~ 121:18)
+<mapping>
+  <leadingComment value=" Merge one map">
+</mapping>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 37`] = `
+comment (123:5 ~ 123:26)
+121 | ····label:·center¶
+122 | ¶
+123 | ··-·#·Merge·multiple·maps¶
+    |     ^^^^^^^^^^^^^^^^^^^^^
+124 | ····<<·:·[·*CENTER,·*BIG·]¶
+125 | ····label:·center/big¶
+mapping (124:5 ~ 125:22)
+<mapping>
+  <leadingComment value=" Merge multiple maps">
+</mapping>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 38`] = `
+comment (127:5 ~ 127:15)
+125 | ····label:·center/big¶
+126 | ¶
+127 | ··-·#·Override¶
+    |     ^^^^^^^^^^
+128 | ····<<·:·[·*BIG,·*LEFT,·*SMALL·]¶
+129 | ····x:·1¶
+mapping (128:5 ~ 130:26)
+<mapping>
+  <leadingComment value=" Override">
+</mapping>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 39`] = `
+comment (132:1 ~ 132:81)
+130 | ····label:·big/left/small¶
+131 | ¶
+132 | #·http://yaml.org/type/null.html·----------------------------------------------#¶
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+133 | ¶
+134 | null:¶
+mappingItem (134:1 ~ 148:11)
+<mappingItem>
+  <leadingComment value=" http://yaml.org/type/null.html ----------------------------------------------#">
+</mappingItem>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 40`] = `
+comment (135:3 ~ 135:32)
+133 | ¶
+134 | null:¶
+135 | ··#·This·mapping·has·four·keys,¶
+    |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+136 | ··#·one·has·a·value.¶
+137 | ··empty:¶
+mapping (137:3 ~ 148:11)
+<mapping>
+  <leadingComment value=" This mapping has four keys,">
+  <leadingComment value=" one has a value.">
+</mapping>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 41`] = `
+comment (136:3 ~ 136:21)
+134 | null:¶
+135 | ··#·This·mapping·has·four·keys,¶
+136 | ··#·one·has·a·value.¶
+    |   ^^^^^^^^^^^^^^^^^^
+137 | ··empty:¶
+138 | ··canonical:·~¶
+mapping (137:3 ~ 148:11)
+<mapping>
+  <leadingComment value=" This mapping has four keys,">
+  <leadingComment value=" one has a value.">
+</mapping>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 42`] = `
+comment (141:3 ~ 141:27)
+139 | ··english:·null¶
+140 | ··~:·null·key¶
+141 | ··#·This·sequence·has·five¶
+    |   ^^^^^^^^^^^^^^^^^^^^^^^^
+142 | ··#·entries,·two·have·values.¶
+143 | ··sparse:¶
+mappingItem (143:3 ~ 148:11)
+<mappingItem>
+  <leadingComment value=" This sequence has five">
+  <leadingComment value=" entries, two have values.">
+</mappingItem>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 43`] = `
+comment (142:3 ~ 142:30)
+140 | ··~:·null·key¶
+141 | ··#·This·sequence·has·five¶
+142 | ··#·entries,·two·have·values.¶
+    |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+143 | ··sparse:¶
+144 | ····-·~¶
+mappingItem (143:3 ~ 148:11)
+<mappingItem>
+  <leadingComment value=" This sequence has five">
+  <leadingComment value=" entries, two have values.">
+</mappingItem>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 44`] = `
+comment (150:1 ~ 150:81)
+148 | ····-·Null¶
+149 | ¶
+150 | #·http://yaml.org/type/str.html·-----------------------------------------------#¶
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+151 | ¶
+152 | string:·abcd¶
+mappingItem (152:1 ~ 152:13)
+<mappingItem>
+  <leadingComment value=" http://yaml.org/type/str.html -----------------------------------------------#">
+</mappingItem>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 45`] = `
+comment (154:1 ~ 154:81)
+152 | string:·abcd¶
+153 | ¶
+154 | #·http://yaml.org/type/timestamp.html·-----------------------------------------#¶
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+155 | ¶
+156 | timestamp:¶
+mappingItem (156:1 ~ 161:31)
+<mappingItem>
+  <leadingComment value=" http://yaml.org/type/timestamp.html -----------------------------------------#">
+</mappingItem>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 46`] = `
+comment (164:1 ~ 164:81)
+162 | ¶
+163 | ¶
+164 | #·JavaScript·Specific·Types·####################################################¶
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+165 | ################################################################################¶
+166 | ¶
+mappingItem (169:1 ~ 171:38)
+<mappingItem>
+  <leadingComment value=" JavaScript Specific Types ####################################################">
+  <leadingComment value="###############################################################################">
+  <leadingComment value=" https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/RegExp">
+</mappingItem>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 47`] = `
+comment (165:1 ~ 165:81)
+163 | ¶
+164 | #·JavaScript·Specific·Types·####################################################¶
+165 | ################################################################################¶
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+166 | ¶
+167 | #·https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/RegExp¶
+mappingItem (169:1 ~ 171:38)
+<mappingItem>
+  <leadingComment value=" JavaScript Specific Types ####################################################">
+  <leadingComment value="###############################################################################">
+  <leadingComment value=" https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/RegExp">
+</mappingItem>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 48`] = `
+comment (167:1 ~ 167:78)
+165 | ################################################################################¶
+166 | ¶
+167 | #·https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/RegExp¶
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+168 | ¶
+169 | regexp:¶
+mappingItem (169:1 ~ 171:38)
+<mappingItem>
+  <leadingComment value=" JavaScript Specific Types ####################################################">
+  <leadingComment value="###############################################################################">
+  <leadingComment value=" https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/RegExp">
+</mappingItem>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 49`] = `
+comment (173:1 ~ 173:81)
+171 | ··modifiers:·!!js/regexp···/foobar/mi¶
+172 | ¶
+173 | #·https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/undefined¶
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+174 | ¶
+175 | undefined:·!!js/undefined·~¶
+mappingItem (175:1 ~ 175:28)
+<mappingItem>
+  <leadingComment value=" https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/undefined">
+</mappingItem>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 50`] = `
+comment (177:1 ~ 177:80)
+175 | undefined:·!!js/undefined·~¶
+176 | ¶
+177 | #·https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function¶
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+178 | ¶
+179 | function:·!!js/function·>¶
+mappingItem (179:1 ~ 185:1)
+<mappingItem>
+  <leadingComment value=" https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function">
+</mappingItem>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 51`] = `
+comment (185:1 ~ 185:81)
+183 | ¶
+184 | ¶
+185 | #·Custom·types·#################################################################¶
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+186 | ################################################################################¶
+187 | ¶
+mappingItem (204:1 ~ 206:14)
+<mappingItem>
+  <leadingComment value=" Custom types #################################################################">
+  <leadingComment value="###############################################################################">
+  <leadingComment value=" JS-YAML allows you to specify a custom YAML types for your structures.">
+  <leadingComment value=" This is a simple example of custom constructor defined in 'js/demo.js' for">
+  <leadingComment value=" custom '!sexy' type:">
+  <leadingComment value="">
+  <leadingComment value=" let SexyYamlType = new jsyaml.Type('!sexy', {">
+  <leadingComment value="   kind: 'sequence',">
+  <leadingComment value="   construct: function (data) {">
+  <leadingComment value="     return data.map(function (string) { return 'sexy ' + string; });">
+  <leadingComment value="   }">
+  <leadingComment value=" });">
+  <leadingComment value="">
+  <leadingComment value=" let SEXY_SCHEMA = jsyaml.Schema.create([ SexyYamlType ]);">
+  <leadingComment value="">
+  <leadingComment value=" result = jsyaml.load(yourData, { schema: SEXY_SCHEMA });">
+</mappingItem>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 52`] = `
+comment (186:1 ~ 186:81)
+184 | ¶
+185 | #·Custom·types·#################################################################¶
+186 | ################################################################################¶
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+187 | ¶
+188 | ¶
+mappingItem (204:1 ~ 206:14)
+<mappingItem>
+  <leadingComment value=" Custom types #################################################################">
+  <leadingComment value="###############################################################################">
+  <leadingComment value=" JS-YAML allows you to specify a custom YAML types for your structures.">
+  <leadingComment value=" This is a simple example of custom constructor defined in 'js/demo.js' for">
+  <leadingComment value=" custom '!sexy' type:">
+  <leadingComment value="">
+  <leadingComment value=" let SexyYamlType = new jsyaml.Type('!sexy', {">
+  <leadingComment value="   kind: 'sequence',">
+  <leadingComment value="   construct: function (data) {">
+  <leadingComment value="     return data.map(function (string) { return 'sexy ' + string; });">
+  <leadingComment value="   }">
+  <leadingComment value=" });">
+  <leadingComment value="">
+  <leadingComment value=" let SEXY_SCHEMA = jsyaml.Schema.create([ SexyYamlType ]);">
+  <leadingComment value="">
+  <leadingComment value=" result = jsyaml.load(yourData, { schema: SEXY_SCHEMA });">
+</mappingItem>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 53`] = `
+comment (189:1 ~ 189:73)
+187 | ¶
+188 | ¶
+189 | #·JS-YAML·allows·you·to·specify·a·custom·YAML·types·for·your·structures.¶
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+190 | #·This·is·a·simple·example·of·custom·constructor·defined·in·'js/demo.js'·for¶
+191 | #·custom·'!sexy'·type:¶
+mappingItem (204:1 ~ 206:14)
+<mappingItem>
+  <leadingComment value=" Custom types #################################################################">
+  <leadingComment value="###############################################################################">
+  <leadingComment value=" JS-YAML allows you to specify a custom YAML types for your structures.">
+  <leadingComment value=" This is a simple example of custom constructor defined in 'js/demo.js' for">
+  <leadingComment value=" custom '!sexy' type:">
+  <leadingComment value="">
+  <leadingComment value=" let SexyYamlType = new jsyaml.Type('!sexy', {">
+  <leadingComment value="   kind: 'sequence',">
+  <leadingComment value="   construct: function (data) {">
+  <leadingComment value="     return data.map(function (string) { return 'sexy ' + string; });">
+  <leadingComment value="   }">
+  <leadingComment value=" });">
+  <leadingComment value="">
+  <leadingComment value=" let SEXY_SCHEMA = jsyaml.Schema.create([ SexyYamlType ]);">
+  <leadingComment value="">
+  <leadingComment value=" result = jsyaml.load(yourData, { schema: SEXY_SCHEMA });">
+</mappingItem>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 54`] = `
+comment (190:1 ~ 190:77)
+188 | ¶
+189 | #·JS-YAML·allows·you·to·specify·a·custom·YAML·types·for·your·structures.¶
+190 | #·This·is·a·simple·example·of·custom·constructor·defined·in·'js/demo.js'·for¶
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+191 | #·custom·'!sexy'·type:¶
+192 | #¶
+mappingItem (204:1 ~ 206:14)
+<mappingItem>
+  <leadingComment value=" Custom types #################################################################">
+  <leadingComment value="###############################################################################">
+  <leadingComment value=" JS-YAML allows you to specify a custom YAML types for your structures.">
+  <leadingComment value=" This is a simple example of custom constructor defined in 'js/demo.js' for">
+  <leadingComment value=" custom '!sexy' type:">
+  <leadingComment value="">
+  <leadingComment value=" let SexyYamlType = new jsyaml.Type('!sexy', {">
+  <leadingComment value="   kind: 'sequence',">
+  <leadingComment value="   construct: function (data) {">
+  <leadingComment value="     return data.map(function (string) { return 'sexy ' + string; });">
+  <leadingComment value="   }">
+  <leadingComment value=" });">
+  <leadingComment value="">
+  <leadingComment value=" let SEXY_SCHEMA = jsyaml.Schema.create([ SexyYamlType ]);">
+  <leadingComment value="">
+  <leadingComment value=" result = jsyaml.load(yourData, { schema: SEXY_SCHEMA });">
+</mappingItem>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 55`] = `
+comment (191:1 ~ 191:23)
+189 | #·JS-YAML·allows·you·to·specify·a·custom·YAML·types·for·your·structures.¶
+190 | #·This·is·a·simple·example·of·custom·constructor·defined·in·'js/demo.js'·for¶
+191 | #·custom·'!sexy'·type:¶
+    | ^^^^^^^^^^^^^^^^^^^^^^
+192 | #¶
+193 | #·let·SexyYamlType·=·new·jsyaml.Type('!sexy',·{¶
+mappingItem (204:1 ~ 206:14)
+<mappingItem>
+  <leadingComment value=" Custom types #################################################################">
+  <leadingComment value="###############################################################################">
+  <leadingComment value=" JS-YAML allows you to specify a custom YAML types for your structures.">
+  <leadingComment value=" This is a simple example of custom constructor defined in 'js/demo.js' for">
+  <leadingComment value=" custom '!sexy' type:">
+  <leadingComment value="">
+  <leadingComment value=" let SexyYamlType = new jsyaml.Type('!sexy', {">
+  <leadingComment value="   kind: 'sequence',">
+  <leadingComment value="   construct: function (data) {">
+  <leadingComment value="     return data.map(function (string) { return 'sexy ' + string; });">
+  <leadingComment value="   }">
+  <leadingComment value=" });">
+  <leadingComment value="">
+  <leadingComment value=" let SEXY_SCHEMA = jsyaml.Schema.create([ SexyYamlType ]);">
+  <leadingComment value="">
+  <leadingComment value=" result = jsyaml.load(yourData, { schema: SEXY_SCHEMA });">
+</mappingItem>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 56`] = `
+comment (192:1 ~ 192:2)
+190 | #·This·is·a·simple·example·of·custom·constructor·defined·in·'js/demo.js'·for¶
+191 | #·custom·'!sexy'·type:¶
+192 | #¶
+    | ^
+193 | #·let·SexyYamlType·=·new·jsyaml.Type('!sexy',·{¶
+194 | #···kind:·'sequence',¶
+mappingItem (204:1 ~ 206:14)
+<mappingItem>
+  <leadingComment value=" Custom types #################################################################">
+  <leadingComment value="###############################################################################">
+  <leadingComment value=" JS-YAML allows you to specify a custom YAML types for your structures.">
+  <leadingComment value=" This is a simple example of custom constructor defined in 'js/demo.js' for">
+  <leadingComment value=" custom '!sexy' type:">
+  <leadingComment value="">
+  <leadingComment value=" let SexyYamlType = new jsyaml.Type('!sexy', {">
+  <leadingComment value="   kind: 'sequence',">
+  <leadingComment value="   construct: function (data) {">
+  <leadingComment value="     return data.map(function (string) { return 'sexy ' + string; });">
+  <leadingComment value="   }">
+  <leadingComment value=" });">
+  <leadingComment value="">
+  <leadingComment value=" let SEXY_SCHEMA = jsyaml.Schema.create([ SexyYamlType ]);">
+  <leadingComment value="">
+  <leadingComment value=" result = jsyaml.load(yourData, { schema: SEXY_SCHEMA });">
+</mappingItem>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 57`] = `
+comment (193:1 ~ 193:48)
+191 | #·custom·'!sexy'·type:¶
+192 | #¶
+193 | #·let·SexyYamlType·=·new·jsyaml.Type('!sexy',·{¶
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+194 | #···kind:·'sequence',¶
+195 | #···construct:·function·(data)·{¶
+mappingItem (204:1 ~ 206:14)
+<mappingItem>
+  <leadingComment value=" Custom types #################################################################">
+  <leadingComment value="###############################################################################">
+  <leadingComment value=" JS-YAML allows you to specify a custom YAML types for your structures.">
+  <leadingComment value=" This is a simple example of custom constructor defined in 'js/demo.js' for">
+  <leadingComment value=" custom '!sexy' type:">
+  <leadingComment value="">
+  <leadingComment value=" let SexyYamlType = new jsyaml.Type('!sexy', {">
+  <leadingComment value="   kind: 'sequence',">
+  <leadingComment value="   construct: function (data) {">
+  <leadingComment value="     return data.map(function (string) { return 'sexy ' + string; });">
+  <leadingComment value="   }">
+  <leadingComment value=" });">
+  <leadingComment value="">
+  <leadingComment value=" let SEXY_SCHEMA = jsyaml.Schema.create([ SexyYamlType ]);">
+  <leadingComment value="">
+  <leadingComment value=" result = jsyaml.load(yourData, { schema: SEXY_SCHEMA });">
+</mappingItem>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 58`] = `
+comment (194:1 ~ 194:22)
+192 | #¶
+193 | #·let·SexyYamlType·=·new·jsyaml.Type('!sexy',·{¶
+194 | #···kind:·'sequence',¶
+    | ^^^^^^^^^^^^^^^^^^^^^
+195 | #···construct:·function·(data)·{¶
+196 | #·····return·data.map(function·(string)·{·return·'sexy·'·+·string;·});¶
+mappingItem (204:1 ~ 206:14)
+<mappingItem>
+  <leadingComment value=" Custom types #################################################################">
+  <leadingComment value="###############################################################################">
+  <leadingComment value=" JS-YAML allows you to specify a custom YAML types for your structures.">
+  <leadingComment value=" This is a simple example of custom constructor defined in 'js/demo.js' for">
+  <leadingComment value=" custom '!sexy' type:">
+  <leadingComment value="">
+  <leadingComment value=" let SexyYamlType = new jsyaml.Type('!sexy', {">
+  <leadingComment value="   kind: 'sequence',">
+  <leadingComment value="   construct: function (data) {">
+  <leadingComment value="     return data.map(function (string) { return 'sexy ' + string; });">
+  <leadingComment value="   }">
+  <leadingComment value=" });">
+  <leadingComment value="">
+  <leadingComment value=" let SEXY_SCHEMA = jsyaml.Schema.create([ SexyYamlType ]);">
+  <leadingComment value="">
+  <leadingComment value=" result = jsyaml.load(yourData, { schema: SEXY_SCHEMA });">
+</mappingItem>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 59`] = `
+comment (195:1 ~ 195:33)
+193 | #·let·SexyYamlType·=·new·jsyaml.Type('!sexy',·{¶
+194 | #···kind:·'sequence',¶
+195 | #···construct:·function·(data)·{¶
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+196 | #·····return·data.map(function·(string)·{·return·'sexy·'·+·string;·});¶
+197 | #···}¶
+mappingItem (204:1 ~ 206:14)
+<mappingItem>
+  <leadingComment value=" Custom types #################################################################">
+  <leadingComment value="###############################################################################">
+  <leadingComment value=" JS-YAML allows you to specify a custom YAML types for your structures.">
+  <leadingComment value=" This is a simple example of custom constructor defined in 'js/demo.js' for">
+  <leadingComment value=" custom '!sexy' type:">
+  <leadingComment value="">
+  <leadingComment value=" let SexyYamlType = new jsyaml.Type('!sexy', {">
+  <leadingComment value="   kind: 'sequence',">
+  <leadingComment value="   construct: function (data) {">
+  <leadingComment value="     return data.map(function (string) { return 'sexy ' + string; });">
+  <leadingComment value="   }">
+  <leadingComment value=" });">
+  <leadingComment value="">
+  <leadingComment value=" let SEXY_SCHEMA = jsyaml.Schema.create([ SexyYamlType ]);">
+  <leadingComment value="">
+  <leadingComment value=" result = jsyaml.load(yourData, { schema: SEXY_SCHEMA });">
+</mappingItem>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 60`] = `
+comment (196:1 ~ 196:71)
+194 | #···kind:·'sequence',¶
+195 | #···construct:·function·(data)·{¶
+196 | #·····return·data.map(function·(string)·{·return·'sexy·'·+·string;·});¶
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+197 | #···}¶
+198 | #·});¶
+mappingItem (204:1 ~ 206:14)
+<mappingItem>
+  <leadingComment value=" Custom types #################################################################">
+  <leadingComment value="###############################################################################">
+  <leadingComment value=" JS-YAML allows you to specify a custom YAML types for your structures.">
+  <leadingComment value=" This is a simple example of custom constructor defined in 'js/demo.js' for">
+  <leadingComment value=" custom '!sexy' type:">
+  <leadingComment value="">
+  <leadingComment value=" let SexyYamlType = new jsyaml.Type('!sexy', {">
+  <leadingComment value="   kind: 'sequence',">
+  <leadingComment value="   construct: function (data) {">
+  <leadingComment value="     return data.map(function (string) { return 'sexy ' + string; });">
+  <leadingComment value="   }">
+  <leadingComment value=" });">
+  <leadingComment value="">
+  <leadingComment value=" let SEXY_SCHEMA = jsyaml.Schema.create([ SexyYamlType ]);">
+  <leadingComment value="">
+  <leadingComment value=" result = jsyaml.load(yourData, { schema: SEXY_SCHEMA });">
+</mappingItem>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 61`] = `
+comment (197:1 ~ 197:6)
+195 | #···construct:·function·(data)·{¶
+196 | #·····return·data.map(function·(string)·{·return·'sexy·'·+·string;·});¶
+197 | #···}¶
+    | ^^^^^
+198 | #·});¶
+199 | #¶
+mappingItem (204:1 ~ 206:14)
+<mappingItem>
+  <leadingComment value=" Custom types #################################################################">
+  <leadingComment value="###############################################################################">
+  <leadingComment value=" JS-YAML allows you to specify a custom YAML types for your structures.">
+  <leadingComment value=" This is a simple example of custom constructor defined in 'js/demo.js' for">
+  <leadingComment value=" custom '!sexy' type:">
+  <leadingComment value="">
+  <leadingComment value=" let SexyYamlType = new jsyaml.Type('!sexy', {">
+  <leadingComment value="   kind: 'sequence',">
+  <leadingComment value="   construct: function (data) {">
+  <leadingComment value="     return data.map(function (string) { return 'sexy ' + string; });">
+  <leadingComment value="   }">
+  <leadingComment value=" });">
+  <leadingComment value="">
+  <leadingComment value=" let SEXY_SCHEMA = jsyaml.Schema.create([ SexyYamlType ]);">
+  <leadingComment value="">
+  <leadingComment value=" result = jsyaml.load(yourData, { schema: SEXY_SCHEMA });">
+</mappingItem>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 62`] = `
+comment (198:1 ~ 198:6)
+196 | #·····return·data.map(function·(string)·{·return·'sexy·'·+·string;·});¶
+197 | #···}¶
+198 | #·});¶
+    | ^^^^^
+199 | #¶
+200 | #·let·SEXY_SCHEMA·=·jsyaml.Schema.create([·SexyYamlType·]);¶
+mappingItem (204:1 ~ 206:14)
+<mappingItem>
+  <leadingComment value=" Custom types #################################################################">
+  <leadingComment value="###############################################################################">
+  <leadingComment value=" JS-YAML allows you to specify a custom YAML types for your structures.">
+  <leadingComment value=" This is a simple example of custom constructor defined in 'js/demo.js' for">
+  <leadingComment value=" custom '!sexy' type:">
+  <leadingComment value="">
+  <leadingComment value=" let SexyYamlType = new jsyaml.Type('!sexy', {">
+  <leadingComment value="   kind: 'sequence',">
+  <leadingComment value="   construct: function (data) {">
+  <leadingComment value="     return data.map(function (string) { return 'sexy ' + string; });">
+  <leadingComment value="   }">
+  <leadingComment value=" });">
+  <leadingComment value="">
+  <leadingComment value=" let SEXY_SCHEMA = jsyaml.Schema.create([ SexyYamlType ]);">
+  <leadingComment value="">
+  <leadingComment value=" result = jsyaml.load(yourData, { schema: SEXY_SCHEMA });">
+</mappingItem>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 63`] = `
+comment (199:1 ~ 199:2)
+197 | #···}¶
+198 | #·});¶
+199 | #¶
+    | ^
+200 | #·let·SEXY_SCHEMA·=·jsyaml.Schema.create([·SexyYamlType·]);¶
+201 | #¶
+mappingItem (204:1 ~ 206:14)
+<mappingItem>
+  <leadingComment value=" Custom types #################################################################">
+  <leadingComment value="###############################################################################">
+  <leadingComment value=" JS-YAML allows you to specify a custom YAML types for your structures.">
+  <leadingComment value=" This is a simple example of custom constructor defined in 'js/demo.js' for">
+  <leadingComment value=" custom '!sexy' type:">
+  <leadingComment value="">
+  <leadingComment value=" let SexyYamlType = new jsyaml.Type('!sexy', {">
+  <leadingComment value="   kind: 'sequence',">
+  <leadingComment value="   construct: function (data) {">
+  <leadingComment value="     return data.map(function (string) { return 'sexy ' + string; });">
+  <leadingComment value="   }">
+  <leadingComment value=" });">
+  <leadingComment value="">
+  <leadingComment value=" let SEXY_SCHEMA = jsyaml.Schema.create([ SexyYamlType ]);">
+  <leadingComment value="">
+  <leadingComment value=" result = jsyaml.load(yourData, { schema: SEXY_SCHEMA });">
+</mappingItem>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 64`] = `
+comment (200:1 ~ 200:60)
+198 | #·});¶
+199 | #¶
+200 | #·let·SEXY_SCHEMA·=·jsyaml.Schema.create([·SexyYamlType·]);¶
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+201 | #¶
+202 | #·result·=·jsyaml.load(yourData,·{·schema:·SEXY_SCHEMA·});¶
+mappingItem (204:1 ~ 206:14)
+<mappingItem>
+  <leadingComment value=" Custom types #################################################################">
+  <leadingComment value="###############################################################################">
+  <leadingComment value=" JS-YAML allows you to specify a custom YAML types for your structures.">
+  <leadingComment value=" This is a simple example of custom constructor defined in 'js/demo.js' for">
+  <leadingComment value=" custom '!sexy' type:">
+  <leadingComment value="">
+  <leadingComment value=" let SexyYamlType = new jsyaml.Type('!sexy', {">
+  <leadingComment value="   kind: 'sequence',">
+  <leadingComment value="   construct: function (data) {">
+  <leadingComment value="     return data.map(function (string) { return 'sexy ' + string; });">
+  <leadingComment value="   }">
+  <leadingComment value=" });">
+  <leadingComment value="">
+  <leadingComment value=" let SEXY_SCHEMA = jsyaml.Schema.create([ SexyYamlType ]);">
+  <leadingComment value="">
+  <leadingComment value=" result = jsyaml.load(yourData, { schema: SEXY_SCHEMA });">
+</mappingItem>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 65`] = `
+comment (201:1 ~ 201:2)
+199 | #¶
+200 | #·let·SEXY_SCHEMA·=·jsyaml.Schema.create([·SexyYamlType·]);¶
+201 | #¶
+    | ^
+202 | #·result·=·jsyaml.load(yourData,·{·schema:·SEXY_SCHEMA·});¶
+203 | ¶
+mappingItem (204:1 ~ 206:14)
+<mappingItem>
+  <leadingComment value=" Custom types #################################################################">
+  <leadingComment value="###############################################################################">
+  <leadingComment value=" JS-YAML allows you to specify a custom YAML types for your structures.">
+  <leadingComment value=" This is a simple example of custom constructor defined in 'js/demo.js' for">
+  <leadingComment value=" custom '!sexy' type:">
+  <leadingComment value="">
+  <leadingComment value=" let SexyYamlType = new jsyaml.Type('!sexy', {">
+  <leadingComment value="   kind: 'sequence',">
+  <leadingComment value="   construct: function (data) {">
+  <leadingComment value="     return data.map(function (string) { return 'sexy ' + string; });">
+  <leadingComment value="   }">
+  <leadingComment value=" });">
+  <leadingComment value="">
+  <leadingComment value=" let SEXY_SCHEMA = jsyaml.Schema.create([ SexyYamlType ]);">
+  <leadingComment value="">
+  <leadingComment value=" result = jsyaml.load(yourData, { schema: SEXY_SCHEMA });">
+</mappingItem>
+`;
+
+exports[`"\\n---\\n# Collection Types ################################# 66`] = `
+comment (202:1 ~ 202:59)
+200 | #·let·SEXY_SCHEMA·=·jsyaml.Schema.create([·SexyYamlType·]);¶
+201 | #¶
+202 | #·result·=·jsyaml.load(yourData,·{·schema:·SEXY_SCHEMA·});¶
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+203 | ¶
+204 | foobar:·!sexy¶
+mappingItem (204:1 ~ 206:14)
+<mappingItem>
+  <leadingComment value=" Custom types #################################################################">
+  <leadingComment value="###############################################################################">
+  <leadingComment value=" JS-YAML allows you to specify a custom YAML types for your structures.">
+  <leadingComment value=" This is a simple example of custom constructor defined in 'js/demo.js' for">
+  <leadingComment value=" custom '!sexy' type:">
+  <leadingComment value="">
+  <leadingComment value=" let SexyYamlType = new jsyaml.Type('!sexy', {">
+  <leadingComment value="   kind: 'sequence',">
+  <leadingComment value="   construct: function (data) {">
+  <leadingComment value="     return data.map(function (string) { return 'sexy ' + string; });">
+  <leadingComment value="   }">
+  <leadingComment value=" });">
+  <leadingComment value="">
+  <leadingComment value=" let SEXY_SCHEMA = jsyaml.Schema.create([ SexyYamlType ]);">
+  <leadingComment value="">
+  <leadingComment value=" result = jsyaml.load(yourData, { schema: SEXY_SCHEMA });">
+</mappingItem>
+`;
+
+exports[`"\\naaa\\n# 123\\n---\\n# 789\\nbbb\\n" 1`] = `
+comment (3:1 ~ 3:6)
+1 | ¶
+2 | aaa¶
+3 | #·123¶
+  | ^^^^^
+4 | ---¶
+5 | #·789¶
+documentBody (2:1 ~ 3:6)
+<documentBody>
+
+</documentBody>
+`;
+
+exports[`"\\naaa\\n# 123\\n---\\n# 789\\nbbb\\n" 2`] = `
+comment (5:1 ~ 5:6)
+3 | #·123¶
+4 | ---¶
+5 | #·789¶
+  | ^^^^^
+6 | bbb¶
+7 | ¶
+plain (6:1 ~ 6:4)
+<plain value="bbb">
+  <leadingComment value=" 789">
+</plain>
+`;
