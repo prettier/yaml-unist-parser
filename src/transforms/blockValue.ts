@@ -29,7 +29,7 @@ export function tranformBlockValue(
       end: blockValue.valueRange!.end,
     }),
     chomping: Chomping[blockValue.chomping],
-    indent: hasExplicitBlockIndent ? blockValue.blockIndent! : undefined,
+    indent: hasExplicitBlockIndent ? blockValue.blockIndent! : null,
     value: blockValue.strValue!,
     leadingComments: [],
     middleComments: [],

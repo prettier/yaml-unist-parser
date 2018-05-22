@@ -18,7 +18,7 @@ blockLiteral (1:3 ~ 8:1)
   | ^
 8 | ¶
   | ^
-<blockLiteral anchor="anchor" chomping="clip" indent=undefined tag={"handle":"!!","suffix":"str"} value="123\\n456\\n">
+<blockLiteral anchor="anchor" chomping="clip" indent=null tag={"handle":"!!","suffix":"str"} value="123\\n456\\n">
   <middleComment value=" comment  ">
 </blockLiteral>
 `;
@@ -51,7 +51,7 @@ blockLiteral (1:1 ~ 6:1)
   | ^
 6 | ¶
   | ^
-<blockLiteral chomping="keep" indent=undefined value="123\\n456\\n\\n\\n" />
+<blockLiteral chomping="keep" indent=null value="123\\n456\\n\\n\\n" />
 `;
 
 exports[`"|\\n  123\\n  456\\n\\n\\n" 1`] = `
@@ -68,7 +68,7 @@ blockLiteral (1:1 ~ 6:1)
   | ^
 6 | ¶
   | ^
-<blockLiteral chomping="clip" indent=undefined value="123\\n456\\n" />
+<blockLiteral chomping="clip" indent=null value="123\\n456\\n" />
 `;
 
 exports[`"|-\\n  123\\n  456\\n\\n\\n" 1`] = `
@@ -85,7 +85,7 @@ blockLiteral (1:1 ~ 6:1)
   | ^
 6 | ¶
   | ^
-<blockLiteral chomping="strip" indent=undefined value="123\\n456" />
+<blockLiteral chomping="strip" indent=null value="123\\n456" />
 `;
 
 exports[`"|1+\\n  123\\n  456\\n\\n\\n" 1`] = `

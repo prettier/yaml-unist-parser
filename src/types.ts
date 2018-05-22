@@ -127,7 +127,7 @@ export interface Alias extends Node, CommentAttachable {
 
 export interface BlockValue extends Node, Content, CommentAttachable {
   chomping: "clip" | "keep" | "strip";
-  indent?: number;
+  indent: null | number;
   value: string;
 }
 
