@@ -24,8 +24,8 @@ export interface Parent extends Node {
 // -----------------------------------------------------------------------------
 
 export interface Content {
-  anchor?: string;
-  tag?: { verbatim: string } | { handle: string; suffix: string };
+  anchor: null | string;
+  tag: null | { verbatim: string } | { handle: string; suffix: string };
 }
 
 export interface CommentAttachable {

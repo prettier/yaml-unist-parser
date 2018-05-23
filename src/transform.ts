@@ -1,3 +1,4 @@
+import assert = require("assert");
 import LinesAndColumns from "lines-and-columns";
 import { tranformAlias } from "./transforms/alias";
 import { tranformBlockFolded } from "./transforms/blockFolded";
@@ -162,11 +163,13 @@ export function transformNode(node: YamlNode, context: Context): YamlUnistNode {
 
   const tag = node.tag;
   if (tag) {
+    assert("tag" in transformedNode);
     (transformedNode as Content).tag = tag;
   }
 
   const anchor = node.anchor;
   if (anchor) {
+    assert("anchor" in transformedNode);
     (transformedNode as Content).anchor = anchor;
   }
 

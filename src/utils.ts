@@ -1,5 +1,12 @@
 import { Context } from "./transform";
-import { Comment, Position, YAMLSyntaxError, YamlUnistNode } from "./types";
+import {
+  Comment,
+  CommentAttachable,
+  Content,
+  Position,
+  YAMLSyntaxError,
+  YamlUnistNode,
+} from "./types";
 
 export function cloneObject<T extends { [key: string]: any }>(x: T): T {
   const newObject: Partial<T> = {};
@@ -44,4 +51,16 @@ export function assertSyntaxError(
       context,
     );
   }
+}
+
+export function createContentNode(): Content {
+  return { anchor: null, tag: null };
+}
+
+export function createCommentAttachableNode(): CommentAttachable {
+  return {
+    leadingComments: [],
+    middleComments: [],
+    trailingComments: [],
+  };
 }

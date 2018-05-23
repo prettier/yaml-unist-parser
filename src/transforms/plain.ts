@@ -1,6 +1,7 @@
 import assert = require("assert");
 import { Context } from "../transform";
 import { Plain } from "../types";
+import { createCommentAttachableNode, createContentNode } from "../utils";
 
 export function transformPlain(
   plain: yaml.PlainValue,
@@ -15,8 +16,7 @@ export function transformPlain(
       start: plain.valueRange!.start,
       end: plain.valueRange!.start + plain.strValue!.length,
     }),
-    leadingComments: [],
-    middleComments: [],
-    trailingComments: [],
+    ...createCommentAttachableNode(),
+    ...createContentNode(),
   };
 }

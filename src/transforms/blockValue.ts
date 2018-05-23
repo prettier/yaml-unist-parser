@@ -1,6 +1,7 @@
 import assert = require("assert");
 import { Context } from "../transform";
 import { BlockValue } from "../types";
+import { createCommentAttachableNode, createContentNode } from "../utils";
 
 enum Chomping {
   CLIP = "clip",
@@ -31,8 +32,7 @@ export function tranformBlockValue(
     chomping: Chomping[blockValue.chomping],
     indent: hasExplicitBlockIndent ? blockValue.blockIndent! : null,
     value: blockValue.strValue!,
-    leadingComments: [],
-    middleComments: [],
-    trailingComments: [],
+    ...createCommentAttachableNode(),
+    ...createContentNode(),
   };
 }

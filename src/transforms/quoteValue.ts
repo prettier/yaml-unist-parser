@@ -1,6 +1,7 @@
 import assert = require("assert");
 import { Context } from "../transform";
 import { QuoteValue } from "../types";
+import { createCommentAttachableNode, createContentNode } from "../utils";
 
 export function transformQuoteValue(
   quoteValue: yaml.QuoteValue,
@@ -12,8 +13,7 @@ export function transformQuoteValue(
     type: "quoteBase",
     value: quoteValue.strValue as string,
     position: context.transformRange(quoteValue.valueRange!),
-    leadingComments: [],
-    middleComments: [],
-    trailingComments: [],
+    ...createCommentAttachableNode(),
+    ...createContentNode(),
   };
 }

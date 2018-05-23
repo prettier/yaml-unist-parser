@@ -1,7 +1,12 @@
 import assert = require("assert");
 import { Context } from "../transform";
 import { Sequence } from "../types";
-import { cloneObject, getLast } from "../utils";
+import {
+  cloneObject,
+  createCommentAttachableNode,
+  createContentNode,
+  getLast,
+} from "../utils";
 
 export function transformSeq(seq: yaml.Seq, context: Context): Sequence {
   const itemsWithoutComments = seq.items.filter(item => {
@@ -23,8 +28,7 @@ export function transformSeq(seq: yaml.Seq, context: Context): Sequence {
       end: getLast(sequenceItems)!.position.end,
     }),
     children: sequenceItems,
-    leadingComments: [],
-    middleComments: [],
-    trailingComments: [],
+    ...createCommentAttachableNode(),
+    ...createContentNode(),
   };
 }

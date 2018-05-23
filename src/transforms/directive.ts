@@ -1,6 +1,7 @@
 import assert = require("assert");
 import { Context } from "../transform";
 import { Directive } from "../types";
+import { createCommentAttachableNode } from "../utils";
 
 export function transformDirective(
   directive: yaml.Directive,
@@ -12,8 +13,6 @@ export function transformDirective(
     name: directive.name,
     parameters: directive.parameters,
     position: context.transformRange(directive.range!),
-    leadingComments: [],
-    middleComments: [],
-    trailingComments: [],
+    ...createCommentAttachableNode(),
   };
 }

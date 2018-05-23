@@ -1,7 +1,12 @@
 import assert = require("assert");
 import { Context } from "../transform";
 import { Mapping, MappingItem, MappingKey, MappingValue } from "../types";
-import { cloneObject, getLast } from "../utils";
+import {
+  cloneObject,
+  createCommentAttachableNode,
+  createContentNode,
+  getLast,
+} from "../utils";
 
 export function transformMap(map: yaml.Map, context: Context): Mapping {
   assert(map.valueRange !== null);
@@ -13,9 +18,8 @@ export function transformMap(map: yaml.Map, context: Context): Mapping {
       end: getLast(children)!.position.end,
     }),
     children,
-    leadingComments: [],
-    middleComments: [],
-    trailingComments: [],
+    ...createCommentAttachableNode(),
+    ...createContentNode(),
   };
 }
 
@@ -46,9 +50,7 @@ function transformMapItems(
             type: "mappingKey",
             position: cloneObject(key.position),
             children: [key],
-            leadingComments: [],
-            middleComments: [],
-            trailingComments: [],
+            ...createCommentAttachableNode(),
           });
         }
 
@@ -81,15 +83,11 @@ function transformMapItems(
                   position: context.transformRange(
                     currentMappingKey.position.end.offset,
                   ),
-                  leadingComments: [],
-                  middleComments: [],
-                  trailingComments: [],
+                  ...createCommentAttachableNode(),
                 },
               ],
               position: cloneObject(currentMappingKey.position),
-              leadingComments: [],
-              middleComments: [],
-              trailingComments: [],
+              ...createCommentAttachableNode(),
             })),
         );
       }
@@ -108,9 +106,7 @@ function transformMapItems(
                 start: cloneObject(mappingValue.position.start),
                 end: cloneObject(mappingValue.position.start),
               },
-              leadingComments: [],
-              middleComments: [],
-              trailingComments: [],
+              ...createCommentAttachableNode(),
             };
 
       return reduced.concat({
@@ -120,9 +116,7 @@ function transformMapItems(
           start: cloneObject(mappingKey.position.start),
           end: cloneObject(mappingValue.position.end),
         },
-        leadingComments: [],
-        middleComments: [],
-        trailingComments: [],
+        ...createCommentAttachableNode(),
       });
     },
     [] as MappingItem[],

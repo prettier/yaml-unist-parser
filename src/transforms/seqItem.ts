@@ -1,7 +1,7 @@
 import assert = require("assert");
 import { Context } from "../transform";
 import { SequenceItem } from "../types";
-import { cloneObject } from "../utils";
+import { cloneObject, createCommentAttachableNode } from "../utils";
 
 export function transformSeqItem(
   seqItem: yaml.SeqItem,
@@ -25,8 +25,6 @@ export function transformSeqItem(
           : cloneObject(value.position.end),
     },
     children: [value],
-    leadingComments: [],
-    middleComments: [],
-    trailingComments: [],
+    ...createCommentAttachableNode(),
   };
 }

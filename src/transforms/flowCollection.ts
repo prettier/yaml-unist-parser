@@ -9,7 +9,12 @@ import {
   Position,
   SequenceItem,
 } from "../types";
-import { cloneObject, getLast } from "../utils";
+import {
+  cloneObject,
+  createCommentAttachableNode,
+  createContentNode,
+  getLast,
+} from "../utils";
 
 type ItemBuffer = Array<"," | "?" | ":" | ContentNode>;
 type RangeBuffer = Array<{ start: number; end: number }>;
@@ -104,9 +109,8 @@ export function transformFlowCollection(
     type: "flowCollection",
     children,
     position: context.transformRange(flowCollection.valueRange!),
-    leadingComments: [],
-    middleComments: [],
-    trailingComments: [],
+    ...createCommentAttachableNode(),
+    ...createContentNode(),
   };
 
   function pushBuffer(item: ItemBuffer[number]) {
@@ -386,9 +390,7 @@ function createMappingKey(
     type: "mappingKey",
     children: [node],
     position,
-    leadingComments: [],
-    middleComments: [],
-    trailingComments: [],
+    ...createCommentAttachableNode(),
   };
 }
 
@@ -400,9 +402,7 @@ function createMappingValue(
     type: "mappingValue",
     children: [node],
     position,
-    leadingComments: [],
-    middleComments: [],
-    trailingComments: [],
+    ...createCommentAttachableNode(),
   };
 }
 
@@ -415,9 +415,7 @@ function createMappingItem(
     type: "mappingItem",
     children: [key, value],
     position,
-    leadingComments: [],
-    middleComments: [],
-    trailingComments: [],
+    ...createCommentAttachableNode(),
   };
 }
 
@@ -429,8 +427,6 @@ function createSequenceItem(
     type: "sequenceItem",
     children: [node],
     position,
-    leadingComments: [],
-    middleComments: [],
-    trailingComments: [],
+    ...createCommentAttachableNode(),
   };
 }

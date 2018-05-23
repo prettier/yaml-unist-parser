@@ -1,7 +1,7 @@
 import assert = require("assert");
 import { Context } from "../transform";
 import { MappingValue } from "../types";
-import { cloneObject } from "../utils";
+import { cloneObject, createCommentAttachableNode } from "../utils";
 
 export function transformMapValue(
   mapValue: yaml.MapItem,
@@ -25,8 +25,6 @@ export function transformMapValue(
           : value.position.end,
     }),
     children: [value],
-    leadingComments: [],
-    middleComments: [],
-    trailingComments: [],
+    ...createCommentAttachableNode(),
   };
 }
