@@ -1,7 +1,7 @@
 import assert = require("assert");
 import { Context } from "../transform";
 import { Document, DocumentHead, Position } from "../types";
-import { cloneObject, defineCommentParent, getLast } from "../utils";
+import { defineCommentParent, getLast } from "../utils";
 
 export function transformDocument(
   document: yaml.Document,
@@ -70,10 +70,10 @@ export function transformDocument(
     return context.transformRange({ start, end });
   })(context.text.slice(document.valueRange!.end));
 
-  const position = cloneObject({
+  const position = {
     start: headPosition.start,
     end: bodyPosition.end,
-  });
+  };
 
   const documentHead: DocumentHead = {
     type: "documentHead",

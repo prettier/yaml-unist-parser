@@ -2,7 +2,6 @@ import assert = require("assert");
 import { Context } from "../transform";
 import { Sequence } from "../types";
 import {
-  cloneObject,
   createCommentAttachableNode,
   createContentNode,
   getLast,
@@ -23,10 +22,10 @@ export function transformSeq(seq: yaml.Seq, context: Context): Sequence {
 
   return {
     type: "sequence",
-    position: cloneObject({
+    position: {
       start: sequenceItems[0].position.start,
       end: getLast(sequenceItems)!.position.end,
-    }),
+    },
     children: sequenceItems,
     ...createCommentAttachableNode(),
     ...createContentNode(),

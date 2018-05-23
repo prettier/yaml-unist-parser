@@ -2,6 +2,7 @@ import assert = require("assert");
 import { parse } from "./parse";
 import {
   CommentAttachable,
+  Content,
   Node,
   Position,
   Root,
@@ -105,6 +106,9 @@ function stringifyNode(
         case "middleComments":
         case "trailingComments":
           return false;
+        case "anchor":
+        case "tag":
+          return (node as Content)[key] !== null;
         default:
           return true;
       }

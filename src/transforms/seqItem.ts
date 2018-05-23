@@ -1,7 +1,7 @@
 import assert = require("assert");
 import { Context } from "../transform";
 import { SequenceItem } from "../types";
-import { cloneObject, createCommentAttachableNode } from "../utils";
+import { createCommentAttachableNode } from "../utils";
 
 export function transformSeqItem(
   seqItem: yaml.SeqItem,
@@ -22,7 +22,7 @@ export function transformSeqItem(
       end:
         value.type === "null"
           ? context.transformOffset(seqItem.valueRange!.start + 1)
-          : cloneObject(value.position.end),
+          : value.position.end,
     },
     children: [value],
     ...createCommentAttachableNode(),

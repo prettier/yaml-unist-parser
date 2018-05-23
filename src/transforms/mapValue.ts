@@ -1,7 +1,7 @@
 import assert = require("assert");
 import { Context } from "../transform";
 import { MappingValue } from "../types";
-import { cloneObject, createCommentAttachableNode } from "../utils";
+import { createCommentAttachableNode } from "../utils";
 
 export function transformMapValue(
   mapValue: yaml.MapItem,
@@ -17,13 +17,13 @@ export function transformMapValue(
 
   return {
     type: "mappingValue",
-    position: cloneObject({
+    position: {
       start: context.transformOffset(mapValue.valueRange!.start),
       end:
         value.type === "null"
           ? context.transformOffset(mapValue.valueRange!.start + 1)
           : value.position.end,
-    }),
+    },
     children: [value],
     ...createCommentAttachableNode(),
   };

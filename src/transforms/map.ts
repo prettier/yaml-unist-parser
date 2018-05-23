@@ -2,7 +2,6 @@ import assert = require("assert");
 import { Context } from "../transform";
 import { Mapping, MappingItem, MappingKey, MappingValue } from "../types";
 import {
-  cloneObject,
   createCommentAttachableNode,
   createContentNode,
   getLast,
@@ -13,10 +12,10 @@ export function transformMap(map: yaml.Map, context: Context): Mapping {
   const children = transformMapItems(map.items, context);
   return {
     type: "mapping",
-    position: cloneObject({
+    position: {
       start: children[0].position.start,
       end: getLast(children)!.position.end,
-    }),
+    },
     children,
     ...createCommentAttachableNode(),
     ...createContentNode(),
@@ -48,7 +47,7 @@ function transformMapItems(
           >);
           buffer.push({
             type: "mappingKey",
-            position: cloneObject(key.position),
+            position: key.position,
             children: [key],
             ...createCommentAttachableNode(),
           });
@@ -86,7 +85,7 @@ function transformMapItems(
                   ...createCommentAttachableNode(),
                 },
               ],
-              position: cloneObject(currentMappingKey.position),
+              position: currentMappingKey.position,
               ...createCommentAttachableNode(),
             })),
         );
@@ -103,8 +102,8 @@ function transformMapItems(
               type: "mappingKey",
               children: [context.transformNode(null)],
               position: {
-                start: cloneObject(mappingValue.position.start),
-                end: cloneObject(mappingValue.position.start),
+                start: mappingValue.position.start,
+                end: mappingValue.position.start,
               },
               ...createCommentAttachableNode(),
             };
@@ -113,8 +112,8 @@ function transformMapItems(
         type: "mappingItem",
         children: [mappingKey, mappingValue],
         position: {
-          start: cloneObject(mappingKey.position.start),
-          end: cloneObject(mappingValue.position.end),
+          start: mappingKey.position.start,
+          end: mappingValue.position.end,
         },
         ...createCommentAttachableNode(),
       });

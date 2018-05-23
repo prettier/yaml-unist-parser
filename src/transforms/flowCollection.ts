@@ -10,7 +10,6 @@ import {
   SequenceItem,
 } from "../types";
 import {
-  cloneObject,
   createCommentAttachableNode,
   createContentNode,
   getLast,
@@ -164,14 +163,8 @@ function transformFlowCollectionItems(
     const beforeCommaPosition = context.transformRange(rangeBuffer[0].start);
     return type === "FLOW_MAP"
       ? createMappingItem(
-          createMappingKey(
-            context.transformNode(null),
-            cloneObject(beforeCommaPosition),
-          ),
-          createMappingValue(
-            context.transformNode(null),
-            cloneObject(beforeCommaPosition),
-          ),
+          createMappingKey(context.transformNode(null), beforeCommaPosition),
+          createMappingValue(context.transformNode(null), beforeCommaPosition),
           beforeCommaPosition,
         )
       : createSequenceItem(context.transformNode(null), beforeCommaPosition);
@@ -198,14 +191,14 @@ function transformFlowCollectionItems(
       // [ 123 ] or { 123 }
       return type === "FLOW_MAP"
         ? createMappingItem(
-            createMappingKey(item, cloneObject(item.position)),
+            createMappingKey(item, item.position),
             createMappingValue(
               context.transformNode(null),
               context.transformRange(item.position.end.offset),
             ),
-            cloneObject(item.position),
+            item.position,
           )
-        : createSequenceItem(item, cloneObject(item.position));
+        : createSequenceItem(item, item.position);
     }
   }
 
@@ -238,7 +231,7 @@ function transformFlowCollectionItems(
       const key = itemBufferWithoutComma[1] as ContentNode;
       const keyPosition = {
         start: context.transformOffset(questionRange.start),
-        end: cloneObject(key.position.end),
+        end: key.position.end,
       };
       return createMappingItem(
         createMappingKey(key, keyPosition),
@@ -246,7 +239,7 @@ function transformFlowCollectionItems(
           context.transformNode(null),
           context.transformRange(key.position.end.offset),
         ),
-        cloneObject(keyPosition),
+        keyPosition,
       );
     } else if (colonIndex === 0) {
       // [ : 123 ] or { : 123 }
@@ -254,7 +247,7 @@ function transformFlowCollectionItems(
       const value = itemBufferWithoutComma[1] as ContentNode;
       const valuePosition = {
         start: context.transformOffset(colonRange.start),
-        end: cloneObject(value.position.end),
+        end: value.position.end,
       };
       return createMappingItem(
         createMappingKey(
@@ -262,7 +255,7 @@ function transformFlowCollectionItems(
           context.transformRange(colonRange.start),
         ),
         createMappingValue(value, valuePosition),
-        cloneObject(valuePosition),
+        valuePosition,
       );
     } else {
       // [ 123 : ] or { 123 : }
@@ -270,13 +263,13 @@ function transformFlowCollectionItems(
       const colonRange = rangeBuffer[1];
       const key = itemBufferWithoutComma[0] as ContentNode;
       return createMappingItem(
-        createMappingKey(key, cloneObject(key.position)),
+        createMappingKey(key, key.position),
         createMappingValue(
           context.transformNode(null),
           context.transformRange(colonRange),
         ),
         {
-          start: cloneObject(key.position.start),
+          start: key.position.start,
           end: context.transformOffset(colonRange.end),
         },
       );
@@ -289,7 +282,7 @@ function transformFlowCollectionItems(
       const key = itemBufferWithoutComma[0] as ContentNode;
       const value = itemBufferWithoutComma[2] as ContentNode;
       return createMappingItem(
-        createMappingKey(key, cloneObject(key.position)),
+        createMappingKey(key, key.position),
         createMappingValue(
           value,
           context.transformRange({

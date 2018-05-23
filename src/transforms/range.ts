@@ -1,6 +1,6 @@
 import { Context } from "../transform";
 import { Position } from "../types";
-import { cloneObject } from "../utils";
+import {} from "../utils";
 
 export function transformRange(
   range: number | { start: number; end: number },
@@ -10,7 +10,7 @@ export function transformRange(
     const point = context.transformOffset(range);
     return {
       start: point,
-      end: cloneObject(point),
+      end: point,
     };
   } else {
     return {
