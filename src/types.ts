@@ -120,7 +120,7 @@ export interface Directive extends Node, CommentAttachable {
   parameters: string[];
 }
 
-export interface Alias extends Node, CommentAttachable {
+export interface Alias extends Node, Content, CommentAttachable {
   type: "alias";
   value: string;
 }

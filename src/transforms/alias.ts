@@ -1,7 +1,7 @@
 import assert = require("assert");
 import { Context } from "../transform";
 import { Alias } from "../types";
-import { createCommentAttachableNode } from "../utils";
+import { createCommentAttachableNode, createContentNode } from "../utils";
 
 export function tranformAlias(alias: yaml.Alias, context: Context): Alias {
   assert(alias.valueRange !== null);
@@ -13,5 +13,6 @@ export function tranformAlias(alias: yaml.Alias, context: Context): Alias {
     }),
     value: alias.rawValue,
     ...createCommentAttachableNode(),
+    ...createContentNode(),
   };
 }
