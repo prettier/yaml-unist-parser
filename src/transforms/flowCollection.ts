@@ -53,6 +53,7 @@ export function transformFlowCollection(
 
   const lastIndex = flowCollection.items.length - 2;
   for (let i = 1; i <= lastIndex; i++) {
+    let isComment = false;
     const item = flowCollection.items[i];
 
     // istanbul ignore if
@@ -60,6 +61,7 @@ export function transformFlowCollection(
       assert(true);
       continue; // convince control flow analysis
     } else if (typeof item === "object" && item.type === "COMMENT") {
+      isComment = true;
       const comment = context.transformNode(item);
       context.comments.push(comment);
       lastItemStartOffset = comment.position.start.offset;
@@ -86,6 +88,10 @@ export function transformFlowCollection(
         hasColon = true;
       }
       pushBuffer(typeof item === "string" ? item : context.transformNode(item));
+    }
+
+    if (i === lastIndex && itemBuffer.length === 0 && isComment) {
+      break;
     }
 
     if (item === "," || i === lastIndex) {

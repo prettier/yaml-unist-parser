@@ -612,6 +612,62 @@ mappingValue (1:8 ~ 1:8)
 </mappingValue>
 `;
 
+exports[`"  { 123, #123\\n }  " 1`] = `
+flowMapping (1:3 ~ 2:3)
+1 | ··{·123,·#123¶
+  |   ^^^^^^^^^^^^
+2 | ·}··¶
+  | ^^
+<flowMapping>
+  <mappingItem>
+    <mappingKey>
+      <plain value="123" />
+    </mappingKey>
+    <mappingValue>
+      <trailingComment value="123">
+      <null />
+    </mappingValue>
+  </mappingItem>
+</flowMapping>
+`;
+
+exports[`"  { 123, #123\\n }  " 2`] = `
+mappingItem (1:5 ~ 1:8)
+1 | ··{·123,·#123¶
+  |     ^^^
+2 | ·}··¶
+<mappingItem>
+  <mappingKey>
+    <plain value="123" />
+  </mappingKey>
+  <mappingValue>
+    <trailingComment value="123">
+    <null />
+  </mappingValue>
+</mappingItem>
+`;
+
+exports[`"  { 123, #123\\n }  " 3`] = `
+mappingKey (1:5 ~ 1:8)
+1 | ··{·123,·#123¶
+  |     ^^^
+2 | ·}··¶
+<mappingKey>
+  <plain value="123" />
+</mappingKey>
+`;
+
+exports[`"  { 123, #123\\n }  " 4`] = `
+mappingValue (1:8 ~ 1:8)
+1 | ··{·123,·#123¶
+  |        ~
+2 | ·}··¶
+<mappingValue>
+  <trailingComment value="123">
+  <null />
+</mappingValue>
+`;
+
 exports[`"  { 123, }  " 1`] = `
 flowMapping (1:3 ~ 1:11)
 1 | ··{·123,·}··¶

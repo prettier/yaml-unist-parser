@@ -23,6 +23,7 @@ testCases([
   ["  { 123 : 456 }  ", selectors],
   ["  { 123, }  ", selectors],
   ["  { 123,, }  ", selectors],
+  ["  { 123, #123\n }  ", selectors],
   [
     "  !!map\n #123 \n&anchor # 456 \n {}  ",
     [
