@@ -41,29 +41,29 @@ flowMapping (1:3 ~ 1:8)
 1 | ··{·,·}··¶
   |   ^^^^^
 <flowMapping>
-  <mappingItem>
+  <flowMappingItem>
     <mappingKey>
       <null />
     </mappingKey>
     <mappingValue>
       <null />
     </mappingValue>
-  </mappingItem>
+  </flowMappingItem>
 </flowMapping>
 `;
 
 exports[`"  { , }  " 2`] = `
-mappingItem (1:5 ~ 1:5)
+flowMappingItem (1:5 ~ 1:5)
 1 | ··{·,·}··¶
   |     ~
-<mappingItem>
+<flowMappingItem>
   <mappingKey>
     <null />
   </mappingKey>
   <mappingValue>
     <null />
   </mappingValue>
-</mappingItem>
+</flowMappingItem>
 `;
 
 exports[`"  { , }  " 3`] = `
@@ -89,29 +89,29 @@ flowMapping (1:3 ~ 1:8)
 1 | ··{·:·}··¶
   |   ^^^^^
 <flowMapping>
-  <mappingItem>
+  <flowMappingItem>
     <mappingKey>
       <null />
     </mappingKey>
     <mappingValue>
       <null />
     </mappingValue>
-  </mappingItem>
+  </flowMappingItem>
 </flowMapping>
 `;
 
 exports[`"  { : }  " 2`] = `
-mappingItem (1:5 ~ 1:6)
+flowMappingItem (1:5 ~ 1:6)
 1 | ··{·:·}··¶
   |     ^
-<mappingItem>
+<flowMappingItem>
   <mappingKey>
     <null />
   </mappingKey>
   <mappingValue>
     <null />
   </mappingValue>
-</mappingItem>
+</flowMappingItem>
 `;
 
 exports[`"  { : }  " 3`] = `
@@ -137,29 +137,29 @@ flowMapping (1:3 ~ 1:12)
 1 | ··{·:·123·}··¶
   |   ^^^^^^^^^
 <flowMapping>
-  <mappingItem>
+  <flowMappingItem>
     <mappingKey>
       <null />
     </mappingKey>
     <mappingValue>
       <plain value="123" />
     </mappingValue>
-  </mappingItem>
+  </flowMappingItem>
 </flowMapping>
 `;
 
 exports[`"  { : 123 }  " 2`] = `
-mappingItem (1:5 ~ 1:10)
+flowMappingItem (1:5 ~ 1:10)
 1 | ··{·:·123·}··¶
   |     ^^^^^
-<mappingItem>
+<flowMappingItem>
   <mappingKey>
     <null />
   </mappingKey>
   <mappingValue>
     <plain value="123" />
   </mappingValue>
-</mappingItem>
+</flowMappingItem>
 `;
 
 exports[`"  { : 123 }  " 3`] = `
@@ -185,29 +185,29 @@ flowMapping (1:3 ~ 1:10)
 1 | ··{·?·:·}··¶
   |   ^^^^^^^
 <flowMapping>
-  <mappingItem>
+  <flowMappingItem>
     <mappingKey>
       <null />
     </mappingKey>
     <mappingValue>
       <null />
     </mappingValue>
-  </mappingItem>
+  </flowMappingItem>
 </flowMapping>
 `;
 
 exports[`"  { ? : }  " 2`] = `
-mappingItem (1:5 ~ 1:8)
+flowMappingItem (1:5 ~ 1:8)
 1 | ··{·?·:·}··¶
   |     ^^^
-<mappingItem>
+<flowMappingItem>
   <mappingKey>
     <null />
   </mappingKey>
   <mappingValue>
     <null />
   </mappingValue>
-</mappingItem>
+</flowMappingItem>
 `;
 
 exports[`"  { ? : }  " 3`] = `
@@ -233,29 +233,29 @@ flowMapping (1:3 ~ 1:14)
 1 | ··{·?·:·123·}··¶
   |   ^^^^^^^^^^^
 <flowMapping>
-  <mappingItem>
+  <flowMappingItem>
     <mappingKey>
       <null />
     </mappingKey>
     <mappingValue>
       <plain value="123" />
     </mappingValue>
-  </mappingItem>
+  </flowMappingItem>
 </flowMapping>
 `;
 
 exports[`"  { ? : 123 }  " 2`] = `
-mappingItem (1:5 ~ 1:12)
+flowMappingItem (1:5 ~ 1:12)
 1 | ··{·?·:·123·}··¶
   |     ^^^^^^^
-<mappingItem>
+<flowMappingItem>
   <mappingKey>
     <null />
   </mappingKey>
   <mappingValue>
     <plain value="123" />
   </mappingValue>
-</mappingItem>
+</flowMappingItem>
 `;
 
 exports[`"  { ? : 123 }  " 3`] = `
@@ -281,29 +281,29 @@ flowMapping (1:3 ~ 1:8)
 1 | ··{·?·}··¶
   |   ^^^^^
 <flowMapping>
-  <mappingItem>
+  <flowMappingItem>
     <mappingKey>
       <null />
     </mappingKey>
     <mappingValue>
       <null />
     </mappingValue>
-  </mappingItem>
+  </flowMappingItem>
 </flowMapping>
 `;
 
 exports[`"  { ? }  " 2`] = `
-mappingItem (1:5 ~ 1:6)
+flowMappingItem (1:5 ~ 1:6)
 1 | ··{·?·}··¶
   |     ^
-<mappingItem>
+<flowMappingItem>
   <mappingKey>
     <null />
   </mappingKey>
   <mappingValue>
     <null />
   </mappingValue>
-</mappingItem>
+</flowMappingItem>
 `;
 
 exports[`"  { ? }  " 3`] = `
@@ -329,29 +329,29 @@ flowMapping (1:3 ~ 1:14)
 1 | ··{·?·123·:·}··¶
   |   ^^^^^^^^^^^
 <flowMapping>
-  <mappingItem>
+  <flowMappingItem>
     <mappingKey>
       <plain value="123" />
     </mappingKey>
     <mappingValue>
       <null />
     </mappingValue>
-  </mappingItem>
+  </flowMappingItem>
 </flowMapping>
 `;
 
 exports[`"  { ? 123 : }  " 2`] = `
-mappingItem (1:5 ~ 1:12)
+flowMappingItem (1:5 ~ 1:12)
 1 | ··{·?·123·:·}··¶
   |     ^^^^^^^
-<mappingItem>
+<flowMappingItem>
   <mappingKey>
     <plain value="123" />
   </mappingKey>
   <mappingValue>
     <null />
   </mappingValue>
-</mappingItem>
+</flowMappingItem>
 `;
 
 exports[`"  { ? 123 : }  " 3`] = `
@@ -377,29 +377,29 @@ flowMapping (1:3 ~ 1:18)
 1 | ··{·?·123·:·456·}··¶
   |   ^^^^^^^^^^^^^^^
 <flowMapping>
-  <mappingItem>
+  <flowMappingItem>
     <mappingKey>
       <plain value="123" />
     </mappingKey>
     <mappingValue>
       <plain value="456" />
     </mappingValue>
-  </mappingItem>
+  </flowMappingItem>
 </flowMapping>
 `;
 
 exports[`"  { ? 123 : 456 }  " 2`] = `
-mappingItem (1:5 ~ 1:16)
+flowMappingItem (1:5 ~ 1:16)
 1 | ··{·?·123·:·456·}··¶
   |     ^^^^^^^^^^^
-<mappingItem>
+<flowMappingItem>
   <mappingKey>
     <plain value="123" />
   </mappingKey>
   <mappingValue>
     <plain value="456" />
   </mappingValue>
-</mappingItem>
+</flowMappingItem>
 `;
 
 exports[`"  { ? 123 : 456 }  " 3`] = `
@@ -425,29 +425,29 @@ flowMapping (1:3 ~ 1:12)
 1 | ··{·?·123·}··¶
   |   ^^^^^^^^^
 <flowMapping>
-  <mappingItem>
+  <flowMappingItem>
     <mappingKey>
       <plain value="123" />
     </mappingKey>
     <mappingValue>
       <null />
     </mappingValue>
-  </mappingItem>
+  </flowMappingItem>
 </flowMapping>
 `;
 
 exports[`"  { ? 123 }  " 2`] = `
-mappingItem (1:5 ~ 1:10)
+flowMappingItem (1:5 ~ 1:10)
 1 | ··{·?·123·}··¶
   |     ^^^^^
-<mappingItem>
+<flowMappingItem>
   <mappingKey>
     <plain value="123" />
   </mappingKey>
   <mappingValue>
     <null />
   </mappingValue>
-</mappingItem>
+</flowMappingItem>
 `;
 
 exports[`"  { ? 123 }  " 3`] = `
@@ -473,29 +473,29 @@ flowMapping (1:3 ~ 1:12)
 1 | ··{·123·:·}··¶
   |   ^^^^^^^^^
 <flowMapping>
-  <mappingItem>
+  <flowMappingItem>
     <mappingKey>
       <plain value="123" />
     </mappingKey>
     <mappingValue>
       <null />
     </mappingValue>
-  </mappingItem>
+  </flowMappingItem>
 </flowMapping>
 `;
 
 exports[`"  { 123 : }  " 2`] = `
-mappingItem (1:5 ~ 1:10)
+flowMappingItem (1:5 ~ 1:10)
 1 | ··{·123·:·}··¶
   |     ^^^^^
-<mappingItem>
+<flowMappingItem>
   <mappingKey>
     <plain value="123" />
   </mappingKey>
   <mappingValue>
     <null />
   </mappingValue>
-</mappingItem>
+</flowMappingItem>
 `;
 
 exports[`"  { 123 : }  " 3`] = `
@@ -521,29 +521,29 @@ flowMapping (1:3 ~ 1:16)
 1 | ··{·123·:·456·}··¶
   |   ^^^^^^^^^^^^^
 <flowMapping>
-  <mappingItem>
+  <flowMappingItem>
     <mappingKey>
       <plain value="123" />
     </mappingKey>
     <mappingValue>
       <plain value="456" />
     </mappingValue>
-  </mappingItem>
+  </flowMappingItem>
 </flowMapping>
 `;
 
 exports[`"  { 123 : 456 }  " 2`] = `
-mappingItem (1:5 ~ 1:14)
+flowMappingItem (1:5 ~ 1:14)
 1 | ··{·123·:·456·}··¶
   |     ^^^^^^^^^
-<mappingItem>
+<flowMappingItem>
   <mappingKey>
     <plain value="123" />
   </mappingKey>
   <mappingValue>
     <plain value="456" />
   </mappingValue>
-</mappingItem>
+</flowMappingItem>
 `;
 
 exports[`"  { 123 : 456 }  " 3`] = `
@@ -569,29 +569,29 @@ flowMapping (1:3 ~ 1:10)
 1 | ··{·123·}··¶
   |   ^^^^^^^
 <flowMapping>
-  <mappingItem>
+  <flowMappingItem>
     <mappingKey>
       <plain value="123" />
     </mappingKey>
     <mappingValue>
       <null />
     </mappingValue>
-  </mappingItem>
+  </flowMappingItem>
 </flowMapping>
 `;
 
 exports[`"  { 123 }  " 2`] = `
-mappingItem (1:5 ~ 1:8)
+flowMappingItem (1:5 ~ 1:8)
 1 | ··{·123·}··¶
   |     ^^^
-<mappingItem>
+<flowMappingItem>
   <mappingKey>
     <plain value="123" />
   </mappingKey>
   <mappingValue>
     <null />
   </mappingValue>
-</mappingItem>
+</flowMappingItem>
 `;
 
 exports[`"  { 123 }  " 3`] = `
@@ -619,7 +619,7 @@ flowMapping (1:3 ~ 2:3)
 2 | ·}··¶
   | ^^
 <flowMapping>
-  <mappingItem>
+  <flowMappingItem>
     <mappingKey>
       <plain value="123" />
     </mappingKey>
@@ -627,16 +627,16 @@ flowMapping (1:3 ~ 2:3)
       <trailingComment value="123">
       <null />
     </mappingValue>
-  </mappingItem>
+  </flowMappingItem>
 </flowMapping>
 `;
 
 exports[`"  { 123, #123\\n }  " 2`] = `
-mappingItem (1:5 ~ 1:8)
+flowMappingItem (1:5 ~ 1:8)
 1 | ··{·123,·#123¶
   |     ^^^
 2 | ·}··¶
-<mappingItem>
+<flowMappingItem>
   <mappingKey>
     <plain value="123" />
   </mappingKey>
@@ -644,7 +644,7 @@ mappingItem (1:5 ~ 1:8)
     <trailingComment value="123">
     <null />
   </mappingValue>
-</mappingItem>
+</flowMappingItem>
 `;
 
 exports[`"  { 123, #123\\n }  " 3`] = `
@@ -673,29 +673,29 @@ flowMapping (1:3 ~ 1:11)
 1 | ··{·123,·}··¶
   |   ^^^^^^^^
 <flowMapping>
-  <mappingItem>
+  <flowMappingItem>
     <mappingKey>
       <plain value="123" />
     </mappingKey>
     <mappingValue>
       <null />
     </mappingValue>
-  </mappingItem>
+  </flowMappingItem>
 </flowMapping>
 `;
 
 exports[`"  { 123, }  " 2`] = `
-mappingItem (1:5 ~ 1:8)
+flowMappingItem (1:5 ~ 1:8)
 1 | ··{·123,·}··¶
   |     ^^^
-<mappingItem>
+<flowMappingItem>
   <mappingKey>
     <plain value="123" />
   </mappingKey>
   <mappingValue>
     <null />
   </mappingValue>
-</mappingItem>
+</flowMappingItem>
 `;
 
 exports[`"  { 123, }  " 3`] = `
@@ -721,37 +721,37 @@ flowMapping (1:3 ~ 1:12)
 1 | ··{·123,,·}··¶
   |   ^^^^^^^^^
 <flowMapping>
-  <mappingItem>
+  <flowMappingItem>
     <mappingKey>
       <plain value="123" />
     </mappingKey>
     <mappingValue>
       <null />
     </mappingValue>
-  </mappingItem>
-  <mappingItem>
+  </flowMappingItem>
+  <flowMappingItem>
     <mappingKey>
       <null />
     </mappingKey>
     <mappingValue>
       <null />
     </mappingValue>
-  </mappingItem>
+  </flowMappingItem>
 </flowMapping>
 `;
 
 exports[`"  { 123,, }  " 2`] = `
-mappingItem (1:5 ~ 1:8)
+flowMappingItem (1:5 ~ 1:8)
 1 | ··{·123,,·}··¶
   |     ^^^
-<mappingItem>
+<flowMappingItem>
   <mappingKey>
     <plain value="123" />
   </mappingKey>
   <mappingValue>
     <null />
   </mappingValue>
-</mappingItem>
+</flowMappingItem>
 `;
 
 exports[`"  { 123,, }  " 3`] = `

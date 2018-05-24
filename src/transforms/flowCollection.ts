@@ -3,11 +3,11 @@ import { Context } from "../transform";
 import {
   ContentNode,
   FlowCollection,
-  MappingItem,
+  FlowSequenceItem,
   MappingKey,
   MappingValue,
   Position,
-  SequenceItem,
+  FlowMappingItem,
 } from "../types";
 import {
   createCommentAttachableNode,
@@ -43,7 +43,7 @@ export function transformFlowCollection(
   let hasColon = false;
   let hasQuestion = false;
 
-  const children: Array<SequenceItem | MappingItem> = [];
+  const children: Array<FlowSequenceItem | FlowMappingItem> = [];
 
   let itemBuffer: ItemBuffer = [];
   let rangeBuffer: RangeBuffer = [];
@@ -149,7 +149,7 @@ function transformFlowCollectionItems(
   itemBuffer: ItemBuffer,
   rangeBuffer: RangeBuffer,
   context: Context,
-): MappingItem | SequenceItem {
+): FlowMappingItem | FlowSequenceItem {
   assert(itemBuffer.length === rangeBuffer.length);
 
   const commaIndex = itemBuffer.indexOf(",");
@@ -409,9 +409,9 @@ function createMappingItem(
   key: MappingKey,
   value: MappingValue,
   position: Position,
-): MappingItem {
+): FlowMappingItem {
   return {
-    type: "mappingItem",
+    type: "flowMappingItem",
     children: [key, value],
     position,
     ...createCommentAttachableNode(),
@@ -419,11 +419,11 @@ function createMappingItem(
 }
 
 function createSequenceItem(
-  node: SequenceItem["children"][0],
+  node: FlowSequenceItem["children"][0],
   position: Position,
-): SequenceItem {
+): FlowSequenceItem {
   return {
-    type: "sequenceItem",
+    type: "flowSequenceItem",
     children: [node],
     position,
     ...createCommentAttachableNode(),

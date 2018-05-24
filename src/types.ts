@@ -161,10 +161,13 @@ export interface Mapping extends Parent, Content, CommentAttachable {
   children: MappingItem[];
 }
 
-export interface MappingItem extends Parent, CommentAttachable {
-  type: "mappingItem";
+export interface MappingItemBase extends Parent, CommentAttachable {
   /** key-value pair */
   children: [MappingKey, MappingValue];
+}
+
+export interface MappingItem extends MappingItemBase {
+  type: "mappingItem";
 }
 
 export interface MappingKey extends Parent, CommentAttachable {
@@ -182,21 +185,32 @@ export interface Sequence extends Parent, Content, CommentAttachable {
   children: SequenceItem[];
 }
 
-export interface SequenceItem extends Parent, CommentAttachable {
-  type: "sequenceItem";
+export interface SequenceItemBase extends Parent, CommentAttachable {
   children: [ContentNode];
 }
 
+export interface SequenceItem extends SequenceItemBase {
+  type: "sequenceItem";
+}
+
 export interface FlowCollection extends Parent, Content, CommentAttachable {
-  children: Array<MappingItem | SequenceItem>;
+  children: Array<FlowMappingItem | FlowSequenceItem>;
 }
 
 export interface FlowMapping extends FlowCollection {
   type: "flowMapping";
-  children: MappingItem[];
+  children: FlowMappingItem[];
+}
+
+export interface FlowMappingItem extends MappingItemBase {
+  type: "flowMappingItem";
 }
 
 export interface FlowSequence extends FlowCollection {
   type: "flowSequence";
-  children: Array<MappingItem | SequenceItem>;
+  children: Array<FlowMappingItem | FlowSequenceItem>;
+}
+
+export interface FlowSequenceItem extends SequenceItemBase {
+  type: "flowSequenceItem";
 }

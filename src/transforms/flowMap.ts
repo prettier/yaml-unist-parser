@@ -1,6 +1,6 @@
 import assert = require("assert");
 import { Context } from "../transform";
-import { FlowMapping, MappingItem } from "../types";
+import { FlowMapping, FlowMappingItem } from "../types";
 import { transformFlowCollection } from "./flowCollection";
 
 export function transformFlowMap(
@@ -9,9 +9,9 @@ export function transformFlowMap(
 ): FlowMapping {
   assert(flowCollection.type === "FLOW_MAP");
   const transformed = transformFlowCollection(flowCollection, context);
-  assert(transformed.children.every(item => item.type === "mappingItem"));
+  assert(transformed.children.every(item => item.type === "flowMappingItem"));
   return {
-    ...(transformed as (typeof transformed) & { children: MappingItem[] }),
+    ...(transformed as (typeof transformed) & { children: FlowMappingItem[] }),
     type: "flowMapping",
   };
 }
