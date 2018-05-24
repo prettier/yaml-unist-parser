@@ -62,7 +62,9 @@ export type YamlUnistNode =
   | Sequence
   | SequenceItem
   | FlowMapping
+  | FlowMappingItem
   | FlowSequence
+  | FlowSequenceItem
   | Null;
 
 export type ContentNode =

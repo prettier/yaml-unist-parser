@@ -3,11 +3,11 @@ import { Context } from "../transform";
 import {
   ContentNode,
   FlowCollection,
+  FlowMappingItem,
   FlowSequenceItem,
   MappingKey,
   MappingValue,
   Position,
-  FlowMappingItem,
 } from "../types";
 import {
   createCommentAttachableNode,
