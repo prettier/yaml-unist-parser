@@ -149,9 +149,7 @@ mapping (1:1 ~ 1:6)
     <mappingKey>
       <plain value="123" />
     </mappingKey>
-    <mappingValue>
-      <null />
-    </mappingValue>
+    <null />
   </mappingItem>
 </mapping>
 `;
@@ -164,9 +162,7 @@ mappingItem (1:1 ~ 1:6)
   <mappingKey>
     <plain value="123" />
   </mappingKey>
-  <mappingValue>
-    <null />
-  </mappingValue>
+  <null />
 </mappingItem>
 `;
 
@@ -180,12 +176,9 @@ mappingKey (1:1 ~ 1:6)
 `;
 
 exports[`"? 123" 4`] = `
-mappingValue (1:6 ~ 1:6)
+null (-1:-1 ~ -1:-1)
 1 | ?·123¶
-  |      ~
-<mappingValue>
-  <null />
-</mappingValue>
+<null />
 `;
 
 exports[`"? a  \\n: 123  \\n? b  \\n: 456  " 1`] = `
@@ -313,17 +306,13 @@ mapping (1:1 ~ 2:6)
     <mappingKey>
       <plain value="abc" />
     </mappingKey>
-    <mappingValue>
-      <null />
-    </mappingValue>
+    <null />
   </mappingItem>
   <mappingItem>
     <mappingKey>
       <plain value="def" />
     </mappingKey>
-    <mappingValue>
-      <null />
-    </mappingValue>
+    <null />
   </mappingItem>
 </mapping>
 `;
@@ -337,9 +326,7 @@ mappingItem (1:1 ~ 1:6)
   <mappingKey>
     <plain value="abc" />
   </mappingKey>
-  <mappingValue>
-    <null />
-  </mappingValue>
+  <null />
 </mappingItem>
 `;
 
@@ -352,9 +339,7 @@ mappingItem (2:1 ~ 2:6)
   <mappingKey>
     <plain value="def" />
   </mappingKey>
-  <mappingValue>
-    <null />
-  </mappingValue>
+  <null />
 </mappingItem>
 `;
 
@@ -379,23 +364,17 @@ mappingKey (2:1 ~ 2:6)
 `;
 
 exports[`"? abc\\n? def" 6`] = `
-mappingValue (1:6 ~ 1:6)
+null (-1:-1 ~ -1:-1)
 1 | ?·abc¶
-  |      ~
 2 | ?·def¶
-<mappingValue>
-  <null />
-</mappingValue>
+<null />
 `;
 
 exports[`"? abc\\n? def" 7`] = `
-mappingValue (2:6 ~ 2:6)
+null (-1:-1 ~ -1:-1)
 1 | ?·abc¶
 2 | ?·def¶
-  |      ~
-<mappingValue>
-  <null />
-</mappingValue>
+<null />
 `;
 
 exports[`"a:   " 1`] = `

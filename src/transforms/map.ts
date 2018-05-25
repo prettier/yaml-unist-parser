@@ -74,17 +74,7 @@ function transformMapItems(
             .splice(0, unshiftCount)
             .map((currentMappingKey): MappingItem => ({
               type: "mappingItem",
-              children: [
-                currentMappingKey,
-                {
-                  type: "mappingValue",
-                  children: [context.transformNode(null)],
-                  position: context.transformRange(
-                    currentMappingKey.position.end.offset,
-                  ),
-                  ...createCommentAttachableNode(),
-                },
-              ],
+              children: [currentMappingKey, context.transformNode(null)],
               position: currentMappingKey.position,
               ...createCommentAttachableNode(),
             })),

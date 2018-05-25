@@ -26,13 +26,13 @@ export interface Parent extends Node {
 export interface Content {
   anchor: null | string;
   tag: null | { verbatim: string } | { handle: string; suffix: string };
+  /** comments between the node and its tag/anchor */
+  middleComments: Comment[];
 }
 
 export interface CommentAttachable {
   /** comments in front of the node */
   leadingComments: Comment[];
-  /** comments between the node and its tag/anchor */
-  middleComments: Comment[];
   /** comments on the same line of the node */
   trailingComments: Comment[];
 }
@@ -165,11 +165,12 @@ export interface Mapping extends Parent, Content, CommentAttachable {
 
 export interface MappingItemBase extends Parent, CommentAttachable {
   /** key-value pair */
-  children: [MappingKey, MappingValue];
+  children: [MappingKey | Null, MappingValue | Null];
 }
 
 export interface MappingItem extends MappingItemBase {
   type: "mappingItem";
+  children: [MappingKey, MappingValue | Null];
 }
 
 export interface MappingKey extends Parent, CommentAttachable {
@@ -187,11 +188,11 @@ export interface Sequence extends Parent, Content, CommentAttachable {
   children: SequenceItem[];
 }
 
-export interface SequenceItemBase extends Parent, CommentAttachable {
+export interface SequenceItemBase extends Parent {
   children: [ContentNode];
 }
 
-export interface SequenceItem extends SequenceItemBase {
+export interface SequenceItem extends SequenceItemBase, CommentAttachable {
   type: "sequenceItem";
 }
 

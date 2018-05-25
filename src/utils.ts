@@ -44,13 +44,16 @@ export function assertSyntaxError(
 }
 
 export function createContentNode(): Content {
-  return { anchor: null, tag: null };
+  return {
+    anchor: null,
+    tag: null,
+    middleComments: [],
+  };
 }
 
 export function createCommentAttachableNode(): CommentAttachable {
   return {
     leadingComments: [],
-    middleComments: [],
     trailingComments: [],
   };
 }

@@ -42,12 +42,8 @@ flowMapping (1:3 ~ 1:8)
   |   ^^^^^
 <flowMapping>
   <flowMappingItem>
-    <mappingKey>
-      <null />
-    </mappingKey>
-    <mappingValue>
-      <null />
-    </mappingValue>
+    <null />
+    <null />
   </flowMappingItem>
 </flowMapping>
 `;
@@ -57,31 +53,21 @@ flowMappingItem (1:5 ~ 1:5)
 1 | ··{·,·}··¶
   |     ~
 <flowMappingItem>
-  <mappingKey>
-    <null />
-  </mappingKey>
-  <mappingValue>
-    <null />
-  </mappingValue>
+  <null />
+  <null />
 </flowMappingItem>
 `;
 
 exports[`"  { , }  " 3`] = `
-mappingKey (1:5 ~ 1:5)
+null (-1:-1 ~ -1:-1)
 1 | ··{·,·}··¶
-  |     ~
-<mappingKey>
-  <null />
-</mappingKey>
+<null />
 `;
 
 exports[`"  { , }  " 4`] = `
-mappingValue (1:5 ~ 1:5)
+null (-1:-1 ~ -1:-1)
 1 | ··{·,·}··¶
-  |     ~
-<mappingValue>
-  <null />
-</mappingValue>
+<null />
 `;
 
 exports[`"  { : }  " 1`] = `
@@ -90,9 +76,7 @@ flowMapping (1:3 ~ 1:8)
   |   ^^^^^
 <flowMapping>
   <flowMappingItem>
-    <mappingKey>
-      <null />
-    </mappingKey>
+    <null />
     <mappingValue>
       <null />
     </mappingValue>
@@ -105,9 +89,7 @@ flowMappingItem (1:5 ~ 1:6)
 1 | ··{·:·}··¶
   |     ^
 <flowMappingItem>
-  <mappingKey>
-    <null />
-  </mappingKey>
+  <null />
   <mappingValue>
     <null />
   </mappingValue>
@@ -115,12 +97,9 @@ flowMappingItem (1:5 ~ 1:6)
 `;
 
 exports[`"  { : }  " 3`] = `
-mappingKey (1:5 ~ 1:5)
+null (-1:-1 ~ -1:-1)
 1 | ··{·:·}··¶
-  |     ~
-<mappingKey>
-  <null />
-</mappingKey>
+<null />
 `;
 
 exports[`"  { : }  " 4`] = `
@@ -285,9 +264,7 @@ flowMapping (1:3 ~ 1:8)
     <mappingKey>
       <null />
     </mappingKey>
-    <mappingValue>
-      <null />
-    </mappingValue>
+    <null />
   </flowMappingItem>
 </flowMapping>
 `;
@@ -300,9 +277,7 @@ flowMappingItem (1:5 ~ 1:6)
   <mappingKey>
     <null />
   </mappingKey>
-  <mappingValue>
-    <null />
-  </mappingValue>
+  <null />
 </flowMappingItem>
 `;
 
@@ -316,12 +291,9 @@ mappingKey (1:5 ~ 1:6)
 `;
 
 exports[`"  { ? }  " 4`] = `
-mappingValue (1:6 ~ 1:6)
+null (-1:-1 ~ -1:-1)
 1 | ··{·?·}··¶
-  |      ~
-<mappingValue>
-  <null />
-</mappingValue>
+<null />
 `;
 
 exports[`"  { ? 123 : }  " 1`] = `
@@ -429,9 +401,7 @@ flowMapping (1:3 ~ 1:12)
     <mappingKey>
       <plain value="123" />
     </mappingKey>
-    <mappingValue>
-      <null />
-    </mappingValue>
+    <null />
   </flowMappingItem>
 </flowMapping>
 `;
@@ -444,9 +414,7 @@ flowMappingItem (1:5 ~ 1:10)
   <mappingKey>
     <plain value="123" />
   </mappingKey>
-  <mappingValue>
-    <null />
-  </mappingValue>
+  <null />
 </flowMappingItem>
 `;
 
@@ -460,12 +428,9 @@ mappingKey (1:5 ~ 1:10)
 `;
 
 exports[`"  { ? 123 }  " 4`] = `
-mappingValue (1:10 ~ 1:10)
+null (-1:-1 ~ -1:-1)
 1 | ··{·?·123·}··¶
-  |          ~
-<mappingValue>
-  <null />
-</mappingValue>
+<null />
 `;
 
 exports[`"  { 123 : }  " 1`] = `
@@ -573,9 +538,7 @@ flowMapping (1:3 ~ 1:10)
     <mappingKey>
       <plain value="123" />
     </mappingKey>
-    <mappingValue>
-      <null />
-    </mappingValue>
+    <null />
   </flowMappingItem>
 </flowMapping>
 `;
@@ -588,9 +551,7 @@ flowMappingItem (1:5 ~ 1:8)
   <mappingKey>
     <plain value="123" />
   </mappingKey>
-  <mappingValue>
-    <null />
-  </mappingValue>
+  <null />
 </flowMappingItem>
 `;
 
@@ -604,12 +565,9 @@ mappingKey (1:5 ~ 1:8)
 `;
 
 exports[`"  { 123 }  " 4`] = `
-mappingValue (1:8 ~ 1:8)
+null (-1:-1 ~ -1:-1)
 1 | ··{·123·}··¶
-  |        ~
-<mappingValue>
-  <null />
-</mappingValue>
+<null />
 `;
 
 exports[`"  { 123, #123\\n }  " 1`] = `
@@ -621,12 +579,11 @@ flowMapping (1:3 ~ 2:3)
 <flowMapping>
   <flowMappingItem>
     <mappingKey>
-      <plain value="123" />
+      <plain value="123">
+        <trailingComment value="123">
+      </plain>
     </mappingKey>
-    <mappingValue>
-      <trailingComment value="123">
-      <null />
-    </mappingValue>
+    <null />
   </flowMappingItem>
 </flowMapping>
 `;
@@ -638,12 +595,11 @@ flowMappingItem (1:5 ~ 1:8)
 2 | ·}··¶
 <flowMappingItem>
   <mappingKey>
-    <plain value="123" />
+    <plain value="123">
+      <trailingComment value="123">
+    </plain>
   </mappingKey>
-  <mappingValue>
-    <trailingComment value="123">
-    <null />
-  </mappingValue>
+  <null />
 </flowMappingItem>
 `;
 
@@ -653,19 +609,17 @@ mappingKey (1:5 ~ 1:8)
   |     ^^^
 2 | ·}··¶
 <mappingKey>
-  <plain value="123" />
+  <plain value="123">
+    <trailingComment value="123">
+  </plain>
 </mappingKey>
 `;
 
 exports[`"  { 123, #123\\n }  " 4`] = `
-mappingValue (1:8 ~ 1:8)
+null (-1:-1 ~ -1:-1)
 1 | ··{·123,·#123¶
-  |        ~
 2 | ·}··¶
-<mappingValue>
-  <trailingComment value="123">
-  <null />
-</mappingValue>
+<null />
 `;
 
 exports[`"  { 123, }  " 1`] = `
@@ -677,9 +631,7 @@ flowMapping (1:3 ~ 1:11)
     <mappingKey>
       <plain value="123" />
     </mappingKey>
-    <mappingValue>
-      <null />
-    </mappingValue>
+    <null />
   </flowMappingItem>
 </flowMapping>
 `;
@@ -692,9 +644,7 @@ flowMappingItem (1:5 ~ 1:8)
   <mappingKey>
     <plain value="123" />
   </mappingKey>
-  <mappingValue>
-    <null />
-  </mappingValue>
+  <null />
 </flowMappingItem>
 `;
 
@@ -708,12 +658,9 @@ mappingKey (1:5 ~ 1:8)
 `;
 
 exports[`"  { 123, }  " 4`] = `
-mappingValue (1:8 ~ 1:8)
+null (-1:-1 ~ -1:-1)
 1 | ··{·123,·}··¶
-  |        ~
-<mappingValue>
-  <null />
-</mappingValue>
+<null />
 `;
 
 exports[`"  { 123,, }  " 1`] = `
@@ -725,17 +672,11 @@ flowMapping (1:3 ~ 1:12)
     <mappingKey>
       <plain value="123" />
     </mappingKey>
-    <mappingValue>
-      <null />
-    </mappingValue>
+    <null />
   </flowMappingItem>
   <flowMappingItem>
-    <mappingKey>
-      <null />
-    </mappingKey>
-    <mappingValue>
-      <null />
-    </mappingValue>
+    <null />
+    <null />
   </flowMappingItem>
 </flowMapping>
 `;
@@ -748,9 +689,7 @@ flowMappingItem (1:5 ~ 1:8)
   <mappingKey>
     <plain value="123" />
   </mappingKey>
-  <mappingValue>
-    <null />
-  </mappingValue>
+  <null />
 </flowMappingItem>
 `;
 
@@ -764,10 +703,7 @@ mappingKey (1:5 ~ 1:8)
 `;
 
 exports[`"  { 123,, }  " 4`] = `
-mappingValue (1:8 ~ 1:8)
+null (-1:-1 ~ -1:-1)
 1 | ··{·123,,·}··¶
-  |        ~
-<mappingValue>
-  <null />
-</mappingValue>
+<null />
 `;

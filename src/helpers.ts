@@ -1,6 +1,7 @@
 import assert = require("assert");
 import { parse } from "./parse";
 import {
+  Comment,
   CommentAttachable,
   Content,
   Node,
@@ -118,13 +119,13 @@ function stringifyNode(
     .map((attribute, index) => (index === 0 ? " " + attribute : attribute))
     .join(" ");
   const comments =
-    (options.maxCommentsLevel === undefined || options.maxCommentsLevel > 0) &&
-    "leadingComments" in node
-      ? (["leadingComments", "middleComments", "trailingComments"] as Array<
-          keyof CommentAttachable
-        >)
+    options.maxCommentsLevel === undefined || options.maxCommentsLevel > 0
+      ? ([] as Array<keyof CommentAttachable | keyof Content>)
+          .concat("leadingComments" in node ? "leadingComments" : [])
+          .concat("middleComments" in node ? "middleComments" : [])
+          .concat("trailingComments" in node ? "trailingComments" : [])
           .map(key =>
-            node[key].map(
+            ((node as CommentAttachable & Content)[key] as Comment[]).map(
               comment =>
                 `<${key.slice(0, -1)} value=${JSON.stringify(comment.value)}>`,
             ),

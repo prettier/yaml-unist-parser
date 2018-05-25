@@ -150,7 +150,7 @@ export function transformNode(node: YamlNode, context: Context): YamlUnistNode {
     };
 
     if (
-      "leadingComments" in transformedNode &&
+      "middleComments" in transformedNode &&
       newStartOffset !== -1 &&
       newStartOffset <= start &&
       transformedNode.position.start.offset >= end
