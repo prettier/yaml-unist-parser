@@ -253,10 +253,7 @@ function transformFlowCollectionItems(
         end: value.position.end,
       };
       return createMappingItem(
-        createMappingKey(
-          context.transformNode(null),
-          context.transformRange(colonRange.start),
-        ),
+        context.transformNode(null),
         createMappingValue(value, valuePosition),
         valuePosition,
       );

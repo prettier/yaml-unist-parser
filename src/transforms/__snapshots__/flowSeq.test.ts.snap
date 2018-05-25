@@ -88,9 +88,7 @@ flowSequence (1:3 ~ 1:12)
   |   ^^^^^^^^^
 <flowSequence>
   <flowMappingItem>
-    <mappingKey>
-      <null />
-    </mappingKey>
+    <null />
     <mappingValue>
       <plain value="123" />
     </mappingValue>
@@ -103,9 +101,7 @@ flowMappingItem (1:5 ~ 1:10)
 1 | ··[·:·123·]··¶
   |     ^^^^^
 <flowMappingItem>
-  <mappingKey>
-    <null />
-  </mappingKey>
+  <null />
   <mappingValue>
     <plain value="123" />
   </mappingValue>
