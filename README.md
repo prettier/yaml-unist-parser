@@ -12,17 +12,24 @@ A YAML parser that produces output compatible with [unist](https://github.com/sy
 
 ```sh
 # using npm
-npm install --save yaml-unist-parser
+npm install --save yaml-unist-parser yaml@^1.0.0-beta
 
 # using yarn
-yarn add yaml-unist-parser
+yarn add yaml-unist-parser yaml@^1.0.0-beta
 ```
 
 ## Usage
 
 ```ts
-// sample code
+const yamlUnistParser = require("yaml-unist-parser");
+
+const ast = yamlUnistParser.parse(`
+- hello
+- world
+`);
 ```
+
+See [`src/types.ts`](https://github.com/ikatyang/yaml-unist-parser/blob/master/src/types.ts) for more info about the AST.
 
 ## Development
 
