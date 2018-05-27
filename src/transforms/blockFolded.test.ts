@@ -8,6 +8,8 @@ testCases([
   [">1\n  123\n  456\n\n\n", getFirstContent()],
   [">1+\n  123\n  456\n\n\n", getFirstContent()],
   [">1-\n  123\n  456\n\n\n", getFirstContent()],
+  ["> # hello\n", root => root],
+  ["> # hello \n  123\n  456\n\n\n", root => root],
   [
     "  !!str &anchor \n  # comment  \n>\n  123\n  456\n\n\n",
     [
