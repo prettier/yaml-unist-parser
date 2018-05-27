@@ -10,6 +10,7 @@ testCases([
   ...createTestCases("? a  \n: 123  \n? b  \n: 456  ", true),
   ...createTestCases("? abc\n? def", true),
   ...createTestCases("? 123"),
+  ...createTestCases("def:     456 # hello"),
   [
     "!!map\n #123 \n&anchor # 456\na: 123",
     [

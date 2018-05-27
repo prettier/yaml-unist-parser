@@ -10,6 +10,14 @@ import {
   YamlUnistNode,
 } from "./types";
 
+export function overwriteStart(node: YamlUnistNode, start: Point) {
+  node.position = { start, end: node.position.end };
+}
+
+export function overwriteEnd(node: YamlUnistNode, end: Point) {
+  node.position = { start: node.position.start, end };
+}
+
 export function getLast<T>(array: T[]) {
   return array[array.length - 1] as T | undefined;
 }
@@ -84,4 +92,31 @@ export function getStartPoint(node: YamlUnistNode): Point {
       : tagPosition
         ? tagPosition.start
         : (anchorPosition as Position).start;
+}
+
+export function updateEndPoints(
+  node: YamlUnistNode,
+  nodeStack: YamlUnistNode[] = [],
+): void {
+  if ("children" in node && node.children.length !== 0) {
+    (node.children as YamlUnistNode[]).forEach(childNode => {
+      updateEndPoints(childNode, nodeStack.concat(node));
+    });
+  }
+
+  if (nodeStack.length !== 0) {
+    const parentNode = nodeStack[nodeStack.length - 1];
+    if ("trailingComments" in node && node.trailingComments.length !== 0) {
+      const lastTrailingComment =
+        node.trailingComments[node.trailingComments.length - 1];
+      if (
+        lastTrailingComment.position.end.offset > parentNode.position.end.offset
+      ) {
+        overwriteEnd(parentNode, lastTrailingComment.position.end);
+      }
+    }
+    if (node.position.end.offset > parentNode.position.end.offset) {
+      overwriteEnd(parentNode, node.position.end);
+    }
+  }
 }

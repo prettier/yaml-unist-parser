@@ -6,7 +6,7 @@ import {
   Root,
   YamlUnistNode,
 } from "./types";
-import { defineCommentParent, getStartPoint } from "./utils";
+import { defineCommentParent, getStartPoint, updateEndPoints } from "./utils";
 
 type NodeTable = Array<{
   leadingNode: null | Extract<YamlUnistNode, CommentAttachable>;
@@ -34,6 +34,8 @@ export function attachComments(root: Root, context: Context): void {
       }
       attachComment(comment, nodeTable, restDocuments[0]);
     });
+
+  updateEndPoints(root);
 }
 
 function initNodeTable(

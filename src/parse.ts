@@ -5,7 +5,7 @@ import { Context, transformNode } from "./transform";
 import { transformOffset } from "./transforms/offset";
 import { transformRange } from "./transforms/range";
 import { Comment, Root } from "./types";
-import { assertSyntaxError } from "./utils";
+import { assertSyntaxError, overwriteEnd, overwriteStart } from "./utils";
 
 export function parse(text: string): Root {
   const rawDocuments = parseAST(text);
@@ -32,7 +32,7 @@ export function parse(text: string): Root {
       .map(context.transformNode)
       .map((document, index, documents) => {
         if (index === 0) {
-          document.position.start = rootPosition.start;
+          overwriteStart(document, rootPosition.start);
         }
         if (
           text.slice(
@@ -46,8 +46,8 @@ export function parse(text: string): Root {
               : context.transformOffset(
                   documents[index + 1].position.start.offset - 1,
                 );
-          document.position.end = end;
-          document.children[1].position.end = end;
+          overwriteEnd(document, end);
+          overwriteEnd(document.children[1], end);
         }
         return document;
       }),
