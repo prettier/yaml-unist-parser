@@ -888,3 +888,23 @@ documentBody (4:1 ~ 5:1)
   </sequence>
 </documentBody>
 `;
+
+exports[`"---\\nhello\\n... #documentEndComment\\n" 1`] = `
+document (1:1 ~ 3:4)
+1 | ---¶
+  | ^^^^
+2 | hello¶
+  | ^^^^^^
+3 | ...·#documentEndComment¶
+  | ^^^
+4 | ¶
+<document>
+  <trailingComment value="documentEndComment">
+  <documentHead>
+
+  </documentHead>
+  <documentBody>
+    <plain value="hello" />
+  </documentBody>
+</document>
+`;

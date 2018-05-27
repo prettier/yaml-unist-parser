@@ -125,9 +125,13 @@ export interface Root extends Parent {
   comments: Comment[];
 }
 
-export interface Document extends Parent {
+export interface Document extends Parent, CommentAttachable {
   type: "document";
   children: [DocumentHead, DocumentBody];
+  /** always 0 */
+  leadingComments: Comment[];
+  /** only attachable on `...` */
+  trailingComments: Comment[];
 }
 
 export interface DocumentHead extends Parent {
@@ -155,6 +159,8 @@ export interface BlockValue extends Node, Content, CommentAttachable {
   chomping: "clip" | "keep" | "strip";
   indent: null | number;
   value: string;
+  /** always 0 */
+  trailingComments: Comment[];
 }
 
 export interface BlockLiteral extends BlockValue {

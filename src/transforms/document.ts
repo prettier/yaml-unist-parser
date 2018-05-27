@@ -1,7 +1,11 @@
 import assert = require("assert");
 import { Context } from "../transform";
 import { Document, DocumentHead, Position } from "../types";
-import { defineCommentParent, getLast } from "../utils";
+import {
+  createCommentAttachableNode,
+  defineCommentParent,
+  getLast,
+} from "../utils";
 
 export function transformDocument(
   document: yaml.Document,
@@ -53,7 +57,7 @@ export function transformDocument(
   })(context.text.slice(0, document.valueRange!.start));
 
   const bodyPosition: Position = (text => {
-    const match = text.match(/^\s*\.\.\.(\s*\n|$)/);
+    const match = text.match(/^\s*\.\.\.(\s*(#[^\n]*)?\n|$)/);
     const marker = "...";
     const markerIndex = match
       ? context.text.indexOf(marker, document.valueRange!.end + match.index!)
@@ -102,5 +106,6 @@ export function transformDocument(
         position: bodyPosition,
       },
     ],
+    ...createCommentAttachableNode(),
   };
 }
