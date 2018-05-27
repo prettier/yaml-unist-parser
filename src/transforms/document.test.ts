@@ -18,6 +18,7 @@ testCases([
   ["\n%AAA\n---\n123\n\n...\n\n---\n\n456\n\n", selectors],
   ["\n%AAA\n---\n123\n\n...\n\n%BBB\n---\n\n456\n\n", selectors],
   ["- AAA\n# comment\n---\n- BBB", selectors],
+  ["---\nhello\n... #documentEndComment\n", getDocument(0)],
 ]);
 
 function getDocument(documentIndex: number) {

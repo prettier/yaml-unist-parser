@@ -19,7 +19,7 @@ export function attachComments(root: Root, context: Context): void {
     trailingNode: null,
   }));
 
-  initNodeTable(root, nodeTable);
+  initNodeTable(root, nodeTable, context);
 
   const restDocuments = root.children.slice();
   context.comments
@@ -36,7 +36,11 @@ export function attachComments(root: Root, context: Context): void {
     });
 }
 
-function initNodeTable(node: YamlUnistNode, nodeTable: NodeTable): void {
+function initNodeTable(
+  node: YamlUnistNode,
+  nodeTable: NodeTable,
+  context: Context,
+): void {
   if ("leadingComments" in node) {
     const start = getStartPoint(node);
     const { end } = node.position;
@@ -45,20 +49,30 @@ function initNodeTable(node: YamlUnistNode, nodeTable: NodeTable): void {
     const currentEndNode = nodeTable[end.line - 1].trailingNode;
 
     if (
-      !currentStartNode ||
-      start.column < currentStartNode.position.start.column
+      node.type !== "document" &&
+      (!currentStartNode ||
+        start.column < currentStartNode.position.start.column)
     ) {
       nodeTable[start.line - 1].leadingNode = node;
     }
 
-    if (!currentEndNode || end.column >= currentEndNode.position.end.column) {
+    if (
+      !(
+        node.type === "document" &&
+        context.text.slice(
+          node.position.end.offset - 4,
+          node.position.end.offset,
+        ) !== "\n..."
+      ) &&
+      (!currentEndNode || end.column >= currentEndNode.position.end.column)
+    ) {
       nodeTable[end.line - 1].trailingNode = node;
     }
   }
 
   if ("children" in node) {
     (node.children as YamlUnistNode[]).forEach(child =>
-      initNodeTable(child, nodeTable),
+      initNodeTable(child, nodeTable, context),
     );
   }
 }
