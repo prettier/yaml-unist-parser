@@ -164,6 +164,14 @@ export function transformNode(node: YamlNode, context: Context): YamlUnistNode {
     ) {
       defineCommentParent(comment, transformedNode);
       transformedNode.middleComments.push(comment);
+    } else if (
+      (transformedNode.type === "blockFolded" ||
+        transformedNode.type === "blockLiteral") &&
+      (transformedNode.position.start.offset < start &&
+        transformedNode.position.end.offset > end)
+    ) {
+      defineCommentParent(comment, transformedNode);
+      transformedNode.trailingComments.push(comment);
     }
     context.comments.push(comment);
   });

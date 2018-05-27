@@ -57,8 +57,9 @@ root (1:1 ~ 6:1)
 
     </documentHead>
     <documentBody>
-      <blockLiteral chomping="clip" indent=null value="123\\n456\\n" />
-      <comment value=" hello " />
+      <blockLiteral chomping="clip" indent=null value="123\\n456\\n">
+        <trailingComment value=" hello ">
+      </blockLiteral>
     </documentBody>
   </document>
 </root>
@@ -76,8 +77,9 @@ root (1:1 ~ 2:1)
 
     </documentHead>
     <documentBody>
-      <blockLiteral chomping="clip" indent=null value="" />
-      <comment value=" hello" />
+      <blockLiteral chomping="clip" indent=null value="">
+        <trailingComment value=" hello">
+      </blockLiteral>
     </documentBody>
   </document>
 </root>
