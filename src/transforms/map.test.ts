@@ -1,5 +1,12 @@
-import { getFirstContent, TestCase, testCases } from "../helpers";
+import {
+  getFirstContent,
+  TestCase,
+  testCases,
+  testSyntaxError,
+} from "../helpers";
 import { Mapping, Root } from "../types";
+
+testSyntaxError("asd: 123\nqwe\n");
 
 testCases([
   ...createTestCases(":   "),

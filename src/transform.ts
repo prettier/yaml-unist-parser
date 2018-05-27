@@ -41,7 +41,7 @@ import {
   SequenceItem,
   YamlUnistNode,
 } from "./types";
-import { defineCommentParent } from "./utils";
+import { defineCommentParent, getRange } from "./utils";
 
 export type YamlNode =
   | null
@@ -101,10 +101,7 @@ export function transformNode(node: YamlNode, context: Context): YamlUnistNode {
   context.assertSyntaxError(
     node.error === null,
     () => node.error!.message,
-    () =>
-      context.transformRange(
-        /* istanbul ignore next */ (node.range || node.valueRange)!,
-      ),
+    () => context.transformRange(getRange(node)),
   );
 
   const transformedNode = _transformNode(node, context);

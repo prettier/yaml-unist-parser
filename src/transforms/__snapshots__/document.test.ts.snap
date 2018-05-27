@@ -908,3 +908,11 @@ document (1:1 ~ 3:4)
   </documentBody>
 </document>
 `;
+
+exports[`Multiple content nodes are not allowed in a document. 1`] = `
+"Multiple content nodes are not allowed in a document.
+1 | -·123¶
+2 | a:¶
+  | ^^
+3 | ¶"
+`;

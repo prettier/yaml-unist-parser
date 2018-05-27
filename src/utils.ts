@@ -120,3 +120,7 @@ export function updateEndPoints(
     }
   }
 }
+
+export function getRange(node: yaml.Node) {
+  return /* istanbul ignore next */ (node.valueRange || node.range)!;
+}

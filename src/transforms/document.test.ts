@@ -1,4 +1,4 @@
-import { testCases } from "../helpers";
+import { testCases, testSyntaxError } from "../helpers";
 import { Root } from "../types";
 
 const selectors = [
@@ -9,6 +9,8 @@ const selectors = [
   getDocumentBody(0),
   getDocumentBody(1),
 ];
+
+testSyntaxError(`- 123\na:\n`);
 
 testCases([
   ["\n123\n\n---\n\n456\n\n", selectors],

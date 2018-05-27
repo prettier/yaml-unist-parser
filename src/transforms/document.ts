@@ -40,6 +40,12 @@ export function transformDocument(
     return true;
   });
 
+  context.assertSyntaxError(
+    contentsWithoutComments.length <= 1,
+    "Multiple content nodes are not allowed in a document.",
+    () => contentsWithoutComments[1].position,
+  );
+
   const headPosition: Position = (text => {
     const match = text.match(/(^|\n)---\s*$/);
     const marker = "---";
