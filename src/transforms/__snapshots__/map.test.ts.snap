@@ -567,3 +567,57 @@ mappingValue (2:2 ~ 2:7)
   <plain value="456" />
 </mappingValue>
 `;
+
+exports[`"def:     456 # hello" 1`] = `
+mapping (1:1 ~ 1:21)
+1 | def:·····456·#·hello¶
+  | ^^^^^^^^^^^^^^^^^^^^
+<mapping>
+  <mappingItem>
+    <mappingKey>
+      <plain value="def" />
+    </mappingKey>
+    <mappingValue>
+      <plain value="456">
+        <trailingComment value=" hello">
+      </plain>
+    </mappingValue>
+  </mappingItem>
+</mapping>
+`;
+
+exports[`"def:     456 # hello" 2`] = `
+mappingItem (1:1 ~ 1:21)
+1 | def:·····456·#·hello¶
+  | ^^^^^^^^^^^^^^^^^^^^
+<mappingItem>
+  <mappingKey>
+    <plain value="def" />
+  </mappingKey>
+  <mappingValue>
+    <plain value="456">
+      <trailingComment value=" hello">
+    </plain>
+  </mappingValue>
+</mappingItem>
+`;
+
+exports[`"def:     456 # hello" 3`] = `
+mappingKey (1:1 ~ 1:4)
+1 | def:·····456·#·hello¶
+  | ^^^
+<mappingKey>
+  <plain value="def" />
+</mappingKey>
+`;
+
+exports[`"def:     456 # hello" 4`] = `
+mappingValue (1:4 ~ 1:21)
+1 | def:·····456·#·hello¶
+  |    ^^^^^^^^^^^^^^^^^
+<mappingValue>
+  <plain value="456">
+    <trailingComment value=" hello">
+  </plain>
+</mappingValue>
+`;

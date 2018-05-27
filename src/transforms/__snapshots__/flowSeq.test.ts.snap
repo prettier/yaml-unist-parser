@@ -375,9 +375,9 @@ flowSequence (1:3 ~ 2:3)
 `;
 
 exports[`"  [ 123, #123\\n ]  " 2`] = `
-flowSequenceItem (1:5 ~ 1:8)
+flowSequenceItem (1:5 ~ 1:14)
 1 | ··[·123,·#123¶
-  |     ^^^
+  |     ^^^^^^^^^
 2 | ·]··¶
 <flowSequenceItem>
   <plain value="123">

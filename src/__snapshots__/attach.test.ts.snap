@@ -252,7 +252,7 @@ comment (50:1 ~ 50:81)
     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
  51 | ¶
  52 | seq:¶
-mappingItem (52:1 ~ 66:30)
+mappingItem (52:1 ~ 66:68)
 <mappingItem>
   <leadingComment value=" http://yaml.org/type/seq.html -----------------------------------------------#">
 </mappingItem>
@@ -266,7 +266,7 @@ comment (53:3 ~ 53:30)
     |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
  54 | ··Block·style:·!!seq¶
  55 | ··-·Mercury···#·Rotates·-·no·light/dark·sides.¶
-mapping (54:3 ~ 66:30)
+mapping (54:3 ~ 66:68)
 <mapping>
   <leadingComment value=" Ordered sequence of nodes">
 </mapping>
