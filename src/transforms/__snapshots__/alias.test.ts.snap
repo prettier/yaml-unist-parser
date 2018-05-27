@@ -5,7 +5,7 @@ alias (1:17 ~ 1:21)
 1 | ··!!tag·&anchor·*123··¶
   |                 ^^^^
 <alias value="123">
-  <handleTag handle="!!" suffix="tag" />
+  <shorthandTag handle="!!" suffix="tag" />
   <anchor value="anchor" />
 </alias>
 `;

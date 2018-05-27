@@ -175,15 +175,20 @@ export function transformNode(node: YamlNode, context: Context): YamlUnistNode {
       "verbatim" in tag
         ? {
             type: "verbatimTag",
-            verbatim: tag.verbatim,
+            value: tag.verbatim,
             position: context.transformRange(tagRange),
           }
-        : {
-            type: "handleTag",
-            handle: tag.handle,
-            suffix: tag.suffix,
-            position: context.transformRange(tagRange),
-          };
+        : tag.handle === "!" && tag.suffix === ""
+          ? {
+              type: "nonSpecificTag",
+              position: context.transformRange(tagRange),
+            }
+          : {
+              type: "shorthandTag",
+              handle: tag.handle,
+              suffix: tag.suffix,
+              position: context.transformRange(tagRange),
+            };
   }
 
   if (anchorRange) {

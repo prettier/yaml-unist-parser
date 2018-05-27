@@ -8,7 +8,7 @@ mapping (4:1 ~ 4:7)
 4 | a:·123¶
   | ^^^^^^
 <mapping>
-  <handleTag handle="!!" suffix="map" />
+  <shorthandTag handle="!!" suffix="map" />
   <anchor value="anchor" />
   <middleComment value="123 ">
   <middleComment value=" 456">

@@ -8,7 +8,7 @@ flowMapping (4:2 ~ 4:4)
 4 | ·{}··¶
   |  ^^
 <flowMapping>
-  <handleTag handle="!!" suffix="map" />
+  <shorthandTag handle="!!" suffix="map" />
   <anchor value="anchor" />
   <middleComment value="123 ">
   <middleComment value=" 456 ">

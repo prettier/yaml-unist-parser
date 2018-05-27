@@ -3,6 +3,7 @@ import { Plain } from "../types";
 
 testCases([
   ["   123   ", getFirstContent()],
+  [" ! 12  ", root => getFirstContent<Plain>(root).tag],
   [
     "# comment\n&anchor !<tag> 123",
     [

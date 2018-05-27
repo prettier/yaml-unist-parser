@@ -10,7 +10,7 @@ sequence (4:1 ~ 5:6)
 5 | -·456··¶
   | ^^^^^
 <sequence>
-  <handleTag handle="!!" suffix="set" />
+  <shorthandTag handle="!!" suffix="set" />
   <anchor value="anchor" />
   <middleComment value="comment1">
   <middleComment value="comment2   ">

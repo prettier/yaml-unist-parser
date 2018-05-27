@@ -14,7 +14,7 @@ quoteSingle (3:3 ~ 3:8)
 3 | ··'123'···¶
   |   ^^^^^
 <quoteSingle value="123">
-  <handleTag handle="!!" suffix="str" />
+  <shorthandTag handle="!!" suffix="str" />
   <anchor value="anchor" />
   <middleComment value=" comment 1 ">
   <middleComment value=" comment 2 ">

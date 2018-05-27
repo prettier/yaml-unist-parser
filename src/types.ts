@@ -25,7 +25,7 @@ export interface Parent extends Node {
 
 export interface Content {
   anchor: Null | Anchor;
-  tag: Null | VerbatimTag | HandleTag;
+  tag: Null | VerbatimTag | ShorthandTag | NonSpecificTag;
   /** comments between the node and its tag/anchor */
   middleComments: Comment[];
 }
@@ -45,7 +45,8 @@ export interface YAMLSyntaxError extends SyntaxError {
 export type YamlUnistNode =
   | Comment
   | VerbatimTag
-  | HandleTag
+  | ShorthandTag
+  | NonSpecificTag
   | Anchor
   | Root
   | Document
@@ -105,13 +106,17 @@ export interface Anchor extends Node {
 
 export interface VerbatimTag extends Node {
   type: "verbatimTag";
-  verbatim: string;
+  value: string;
 }
 
-export interface HandleTag extends Node {
-  type: "handleTag";
+export interface ShorthandTag extends Node {
+  type: "shorthandTag";
   handle: string;
   suffix: string;
+}
+
+export interface NonSpecificTag extends Node {
+  type: "nonSpecificTag";
 }
 
 export interface Root extends Parent {

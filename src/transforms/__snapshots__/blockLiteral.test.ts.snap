@@ -17,7 +17,7 @@ blockLiteral (3:1 ~ 8:1)
 8 | ¶
   | ^
 <blockLiteral chomping="clip" indent=null value="123\\n456\\n">
-  <handleTag handle="!!" suffix="str" />
+  <shorthandTag handle="!!" suffix="str" />
   <anchor value="anchor" />
   <middleComment value=" comment  ">
 </blockLiteral>
