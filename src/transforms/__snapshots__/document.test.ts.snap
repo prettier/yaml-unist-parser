@@ -1,8 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`"\\n%AAA\\n---\\n123\\n\\n...\\n\\n%BBB\\n---\\n\\n456\\n\\n" 1`] = `
-document (2:1 ~ 6:4)
+document (1:1 ~ 6:4)
  1 | ¶
+   | ^
  2 | %AAA¶
    | ^^^^^
  3 | ---¶
@@ -31,7 +32,7 @@ document (2:1 ~ 6:4)
 `;
 
 exports[`"\\n%AAA\\n---\\n123\\n\\n...\\n\\n%BBB\\n---\\n\\n456\\n\\n" 2`] = `
-document (8:1 ~ 11:4)
+document (8:1 ~ 13:1)
  1 | ¶
  2 | %AAA¶
  3 | ---¶
@@ -46,9 +47,11 @@ document (8:1 ~ 11:4)
 10 | ¶
    | ^
 11 | 456¶
-   | ^^^
+   | ^^^^
 12 | ¶
+   | ^
 13 | ¶
+   | ^
 <document>
   <documentHead>
     <directive name="BBB" parameters=[] />
@@ -127,7 +130,7 @@ documentBody (4:1 ~ 6:4)
 `;
 
 exports[`"\\n%AAA\\n---\\n123\\n\\n...\\n\\n%BBB\\n---\\n\\n456\\n\\n" 6`] = `
-documentBody (11:1 ~ 11:4)
+documentBody (11:1 ~ 13:1)
  1 | ¶
  2 | %AAA¶
  3 | ---¶
@@ -139,17 +142,20 @@ documentBody (11:1 ~ 11:4)
  9 | ---¶
 10 | ¶
 11 | 456¶
-   | ^^^
+   | ^^^^
 12 | ¶
+   | ^
 13 | ¶
+   | ^
 <documentBody>
   <plain value="456" />
 </documentBody>
 `;
 
 exports[`"\\n%AAA\\n---\\n123\\n\\n...\\n\\n---\\n\\n456\\n\\n" 1`] = `
-document (2:1 ~ 6:4)
+document (1:1 ~ 6:4)
  1 | ¶
+   | ^
  2 | %AAA¶
    | ^^^^^
  3 | ---¶
@@ -177,7 +183,7 @@ document (2:1 ~ 6:4)
 `;
 
 exports[`"\\n%AAA\\n---\\n123\\n\\n...\\n\\n---\\n\\n456\\n\\n" 2`] = `
-document (8:1 ~ 10:4)
+document (8:1 ~ 12:1)
  1 | ¶
  2 | %AAA¶
  3 | ---¶
@@ -190,9 +196,11 @@ document (8:1 ~ 10:4)
  9 | ¶
    | ^
 10 | 456¶
-   | ^^^
+   | ^^^^
 11 | ¶
+   | ^
 12 | ¶
+   | ^
 <document>
   <documentHead>
 
@@ -267,7 +275,7 @@ documentBody (4:1 ~ 6:4)
 `;
 
 exports[`"\\n%AAA\\n---\\n123\\n\\n...\\n\\n---\\n\\n456\\n\\n" 6`] = `
-documentBody (10:1 ~ 10:4)
+documentBody (10:1 ~ 12:1)
  1 | ¶
  2 | %AAA¶
  3 | ---¶
@@ -278,17 +286,20 @@ documentBody (10:1 ~ 10:4)
  8 | ---¶
  9 | ¶
 10 | 456¶
-   | ^^^
+   | ^^^^
 11 | ¶
+   | ^
 12 | ¶
+   | ^
 <documentBody>
   <plain value="456" />
 </documentBody>
 `;
 
 exports[`"\\n%AAA\\n---\\n123\\n\\n...\\n\\n456\\n\\n" 1`] = `
-document (2:1 ~ 6:4)
+document (1:1 ~ 6:4)
  1 | ¶
+   | ^
  2 | %AAA¶
    | ^^^^^
  3 | ---¶
@@ -314,7 +325,7 @@ document (2:1 ~ 6:4)
 `;
 
 exports[`"\\n%AAA\\n---\\n123\\n\\n...\\n\\n456\\n\\n" 2`] = `
-document (8:1 ~ 8:4)
+document (8:1 ~ 10:1)
  1 | ¶
  2 | %AAA¶
  3 | ---¶
@@ -323,9 +334,11 @@ document (8:1 ~ 8:4)
  6 | ...¶
  7 | ¶
  8 | 456¶
-   | ^^^
+   | ^^^^
  9 | ¶
+   | ^
 10 | ¶
+   | ^
 <document>
   <documentHead>
 
@@ -394,7 +407,7 @@ documentBody (4:1 ~ 6:4)
 `;
 
 exports[`"\\n%AAA\\n---\\n123\\n\\n...\\n\\n456\\n\\n" 6`] = `
-documentBody (8:1 ~ 8:4)
+documentBody (8:1 ~ 10:1)
  1 | ¶
  2 | %AAA¶
  3 | ---¶
@@ -403,24 +416,28 @@ documentBody (8:1 ~ 8:4)
  6 | ...¶
  7 | ¶
  8 | 456¶
-   | ^^^
+   | ^^^^
  9 | ¶
+   | ^
 10 | ¶
+   | ^
 <documentBody>
   <plain value="456" />
 </documentBody>
 `;
 
 exports[`"\\n%AAA\\n---\\n123\\n\\n---\\n\\n456\\n\\n" 1`] = `
-document (2:1 ~ 4:4)
+document (1:1 ~ 5:1)
  1 | ¶
+   | ^
  2 | %AAA¶
    | ^^^^^
  3 | ---¶
    | ^^^^
  4 | 123¶
-   | ^^^
+   | ^^^^
  5 | ¶
+   | ^
  6 | ---¶
  7 | ¶
  8 | 456¶
@@ -437,7 +454,7 @@ document (2:1 ~ 4:4)
 `;
 
 exports[`"\\n%AAA\\n---\\n123\\n\\n---\\n\\n456\\n\\n" 2`] = `
-document (6:1 ~ 8:4)
+document (6:1 ~ 10:1)
  1 | ¶
  2 | %AAA¶
  3 | ---¶
@@ -448,9 +465,11 @@ document (6:1 ~ 8:4)
  7 | ¶
    | ^
  8 | 456¶
-   | ^^^
+   | ^^^^
  9 | ¶
+   | ^
 10 | ¶
+   | ^
 <document>
   <documentHead>
 
@@ -499,13 +518,14 @@ documentHead (6:1 ~ 6:4)
 `;
 
 exports[`"\\n%AAA\\n---\\n123\\n\\n---\\n\\n456\\n\\n" 5`] = `
-documentBody (4:1 ~ 4:4)
+documentBody (4:1 ~ 5:1)
  1 | ¶
  2 | %AAA¶
  3 | ---¶
  4 | 123¶
-   | ^^^
+   | ^^^^
  5 | ¶
+   | ^
  6 | ---¶
  7 | ¶
  8 | 456¶
@@ -517,7 +537,7 @@ documentBody (4:1 ~ 4:4)
 `;
 
 exports[`"\\n%AAA\\n---\\n123\\n\\n---\\n\\n456\\n\\n" 6`] = `
-documentBody (8:1 ~ 8:4)
+documentBody (8:1 ~ 10:1)
  1 | ¶
  2 | %AAA¶
  3 | ---¶
@@ -526,17 +546,20 @@ documentBody (8:1 ~ 8:4)
  6 | ---¶
  7 | ¶
  8 | 456¶
-   | ^^^
+   | ^^^^
  9 | ¶
+   | ^
 10 | ¶
+   | ^
 <documentBody>
   <plain value="456" />
 </documentBody>
 `;
 
 exports[`"\\n123\\n\\n...\\n\\n456\\n\\n" 1`] = `
-document (2:1 ~ 4:4)
+document (1:1 ~ 4:4)
 1 | ¶
+  | ^
 2 | 123¶
   | ^^^^
 3 | ¶
@@ -558,16 +581,18 @@ document (2:1 ~ 4:4)
 `;
 
 exports[`"\\n123\\n\\n...\\n\\n456\\n\\n" 2`] = `
-document (6:1 ~ 6:4)
+document (6:1 ~ 8:1)
 1 | ¶
 2 | 123¶
 3 | ¶
 4 | ...¶
 5 | ¶
 6 | 456¶
-  | ^^^
+  | ^^^^
 7 | ¶
+  | ^
 8 | ¶
+  | ^
 <document>
   <documentHead>
 
@@ -629,27 +654,31 @@ documentBody (2:1 ~ 4:4)
 `;
 
 exports[`"\\n123\\n\\n...\\n\\n456\\n\\n" 6`] = `
-documentBody (6:1 ~ 6:4)
+documentBody (6:1 ~ 8:1)
 1 | ¶
 2 | 123¶
 3 | ¶
 4 | ...¶
 5 | ¶
 6 | 456¶
-  | ^^^
+  | ^^^^
 7 | ¶
+  | ^
 8 | ¶
+  | ^
 <documentBody>
   <plain value="456" />
 </documentBody>
 `;
 
 exports[`"\\n123\\n\\n---\\n\\n456\\n\\n" 1`] = `
-document (2:1 ~ 2:4)
+document (1:1 ~ 3:1)
 1 | ¶
+  | ^
 2 | 123¶
-  | ^^^
+  | ^^^^
 3 | ¶
+  | ^
 4 | ---¶
 5 | ¶
 6 | 456¶
@@ -666,7 +695,7 @@ document (2:1 ~ 2:4)
 `;
 
 exports[`"\\n123\\n\\n---\\n\\n456\\n\\n" 2`] = `
-document (4:1 ~ 6:4)
+document (4:1 ~ 8:1)
 1 | ¶
 2 | 123¶
 3 | ¶
@@ -675,9 +704,11 @@ document (4:1 ~ 6:4)
 5 | ¶
   | ^
 6 | 456¶
-  | ^^^
+  | ^^^^
 7 | ¶
+  | ^
 8 | ¶
+  | ^
 <document>
   <documentHead>
 
@@ -721,11 +752,12 @@ documentHead (4:1 ~ 4:4)
 `;
 
 exports[`"\\n123\\n\\n---\\n\\n456\\n\\n" 5`] = `
-documentBody (2:1 ~ 2:4)
+documentBody (2:1 ~ 3:1)
 1 | ¶
 2 | 123¶
-  | ^^^
+  | ^^^^
 3 | ¶
+  | ^
 4 | ---¶
 5 | ¶
 6 | 456¶
@@ -737,17 +769,122 @@ documentBody (2:1 ~ 2:4)
 `;
 
 exports[`"\\n123\\n\\n---\\n\\n456\\n\\n" 6`] = `
-documentBody (6:1 ~ 6:4)
+documentBody (6:1 ~ 8:1)
 1 | ¶
 2 | 123¶
 3 | ¶
 4 | ---¶
 5 | ¶
 6 | 456¶
-  | ^^^
+  | ^^^^
 7 | ¶
+  | ^
 8 | ¶
+  | ^
 <documentBody>
   <plain value="456" />
+</documentBody>
+`;
+
+exports[`"- AAA\\n# comment\\n---\\n- BBB" 1`] = `
+document (1:1 ~ 2:10)
+1 | -·AAA¶
+  | ^^^^^^
+2 | #·comment¶
+  | ^^^^^^^^^
+3 | ---¶
+4 | -·BBB¶
+<document>
+  <documentHead>
+
+  </documentHead>
+  <documentBody>
+    <sequence>
+      <sequenceItem>
+        <plain value="AAA" />
+      </sequenceItem>
+    </sequence>
+    <comment value=" comment" />
+  </documentBody>
+</document>
+`;
+
+exports[`"- AAA\\n# comment\\n---\\n- BBB" 2`] = `
+document (3:1 ~ 5:1)
+1 | -·AAA¶
+2 | #·comment¶
+3 | ---¶
+  | ^^^^
+4 | -·BBB¶
+  | ^^^^^^
+<document>
+  <documentHead>
+
+  </documentHead>
+  <documentBody>
+    <sequence>
+      <sequenceItem>
+        <plain value="BBB" />
+      </sequenceItem>
+    </sequence>
+  </documentBody>
+</document>
+`;
+
+exports[`"- AAA\\n# comment\\n---\\n- BBB" 3`] = `
+documentHead (1:1 ~ 1:1)
+1 | -·AAA¶
+  | ~
+2 | #·comment¶
+3 | ---¶
+4 | -·BBB¶
+<documentHead>
+
+</documentHead>
+`;
+
+exports[`"- AAA\\n# comment\\n---\\n- BBB" 4`] = `
+documentHead (3:1 ~ 3:4)
+1 | -·AAA¶
+2 | #·comment¶
+3 | ---¶
+  | ^^^
+4 | -·BBB¶
+<documentHead>
+
+</documentHead>
+`;
+
+exports[`"- AAA\\n# comment\\n---\\n- BBB" 5`] = `
+documentBody (1:1 ~ 2:10)
+1 | -·AAA¶
+  | ^^^^^^
+2 | #·comment¶
+  | ^^^^^^^^^
+3 | ---¶
+4 | -·BBB¶
+<documentBody>
+  <sequence>
+    <sequenceItem>
+      <plain value="AAA" />
+    </sequenceItem>
+  </sequence>
+  <comment value=" comment" />
+</documentBody>
+`;
+
+exports[`"- AAA\\n# comment\\n---\\n- BBB" 6`] = `
+documentBody (4:1 ~ 5:1)
+1 | -·AAA¶
+2 | #·comment¶
+3 | ---¶
+4 | -·BBB¶
+  | ^^^^^^
+<documentBody>
+  <sequence>
+    <sequenceItem>
+      <plain value="BBB" />
+    </sequenceItem>
+  </sequence>
 </documentBody>
 `;
