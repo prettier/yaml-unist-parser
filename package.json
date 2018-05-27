@@ -33,7 +33,7 @@
     "@types/node": "4.2.23",
     "@types/yaml": "file:types/yaml",
     "jest": "21.2.1",
-    "prettier": "1.12.1",
+    "prettier": "1.13.0",
     "standard-version": "4.4.0",
     "ts-jest": "21.2.4",
     "tslint": "5.10.0",
