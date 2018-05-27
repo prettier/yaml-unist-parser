@@ -159,7 +159,7 @@ export interface BlockValue extends Node, Content, CommentAttachable {
   chomping: "clip" | "keep" | "strip";
   indent: null | number;
   value: string;
-  /** always 0 */
+  /** comments between indicator and value */
   trailingComments: Comment[];
 }
 

@@ -37,6 +37,54 @@ comment (2:3 ~ 2:14)
 <comment value=" comment  " />
 `;
 
+exports[`"> # hello \\n  123\\n  456\\n\\n\\n" 1`] = `
+root (1:1 ~ 6:1)
+1 | >·#·hello·¶
+  | ^^^^^^^^^^^
+2 | ··123¶
+  | ^^^^^^
+3 | ··456¶
+  | ^^^^^^
+4 | ¶
+  | ^
+5 | ¶
+  | ^
+6 | ¶
+  | ^
+<root>
+  <document>
+    <documentHead>
+
+    </documentHead>
+    <documentBody>
+      <blockFolded chomping="clip" indent=null value="123 456\\n">
+        <trailingComment value=" hello ">
+      </blockFolded>
+    </documentBody>
+  </document>
+</root>
+`;
+
+exports[`"> # hello\\n" 1`] = `
+root (1:1 ~ 2:1)
+1 | >·#·hello¶
+  | ^^^^^^^^^^
+2 | ¶
+  | ^
+<root>
+  <document>
+    <documentHead>
+
+    </documentHead>
+    <documentBody>
+      <blockFolded chomping="clip" indent=null value="">
+        <trailingComment value=" hello">
+      </blockFolded>
+    </documentBody>
+  </document>
+</root>
+`;
+
 exports[`">+\\n  123\\n  456\\n\\n\\n" 1`] = `
 blockFolded (1:1 ~ 6:1)
 1 | >+¶
