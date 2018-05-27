@@ -1,7 +1,19 @@
 import { getFirstContent, testCases } from "../helpers";
 import { Plain } from "../types";
 
-testCases([["   123   ", getFirstContent()]]);
+testCases([
+  ["   123   ", getFirstContent()],
+  [" ! 12  ", root => getFirstContent<Plain>(root).tag],
+  [
+    "# comment\n&anchor !<tag> 123",
+    [
+      getFirstContent(),
+      root => getFirstContent<Plain>(root).tag,
+      root => getFirstContent<Plain>(root).anchor,
+      root => root.comments,
+    ],
+  ],
+]);
 testCases([
   [
     " !!str # comment 1 \n &anchor # comment 2 \n  123   ",

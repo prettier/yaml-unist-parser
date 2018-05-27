@@ -3,6 +3,8 @@ import {
   Comment,
   CommentAttachable,
   Content,
+  Null,
+  Point,
   Position,
   YAMLSyntaxError,
   YamlUnistNode,
@@ -45,8 +47,8 @@ export function assertSyntaxError(
 
 export function createContentNode(): Content {
   return {
-    anchor: null,
-    tag: null,
+    anchor: createNull(),
+    tag: createNull(),
     middleComments: [],
   };
 }
@@ -56,4 +58,30 @@ export function createCommentAttachableNode(): CommentAttachable {
     leadingComments: [],
     trailingComments: [],
   };
+}
+
+export function createNull(): Null {
+  return {
+    type: "null",
+    position: {
+      start: { line: -1, column: -1, offset: -1 },
+      end: { line: -1, column: -1, offset: -1 },
+    },
+  };
+}
+
+export function getStartPoint(node: YamlUnistNode): Point {
+  const tagPosition =
+    "tag" in node && node.tag.type !== "null" && node.tag.position;
+  const anchorPosition =
+    "anchor" in node && node.anchor.type !== "null" && node.anchor.position;
+  return !tagPosition && !anchorPosition
+    ? node.position.start
+    : tagPosition && anchorPosition
+      ? tagPosition.start.offset < anchorPosition.start.offset
+        ? tagPosition.start
+        : anchorPosition.start
+      : tagPosition
+        ? tagPosition.start
+        : (anchorPosition as Position).start;
 }

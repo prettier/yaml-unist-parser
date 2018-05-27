@@ -6,7 +6,7 @@ import {
   Root,
   YamlUnistNode,
 } from "./types";
-import { defineCommentParent } from "./utils";
+import { defineCommentParent, getStartPoint } from "./utils";
 
 type NodeTable = Array<{
   leadingNode: null | Extract<YamlUnistNode, CommentAttachable>;
@@ -38,22 +38,20 @@ export function attachComments(root: Root, context: Context): void {
 
 function initNodeTable(node: YamlUnistNode, nodeTable: NodeTable): void {
   if ("leadingComments" in node) {
-    const { start, end } = node.position;
+    const start = getStartPoint(node);
+    const { end } = node.position;
 
     const currentStartNode = nodeTable[start.line - 1].leadingNode;
     const currentEndNode = nodeTable[end.line - 1].trailingNode;
 
     if (
       !currentStartNode ||
-      node.position.start.column < currentStartNode.position.start.column
+      start.column < currentStartNode.position.start.column
     ) {
       nodeTable[start.line - 1].leadingNode = node;
     }
 
-    if (
-      !currentEndNode ||
-      node.position.end.column >= currentEndNode.position.end.column
-    ) {
+    if (!currentEndNode || end.column >= currentEndNode.position.end.column) {
       nodeTable[end.line - 1].trailingNode = node;
     }
   }

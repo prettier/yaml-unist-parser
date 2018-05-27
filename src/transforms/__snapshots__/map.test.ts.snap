@@ -1,16 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`"!!map\\n #123 \\n&anchor # 456\\na: 123" 1`] = `
-mapping (1:1 ~ 4:7)
+mapping (4:1 ~ 4:7)
 1 | !!map¶
-  | ^^^^^^
 2 | ·#123·¶
-  | ^^^^^^^
 3 | &anchor·#·456¶
-  | ^^^^^^^^^^^^^^
 4 | a:·123¶
   | ^^^^^^
-<mapping anchor="anchor" tag={"handle":"!!","suffix":"map"}>
+<mapping>
+  <shorthandTag handle="!!" suffix="map" />
+  <anchor value="anchor" />
   <middleComment value="123 ">
   <middleComment value=" 456">
   <mappingItem>
