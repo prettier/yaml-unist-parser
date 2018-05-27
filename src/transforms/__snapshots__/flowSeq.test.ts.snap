@@ -1,16 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`"  !!map\\n #123 \\n&anchor # 456 \\n []  " 1`] = `
-flowSequence (1:3 ~ 4:4)
+flowSequence (4:2 ~ 4:4)
 1 | ··!!map¶
-  |   ^^^^^^
 2 | ·#123·¶
-  | ^^^^^^^
 3 | &anchor·#·456·¶
-  | ^^^^^^^^^^^^^^^
 4 | ·[]··¶
-  | ^^^
-<flowSequence anchor="anchor" tag={"handle":"!!","suffix":"map"}>
+  |  ^^
+<flowSequence>
+  <handleTag handle="!!" suffix="map" />
+  <anchor value="anchor" />
   <middleComment value="123 ">
   <middleComment value=" 456 ">
 </flowSequence>

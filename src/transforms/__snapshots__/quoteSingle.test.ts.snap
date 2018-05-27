@@ -8,14 +8,14 @@ quoteSingle (1:4 ~ 1:10)
 `;
 
 exports[`" !!str # comment 1 \\n &anchor # comment 2 \\n  '123'   " 1`] = `
-quoteSingle (1:2 ~ 3:8)
+quoteSingle (3:3 ~ 3:8)
 1 | ·!!str·#·comment·1·¶
-  |  ^^^^^^^^^^^^^^^^^^^
 2 | ·&anchor·#·comment·2·¶
-  | ^^^^^^^^^^^^^^^^^^^^^^
 3 | ··'123'···¶
-  | ^^^^^^^
-<quoteSingle anchor="anchor" tag={"handle":"!!","suffix":"str"} value="123">
+  |   ^^^^^
+<quoteSingle value="123">
+  <handleTag handle="!!" suffix="str" />
+  <anchor value="anchor" />
   <middleComment value=" comment 1 ">
   <middleComment value=" comment 2 ">
 </quoteSingle>

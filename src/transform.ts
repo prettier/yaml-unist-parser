@@ -12,7 +12,6 @@ import { transformMap } from "./transforms/map";
 import { transformMapKey } from "./transforms/mapKey";
 import { transformMapValue } from "./transforms/mapValue";
 import { transformNull } from "./transforms/null";
-import { transformOffset } from "./transforms/offset";
 import { transformPlain } from "./transforms/plain";
 import { transformQuoteDouble } from "./transforms/quoteDouble";
 import { transformQuoteSingle } from "./transforms/quoteSingle";
@@ -117,6 +116,9 @@ export function transformNode(node: YamlNode, context: Context): YamlUnistNode {
   let newStartOffset = -1;
   const commentRanges: yaml.Range[] = [];
 
+  let tagRange: yaml.Range | null = null;
+  let anchorRange: yaml.Range | null = null;
+
   node.props.forEach(prop => {
     const char = context.text[prop.start];
     switch (char) {
@@ -129,6 +131,11 @@ export function transformNode(node: YamlNode, context: Context): YamlUnistNode {
             : transformedNode.position.start.offset)
         ) {
           newStartOffset = prop.start;
+        }
+        if (char === "!") {
+          tagRange = prop;
+        } else {
+          anchorRange = prop;
         }
         break;
       case "#": // comment
@@ -161,20 +168,32 @@ export function transformNode(node: YamlNode, context: Context): YamlUnistNode {
     context.comments.push(comment);
   });
 
-  const tag = node.tag;
-  if (tag) {
+  if (tagRange) {
     assert("tag" in transformedNode);
-    (transformedNode as Content).tag = tag;
+    const tag = node.tag!;
+    (transformedNode as Content).tag =
+      "verbatim" in tag
+        ? {
+            type: "verbatimTag",
+            verbatim: tag.verbatim,
+            position: context.transformRange(tagRange),
+          }
+        : {
+            type: "handleTag",
+            handle: tag.handle,
+            suffix: tag.suffix,
+            position: context.transformRange(tagRange),
+          };
   }
 
-  const anchor = node.anchor;
-  if (anchor) {
+  if (anchorRange) {
     assert("anchor" in transformedNode);
-    (transformedNode as Content).anchor = anchor;
-  }
-
-  if (newStartOffset !== -1) {
-    transformedNode.position.start = transformOffset(newStartOffset, context);
+    const anchor = node.anchor!;
+    (transformedNode as Content).anchor = {
+      type: "anchor",
+      value: anchor,
+      position: context.transformRange(anchorRange),
+    };
   }
 
   return transformedNode;

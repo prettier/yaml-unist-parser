@@ -1,11 +1,6 @@
 import { Null } from "../types";
+import { createNull } from "../utils";
 
 export function transformNull(): Null {
-  return {
-    type: "null",
-    position: {
-      start: { line: -1, column: -1, offset: -1 },
-      end: { line: -1, column: -1, offset: -1 },
-    },
-  };
+  return createNull();
 }

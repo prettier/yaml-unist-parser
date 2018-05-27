@@ -106,10 +106,9 @@ function stringifyNode(
         case "leadingComments":
         case "middleComments":
         case "trailingComments":
-          return false;
         case "anchor":
         case "tag":
-          return (node as Content)[key] !== null;
+          return false;
         default:
           return true;
       }
@@ -118,6 +117,12 @@ function stringifyNode(
     .sort()
     .map((attribute, index) => (index === 0 ? " " + attribute : attribute))
     .join(" ");
+  const propNodes =
+    "tag" in node
+      ? [node.tag, node.anchor]
+          .filter(propNode => propNode.type !== "null")
+          .map(propNode => stringifyNode(propNode))
+      : [];
   const comments =
     options.maxCommentsLevel === undefined || options.maxCommentsLevel > 0
       ? ([] as Array<keyof CommentAttachable | keyof Content>)
@@ -132,10 +137,12 @@ function stringifyNode(
           )
           .reduce((a, b) => a.concat(b), [])
       : [];
-  return "children" in node || comments.length !== 0
+  return "children" in node || comments.length !== 0 || propNodes.length !== 0
     ? `<${node.type}${attributes}>\n${indent(
-        comments
+        ([] as string[])
           .concat(
+            propNodes,
+            comments,
             (options.maxChildrenLevel === undefined ||
               options.maxChildrenLevel > 0) &&
             "children" in node

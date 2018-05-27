@@ -434,8 +434,9 @@ comment (66:57 ~ 66:68)
     |                                                         ^^^^^^^^^^^
  67 | ¶
  68 | ¶
-flowSequence (64:15 ~ 66:30)
-<flowSequence tag={"handle":"!!","suffix":"seq"}>
+flowSequence (64:21 ~ 66:30)
+<flowSequence>
+  <handleTag handle="!!" suffix="seq" />
   <trailingComment value=" Overrated">
 </flowSequence>
 `;

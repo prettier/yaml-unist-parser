@@ -8,14 +8,14 @@ plain (1:4 ~ 1:7)
 `;
 
 exports[`" !!str # comment 1 \\n &anchor # comment 2 \\n  123   " 1`] = `
-plain (1:2 ~ 3:6)
+plain (3:3 ~ 3:6)
 1 | ·!!str·#·comment·1·¶
-  |  ^^^^^^^^^^^^^^^^^^^
 2 | ·&anchor·#·comment·2·¶
-  | ^^^^^^^^^^^^^^^^^^^^^^
 3 | ··123···¶
-  | ^^^^^
-<plain anchor="anchor" tag={"handle":"!!","suffix":"str"} value="123">
+  |   ^^^
+<plain value="123">
+  <handleTag handle="!!" suffix="str" />
+  <anchor value="anchor" />
   <middleComment value=" comment 1 ">
   <middleComment value=" comment 2 ">
 </plain>
@@ -37,4 +37,40 @@ comment (2:10 ~ 2:22)
   |          ^^^^^^^^^^^^
 3 | ··123···¶
 <comment value=" comment 2 " />
+`;
+
+exports[`"# comment\\n&anchor !<tag> 123" 1`] = `
+plain (2:16 ~ 2:19)
+1 | #·comment¶
+2 | &anchor·!<tag>·123¶
+  |                ^^^
+<plain value="123">
+  <verbatimTag verbatim="tag" />
+  <anchor value="anchor" />
+  <leadingComment value=" comment">
+</plain>
+`;
+
+exports[`"# comment\\n&anchor !<tag> 123" 2`] = `
+verbatimTag (2:9 ~ 2:15)
+1 | #·comment¶
+2 | &anchor·!<tag>·123¶
+  |         ^^^^^^
+<verbatimTag verbatim="tag" />
+`;
+
+exports[`"# comment\\n&anchor !<tag> 123" 3`] = `
+anchor (2:1 ~ 2:8)
+1 | #·comment¶
+2 | &anchor·!<tag>·123¶
+  | ^^^^^^^
+<anchor value="anchor" />
+`;
+
+exports[`"# comment\\n&anchor !<tag> 123" 4`] = `
+comment (1:1 ~ 1:10)
+1 | #·comment¶
+  | ^^^^^^^^^
+2 | &anchor·!<tag>·123¶
+<comment value=" comment" />
 `;

@@ -24,8 +24,8 @@ export interface Parent extends Node {
 // -----------------------------------------------------------------------------
 
 export interface Content {
-  anchor: null | string;
-  tag: null | { verbatim: string } | { handle: string; suffix: string };
+  anchor: Null | Anchor;
+  tag: Null | VerbatimTag | HandleTag;
   /** comments between the node and its tag/anchor */
   middleComments: Comment[];
 }
@@ -44,6 +44,9 @@ export interface YAMLSyntaxError extends SyntaxError {
 
 export type YamlUnistNode =
   | Comment
+  | VerbatimTag
+  | HandleTag
+  | Anchor
   | Root
   | Document
   | DocumentHead
@@ -93,6 +96,22 @@ export interface Comment extends Node {
   value: string;
   /** @internal non-enumerable */
   parent?: Extract<YamlUnistNode, CommentAttachable>;
+}
+
+export interface Anchor extends Node {
+  type: "anchor";
+  value: string;
+}
+
+export interface VerbatimTag extends Node {
+  type: "verbatimTag";
+  verbatim: string;
+}
+
+export interface HandleTag extends Node {
+  type: "handleTag";
+  handle: string;
+  suffix: string;
 }
 
 export interface Root extends Parent {
