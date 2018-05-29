@@ -40,7 +40,7 @@
     "tslint-config-prettier": "1.13.0",
     "tslint-plugin-prettier": "1.3.0",
     "typescript": "2.8.3",
-    "yaml": "1.0.0-beta.5"
+    "yaml": "1.0.0-beta.6"
   },
   "peerDependencies": {
     "yaml": "^1.0.0-beta.5"
