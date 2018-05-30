@@ -35,26 +35,6 @@ comment (3:9 ~ 3:15)
 <comment value=" 456 " />
 `;
 
-exports[`"  [ , ]  " 1`] = `
-flowSequence (1:3 ~ 1:8)
-1 | ··[·,·]··¶
-  |   ^^^^^
-<flowSequence>
-  <flowSequenceItem>
-    <null />
-  </flowSequenceItem>
-</flowSequence>
-`;
-
-exports[`"  [ , ]  " 2`] = `
-flowSequenceItem (1:5 ~ 1:5)
-1 | ··[·,·]··¶
-  |     ~
-<flowSequenceItem>
-  <null />
-</flowSequenceItem>
-`;
-
 exports[`"  [ : ]  " 1`] = `
 flowSequence (1:3 ~ 1:8)
 1 | ··[·:·]··¶
@@ -400,29 +380,6 @@ flowSequence (1:3 ~ 1:11)
 exports[`"  [ 123, ]  " 2`] = `
 flowSequenceItem (1:5 ~ 1:8)
 1 | ··[·123,·]··¶
-  |     ^^^
-<flowSequenceItem>
-  <plain value="123" />
-</flowSequenceItem>
-`;
-
-exports[`"  [ 123,, ]  " 1`] = `
-flowSequence (1:3 ~ 1:12)
-1 | ··[·123,,·]··¶
-  |   ^^^^^^^^^
-<flowSequence>
-  <flowSequenceItem>
-    <plain value="123" />
-  </flowSequenceItem>
-  <flowSequenceItem>
-    <null />
-  </flowSequenceItem>
-</flowSequence>
-`;
-
-exports[`"  [ 123,, ]  " 2`] = `
-flowSequenceItem (1:5 ~ 1:8)
-1 | ··[·123,,·]··¶
   |     ^^^
 <flowSequenceItem>
   <plain value="123" />

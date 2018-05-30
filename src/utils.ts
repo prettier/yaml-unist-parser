@@ -29,28 +29,17 @@ export function defineCommentParent(comment: Comment, parent: YamlUnistNode) {
   });
 }
 
-function createError(message: string, position: Position, context: Context) {
-  const error: Partial<YAMLSyntaxError> = new SyntaxError(message);
-  error.name = "YAMLSyntaxError";
-  error.source = context.text;
-  error.position = position;
-  return error as YAMLSyntaxError;
-}
-
-export function assertSyntaxError(
-  value: boolean,
-  message: string | (() => string),
-  position: Position | (() => Position),
+export function createError(
+  rawError: Extract<yaml.YAMLError, SyntaxError>,
   context: Context,
 ) {
-  if (!value) {
-    // istanbul ignore next
-    throw createError(
-      typeof message === "function" ? message() : message,
-      typeof position === "function" ? position() : position,
-      context,
-    );
-  }
+  const error: Partial<YAMLSyntaxError> = new SyntaxError(rawError.message);
+  error.name = "YAMLSyntaxError";
+  error.source = context.text;
+  error.position = context.transformRange(
+    (rawError.source.range || rawError.source.valueRange)!,
+  );
+  return error as YAMLSyntaxError;
 }
 
 export function createContentNode(): Content {
@@ -123,4 +112,11 @@ export function updateEndPoints(
 
 export function getRange(node: yaml.Node) {
   return /* istanbul ignore next */ (node.valueRange || node.range)!;
+}
+
+export function isYAMLError(e: any): e is yaml.YAMLError {
+  return (
+    e instanceof Error &&
+    (e.name === "YAMLSyntaxError" || e.name === "YAMLSemanticError")
+  );
 }

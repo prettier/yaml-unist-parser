@@ -621,11 +621,3 @@ mappingValue (1:4 ~ 1:21)
   </plain>
 </mappingValue>
 `;
-
-exports[`Expected a MAP_KEY, but got PLAIN. 1`] = `
-"Expected a MAP_KEY, but got PLAIN.
-1 | asd:·123¶
-2 | qwe¶
-  | ^^^
-3 | ¶"
-`;

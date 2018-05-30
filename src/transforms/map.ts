@@ -5,7 +5,6 @@ import {
   createCommentAttachableNode,
   createContentNode,
   getLast,
-  getRange,
 } from "../utils";
 
 export function transformMap(map: yaml.Map, context: Context): Mapping {
@@ -67,11 +66,7 @@ function transformMapItems(
 
         if (index === itemsWithoutComments.length - 1) {
           unshiftCount++;
-          context.assertSyntaxError(
-            itemsWithoutComments[index].type === "MAP_KEY",
-            `Expected a MAP_KEY, but got ${itemsWithoutComments[index].type}.`,
-            () => context.transformRange(getRange(itemsWithoutComments[index])),
-          );
+          assert(itemsWithoutComments[index].type === "MAP_KEY");
         }
 
         return reduced.concat(

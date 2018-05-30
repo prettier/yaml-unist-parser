@@ -1,4 +1,3 @@
-import assert = require("assert");
 import { parse } from "./parse";
 import {
   Comment,
@@ -7,9 +6,9 @@ import {
   Node,
   Position,
   Root,
-  YAMLSyntaxError,
   YamlUnistNode,
 } from "./types";
+import { isYAMLError } from "./utils";
 
 const RAW = Symbol("raw");
 
@@ -45,9 +44,7 @@ export function testCases(
 ) {
   cases.forEach(testCase => {
     const [text, selector] = testCase;
-    const root = parse(
-      text + (text[text.length - 1] !== "\n" ? "\n" : ""), // to avoid `Node#parse consumed no characters`
-    );
+    const root = parse(text);
     const selectNodes = ([] as TestCaseSelector[]).concat(selector);
     selectNodes.forEach(selectNode => {
       const nodes = ([] as YamlUnistNode[]).concat(selectNode(root));
@@ -232,9 +229,11 @@ function leftpad(text: string, width: number) {
 export function testSyntaxError(text: string, message?: string) {
   try {
     parse(text);
-  } catch (e) {
-    assert(e.name === "YAMLSyntaxError");
-    const error = e as YAMLSyntaxError;
+    throw new Error("SyntaxError not found");
+  } catch (error) {
+    if (!isYAMLError(error)) {
+      throw error;
+    }
     test(message || error.message, () => {
       expect(
         error.message + "\n" + codeFrameColumns(error.source, error.position),

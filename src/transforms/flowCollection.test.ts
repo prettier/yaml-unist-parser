@@ -1,6 +1,6 @@
 import { testSyntaxError } from "../helpers";
 
-testSyntaxError("{");
+// testSyntaxError("{"); // TODO
 testSyntaxError("{]");
 testSyntaxError("{ : : }");
 testSyntaxError("{ : ? }");

@@ -1,4 +1,4 @@
-import { getFirstContent, testCases } from "../helpers";
+import { getFirstContent, testCases, testSyntaxError } from "../helpers";
 
 testCases([["  *123  ", getFirstContent()]]);
-testCases([["  !!tag &anchor *123  ", getFirstContent()]]);
+testSyntaxError("  !!tag &anchor *123  ");

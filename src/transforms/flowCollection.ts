@@ -24,20 +24,14 @@ export function transformFlowCollection(
 ): FlowCollection {
   assert(flowCollection.valueRange !== null);
 
-  context.assertSyntaxError(
-    flowCollection.items.length >= 2,
-    "Missing flow collection close marker",
-    () => context.transformRange(flowCollection.valueRange!.end - 1),
-  );
+  assert(flowCollection.items.length >= 2);
 
-  context.assertSyntaxError(
+  assert(
     flowCollection.type === "FLOW_MAP"
       ? flowCollection.items[0] === "{" &&
         getLast(flowCollection.items)! === "}"
       : flowCollection.items[0] === "[" &&
         getLast(flowCollection.items)! === "]",
-    "Unpaired flow collection close marker",
-    () => context.transformRange(flowCollection.valueRange!.end - 1),
   );
 
   let hasColon = false;
@@ -68,23 +62,11 @@ export function transformFlowCollection(
       lastItemEndOffset = comment.position.end.offset;
     } else {
       if (item === "?") {
-        context.assertSyntaxError(
-          !hasColon,
-          "Key marker is not allowed to be behind value marker in the same group",
-          () => context.transformRange(getItemRange(item)),
-        );
-        context.assertSyntaxError(
-          !hasQuestion,
-          "Key marker is not allowed to be appeared more than once in the same group",
-          () => context.transformRange(getItemRange(item)),
-        );
+        assert(!hasColon);
+        assert(!hasQuestion);
         hasQuestion = true;
       } else if (item === ":") {
-        context.assertSyntaxError(
-          !hasColon,
-          "Value marker is not allowed to be appeared more than once in the same group",
-          () => context.transformRange(getItemRange(item)),
-        );
+        assert(!hasColon);
         hasColon = true;
       }
       pushBuffer(typeof item === "string" ? item : context.transformNode(item));
