@@ -29,7 +29,7 @@
     "tslib": "^1.9.1"
   },
   "devDependencies": {
-    "@types/jest": "21.1.10",
+    "@types/jest": "22.2.3",
     "@types/node": "4.2.23",
     "@types/yaml": "file:types/yaml",
     "jest": "21.2.1",
