@@ -6,7 +6,7 @@ import {
 } from "../helpers";
 import { Mapping, Root } from "../types";
 
-// testSyntaxError("asd: 123\nqwe\n"); // TODO
+testSyntaxError("asd: 123\nqwe\n");
 
 testCases([
   ...createTestCases(":   "),

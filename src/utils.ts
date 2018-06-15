@@ -37,6 +37,7 @@ export function createError(
   error.name = "YAMLSyntaxError";
   error.source = context.text;
   error.position = context.transformRange(
+    // istanbul ignore next
     (rawError.source.range || rawError.source.valueRange)!,
   );
   return error as YAMLSyntaxError;
@@ -108,10 +109,6 @@ export function updateEndPoints(
       overwriteEnd(parentNode, node.position.end);
     }
   }
-}
-
-export function getRange(node: yaml.Node) {
-  return /* istanbul ignore next */ (node.valueRange || node.range)!;
 }
 
 export function isYAMLError(e: any): e is yaml.YAMLError {

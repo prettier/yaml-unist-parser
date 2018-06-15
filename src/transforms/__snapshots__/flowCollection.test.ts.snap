@@ -1,5 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Expected flow map to end with } 1`] = `
+"Expected flow map to end with }
+1 | {¶
+  | ^"
+`;
+
 exports[`Flow map contains an unexpected : 1`] = `
 "Flow map contains an unexpected :
 1 | {·:·:·}¶

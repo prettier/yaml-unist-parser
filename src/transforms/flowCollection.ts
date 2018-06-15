@@ -143,20 +143,11 @@ function transformFlowCollectionItems(
     Exclude<(typeof itemBuffer)[number], ",">
   >;
 
-  assert(itemBufferWithoutComma.length <= 4);
+  assert(
+    itemBufferWithoutComma.length > 0 && itemBufferWithoutComma.length <= 4,
+  );
 
-  if (itemBufferWithoutComma.length === 0) {
-    // [ , ] or { , }
-    assert(itemBuffer.length === 1);
-    const beforeCommaPosition = context.transformRange(rangeBuffer[0].start);
-    return type === "FLOW_MAP"
-      ? createMappingItem(
-          context.transformNode(null),
-          context.transformNode(null),
-          beforeCommaPosition,
-        )
-      : createSequenceItem(context.transformNode(null), beforeCommaPosition);
-  } else if (itemBufferWithoutComma.length === 1) {
+  if (itemBufferWithoutComma.length === 1) {
     const item = itemBufferWithoutComma[0];
     if (typeof item === "string") {
       // [ ? ] or [ : ]
