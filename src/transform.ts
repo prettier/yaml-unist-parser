@@ -80,7 +80,7 @@ export interface Context {
   comments: Comment[];
   locator: LinesAndColumns;
   transformNode: <T extends YamlNode>(node: T) => YamlToUnist<T>;
-  transformRange: (range: number | { start: number; end: number }) => Position;
+  transformRange: (range: { start: number; end: number }) => Position;
   transformOffset: (offset: number) => Point;
 }
 
