@@ -6,7 +6,9 @@
 
 A YAML parser that produces output compatible with [unist](https://github.com/syntax-tree/unist)
 
+<!-- TODO: enable after stable
 [Changelog](https://github.com/ikatyang/yaml-unist-parser/blob/master/CHANGELOG.md)
+-->
 
 ## Install
 
