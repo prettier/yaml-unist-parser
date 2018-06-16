@@ -41,7 +41,7 @@ import {
   SequenceItem,
   YamlUnistNode,
 } from "./types";
-import { defineCommentParent, getRange } from "./utils";
+import { defineCommentParent } from "./utils";
 
 export type YamlNode =
   | null
@@ -80,13 +80,8 @@ export interface Context {
   comments: Comment[];
   locator: LinesAndColumns;
   transformNode: <T extends YamlNode>(node: T) => YamlToUnist<T>;
-  transformRange: (range: number | { start: number; end: number }) => Position;
+  transformRange: (range: { start: number; end: number }) => Position;
   transformOffset: (offset: number) => Point;
-  assertSyntaxError: (
-    value: boolean,
-    message: string | (() => string),
-    position: Position | (() => Position),
-  ) => void;
 }
 
 export function transformNode<T extends YamlNode>(
@@ -97,12 +92,6 @@ export function transformNode(node: YamlNode, context: Context): YamlUnistNode {
   if (node === null) {
     return transformNull();
   }
-
-  context.assertSyntaxError(
-    node.error === null,
-    () => node.error!.message,
-    () => context.transformRange(getRange(node)),
-  );
 
   const transformedNode = _transformNode(node, context);
 

@@ -810,13 +810,13 @@ document (1:1 ~ 2:10)
 `;
 
 exports[`"- AAA\\n# comment\\n---\\n- BBB" 2`] = `
-document (3:1 ~ 5:1)
+document (3:1 ~ 4:6)
 1 | -·AAA¶
 2 | #·comment¶
 3 | ---¶
   | ^^^^
 4 | -·BBB¶
-  | ^^^^^^
+  | ^^^^^
 <document>
   <documentHead>
 
@@ -874,12 +874,12 @@ documentBody (1:1 ~ 2:10)
 `;
 
 exports[`"- AAA\\n# comment\\n---\\n- BBB" 6`] = `
-documentBody (4:1 ~ 5:1)
+documentBody (4:1 ~ 4:6)
 1 | -·AAA¶
 2 | #·comment¶
 3 | ---¶
 4 | -·BBB¶
-  | ^^^^^^
+  | ^^^^^
 <documentBody>
   <sequence>
     <sequenceItem>
@@ -909,10 +909,11 @@ document (1:1 ~ 3:4)
 </document>
 `;
 
-exports[`Multiple content nodes are not allowed in a document. 1`] = `
-"Multiple content nodes are not allowed in a document.
+exports[`Document is not valid YAML (bad indentation?) 1`] = `
+"Document is not valid YAML (bad indentation?)
 1 | -·123¶
 2 | a:¶
-  | ^^
-3 | ¶"
+  | ^^^
+3 | ¶
+  | ^"
 `;

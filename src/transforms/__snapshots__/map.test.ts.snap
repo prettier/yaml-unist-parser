@@ -622,10 +622,11 @@ mappingValue (1:4 ~ 1:21)
 </mappingValue>
 `;
 
-exports[`Expected a MAP_KEY, but got PLAIN. 1`] = `
-"Expected a MAP_KEY, but got PLAIN.
+exports[`Implicit map keys need to be followed by map values 1`] = `
+"Implicit map keys need to be followed by map values
 1 | asd:·123¶
 2 | qwe¶
-  | ^^^
-3 | ¶"
+  | ^^^^
+3 | ¶
+  | ^"
 `;

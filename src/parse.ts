@@ -1,11 +1,17 @@
 import LinesAndColumns from "lines-and-columns";
+import YAML from "yaml";
 import parseAST from "yaml/dist/ast/parse";
 import { attachComments } from "./attach";
 import { Context, transformNode } from "./transform";
 import { transformOffset } from "./transforms/offset";
 import { transformRange } from "./transforms/range";
 import { Comment, Root } from "./types";
-import { assertSyntaxError, overwriteEnd, overwriteStart } from "./utils";
+import {
+  createError,
+  isYAMLError,
+  overwriteEnd,
+  overwriteStart,
+} from "./utils";
 
 export function parse(text: string): Root {
   const rawDocuments = parseAST(text);
@@ -19,9 +25,17 @@ export function parse(text: string): Root {
     transformNode: node => transformNode(node, context),
     transformRange: range => transformRange(range, context),
     transformOffset: offset => transformOffset(offset, context),
-    assertSyntaxError: (value, message, position) =>
-      assertSyntaxError(value, message, position, context),
   };
+
+  rawDocuments.forEach(rawDocument => {
+    const rawErrors = new YAML.Document()
+      .parse(rawDocument)
+      .errors.filter(isYAMLError);
+
+    if (rawErrors.length !== 0) {
+      throw createError(rawErrors[0], context);
+    }
+  });
 
   const rootPosition = context.transformRange({ start: 0, end: text.length });
 

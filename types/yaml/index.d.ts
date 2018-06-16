@@ -1,8 +1,33 @@
+declare module "yaml" {
+  export default _;
+  namespace _ {
+    export class Document {
+      errors: yaml.YAMLError[];
+      parse(document: yaml.Document): this;
+    }
+  }
+}
+
 declare module "yaml/dist/ast/parse" {
-  export default function(str: string): yaml.Document[];
+  export default function parse(src: string): yaml.Document[];
 }
 
 declare namespace yaml {
+  type YAMLError = YAMLSyntaxError | YAMLSemanticError | YAMLReferenceError;
+
+  interface YAMLSyntaxError extends SyntaxError {
+    name: "YAMLSyntaxError";
+    source: yaml.Node;
+  }
+  interface YAMLSemanticError extends SyntaxError {
+    name: "YAMLSemanticError";
+    source: yaml.Node;
+  }
+  interface YAMLReferenceError extends ReferenceError {
+    name: "YAMLReferenceError";
+    source: yaml.Node;
+  }
+
   interface Range {
     start: number;
     end: number;
@@ -136,9 +161,5 @@ declare namespace yaml {
     readonly anchor: null;
     readonly comment: null;
     readonly tag: null;
-  }
-
-  interface YAMLSyntaxError extends SyntaxError {
-    source: string;
   }
 }
