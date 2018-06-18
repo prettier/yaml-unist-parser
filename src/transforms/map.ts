@@ -70,14 +70,14 @@ function transformMapItems(
         }
 
         return reduced.concat(
-          buffer
-            .splice(0, unshiftCount)
-            .map((currentMappingKey): MappingItem => ({
+          buffer.splice(0, unshiftCount).map(
+            (currentMappingKey): MappingItem => ({
               type: "mappingItem",
               children: [currentMappingKey, context.transformNode(null)],
               position: currentMappingKey.position,
               ...createCommentAttachableNode(),
-            })),
+            }),
+          ),
         );
       }
 
