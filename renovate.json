@@ -3,7 +3,7 @@
   "packages": [
     {
       "packageName": "yaml",
-      "automerge": "patch"
+      "automerge": false
     }
   ]
 }
