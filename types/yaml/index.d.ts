@@ -8,7 +8,7 @@ declare module "yaml" {
   }
 }
 
-declare module "yaml/dist/ast/parse" {
+declare module "yaml/parse-ast" {
   export default function parse(src: string): yaml.Document[];
 }
 

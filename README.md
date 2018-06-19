@@ -14,10 +14,10 @@ A YAML parser that produces output compatible with [unist](https://github.com/sy
 
 ```sh
 # using npm
-npm install --save yaml-unist-parser yaml@^1.0.0-beta
+npm install --save yaml-unist-parser yaml@^1.0.0-rc
 
 # using yarn
-yarn add yaml-unist-parser yaml@^1.0.0-beta
+yarn add yaml-unist-parser yaml@^1.0.0-rc
 ```
 
 ## Usage

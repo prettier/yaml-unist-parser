@@ -1,6 +1,6 @@
 import LinesAndColumns from "lines-and-columns";
 import YAML from "yaml";
-import parseAST from "yaml/dist/ast/parse";
+import parseAST from "yaml/parse-ast";
 import { attachComments } from "./attach";
 import { Context, transformNode } from "./transform";
 import { transformOffset } from "./transforms/offset";
