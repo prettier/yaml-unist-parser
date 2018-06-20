@@ -1,3 +1,4 @@
+import { wrap } from "jest-snapshot-serializer-raw";
 import { parse } from "./parse";
 import {
   Comment,
@@ -9,13 +10,6 @@ import {
   YamlUnistNode,
 } from "./types";
 import { isYAMLError } from "./utils";
-
-const RAW = Symbol("raw");
-
-expect.addSnapshotSerializer({
-  test: value => typeof value[RAW] === "string",
-  print: value => value[RAW].replace(/ +$/gm, ""),
-});
 
 export type Arrayable<T> = T | T[];
 
@@ -50,9 +44,7 @@ export function testCases(
       const nodes = ([] as YamlUnistNode[]).concat(selectNode(root));
       nodes.forEach(node => {
         test(`${JSON.stringify(text).slice(0, 60)}`, () => {
-          expect({
-            [RAW]: snapshotNode(text, node, options),
-          }).toMatchSnapshot();
+          expect(wrap(snapshotNode(text, node, options))).toMatchSnapshot();
         });
       });
     });
@@ -81,7 +73,7 @@ function snapshotNode(
       ? `${getNodeDescription(stringifiedNode)}\n`
       : "") +
     stringifyNode(stringifiedNode, options)
-  );
+  ).replace(/ +$/gm, "");
 }
 
 export interface StringifyNodeOptions {
