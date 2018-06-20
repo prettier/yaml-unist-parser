@@ -33,6 +33,7 @@
     "@types/node": "4.2.23",
     "@types/yaml": "file:types/yaml",
     "jest": "21.2.1",
+    "jest-snapshot-serializer-raw": "1.0.0",
     "prettier": "1.13.5",
     "standard-version": "4.4.0",
     "ts-jest": "21.2.4",
