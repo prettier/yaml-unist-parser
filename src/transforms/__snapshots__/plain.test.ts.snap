@@ -81,3 +81,12 @@ comment (1:1 ~ 1:10)
 2 | &anchor·!<tag>·123¶
 <comment value=" comment" />
 `;
+
+exports[`"a: b\\n c" 1`] = `
+plain (1:4 ~ 2:2)
+1 | a:·b¶
+  |    ^^
+2 | ·c¶
+  | ^
+<plain value="b c" />
+`;
