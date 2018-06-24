@@ -117,3 +117,15 @@ export function isYAMLError(e: any): e is yaml.YAMLError {
     (e.name === "YAMLSyntaxError" || e.name === "YAMLSemanticError")
   );
 }
+
+export function findLastCharIndex(text: string, from: number, regex: RegExp) {
+  if (from < text.length) {
+    for (let i = from; i >= 0; i--) {
+      const char = text[i];
+      if (regex.test(char)) {
+        return i;
+      }
+    }
+  }
+  return -1;
+}
