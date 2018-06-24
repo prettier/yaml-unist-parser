@@ -119,6 +119,7 @@ export function isYAMLError(e: any): e is yaml.YAMLError {
 }
 
 export function findLastCharIndex(text: string, from: number, regex: RegExp) {
+  // istanbul ignore else
   if (from < text.length) {
     for (let i = from; i >= 0; i--) {
       const char = text[i];
@@ -127,5 +128,7 @@ export function findLastCharIndex(text: string, from: number, regex: RegExp) {
       }
     }
   }
+
+  // istanbul ignore next
   return -1;
 }
