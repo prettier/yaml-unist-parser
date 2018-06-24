@@ -1,5 +1,5 @@
 import { getFirstContent, testCases } from "../helpers";
-import { Plain } from "../types";
+import { Mapping, MappingValue, Plain } from "../types";
 
 testCases([
   ["   123   ", getFirstContent()],
@@ -12,6 +12,12 @@ testCases([
       root => getFirstContent<Plain>(root).anchor,
       root => root.comments,
     ],
+  ],
+  [
+    "a: b\n c",
+    root =>
+      (getFirstContent<Mapping>(root).children[0].children[1] as MappingValue)
+        .children[0],
   ],
 ]);
 testCases([

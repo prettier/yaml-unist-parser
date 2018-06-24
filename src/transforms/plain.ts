@@ -1,7 +1,11 @@
 import assert = require("assert");
 import { Context } from "../transform";
 import { Plain } from "../types";
-import { createCommentAttachableNode, createContentNode } from "../utils";
+import {
+  createCommentAttachableNode,
+  createContentNode,
+  findLastCharIndex,
+} from "../utils";
 
 export function transformPlain(
   plain: yaml.PlainValue,
@@ -14,7 +18,7 @@ export function transformPlain(
     value: plain.strValue!,
     position: context.transformRange({
       start: plain.valueRange!.start,
-      end: plain.valueRange!.start + plain.strValue!.length,
+      end: findLastCharIndex(context.text, plain.valueRange!.end - 1, /\S/) + 1,
     }),
     ...createCommentAttachableNode(),
     ...createContentNode(),
