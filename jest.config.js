@@ -4,7 +4,6 @@ module.exports = {
   testMatch: ["**/tests/**/*.ts", "**/*.test.ts"],
   transform: { "\\.ts$": "ts-jest/preprocessor" },
   snapshotSerializers: ['jest-snapshot-serializer-raw'],
-  mapCoverage: true,
   coverageReporters: ["lcov", "text-summary"],
   collectCoverage: !!process.env.CI,
   collectCoverageFrom: ["src/**/*.ts"],
