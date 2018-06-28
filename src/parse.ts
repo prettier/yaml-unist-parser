@@ -1,6 +1,6 @@
 import LinesAndColumns from "lines-and-columns";
 import YAML from "yaml";
-import parseAST from "yaml/parse-ast";
+import parseCST from "yaml/parse-cst";
 import { attachComments } from "./attach";
 import { Context, transformNode } from "./transform";
 import { transformOffset } from "./transforms/offset";
@@ -14,7 +14,7 @@ import {
 } from "./utils";
 
 export function parse(text: string): Root {
-  const rawDocuments = parseAST(text);
+  const rawDocuments = parseCST(text);
   const locator = new LinesAndColumns(text);
   const comments: Comment[] = [];
 
