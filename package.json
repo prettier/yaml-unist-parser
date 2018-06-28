@@ -44,7 +44,7 @@
     "yaml": "1.0.0-rc.4"
   },
   "peerDependencies": {
-    "yaml": "^1.0.0-rc.2"
+    "yaml": "^1.0.0-rc.4"
   },
   "engines": {
     "node": ">= 6"

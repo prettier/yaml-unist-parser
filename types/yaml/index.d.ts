@@ -8,7 +8,7 @@ declare module "yaml" {
   }
 }
 
-declare module "yaml/parse-ast" {
+declare module "yaml/parse-cst" {
   export default function parse(src: string): yaml.Document[];
 }
 
