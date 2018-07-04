@@ -4113,9 +4113,9 @@ yallist@^3.0.0, yallist@^3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/yallist/-/yallist-3.0.2.tgz#8452b4bb7e83c7c188d8041c1a837c773d6d8bb9"
 
-yaml@1.0.0-rc.4:
-  version "1.0.0-rc.4"
-  resolved "https://registry.yarnpkg.com/yaml/-/yaml-1.0.0-rc.4.tgz#850dc77d9b03975b5e5ea8a9b37cde252a8f1f0b"
+yaml@1.0.0-rc.5:
+  version "1.0.0-rc.5"
+  resolved "https://registry.yarnpkg.com/yaml/-/yaml-1.0.0-rc.5.tgz#113aad47e7a6c1c59759fb318459e42b96708021"
 
 yargs-parser@^7.0.0:
   version "7.0.0"
