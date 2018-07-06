@@ -3,6 +3,7 @@
   "packages": [
     {
       "packageName": "yaml",
+      "updateTypes": ["major", "minor", "patch"],
       "automerge": false
     }
   ]
