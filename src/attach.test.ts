@@ -233,6 +233,45 @@ bbb
 # 789
 ---
 `,
+  `
+a:
+  - 123
+  # 789
+`,
+  `
+a:
+  - 123
+# 789
+`,
+  `
+a:
+  123
+  # 123
+`,
+  `
+a:
+  123
+# 123
+`,
+  `mapping:
+    123
+    # comment
+sequence:
+    - 123
+    # comment
+`,
+  `
+? a
+  # 123
+: 123
+  # 123
+`,
+  `
+? a
+# 123
+: 123
+# 123
+`,
 ];
 
 testCases(cases.map((x): TestCaseSingle => [x, selector]), {
