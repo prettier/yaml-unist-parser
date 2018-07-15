@@ -275,6 +275,9 @@ sequence:
 : 123
 # 123
 `,
+  `? #
+: #
+`,
 ];
 
 testCases(cases.map((x): TestCaseSingle => [x, selector]), {

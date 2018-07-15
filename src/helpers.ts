@@ -1,14 +1,6 @@
 import { wrap } from "jest-snapshot-serializer-raw";
 import { parse } from "./parse";
-import {
-  Comment,
-  CommentAttachable,
-  Content,
-  Node,
-  Position,
-  Root,
-  YamlUnistNode,
-} from "./types";
+import { Comment, Node, Position, Root, YamlUnistNode } from "./types";
 import { isYAMLError } from "./utils";
 
 export type Arrayable<T> = T | T[];
@@ -95,6 +87,7 @@ function stringifyNode(
         case "leadingComments":
         case "middleComments":
         case "trailingComments":
+        case "endComments":
         case "anchor":
         case "tag":
           return false;
@@ -114,12 +107,14 @@ function stringifyNode(
       : [];
   const comments =
     options.maxCommentsLevel === undefined || options.maxCommentsLevel > 0
-      ? ([] as Array<keyof CommentAttachable | keyof Content>)
+      ? ([] as string[])
           .concat("leadingComments" in node ? "leadingComments" : [])
           .concat("middleComments" in node ? "middleComments" : [])
           .concat("trailingComments" in node ? "trailingComments" : [])
+          .concat("endComments" in node ? "endComments" : [])
           .map(key =>
-            ((node as CommentAttachable & Content)[key] as Comment[]).map(
+            // @ts-ignore
+            (node[key] as Comment[]).map(
               comment =>
                 `<${key.slice(0, -1)} value=${JSON.stringify(comment.value)}>`,
             ),

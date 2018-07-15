@@ -4,6 +4,7 @@ import { Mapping, MappingItem, MappingKey, MappingValue } from "../types";
 import {
   createCommentAttachableNode,
   createContentNode,
+  createEndCommentAttachableNode,
   getLast,
 } from "../utils";
 
@@ -50,6 +51,7 @@ function transformMapItems(
             position: key.position,
             children: [key],
             ...createCommentAttachableNode(),
+            ...createEndCommentAttachableNode(),
           });
         }
 
@@ -96,6 +98,7 @@ function transformMapItems(
                 end: mappingValue.position.start,
               },
               ...createCommentAttachableNode(),
+              ...createEndCommentAttachableNode(),
             };
 
       return reduced.concat({

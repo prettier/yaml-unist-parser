@@ -3,20 +3,36 @@ import {
   Comment,
   CommentAttachable,
   Document,
+  MappingItem,
+  MappingKey,
+  MappingValue,
   Root,
+  Sequence,
   YamlUnistNode,
 } from "./types";
-import { defineCommentParent, getStartPoint, updateEndPoints } from "./utils";
+import {
+  defineCommentParent,
+  getStartPoint,
+  isExplicitMappingItem,
+  updateEndPoints,
+} from "./utils";
 
 type NodeTable = Array<{
   leadingNode: null | Extract<YamlUnistNode, CommentAttachable>;
   trailingNode: null | Extract<YamlUnistNode, CommentAttachable>;
+  collectionNode: null | {
+    node: Sequence | MappingKey | MappingValue;
+    mode: "gt" | "gte";
+    column: number;
+    commentContainer: YamlUnistNode[];
+  };
 }>;
 
 export function attachComments(root: Root, context: Context): void {
   const nodeTable: NodeTable = context.text.split("\n").map(() => ({
     leadingNode: null,
     trailingNode: null,
+    collectionNode: null,
   }));
 
   initNodeTable(root, nodeTable, context);
@@ -42,6 +58,7 @@ function initNodeTable(
   node: YamlUnistNode,
   nodeTable: NodeTable,
   context: Context,
+  parent?: YamlUnistNode,
 ): void {
   if ("leadingComments" in node) {
     const start = getStartPoint(node);
@@ -72,9 +89,28 @@ function initNodeTable(
     }
   }
 
+  if (
+    node.type === "sequence" ||
+    node.type === "mappingValue" ||
+    (node.type === "mappingKey" && isExplicitMappingItem(parent as MappingItem))
+  ) {
+    const position =
+      node.type === "mappingValue" &&
+      !isExplicitMappingItem(parent as MappingItem)
+        ? parent!.position
+        : node.position;
+    nodeTable[position.end.line - 1].collectionNode = {
+      node,
+      column: position.start.column,
+      mode: node.type === "sequence" ? "gte" : "gt",
+      commentContainer:
+        node.type === "sequence" ? node.children : node.endComments,
+    };
+  }
+
   if ("children" in node) {
     (node.children as YamlUnistNode[]).forEach(child =>
-      initNodeTable(child, nodeTable, context),
+      initNodeTable(child, nodeTable, context, node),
     );
   }
 }
@@ -95,6 +131,28 @@ function attachComment(
     defineCommentParent(comment, trailingNode);
     trailingNode.trailingComments.push(comment);
     return;
+  }
+
+  for (
+    let line = commentLine - 1;
+    line >= document.position.start.line;
+    line--
+  ) {
+    const { collectionNode } = nodeTable[line - 1];
+
+    if (collectionNode === null) {
+      continue;
+    }
+
+    const { commentContainer, mode, node, column } = collectionNode;
+
+    if (column + (mode === "gt" ? 1 : 0) <= comment.position.start.column) {
+      defineCommentParent(comment, node);
+      commentContainer.push(comment);
+      return;
+    }
+
+    break;
   }
 
   for (let line = commentLine + 1; line <= document.position.end.line; line++) {

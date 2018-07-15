@@ -3,6 +3,8 @@ import {
   Comment,
   CommentAttachable,
   Content,
+  EndCommentAttachable,
+  MappingItem,
   Null,
   Point,
   Position,
@@ -58,6 +60,12 @@ export function createCommentAttachableNode(): CommentAttachable {
   };
 }
 
+export function createEndCommentAttachableNode(): EndCommentAttachable {
+  return {
+    endComments: [],
+  };
+}
+
 export function createNull(): Null {
   return {
     type: "null",
@@ -96,16 +104,21 @@ export function updateEndPoints(
 
   if (nodeStack.length !== 0) {
     const parentNode = nodeStack[nodeStack.length - 1];
-    if ("trailingComments" in node && node.trailingComments.length !== 0) {
-      const lastTrailingComment =
-        node.trailingComments[node.trailingComments.length - 1];
-      if (
-        lastTrailingComment.position.end.offset > parentNode.position.end.offset
-      ) {
-        overwriteEnd(parentNode, lastTrailingComment.position.end);
+    const commentKeys = ["endComments", "trailingComments"];
+    for (const commentKey of commentKeys) {
+      // @ts-ignore
+      const comments = node[commentKey] as undefined | Comment[];
+      if (comments && comments.length !== 0) {
+        const lastComment = comments[comments.length - 1];
+        if (lastComment.position.end.offset > parentNode.position.end.offset) {
+          overwriteEnd(parentNode, lastComment.position.end);
+        }
       }
     }
-    if (node.position.end.offset > parentNode.position.end.offset) {
+    if (
+      node.type !== "null" &&
+      node.position.end.offset > parentNode.position.end.offset
+    ) {
       overwriteEnd(parentNode, node.position.end);
     }
   }
@@ -131,4 +144,12 @@ export function findLastCharIndex(text: string, from: number, regex: RegExp) {
 
   // istanbul ignore next
   return -1;
+}
+
+export function isExplicitMappingItem(mappingItem: MappingItem) {
+  const [key, value] = mappingItem.children;
+  return (
+    value.type === "null" ||
+    key.position.start.line !== value.position.start.line
+  );
 }

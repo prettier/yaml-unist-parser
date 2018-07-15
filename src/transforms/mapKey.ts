@@ -1,7 +1,10 @@
 import assert = require("assert");
 import { Context } from "../transform";
 import { MappingKey } from "../types";
-import { createCommentAttachableNode } from "../utils";
+import {
+  createCommentAttachableNode,
+  createEndCommentAttachableNode,
+} from "../utils";
 
 export function transformMapKey(
   mapKey: yaml.MapItem,
@@ -26,5 +29,6 @@ export function transformMapKey(
     },
     children: [key],
     ...createCommentAttachableNode(),
+    ...createEndCommentAttachableNode(),
   };
 }
