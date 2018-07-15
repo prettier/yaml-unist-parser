@@ -233,6 +233,9 @@ bbb
 # 789
 ---
 `,
+  `? # 123
+: # 456
+`,
 ];
 
 testCases(cases.map((x): TestCaseSingle => [x, selector]), {
