@@ -1,5 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`"? # 123\\n: # 456\\n" 1`] = `
+comment (1:3 ~ 1:8)
+1 | ?·#·123¶
+  |   ^^^^^
+2 | :·#·456¶
+3 | ¶
+mappingKey (1:1 ~ 1:1)
+<mappingKey>
+  <trailingComment value=" 123">
+</mappingKey>
+`;
+
+exports[`"? # 123\\n: # 456\\n" 2`] = `
+comment (2:3 ~ 2:8)
+1 | ?·#·123¶
+2 | :·#·456¶
+  |   ^^^^^
+3 | ¶
+mappingValue (2:1 ~ 2:2)
+<mappingValue>
+  <trailingComment value=" 456">
+</mappingValue>
+`;
+
 exports[`"\\n# 123\\n%YAML 1.2\\n# 456\\n# 789\\n---\\n" 1`] = `
 comment (2:1 ~ 2:6)
 1 | ¶
