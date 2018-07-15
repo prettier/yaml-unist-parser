@@ -16,11 +16,13 @@ export function transformMapKey(
     yaml.Comment
   >);
 
+  const start = context.transformOffset(mapKey.valueRange!.start);
+
   return {
     type: "mappingKey",
     position: {
-      start: context.transformOffset(mapKey.valueRange!.start),
-      end: key.position.end,
+      start,
+      end: key.type === "null" ? start : key.position.end,
     },
     children: [key],
     ...createCommentAttachableNode(),
