@@ -1,23 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`"  !!map\\n #123 \\n&anchor # 456 \\n []  " 1`] = `
+exports[`"  !!seq\\n #123 \\n&anchor # 456 \\n []  " 1`] = `
 flowSequence (4:2 ~ 4:4)
-1 | ··!!map¶
+1 | ··!!seq¶
 2 | ·#123·¶
 3 | &anchor·#·456·¶
 4 | ·[]··¶
   |  ^^
 <flowSequence>
-  <shorthandTag handle="!!" suffix="map" />
+  <shorthandTag handle="!!" suffix="seq" />
   <anchor value="anchor" />
   <middleComment value="123 ">
   <middleComment value=" 456 ">
 </flowSequence>
 `;
 
-exports[`"  !!map\\n #123 \\n&anchor # 456 \\n []  " 2`] = `
+exports[`"  !!seq\\n #123 \\n&anchor # 456 \\n []  " 2`] = `
 comment (2:2 ~ 2:7)
-1 | ··!!map¶
+1 | ··!!seq¶
 2 | ·#123·¶
   |  ^^^^^
 3 | &anchor·#·456·¶
@@ -25,9 +25,9 @@ comment (2:2 ~ 2:7)
 <comment value="123 " />
 `;
 
-exports[`"  !!map\\n #123 \\n&anchor # 456 \\n []  " 3`] = `
+exports[`"  !!seq\\n #123 \\n&anchor # 456 \\n []  " 3`] = `
 comment (3:9 ~ 3:15)
-1 | ··!!map¶
+1 | ··!!seq¶
 2 | ·#123·¶
 3 | &anchor·#·456·¶
   |         ^^^^^^
