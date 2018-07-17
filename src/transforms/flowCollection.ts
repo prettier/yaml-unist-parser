@@ -12,6 +12,7 @@ import {
 import {
   createCommentAttachableNode,
   createContentNode,
+  createEndCommentAttachableNode,
   getLast,
 } from "../utils";
 
@@ -357,6 +358,7 @@ function createMappingKey(
     children: [node],
     position,
     ...createCommentAttachableNode(),
+    ...createEndCommentAttachableNode(),
   };
 }
 
@@ -369,6 +371,7 @@ function createMappingValue(
     children: [node],
     position,
     ...createCommentAttachableNode(),
+    ...createEndCommentAttachableNode(),
   };
 }
 

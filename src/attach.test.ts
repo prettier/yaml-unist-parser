@@ -236,6 +236,37 @@ bbb
   `? # 123
 : # 456
 `,
+  `a:
+  123
+  # impicitMappginValue
+`,
+  `
+? b
+  # explicitMappingKey
+: c
+  # explicitMappingValue
+  `,
+  `
+d:
+  - 123
+  # sequence
+  `,
+  `
+e:
+  - 123
+    # sequenceItem
+`,
+  `
+d:
+  - a
+  # 1
+  - b
+    # 2
+  - c
+    # 3
+  # 4
+# 5
+`,
 ];
 
 testCases(cases.map((x): TestCaseSingle => [x, selector]), {

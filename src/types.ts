@@ -37,6 +37,11 @@ export interface CommentAttachable {
   trailingComments: Comment[];
 }
 
+export interface EndCommentAttachable {
+  /** comments after the node with greater column */
+  endComments: Comment[];
+}
+
 export interface YAMLSyntaxError extends SyntaxError {
   source: string;
   position: Position;
@@ -203,17 +208,27 @@ export interface MappingItem extends MappingItemBase {
   children: [MappingKey, MappingValue | Null];
 }
 
-export interface MappingKey extends Parent, CommentAttachable {
+export interface MappingKey
+  extends Parent,
+    CommentAttachable,
+    EndCommentAttachable {
   type: "mappingKey";
   children: [ContentNode];
 }
 
-export interface MappingValue extends Parent, CommentAttachable {
+export interface MappingValue
+  extends Parent,
+    CommentAttachable,
+    EndCommentAttachable {
   type: "mappingValue";
   children: [ContentNode];
 }
 
-export interface Sequence extends Parent, Content, CommentAttachable {
+export interface Sequence
+  extends Parent,
+    Content,
+    CommentAttachable,
+    EndCommentAttachable {
   type: "sequence";
   children: SequenceItem[];
 }
@@ -222,7 +237,10 @@ export interface SequenceItemBase extends Parent {
   children: [ContentNode];
 }
 
-export interface SequenceItem extends SequenceItemBase, CommentAttachable {
+export interface SequenceItem
+  extends SequenceItemBase,
+    CommentAttachable,
+    EndCommentAttachable {
   type: "sequenceItem";
 }
 
