@@ -3,16 +3,20 @@ import {
   Comment,
   CommentAttachable,
   Document,
+  EndCommentAttachable,
   MappingItem,
   MappingKey,
   MappingValue,
   Root,
   Sequence,
+  SequenceItem,
   YamlUnistNode,
 } from "./types";
 import {
   defineCommentParent,
+  getLast,
   getStartPoint,
+  isBlockValue,
   isExplicitMappingItem,
   updateEndPoints,
 } from "./utils";
@@ -21,12 +25,16 @@ type NodeTable = Array<{
   leadingNode: null | Extract<YamlUnistNode, CommentAttachable>;
   trailingNode: null | Extract<YamlUnistNode, CommentAttachable>;
   collectionNode: null | {
-    node: Sequence | MappingKey | MappingValue;
-    mode: "gt" | "gte";
+    node: SequenceItem | MappingKey | MappingValue;
     column: number;
-    commentContainer: YamlUnistNode[];
+    cases: NodeTableCollectionNodeCase[];
   };
 }>;
+
+interface NodeTableCollectionNodeCase {
+  mode: "gt" | "gte";
+  attachee: Extract<YamlUnistNode, EndCommentAttachable>;
+}
 
 export function attachComments(root: Root, context: Context): void {
   const nodeTable: NodeTable = context.text.split("\n").map(() => ({
@@ -58,7 +66,7 @@ function initNodeTable(
   node: YamlUnistNode,
   nodeTable: NodeTable,
   context: Context,
-  parent?: YamlUnistNode,
+  parentStack: YamlUnistNode[] = [],
 ): void {
   if ("leadingComments" in node) {
     const start = getStartPoint(node);
@@ -89,28 +97,45 @@ function initNodeTable(
     }
   }
 
+  const parent = getLast(parentStack);
+
   if (
-    node.type === "sequence" ||
-    node.type === "mappingValue" ||
-    (node.type === "mappingKey" && isExplicitMappingItem(parent as MappingItem))
+    node.type === "sequenceItem" ||
+    ((node.type === "mappingValue" ||
+      (node.type === "mappingKey" &&
+        isExplicitMappingItem(parent as MappingItem))) &&
+      !isBlockValue(node.children[0]))
   ) {
-    const position =
+    const column =
       node.type === "mappingValue" &&
       !isExplicitMappingItem(parent as MappingItem)
-        ? parent!.position
-        : node.position;
-    nodeTable[position.end.line - 1].collectionNode = {
+        ? parent!.position.start.column
+        : node.position.start.column;
+
+    const cases: NodeTableCollectionNodeCase[] = [
+      { mode: "gt", attachee: node },
+    ];
+
+    if (node.type === "sequenceItem") {
+      const parentParent = parentStack[parentStack.length - 2];
+      if (parentParent.type !== "documentBody") {
+        const sequence = parent as Sequence;
+        if (node === getLast(sequence.children)) {
+          cases.push({ mode: "gte", attachee: sequence });
+        }
+      }
+    }
+
+    nodeTable[node.position.start.line - 1].collectionNode = {
       node,
-      column: position.start.column,
-      mode: node.type === "sequence" ? "gte" : "gt",
-      commentContainer:
-        node.type === "sequence" ? node.children : node.endComments,
+      column,
+      cases,
     };
   }
 
   if ("children" in node) {
     (node.children as YamlUnistNode[]).forEach(child =>
-      initNodeTable(child, nodeTable, context, node),
+      initNodeTable(child, nodeTable, context, parentStack.concat(node)),
     );
   }
 }
@@ -133,23 +158,24 @@ function attachComment(
     return;
   }
 
-  for (
-    let line = commentLine - 1;
-    line >= document.position.start.line;
-    line--
-  ) {
+  for (let line = commentLine; line >= document.position.start.line; line--) {
     const { collectionNode } = nodeTable[line - 1];
 
     if (collectionNode === null) {
       continue;
     }
 
-    const { commentContainer, mode, node, column } = collectionNode;
+    const { cases, node, column } = collectionNode;
 
-    if (column + (mode === "gt" ? 1 : 0) <= comment.position.start.column) {
-      defineCommentParent(comment, node);
-      commentContainer.push(comment);
-      return;
+    for (const { mode, attachee } of cases) {
+      if (
+        node.position.end.offset <= comment.position.start.offset &&
+        column + (mode === "gt" ? 1 : 0) <= comment.position.start.column
+      ) {
+        defineCommentParent(comment, attachee);
+        attachee.endComments.push(comment);
+        return;
+      }
     }
 
     break;

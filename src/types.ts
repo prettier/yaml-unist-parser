@@ -224,16 +224,23 @@ export interface MappingValue
   children: [ContentNode];
 }
 
-export interface Sequence extends Parent, Content, CommentAttachable {
+export interface Sequence
+  extends Parent,
+    Content,
+    CommentAttachable,
+    EndCommentAttachable {
   type: "sequence";
-  children: Array<Comment | SequenceItem>;
+  children: SequenceItem[];
 }
 
 export interface SequenceItemBase extends Parent {
   children: [ContentNode];
 }
 
-export interface SequenceItem extends SequenceItemBase, CommentAttachable {
+export interface SequenceItem
+  extends SequenceItemBase,
+    CommentAttachable,
+    EndCommentAttachable {
   type: "sequenceItem";
 }
 

@@ -236,47 +236,36 @@ bbb
   `? # 123
 : # 456
 `,
-  `
-a:
-  - 123
-  # 789
-`,
-  `
-a:
-  - 123
-# 789
-`,
-  `
-a:
+  `a:
   123
-  # 123
+  # impicitMappginValue
 `,
   `
-a:
-  123
-# 123
-`,
-  `mapping:
-    123
-    # comment
-sequence:
-    - 123
-    # comment
+? b
+  # explicitMappingKey
+: c
+  # explicitMappingValue
+  `,
+  `
+d:
+  - 123
+  # sequence
+  `,
+  `
+e:
+  - 123
+    # sequenceItem
 `,
   `
-? a
-  # 123
-: 123
-  # 123
-`,
-  `
-? a
-# 123
-: 123
-# 123
-`,
-  `? #
-: #
+d:
+  - a
+  # 1
+  - b
+    # 2
+  - c
+    # 3
+  # 4
+# 5
 `,
 ];
 

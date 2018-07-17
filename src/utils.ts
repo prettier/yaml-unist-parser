@@ -1,5 +1,7 @@
 import { Context } from "./transform";
 import {
+  BlockFolded,
+  BlockLiteral,
   Comment,
   CommentAttachable,
   Content,
@@ -152,4 +154,10 @@ export function isExplicitMappingItem(mappingItem: MappingItem) {
     value.type === "null" ||
     key.position.start.line !== value.position.start.line
   );
+}
+
+export function isBlockValue(
+  node: YamlUnistNode,
+): node is BlockFolded | BlockLiteral {
+  return node.type === "blockFolded" || node.type === "blockLiteral";
 }

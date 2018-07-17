@@ -1,7 +1,10 @@
 import assert = require("assert");
 import { Context } from "../transform";
 import { SequenceItem } from "../types";
-import { createCommentAttachableNode } from "../utils";
+import {
+  createCommentAttachableNode,
+  createEndCommentAttachableNode,
+} from "../utils";
 
 export function transformSeqItem(
   seqItem: yaml.SeqItem,
@@ -26,5 +29,6 @@ export function transformSeqItem(
     },
     children: [value],
     ...createCommentAttachableNode(),
+    ...createEndCommentAttachableNode(),
   };
 }

@@ -24,30 +24,6 @@ mappingValue (2:1 ~ 2:2)
 </mappingValue>
 `;
 
-exports[`"? #\\n: #\\n" 1`] = `
-comment (1:3 ~ 1:4)
-1 | ?·#¶
-  |   ^
-2 | :·#¶
-3 | ¶
-mappingKey (1:1 ~ 1:1)
-<mappingKey>
-  <trailingComment value="">
-</mappingKey>
-`;
-
-exports[`"? #\\n: #\\n" 2`] = `
-comment (2:3 ~ 2:4)
-1 | ?·#¶
-2 | :·#¶
-  |   ^
-3 | ¶
-mappingValue (2:1 ~ 2:2)
-<mappingValue>
-  <trailingComment value="">
-</mappingValue>
-`;
-
 exports[`"\\n# 123\\n%YAML 1.2\\n# 456\\n# 789\\n---\\n" 1`] = `
 comment (2:1 ~ 2:6)
 1 | ¶
@@ -89,58 +65,31 @@ documentHead (2:1 ~ 6:4)
 </documentHead>
 `;
 
-exports[`"\\n? a\\n  # 123\\n: 123\\n  # 123\\n" 1`] = `
-comment (3:3 ~ 3:8)
+exports[`"\\n? b\\n  # explicitMappingKey\\n: c\\n  # explicitMappingValu 1`] = `
+comment (3:3 ~ 3:23)
 1 | ¶
-2 | ?·a¶
-3 | ··#·123¶
-  |   ^^^^^
-4 | :·123¶
-5 | ··#·123¶
+2 | ?·b¶
+3 | ··#·explicitMappingKey¶
+  |   ^^^^^^^^^^^^^^^^^^^^
+4 | :·c¶
+5 | ··#·explicitMappingValue¶
 mappingKey (2:1 ~ 2:4)
 <mappingKey>
-  <endComment value=" 123">
+  <endComment value=" explicitMappingKey">
 </mappingKey>
 `;
 
-exports[`"\\n? a\\n  # 123\\n: 123\\n  # 123\\n" 2`] = `
-comment (5:3 ~ 5:8)
-3 | ··#·123¶
-4 | :·123¶
-5 | ··#·123¶
-  |   ^^^^^
-6 | ¶
-mappingValue (4:1 ~ 4:6)
+exports[`"\\n? b\\n  # explicitMappingKey\\n: c\\n  # explicitMappingValu 2`] = `
+comment (5:3 ~ 5:25)
+3 | ··#·explicitMappingKey¶
+4 | :·c¶
+5 | ··#·explicitMappingValue¶
+  |   ^^^^^^^^^^^^^^^^^^^^^^
+6 | ··¶
+mappingValue (4:1 ~ 4:4)
 <mappingValue>
-  <endComment value=" 123">
+  <endComment value=" explicitMappingValue">
 </mappingValue>
-`;
-
-exports[`"\\n? a\\n# 123\\n: 123\\n# 123\\n" 1`] = `
-comment (3:1 ~ 3:6)
-1 | ¶
-2 | ?·a¶
-3 | #·123¶
-  | ^^^^^
-4 | :·123¶
-5 | #·123¶
-mappingValue (4:1 ~ 4:6)
-<mappingValue>
-  <leadingComment value=" 123">
-</mappingValue>
-`;
-
-exports[`"\\n? a\\n# 123\\n: 123\\n# 123\\n" 2`] = `
-comment (5:1 ~ 5:6)
-3 | #·123¶
-4 | :·123¶
-5 | #·123¶
-  | ^^^^^
-6 | ¶
-documentBody (2:1 ~ 6:1)
-<documentBody>
-
-</documentBody>
 `;
 
 exports[`"\\n- 123\\n- 456\\n  # 789\\n" 1`] = `
@@ -150,10 +99,10 @@ comment (4:3 ~ 4:8)
 4 | ··#·789¶
   |   ^^^^^
 5 | ¶
-sequence (2:1 ~ 4:8)
-<sequence>
-
-</sequence>
+sequenceItem (3:1 ~ 3:6)
+<sequenceItem>
+  <endComment value=" 789">
+</sequenceItem>
 `;
 
 exports[`"\\n---\\n# Collection Types ################################# 1`] = `
@@ -1345,58 +1294,6 @@ mappingItem (204:1 ~ 206:14)
 </mappingItem>
 `;
 
-exports[`"\\na:\\n  - 123\\n  # 789\\n" 1`] = `
-comment (4:3 ~ 4:8)
-2 | a:¶
-3 | ··-·123¶
-4 | ··#·789¶
-  |   ^^^^^
-5 | ¶
-sequence (3:3 ~ 4:8)
-<sequence>
-
-</sequence>
-`;
-
-exports[`"\\na:\\n  - 123\\n# 789\\n" 1`] = `
-comment (4:1 ~ 4:6)
-2 | a:¶
-3 | ··-·123¶
-4 | #·789¶
-  | ^^^^^
-5 | ¶
-documentBody (2:1 ~ 5:1)
-<documentBody>
-
-</documentBody>
-`;
-
-exports[`"\\na:\\n  123\\n  # 123\\n" 1`] = `
-comment (4:3 ~ 4:8)
-2 | a:¶
-3 | ··123¶
-4 | ··#·123¶
-  |   ^^^^^
-5 | ¶
-mappingValue (2:2 ~ 3:6)
-<mappingValue>
-  <endComment value=" 123">
-</mappingValue>
-`;
-
-exports[`"\\na:\\n  123\\n# 123\\n" 1`] = `
-comment (4:1 ~ 4:6)
-2 | a:¶
-3 | ··123¶
-4 | #·123¶
-  | ^^^^^
-5 | ¶
-documentBody (2:1 ~ 5:1)
-<documentBody>
-
-</documentBody>
-`;
-
 exports[`"\\naaa\\n# 123\\n---\\n# 789\\nbbb\\n" 1`] = `
 comment (3:1 ~ 3:6)
 1 | ¶
@@ -1425,29 +1322,112 @@ plain (6:1 ~ 6:4)
 </plain>
 `;
 
-exports[`"mapping:\\n    123\\n    # comment\\nsequence:\\n    - 123\\n    1`] = `
-comment (3:5 ~ 3:14)
-1 | mapping:¶
-2 | ····123¶
-3 | ····#·comment¶
-  |     ^^^^^^^^^
-4 | sequence:¶
-5 | ····-·123¶
-mappingValue (1:8 ~ 2:8)
-<mappingValue>
-  <endComment value=" comment">
-</mappingValue>
+exports[`"\\nd:\\n  - 123\\n  # sequence\\n  " 1`] = `
+comment (4:3 ~ 4:13)
+2 | d:¶
+3 | ··-·123¶
+4 | ··#·sequence¶
+  |   ^^^^^^^^^^
+5 | ··¶
+sequence (3:3 ~ 3:8)
+<sequence>
+  <endComment value=" sequence">
+</sequence>
 `;
 
-exports[`"mapping:\\n    123\\n    # comment\\nsequence:\\n    - 123\\n    2`] = `
-comment (6:5 ~ 6:14)
-4 | sequence:¶
-5 | ····-·123¶
-6 | ····#·comment¶
-  |     ^^^^^^^^^
-7 | ¶
-sequence (5:5 ~ 6:14)
-<sequence>
+exports[`"\\nd:\\n  - a\\n  # 1\\n  - b\\n    # 2\\n  - c\\n    # 3\\n  # 4\\n 1`] = `
+comment (4:3 ~ 4:6)
+ 2 | d:¶
+ 3 | ··-·a¶
+ 4 | ··#·1¶
+   |   ^^^
+ 5 | ··-·b¶
+ 6 | ····#·2¶
+sequenceItem (5:3 ~ 5:6)
+<sequenceItem>
+  <leadingComment value=" 1">
+  <endComment value=" 2">
+</sequenceItem>
+`;
 
+exports[`"\\nd:\\n  - a\\n  # 1\\n  - b\\n    # 2\\n  - c\\n    # 3\\n  # 4\\n 2`] = `
+comment (6:5 ~ 6:8)
+ 4 | ··#·1¶
+ 5 | ··-·b¶
+ 6 | ····#·2¶
+   |     ^^^
+ 7 | ··-·c¶
+ 8 | ····#·3¶
+sequenceItem (5:3 ~ 5:6)
+<sequenceItem>
+  <leadingComment value=" 1">
+  <endComment value=" 2">
+</sequenceItem>
+`;
+
+exports[`"\\nd:\\n  - a\\n  # 1\\n  - b\\n    # 2\\n  - c\\n    # 3\\n  # 4\\n 3`] = `
+comment (8:5 ~ 8:8)
+ 6 | ····#·2¶
+ 7 | ··-·c¶
+ 8 | ····#·3¶
+   |     ^^^
+ 9 | ··#·4¶
+10 | #·5¶
+sequenceItem (7:3 ~ 7:6)
+<sequenceItem>
+  <endComment value=" 3">
+</sequenceItem>
+`;
+
+exports[`"\\nd:\\n  - a\\n  # 1\\n  - b\\n    # 2\\n  - c\\n    # 3\\n  # 4\\n 4`] = `
+comment (9:3 ~ 9:6)
+ 7 | ··-·c¶
+ 8 | ····#·3¶
+ 9 | ··#·4¶
+   |   ^^^
+10 | #·5¶
+11 | ¶
+sequence (3:3 ~ 8:8)
+<sequence>
+  <endComment value=" 4">
 </sequence>
+`;
+
+exports[`"\\nd:\\n  - a\\n  # 1\\n  - b\\n    # 2\\n  - c\\n    # 3\\n  # 4\\n 5`] = `
+comment (10:1 ~ 10:4)
+ 8 | ····#·3¶
+ 9 | ··#·4¶
+10 | #·5¶
+   | ^^^
+11 | ¶
+documentBody (2:1 ~ 11:1)
+<documentBody>
+
+</documentBody>
+`;
+
+exports[`"\\ne:\\n  - 123\\n    # sequenceItem\\n" 1`] = `
+comment (4:5 ~ 4:19)
+2 | e:¶
+3 | ··-·123¶
+4 | ····#·sequenceItem¶
+  |     ^^^^^^^^^^^^^^
+5 | ¶
+sequenceItem (3:3 ~ 3:8)
+<sequenceItem>
+  <endComment value=" sequenceItem">
+</sequenceItem>
+`;
+
+exports[`"a:\\n  123\\n  # impicitMappginValue\\n" 1`] = `
+comment (3:3 ~ 3:24)
+1 | a:¶
+2 | ··123¶
+3 | ··#·impicitMappginValue¶
+  |   ^^^^^^^^^^^^^^^^^^^^^
+4 | ¶
+mappingValue (1:2 ~ 2:6)
+<mappingValue>
+  <endComment value=" impicitMappginValue">
+</mappingValue>
 `;

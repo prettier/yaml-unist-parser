@@ -803,8 +803,8 @@ document (1:1 ~ 2:10)
       <sequenceItem>
         <plain value="AAA" />
       </sequenceItem>
-      <comment value=" comment" />
     </sequence>
+    <comment value=" comment" />
   </documentBody>
 </document>
 `;
@@ -868,8 +868,8 @@ documentBody (1:1 ~ 2:10)
     <sequenceItem>
       <plain value="AAA" />
     </sequenceItem>
-    <comment value=" comment" />
   </sequence>
+  <comment value=" comment" />
 </documentBody>
 `;
 
