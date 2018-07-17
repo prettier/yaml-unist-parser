@@ -4,6 +4,7 @@ import { Sequence } from "../types";
 import {
   createCommentAttachableNode,
   createContentNode,
+  createEndCommentAttachableNode,
   getLast,
 } from "../utils";
 
@@ -29,5 +30,6 @@ export function transformSeq(seq: yaml.Seq, context: Context): Sequence {
     children: sequenceItems,
     ...createCommentAttachableNode(),
     ...createContentNode(),
+    ...createEndCommentAttachableNode(),
   };
 }
