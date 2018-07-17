@@ -1,14 +1,12 @@
 # yaml-unist-parser
 
 [![npm](https://img.shields.io/npm/v/yaml-unist-parser.svg)](https://www.npmjs.com/package/yaml-unist-parser)
-[![build](https://img.shields.io/travis/ikatyang/yaml-unist-parser/master.svg)](https://travis-ci.org/ikatyang/yaml-unist-parser/builds)
+[![build](https://img.shields.io/travis/ikatyang/yaml-unist-parser/master.svg)](https://travis-ci.com/ikatyang/yaml-unist-parser/builds)
 [![coverage](https://img.shields.io/codecov/c/github/ikatyang/yaml-unist-parser/master.svg)](https://codecov.io/gh/ikatyang/yaml-unist-parser)
 
 A YAML parser that produces output compatible with [unist](https://github.com/syntax-tree/unist)
 
-<!-- TODO: enable after stable
 [Changelog](https://github.com/ikatyang/yaml-unist-parser/blob/master/CHANGELOG.md)
--->
 
 ## Install
 
