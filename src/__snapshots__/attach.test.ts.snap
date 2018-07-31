@@ -203,11 +203,11 @@ comment (24:5 ~ 24:11)
     |     ^^^^^^
  25 | ··#·Flow·style¶
  26 | ··Numbers:·!!omap·[·one:·1,·two:·2,·three·:·3·]¶
-mappingItem (26:3 ~ 26:48)
-<mappingItem>
-  <leadingComment value=" Etc.">
-  <leadingComment value=" Flow style">
-</mappingItem>
+sequence (21:5 ~ 23:57)
+<sequence>
+  <shorthandTag handle="!!" suffix="omap" />
+  <endComment value=" Etc.">
+</sequence>
 `;
 
 exports[`"\\n---\\n# Collection Types ################################# 8`] = `
@@ -220,7 +220,6 @@ comment (25:3 ~ 25:15)
  27 | ¶
 mappingItem (26:3 ~ 26:48)
 <mappingItem>
-  <leadingComment value=" Etc.">
   <leadingComment value=" Flow style">
 </mappingItem>
 `;
@@ -1294,6 +1293,34 @@ mappingItem (204:1 ~ 206:14)
 </mappingItem>
 `;
 
+exports[`"\\n---\\n- Mark McGwire\\n- Sammy Sosa\\n- Ken Griffey\\n\\n# Tea 1`] = `
+comment (7:1 ~ 7:15)
+ 5 | -·Ken·Griffey¶
+ 6 | ¶
+ 7 | #·Team·ranking¶
+   | ^^^^^^^^^^^^^^
+ 8 | ---¶
+ 9 | -·Chicago·Cubs¶
+documentBody (3:1 ~ 7:15)
+<documentBody>
+
+</documentBody>
+`;
+
+exports[`"\\n---\\n- Mark McGwire\\n- Sammy Sosa\\n- Ken Griffey\\n\\n# Tea 2`] = `
+comment (7:1 ~ 7:15)
+ 5 | -·Ken·Griffey¶
+ 6 | ¶
+ 7 | #·Team·ranking¶
+   | ^^^^^^^^^^^^^^
+ 8 | ...¶
+ 9 | -·Chicago·Cubs¶
+documentBody (3:1 ~ 8:4)
+<documentBody>
+
+</documentBody>
+`;
+
 exports[`"\\na:\\n  b:\\n   #b\\n #a\\n\\nA:\\n  B:\\n #A\\n   #A\\n" 1`] = `
 comment (4:4 ~ 4:6)
  2 | a:¶
@@ -1316,10 +1343,10 @@ comment (5:2 ~ 5:4)
    |  ^^
  6 | ¶
  7 | A:¶
-mappingItem (7:1 ~ 10:6)
-<mappingItem>
-  <leadingComment value="a">
-</mappingItem>
+mappingValue (2:2 ~ 4:6)
+<mappingValue>
+  <endComment value="a">
+</mappingValue>
 `;
 
 exports[`"\\na:\\n  b:\\n   #b\\n #a\\n\\nA:\\n  B:\\n #A\\n   #A\\n" 3`] = `
@@ -1330,10 +1357,11 @@ comment (9:2 ~ 9:4)
    |  ^^
 10 | ···#A¶
 11 | ¶
-documentBody (2:1 ~ 11:1)
-<documentBody>
-
-</documentBody>
+mappingValue (7:2 ~ 8:5)
+<mappingValue>
+  <endComment value="A">
+  <endComment value="A">
+</mappingValue>
 `;
 
 exports[`"\\na:\\n  b:\\n   #b\\n #a\\n\\nA:\\n  B:\\n #A\\n   #A\\n" 4`] = `
@@ -1343,8 +1371,9 @@ comment (10:4 ~ 10:6)
 10 | ···#A¶
    |    ^^
 11 | ¶
-mappingValue (8:4 ~ 8:5)
+mappingValue (7:2 ~ 8:5)
 <mappingValue>
+  <endComment value="A">
   <endComment value="A">
 </mappingValue>
 `;
@@ -1481,10 +1510,10 @@ comment (4:3 ~ 4:11)
 4 | ··#·two:·2¶
   |   ^^^^^^^^
 5 | ¶
-documentBody (2:1 ~ 5:1)
-<documentBody>
-
-</documentBody>
+mappingValue (2:7 ~ 3:9)
+<mappingValue>
+  <endComment value=" two: 2">
+</mappingValue>
 `;
 
 exports[`"a:\\n  123\\n  # impicitMappginValue\\n" 1`] = `

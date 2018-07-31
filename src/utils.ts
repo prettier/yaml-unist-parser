@@ -26,8 +26,8 @@ export function getLast<T>(array: T[]) {
   return array[array.length - 1] as T | undefined;
 }
 
-export function defineCommentParent(comment: Comment, parent: YamlUnistNode) {
-  Object.defineProperty(comment, "parent", {
+export function defineParent(node: YamlUnistNode, parent: YamlUnistNode) {
+  Object.defineProperty(node, "parent", {
     value: parent,
     enumerable: false,
   });

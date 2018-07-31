@@ -1,11 +1,7 @@
 import assert = require("assert");
 import { Context } from "../transform";
 import { Document, DocumentHead, Position } from "../types";
-import {
-  createCommentAttachableNode,
-  defineCommentParent,
-  getLast,
-} from "../utils";
+import { createCommentAttachableNode, defineParent, getLast } from "../utils";
 
 export function transformDocument(
   document: yaml.Document,
@@ -91,7 +87,7 @@ export function transformDocument(
     directive => {
       if (directive.type === "comment") {
         context.comments.push(directive);
-        defineCommentParent(directive, documentHead);
+        defineParent(directive, documentHead);
       }
       return directive;
     },

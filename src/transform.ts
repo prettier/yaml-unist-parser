@@ -41,7 +41,7 @@ import {
   SequenceItem,
   YamlUnistNode,
 } from "./types";
-import { defineCommentParent } from "./utils";
+import { defineParent } from "./utils";
 
 export type YamlNode =
   | null
@@ -148,7 +148,7 @@ export function transformNode(node: YamlNode, context: Context): YamlUnistNode {
       newStartOffset <= start &&
       transformedNode.position.start.offset >= end
     ) {
-      defineCommentParent(comment, transformedNode);
+      defineParent(comment, transformedNode);
       transformedNode.middleComments.push(comment);
     } else if (
       (transformedNode.type === "blockFolded" ||
@@ -156,7 +156,7 @@ export function transformNode(node: YamlNode, context: Context): YamlUnistNode {
       (transformedNode.position.start.offset < start &&
         transformedNode.position.end.offset > end)
     ) {
-      defineCommentParent(comment, transformedNode);
+      defineParent(comment, transformedNode);
       transformedNode.trailingComments.push(comment);
     }
     context.comments.push(comment);

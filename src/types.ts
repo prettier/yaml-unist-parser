@@ -15,6 +15,8 @@ export interface Position {
 export interface Node {
   type: string;
   position: Position;
+  /** @internal non-enumerable */
+  parent?: YamlUnistNode;
 }
 
 export interface Parent extends Node {
@@ -100,8 +102,6 @@ export interface Null extends Node {
 export interface Comment extends Node {
   type: "comment";
   value: string;
-  /** @internal non-enumerable */
-  parent?: Extract<YamlUnistNode, CommentAttachable>;
 }
 
 export interface Anchor extends Node {
