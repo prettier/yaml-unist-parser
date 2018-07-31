@@ -267,6 +267,22 @@ d:
   # 4
 # 5
 `,
+  `
+parent:
+  one: 1
+  # two: 2
+`,
+  `
+a:
+  b:
+   #b
+ #a
+
+A:
+  B:
+ #A
+   #A
+`,
 ];
 
 testCases(cases.map((x): TestCaseSingle => [x, selector]), {
