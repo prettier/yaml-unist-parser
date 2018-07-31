@@ -3,7 +3,6 @@
   "include": ["src/index.ts"],
   "compilerOptions": {
     "rootDir": "src",
-    "outDir": "lib",
-    "inlineSourceMap": false
+    "outDir": "lib"
   }
 }

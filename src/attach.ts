@@ -5,15 +5,11 @@ import {
   Document,
   EndCommentAttachable,
   MappingItem,
-  MappingKey,
-  MappingValue,
   Root,
-  Sequence,
-  SequenceItem,
   YamlUnistNode,
 } from "./types";
 import {
-  defineCommentParent,
+  defineParent,
   getLast,
   getStartPoint,
   isBlockValue,
@@ -22,28 +18,14 @@ import {
 } from "./utils";
 
 type NodeTable = Array<{
-  leadingNode: null | Extract<YamlUnistNode, CommentAttachable>;
-  trailingNode: null | Extract<YamlUnistNode, CommentAttachable>;
-  collectionNode: null | {
-    node: SequenceItem | MappingKey | MappingValue;
-    column: number;
-    cases: NodeTableCollectionNodeCase[];
-  };
+  leadingAttachableNode: null | Extract<YamlUnistNode, CommentAttachable>;
+  trailingAttachableNode: null | Extract<YamlUnistNode, CommentAttachable>;
+  trailingNode: null | YamlUnistNode;
+  comment: null | Comment;
 }>;
 
-interface NodeTableCollectionNodeCase {
-  mode: "gt" | "gte";
-  attachee: Extract<YamlUnistNode, EndCommentAttachable>;
-}
-
 export function attachComments(root: Root, context: Context): void {
-  const nodeTable: NodeTable = context.text.split("\n").map(() => ({
-    leadingNode: null,
-    trailingNode: null,
-    collectionNode: null,
-  }));
-
-  initNodeTable(root, nodeTable, context);
+  const nodeTable = createNodeTable(root, context);
 
   const restDocuments = root.children.slice();
   context.comments
@@ -62,26 +44,44 @@ export function attachComments(root: Root, context: Context): void {
   updateEndPoints(root);
 }
 
+function createNodeTable(root: Root, context: Context) {
+  const nodeTable: NodeTable = context.text.split("\n").map(() => ({
+    leadingAttachableNode: null,
+    trailingAttachableNode: null,
+    trailingNode: null,
+    comment: null,
+  }));
+
+  for (const comment of context.comments) {
+    nodeTable[comment.position.start.line - 1].comment = comment;
+  }
+
+  initNodeTable(root, nodeTable, context);
+
+  return nodeTable;
+}
+
 function initNodeTable(
   node: YamlUnistNode,
   nodeTable: NodeTable,
   context: Context,
-  parentStack: YamlUnistNode[] = [],
 ): void {
   if ("leadingComments" in node) {
     const start = getStartPoint(node);
-    const { end } = node.position;
-
-    const currentStartNode = nodeTable[start.line - 1].leadingNode;
-    const currentEndNode = nodeTable[end.line - 1].trailingNode;
+    const currentStartNode = nodeTable[start.line - 1].leadingAttachableNode;
 
     if (
       node.type !== "document" &&
       (!currentStartNode ||
         start.column < currentStartNode.position.start.column)
     ) {
-      nodeTable[start.line - 1].leadingNode = node;
+      nodeTable[start.line - 1].leadingAttachableNode = node;
     }
+  }
+
+  if ("trailingComments" in node) {
+    const { end } = node.position;
+    const currentEndNode = nodeTable[end.line - 1].trailingAttachableNode;
 
     if (
       !(
@@ -93,50 +93,33 @@ function initNodeTable(
       ) &&
       (!currentEndNode || end.column >= currentEndNode.position.end.column)
     ) {
-      nodeTable[end.line - 1].trailingNode = node;
+      nodeTable[end.line - 1].trailingAttachableNode = node;
     }
   }
 
-  const parent = getLast(parentStack);
-
   if (
-    node.type === "sequenceItem" ||
-    ((node.type === "mappingValue" ||
-      (node.type === "mappingKey" &&
-        isExplicitMappingItem(parent as MappingItem))) &&
-      !isBlockValue(node.children[0]))
+    node.type !== "null" &&
+    node.type !== "root" &&
+    node.type !== "document" &&
+    node.type !== "documentHead" &&
+    node.type !== "documentBody"
   ) {
-    const column =
-      node.type === "mappingValue" &&
-      !isExplicitMappingItem(parent as MappingItem)
-        ? parent!.position.start.column
-        : node.position.start.column;
+    const { start, end } = node.position;
+    const lines = [end.line].concat(start.line === end.line ? [] : start.line);
 
-    const cases: NodeTableCollectionNodeCase[] = [
-      { mode: "gt", attachee: node },
-    ];
-
-    if (node.type === "sequenceItem") {
-      const parentParent = parentStack[parentStack.length - 2];
-      if (parentParent.type !== "documentBody") {
-        const sequence = parent as Sequence;
-        if (node === getLast(sequence.children)) {
-          cases.push({ mode: "gte", attachee: sequence });
-        }
+    for (const line of lines) {
+      const currentEndNode = nodeTable[line - 1].trailingNode;
+      if (!currentEndNode || end.column >= currentEndNode.position.end.column) {
+        nodeTable[line - 1].trailingNode = node;
       }
     }
-
-    nodeTable[node.position.start.line - 1].collectionNode = {
-      node,
-      column,
-      cases,
-    };
   }
 
   if ("children" in node) {
-    (node.children as YamlUnistNode[]).forEach(child =>
-      initNodeTable(child, nodeTable, context, parentStack.concat(node)),
-    );
+    (node.children as YamlUnistNode[]).forEach(child => {
+      defineParent(child, node);
+      initNodeTable(child, nodeTable, context);
+    });
   }
 }
 
@@ -147,49 +130,103 @@ function attachComment(
 ) {
   const commentLine = comment.position.start.line;
 
-  const trailingNode = nodeTable[commentLine - 1].trailingNode;
+  const { trailingAttachableNode } = nodeTable[commentLine - 1];
   if (
-    trailingNode !== null &&
-    trailingNode.type !== "blockFolded" &&
-    trailingNode.type !== "blockLiteral"
+    trailingAttachableNode !== null &&
+    trailingAttachableNode.type !== "blockFolded" &&
+    trailingAttachableNode.type !== "blockLiteral"
   ) {
-    defineCommentParent(comment, trailingNode);
-    trailingNode.trailingComments.push(comment);
+    defineParent(comment, trailingAttachableNode);
+    trailingAttachableNode.trailingComments.push(comment);
     return;
   }
 
   for (let line = commentLine; line >= document.position.start.line; line--) {
-    const { collectionNode } = nodeTable[line - 1];
+    const { trailingNode } = nodeTable[line - 1];
 
-    if (collectionNode === null) {
-      continue;
+    let currentNode: YamlUnistNode;
+
+    if (trailingNode === null) {
+      /**
+       * a:
+       *   b:
+       *    #b
+       *  #a
+       *
+       * a:
+       *   b:
+       *  #a
+       *    #a
+       */
+      if (line !== commentLine && nodeTable[line - 1].comment !== null) {
+        currentNode = nodeTable[line - 1].comment!.parent!;
+      } else {
+        continue;
+      }
+    } else {
+      currentNode = trailingNode;
     }
 
-    const { cases, node, column } = collectionNode;
-
-    for (const { mode, attachee } of cases) {
-      if (
-        node.position.end.offset <= comment.position.start.offset &&
-        column + (mode === "gt" ? 1 : 0) <= comment.position.start.column
-      ) {
-        defineCommentParent(comment, attachee);
-        attachee.endComments.push(comment);
+    while (true) {
+      if (ownEndComment(currentNode, comment)) {
+        defineParent(comment, currentNode);
+        currentNode.endComments.push(comment);
         return;
       }
+
+      if (currentNode.parent === undefined) {
+        break;
+      }
+
+      currentNode = currentNode.parent;
     }
 
     break;
   }
 
   for (let line = commentLine + 1; line <= document.position.end.line; line++) {
-    const leadingNode = nodeTable[line - 1].leadingNode;
-    if (leadingNode !== null) {
-      defineCommentParent(comment, leadingNode);
-      leadingNode.leadingComments.push(comment);
+    const { leadingAttachableNode } = nodeTable[line - 1];
+    if (leadingAttachableNode !== null) {
+      defineParent(comment, leadingAttachableNode);
+      leadingAttachableNode.leadingComments.push(comment);
       return;
     }
   }
 
-  defineCommentParent(comment, document.children[1]);
+  defineParent(comment, document.children[1]);
   document.children[1].children.push(comment);
+}
+
+function ownEndComment(
+  node: YamlUnistNode,
+  comment: Comment,
+): node is Extract<YamlUnistNode, EndCommentAttachable> {
+  if (comment.position.end.offset < node.position.end.offset) {
+    return false;
+  }
+
+  switch (node.type) {
+    case "sequence":
+      return (
+        node.parent!.type !== "documentBody" &&
+        comment.position.start.column >= node.position.start.column &&
+        comment.position.start.offset >
+          getLast(node.children)!.position.end.offset
+      );
+    case "sequenceItem":
+      return comment.position.start.column > node.position.start.column;
+    case "mappingValue":
+      return (
+        comment.position.start.column > node.parent!.position.start.column &&
+        !isBlockValue(node.children[0])
+      );
+    case "mappingKey":
+      return (
+        comment.position.start.column > node.parent!.position.start.column &&
+        !isBlockValue(node.children[0]) &&
+        isExplicitMappingItem(node.parent as MappingItem)
+      );
+    default:
+      return false;
+  }
 }

@@ -267,6 +267,44 @@ d:
   # 4
 # 5
 `,
+  `
+parent:
+  one: 1
+  # two: 2
+`,
+  `
+a:
+  b:
+   #b
+ #a
+
+A:
+  B:
+ #A
+   #A
+`,
+  `
+---
+- Mark McGwire
+- Sammy Sosa
+- Ken Griffey
+
+# Team ranking
+---
+- Chicago Cubs
+- St Louis Cardinals
+`,
+  `
+---
+- Mark McGwire
+- Sammy Sosa
+- Ken Griffey
+
+# Team ranking
+...
+- Chicago Cubs
+- St Louis Cardinals
+`,
 ];
 
 testCases(cases.map((x): TestCaseSingle => [x, selector]), {
