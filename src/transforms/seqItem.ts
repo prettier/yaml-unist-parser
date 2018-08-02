@@ -19,7 +19,7 @@ export function transformSeqItem(
   return createSequenceItem(
     createPosition(
       context.transformOffset(seqItem.valueRange!.start),
-      value.type === "null"
+      value === null
         ? context.transformOffset(seqItem.valueRange!.start + 1)
         : value.position.end,
     ),

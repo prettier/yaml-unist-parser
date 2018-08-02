@@ -1,10 +1,9 @@
 import { Content } from "../types";
-import { createNull } from "./null";
 
 export function createContent(): Content {
   return {
-    anchor: createNull(),
-    tag: createNull(),
+    anchor: null,
+    tag: null,
     middleComments: [],
   };
 }

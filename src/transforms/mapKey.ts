@@ -20,7 +20,7 @@ export function transformMapKey(
   const start = context.transformOffset(mapKey.valueRange!.start);
 
   return createMappingKey(
-    createPosition(start, key.type === "null" ? start : key.position.end),
+    createPosition(start, key === null ? start : key.position.end),
     key,
   );
 }

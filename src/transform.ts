@@ -16,7 +16,6 @@ import { transformFlowSeq } from "./transforms/flowSeq";
 import { transformMap } from "./transforms/map";
 import { transformMapKey } from "./transforms/mapKey";
 import { transformMapValue } from "./transforms/mapValue";
-import { transformNull } from "./transforms/null";
 import { transformPlain } from "./transforms/plain";
 import { transformQuoteDouble } from "./transforms/quoteDouble";
 import { transformQuoteSingle } from "./transforms/quoteSingle";
@@ -36,7 +35,6 @@ import {
   Mapping,
   MappingKey,
   MappingValue,
-  Null,
   Plain,
   Point,
   Position,
@@ -65,7 +63,7 @@ export type YamlNode =
 
 // prettier-ignore
 export type YamlToUnist<T extends YamlNode> =
-  T extends null ? Null :
+  T extends null ? null :
   T extends yaml.Alias ? Alias :
   T extends yaml.BlockValue ? BlockLiteral | BlockFolded :
   T extends yaml.Comment ? Comment :
@@ -95,7 +93,7 @@ export function transformNode<T extends YamlNode>(
 ): YamlToUnist<T>;
 export function transformNode(node: YamlNode, context: Context): YamlUnistNode {
   if (node === null) {
-    return transformNull();
+    return null;
   }
 
   const transformedNode = _transformNode(node, context);
@@ -196,7 +194,7 @@ export function transformNode(node: YamlNode, context: Context): YamlUnistNode {
 function _transformNode(
   node: Exclude<YamlNode, null>,
   context: Context,
-): YamlUnistNode {
+): Exclude<YamlUnistNode, null> {
   // prettier-ignore
   switch (node.type) {
     case "ALIAS": return tranformAlias(node, context);

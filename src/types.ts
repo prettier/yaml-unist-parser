@@ -16,18 +16,18 @@ export interface Node {
   type: string;
   position: Position;
   /** @internal non-enumerable */
-  parent?: YamlUnistNode;
+  parent?: Exclude<YamlUnistNode, null>;
 }
 
 export interface Parent extends Node {
-  children: Node[];
+  children: Array<Node | null>;
 }
 
 // -----------------------------------------------------------------------------
 
 export interface Content {
-  anchor: Null | Anchor;
-  tag: Null | VerbatimTag | ShorthandTag | NonSpecificTag;
+  anchor: null | Anchor;
+  tag: null | VerbatimTag | ShorthandTag | NonSpecificTag;
   /** comments between the node and its tag/anchor */
   middleComments: Comment[];
 }
@@ -76,7 +76,7 @@ export type YamlUnistNode =
   | FlowMappingItem
   | FlowSequence
   | FlowSequenceItem
-  | Null;
+  | null;
 
 export type ContentNode =
   | Alias
@@ -89,15 +89,9 @@ export type ContentNode =
   | Sequence
   | FlowMapping
   | FlowSequence
-  | Null;
+  | null;
 
 // -----------------------------------------------------------------------------
-
-export interface Null extends Node {
-  type: "null";
-  /** always -1 */
-  position: Position;
-}
 
 export interface Comment extends Node {
   type: "comment";
@@ -200,12 +194,12 @@ export interface Mapping extends Parent, Content, CommentAttachable {
 
 export interface MappingItemBase extends Parent, CommentAttachable {
   /** key-value pair */
-  children: [MappingKey | Null, MappingValue | Null];
+  children: [MappingKey | null, MappingValue | null];
 }
 
 export interface MappingItem extends MappingItemBase {
   type: "mappingItem";
-  children: [MappingKey, MappingValue | Null];
+  children: [MappingKey, MappingValue | null];
 }
 
 export interface MappingKey
