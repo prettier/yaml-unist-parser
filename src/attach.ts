@@ -20,7 +20,7 @@ import {
 type NodeTable = Array<{
   leadingAttachableNode: null | Extract<YamlUnistNode, CommentAttachable>;
   trailingAttachableNode: null | Extract<YamlUnistNode, CommentAttachable>;
-  trailingNode: null | YamlUnistNode;
+  trailingNode: null | Exclude<YamlUnistNode, null>;
   comment: null | Comment;
 }>;
 
@@ -62,7 +62,7 @@ function createNodeTable(root: Root, context: Context) {
 }
 
 function initNodeTable(
-  node: YamlUnistNode,
+  node: Exclude<YamlUnistNode, null>,
   nodeTable: NodeTable,
   context: Context,
 ): void {
@@ -98,7 +98,6 @@ function initNodeTable(
   }
 
   if (
-    node.type !== "null" &&
     node.type !== "root" &&
     node.type !== "document" &&
     node.type !== "documentHead" &&
@@ -117,8 +116,10 @@ function initNodeTable(
 
   if ("children" in node) {
     (node.children as YamlUnistNode[]).forEach(child => {
-      defineParent(child, node);
-      initNodeTable(child, nodeTable, context);
+      if (child !== null) {
+        defineParent(child, node);
+        initNodeTable(child, nodeTable, context);
+      }
     });
   }
 }
@@ -144,7 +145,7 @@ function attachComment(
   for (let line = commentLine; line >= document.position.start.line; line--) {
     const { trailingNode } = nodeTable[line - 1];
 
-    let currentNode: YamlUnistNode;
+    let currentNode: Exclude<YamlUnistNode, null>;
 
     if (trailingNode === null) {
       /**
@@ -198,7 +199,7 @@ function attachComment(
 }
 
 function ownEndComment(
-  node: YamlUnistNode,
+  node: Exclude<YamlUnistNode, null>,
   comment: Comment,
 ): node is Extract<YamlUnistNode, EndCommentAttachable> {
   if (comment.position.end.offset < node.position.end.offset) {

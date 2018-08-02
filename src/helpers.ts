@@ -43,7 +43,7 @@ export function testCases(
   });
 }
 
-function getNodeDescription(node: YamlUnistNode) {
+function getNodeDescription(node: Exclude<YamlUnistNode, null>) {
   return `${node.type} (${[
     `${node.position.start.line}:${node.position.start.column}`,
     `${node.position.end.line}:${node.position.end.column}`,
@@ -55,8 +55,12 @@ function snapshotNode(
   node: YamlUnistNode,
   options: SnapshotNodeOptions = {},
 ) {
+  if (node === null) {
+    return "null";
+  }
+
   const { selectNodeToStringify = (x: YamlUnistNode) => x } = options;
-  const stringifiedNode = selectNodeToStringify(node);
+  const stringifiedNode = selectNodeToStringify(node)!;
   return (
     `${getNodeDescription(node)}\n` +
     codeFrameColumns(text, node.position, options.codeFrameMaxHeight) +
@@ -77,6 +81,10 @@ function stringifyNode(
   node: YamlUnistNode | Node,
   options: StringifyNodeOptions = {},
 ): string {
+  if (node === null) {
+    return "<null />";
+  }
+
   const attributes = Object.keys(node)
     .filter(key => {
       switch (key) {
@@ -102,7 +110,7 @@ function stringifyNode(
   const propNodes =
     "tag" in node
       ? [node.tag, node.anchor]
-          .filter(propNode => propNode.type !== "null")
+          .filter(propNode => propNode !== null)
           .map(propNode => stringifyNode(propNode))
       : [];
   const comments =

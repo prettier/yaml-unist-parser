@@ -14,7 +14,7 @@ import {
 } from "../types";
 import { getLast } from "../utils";
 
-type ItemBuffer = Array<"," | "?" | ":" | ContentNode>;
+type ItemBuffer = Array<"," | "?" | ":" | Exclude<ContentNode, null>>;
 type RangeBuffer = Array<{ start: number; end: number }>;
 
 export function transformFlowCollection(
@@ -203,7 +203,7 @@ function transformFlowCollectionItems(
       // [ ? 123 ] or { ? 123 }
       assert(questionIndex === 0);
       const questionRange = rangeBuffer[0];
-      const key = itemBufferWithoutComma[1] as ContentNode;
+      const key = itemBufferWithoutComma[1] as Exclude<ContentNode, null>;
       const keyPosition = {
         start: context.transformOffset(questionRange.start),
         end: key.position.end,
@@ -216,7 +216,7 @@ function transformFlowCollectionItems(
     } else if (colonIndex === 0) {
       // [ : 123 ] or { : 123 }
       const colonRange = rangeBuffer[0];
-      const value = itemBufferWithoutComma[1] as ContentNode;
+      const value = itemBufferWithoutComma[1] as Exclude<ContentNode, null>;
       const valuePosition = {
         start: context.transformOffset(colonRange.start),
         end: value.position.end,
@@ -230,7 +230,7 @@ function transformFlowCollectionItems(
       // [ 123 : ] or { 123 : }
       assert(colonIndex === 1);
       const colonRange = rangeBuffer[1];
-      const key = itemBufferWithoutComma[0] as ContentNode;
+      const key = itemBufferWithoutComma[0] as Exclude<ContentNode, null>;
       return createFlowMappingItem(
         createPosition(
           key.position.start,
@@ -248,8 +248,8 @@ function transformFlowCollectionItems(
       // [ 123 : 123 ] or { 123 : 123 }
       assert(colonIndex === 1);
       const colonRange = rangeBuffer[1];
-      const key = itemBufferWithoutComma[0] as ContentNode;
-      const value = itemBufferWithoutComma[2] as ContentNode;
+      const key = itemBufferWithoutComma[0] as Exclude<ContentNode, null>;
+      const value = itemBufferWithoutComma[2] as Exclude<ContentNode, null>;
       return createFlowMappingItem(
         context.transformRange({
           start: key.position.start.offset,
@@ -270,7 +270,7 @@ function transformFlowCollectionItems(
         // [ ? : 123 ] or { ? : 123 }
         const questionRange = rangeBuffer[0];
         const colonRange = rangeBuffer[1];
-        const value = itemBufferWithoutComma[2] as ContentNode;
+        const value = itemBufferWithoutComma[2] as Exclude<ContentNode, null>;
         return createFlowMappingItem(
           context.transformRange({
             start: questionRange.start,
@@ -292,7 +292,7 @@ function transformFlowCollectionItems(
         // [ ? 123 : ] or { ? 123 : }
         const questionRange = rangeBuffer[0];
         const colonRange = rangeBuffer[2];
-        const key = itemBufferWithoutComma[1] as ContentNode;
+        const key = itemBufferWithoutComma[1] as Exclude<ContentNode, null>;
         return createFlowMappingItem(
           context.transformRange({
             start: questionRange.start,
@@ -318,8 +318,8 @@ function transformFlowCollectionItems(
 
     const questionRange = rangeBuffer[0];
     const colonRange = rangeBuffer[2];
-    const key = itemBufferWithoutComma[1] as ContentNode;
-    const value = itemBufferWithoutComma[3] as ContentNode;
+    const key = itemBufferWithoutComma[1] as Exclude<ContentNode, null>;
+    const value = itemBufferWithoutComma[3] as Exclude<ContentNode, null>;
 
     return createFlowMappingItem(
       context.transformRange({

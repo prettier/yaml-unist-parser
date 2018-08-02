@@ -10,11 +10,14 @@ import {
   YamlUnistNode,
 } from "./types";
 
-export function overwriteStart(node: YamlUnistNode, start: Point) {
+export function overwriteStart(
+  node: Exclude<YamlUnistNode, null>,
+  start: Point,
+) {
   node.position = { start, end: node.position.end };
 }
 
-export function overwriteEnd(node: YamlUnistNode, end: Point) {
+export function overwriteEnd(node: Exclude<YamlUnistNode, null>, end: Point) {
   node.position = { start: node.position.start, end };
 }
 
@@ -43,11 +46,10 @@ export function createError(
   return error as YAMLSyntaxError;
 }
 
-export function getStartPoint(node: YamlUnistNode): Point {
-  const tagPosition =
-    "tag" in node && node.tag.type !== "null" && node.tag.position;
+export function getStartPoint(node: Exclude<YamlUnistNode, null>): Point {
+  const tagPosition = "tag" in node && node.tag !== null && node.tag.position;
   const anchorPosition =
-    "anchor" in node && node.anchor.type !== "null" && node.anchor.position;
+    "anchor" in node && node.anchor !== null && node.anchor.position;
   return !tagPosition && !anchorPosition
     ? node.position.start
     : tagPosition && anchorPosition
@@ -61,8 +63,12 @@ export function getStartPoint(node: YamlUnistNode): Point {
 
 export function updateEndPoints(
   node: YamlUnistNode,
-  nodeStack: YamlUnistNode[] = [],
+  nodeStack: Array<Exclude<YamlUnistNode, null>> = [],
 ): void {
+  if (node === null) {
+    return;
+  }
+
   if ("children" in node && node.children.length !== 0) {
     (node.children as YamlUnistNode[]).forEach(childNode => {
       updateEndPoints(childNode, nodeStack.concat(node));
@@ -82,10 +88,7 @@ export function updateEndPoints(
         }
       }
     }
-    if (
-      node.type !== "null" &&
-      node.position.end.offset > parentNode.position.end.offset
-    ) {
+    if (node.position.end.offset > parentNode.position.end.offset) {
       overwriteEnd(parentNode, node.position.end);
     }
   }
@@ -116,13 +119,15 @@ export function findLastCharIndex(text: string, from: number, regex: RegExp) {
 export function isExplicitMappingItem(mappingItem: MappingItem) {
   const [key, value] = mappingItem.children;
   return (
-    value.type === "null" ||
-    key.position.start.line !== value.position.start.line
+    value === null || key.position.start.line !== value.position.start.line
   );
 }
 
 export function isBlockValue(
   node: YamlUnistNode,
 ): node is BlockFolded | BlockLiteral {
-  return node.type === "blockFolded" || node.type === "blockLiteral";
+  return (
+    node !== null &&
+    (node.type === "blockFolded" || node.type === "blockLiteral")
+  );
 }

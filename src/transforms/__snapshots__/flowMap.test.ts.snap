@@ -61,11 +61,7 @@ flowMappingItem (1:5 ~ 1:6)
 </flowMappingItem>
 `;
 
-exports[`"  { : }  " 3`] = `
-null (-1:-1 ~ -1:-1)
-1 | ··{·:·}··¶
-<null />
-`;
+exports[`"  { : }  " 3`] = `null`;
 
 exports[`"  { : }  " 4`] = `
 mappingValue (1:5 ~ 1:6)
@@ -102,11 +98,7 @@ flowMappingItem (1:5 ~ 1:10)
 </flowMappingItem>
 `;
 
-exports[`"  { : 123 }  " 3`] = `
-null (-1:-1 ~ -1:-1)
-1 | ··{·:·123·}··¶
-<null />
-`;
+exports[`"  { : 123 }  " 3`] = `null`;
 
 exports[`"  { : 123 }  " 4`] = `
 mappingValue (1:5 ~ 1:10)
@@ -248,11 +240,7 @@ mappingKey (1:5 ~ 1:6)
 </mappingKey>
 `;
 
-exports[`"  { ? }  " 4`] = `
-null (-1:-1 ~ -1:-1)
-1 | ··{·?·}··¶
-<null />
-`;
+exports[`"  { ? }  " 4`] = `null`;
 
 exports[`"  { ? 123 : }  " 1`] = `
 flowMapping (1:3 ~ 1:14)
@@ -385,11 +373,7 @@ mappingKey (1:5 ~ 1:10)
 </mappingKey>
 `;
 
-exports[`"  { ? 123 }  " 4`] = `
-null (-1:-1 ~ -1:-1)
-1 | ··{·?·123·}··¶
-<null />
-`;
+exports[`"  { ? 123 }  " 4`] = `null`;
 
 exports[`"  { 123 : }  " 1`] = `
 flowMapping (1:3 ~ 1:12)
@@ -522,11 +506,7 @@ mappingKey (1:5 ~ 1:8)
 </mappingKey>
 `;
 
-exports[`"  { 123 }  " 4`] = `
-null (-1:-1 ~ -1:-1)
-1 | ··{·123·}··¶
-<null />
-`;
+exports[`"  { 123 }  " 4`] = `null`;
 
 exports[`"  { 123, #123\\n }  " 1`] = `
 flowMapping (1:3 ~ 2:3)
@@ -573,12 +553,7 @@ mappingKey (1:5 ~ 1:14)
 </mappingKey>
 `;
 
-exports[`"  { 123, #123\\n }  " 4`] = `
-null (-1:-1 ~ -1:-1)
-1 | ··{·123,·#123¶
-2 | ·}··¶
-<null />
-`;
+exports[`"  { 123, #123\\n }  " 4`] = `null`;
 
 exports[`"  { 123, }  " 1`] = `
 flowMapping (1:3 ~ 1:11)
@@ -615,8 +590,4 @@ mappingKey (1:5 ~ 1:8)
 </mappingKey>
 `;
 
-exports[`"  { 123, }  " 4`] = `
-null (-1:-1 ~ -1:-1)
-1 | ··{·123,·}··¶
-<null />
-`;
+exports[`"  { 123, }  " 4`] = `null`;

@@ -174,11 +174,7 @@ mappingKey (1:1 ~ 1:6)
 </mappingKey>
 `;
 
-exports[`"? 123" 4`] = `
-null (-1:-1 ~ -1:-1)
-1 | ?·123¶
-<null />
-`;
+exports[`"? 123" 4`] = `null`;
 
 exports[`"? a  \\n: 123  \\n? b  \\n: 456  " 1`] = `
 mapping (1:1 ~ 4:6)
@@ -362,19 +358,9 @@ mappingKey (2:1 ~ 2:6)
 </mappingKey>
 `;
 
-exports[`"? abc\\n? def" 6`] = `
-null (-1:-1 ~ -1:-1)
-1 | ?·abc¶
-2 | ?·def¶
-<null />
-`;
+exports[`"? abc\\n? def" 6`] = `null`;
 
-exports[`"? abc\\n? def" 7`] = `
-null (-1:-1 ~ -1:-1)
-1 | ?·abc¶
-2 | ?·def¶
-<null />
-`;
+exports[`"? abc\\n? def" 7`] = `null`;
 
 exports[`"a:   " 1`] = `
 mapping (1:1 ~ 1:3)

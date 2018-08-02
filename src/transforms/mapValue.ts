@@ -19,7 +19,7 @@ export function transformMapValue(
   return createMappingValue(
     createPosition(
       context.transformOffset(mapValue.valueRange!.start),
-      value.type === "null"
+      value === null
         ? context.transformOffset(mapValue.valueRange!.start + 1)
         : value.position.end,
     ),
