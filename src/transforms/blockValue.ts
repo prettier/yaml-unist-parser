@@ -1,7 +1,7 @@
 import assert = require("assert");
+import { createBlockValue } from "../factories/block-value";
 import { Context } from "../transform";
 import { BlockValue } from "../types";
-import { createCommentAttachableNode, createContentNode } from "../utils";
 
 enum Chomping {
   CLIP = "clip",
@@ -23,16 +23,13 @@ export function tranformBlockValue(
 
   assert(!hasExplicitBlockIndent || blockValue.blockIndent !== null);
 
-  return {
-    type: "blockBase",
-    position: context.transformRange({
+  return createBlockValue(
+    context.transformRange({
       start: blockValue.header.start,
       end: blockValue.valueRange!.end,
     }),
-    chomping: Chomping[blockValue.chomping],
-    indent: hasExplicitBlockIndent ? blockValue.blockIndent! : null,
-    value: blockValue.strValue!,
-    ...createCommentAttachableNode(),
-    ...createContentNode(),
-  };
+    Chomping[blockValue.chomping],
+    hasExplicitBlockIndent ? blockValue.blockIndent! : null,
+    blockValue.strValue!,
+  );
 }

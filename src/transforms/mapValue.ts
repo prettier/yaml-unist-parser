@@ -1,10 +1,8 @@
 import assert = require("assert");
+import { createMappingValue } from "../factories/mapping-value";
+import { createPosition } from "../factories/position";
 import { Context } from "../transform";
 import { MappingValue } from "../types";
-import {
-  createCommentAttachableNode,
-  createEndCommentAttachableNode,
-} from "../utils";
 
 export function transformMapValue(
   mapValue: yaml.MapItem,
@@ -18,17 +16,13 @@ export function transformMapValue(
     yaml.Comment
   >);
 
-  return {
-    type: "mappingValue",
-    position: {
-      start: context.transformOffset(mapValue.valueRange!.start),
-      end:
-        value.type === "null"
-          ? context.transformOffset(mapValue.valueRange!.start + 1)
-          : value.position.end,
-    },
-    children: [value],
-    ...createCommentAttachableNode(),
-    ...createEndCommentAttachableNode(),
-  };
+  return createMappingValue(
+    createPosition(
+      context.transformOffset(mapValue.valueRange!.start),
+      value.type === "null"
+        ? context.transformOffset(mapValue.valueRange!.start + 1)
+        : value.position.end,
+    ),
+    value,
+  );
 }

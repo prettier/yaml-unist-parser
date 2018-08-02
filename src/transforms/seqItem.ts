@@ -1,10 +1,8 @@
 import assert = require("assert");
+import { createPosition } from "../factories/position";
+import { createSequenceItem } from "../factories/sequence-item";
 import { Context } from "../transform";
 import { SequenceItem } from "../types";
-import {
-  createCommentAttachableNode,
-  createEndCommentAttachableNode,
-} from "../utils";
 
 export function transformSeqItem(
   seqItem: yaml.SeqItem,
@@ -18,17 +16,13 @@ export function transformSeqItem(
     yaml.Comment
   >);
 
-  return {
-    type: "sequenceItem",
-    position: {
-      start: context.transformOffset(seqItem.valueRange!.start),
-      end:
-        value.type === "null"
-          ? context.transformOffset(seqItem.valueRange!.start + 1)
-          : value.position.end,
-    },
-    children: [value],
-    ...createCommentAttachableNode(),
-    ...createEndCommentAttachableNode(),
-  };
+  return createSequenceItem(
+    createPosition(
+      context.transformOffset(seqItem.valueRange!.start),
+      value.type === "null"
+        ? context.transformOffset(seqItem.valueRange!.start + 1)
+        : value.position.end,
+    ),
+    value,
+  );
 }

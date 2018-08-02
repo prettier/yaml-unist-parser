@@ -1,5 +1,5 @@
+import { createNull } from "../factories/null";
 import { Null } from "../types";
-import { createNull } from "../utils";
 
 export function transformNull(): Null {
   return createNull();

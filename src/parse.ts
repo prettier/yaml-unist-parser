@@ -2,6 +2,7 @@ import LinesAndColumns from "lines-and-columns";
 import YAML from "yaml";
 import parseCST from "yaml/parse-cst";
 import { attachComments } from "./attach";
+import { createRoot } from "./factories/root";
 import { Context, transformNode } from "./transform";
 import { transformOffset } from "./transforms/offset";
 import { transformRange } from "./transforms/range";
@@ -39,34 +40,31 @@ export function parse(text: string): Root {
 
   const rootPosition = context.transformRange({ start: 0, end: text.length });
 
-  const root: Root = {
-    type: "root",
-    position: rootPosition,
-    children: rawDocuments
-      .map(context.transformNode)
-      .map((document, index, documents) => {
-        if (index === 0) {
-          overwriteStart(document, rootPosition.start);
-        }
-        if (
-          text.slice(
-            document.position.end.offset - 4,
-            document.position.end.offset,
-          ) !== "\n..."
-        ) {
-          const end =
-            index === documents.length - 1
-              ? rootPosition.end
-              : context.transformOffset(
-                  documents[index + 1].position.start.offset - 1,
-                );
-          overwriteEnd(document, end);
-          overwriteEnd(document.children[1], end);
-        }
-        return document;
-      }),
-    comments,
-  };
+  const children = rawDocuments
+    .map(context.transformNode)
+    .map((document, index, documents) => {
+      if (index === 0) {
+        overwriteStart(document, rootPosition.start);
+      }
+      if (
+        text.slice(
+          document.position.end.offset - 4,
+          document.position.end.offset,
+        ) !== "\n..."
+      ) {
+        const end =
+          index === documents.length - 1
+            ? rootPosition.end
+            : context.transformOffset(
+                documents[index + 1].position.start.offset - 1,
+              );
+        overwriteEnd(document, end);
+        overwriteEnd(document.children[1], end);
+      }
+      return document;
+    });
+
+  const root = createRoot(rootPosition, children, comments);
 
   if (context.comments.length !== 0) {
     attachComments(root, context);

@@ -1,12 +1,9 @@
 import assert = require("assert");
+import { createPosition } from "../factories/position";
+import { createSequence } from "../factories/sequence";
 import { Context } from "../transform";
 import { Sequence } from "../types";
-import {
-  createCommentAttachableNode,
-  createContentNode,
-  createEndCommentAttachableNode,
-  getLast,
-} from "../utils";
+import { getLast } from "../utils";
 
 export function transformSeq(seq: yaml.Seq, context: Context): Sequence {
   const itemsWithoutComments = seq.items.filter(item => {
@@ -21,15 +18,11 @@ export function transformSeq(seq: yaml.Seq, context: Context): Sequence {
 
   assert(seq.valueRange !== null);
 
-  return {
-    type: "sequence",
-    position: {
-      start: sequenceItems[0].position.start,
-      end: getLast(sequenceItems)!.position.end,
-    },
-    children: sequenceItems,
-    ...createCommentAttachableNode(),
-    ...createContentNode(),
-    ...createEndCommentAttachableNode(),
-  };
+  return createSequence(
+    createPosition(
+      sequenceItems[0].position.start,
+      getLast(sequenceItems)!.position.end,
+    ),
+    sequenceItems,
+  );
 }

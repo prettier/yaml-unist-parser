@@ -1,4 +1,5 @@
 import assert = require("assert");
+import { createComment } from "../factories/comment";
 import { Context } from "../transform";
 import { Comment } from "../types";
 
@@ -7,9 +8,5 @@ export function transformComment(
   context: Context,
 ): Comment {
   assert(comment.range !== null);
-  return {
-    type: "comment",
-    position: context.transformRange(comment.range!),
-    value: comment.comment,
-  };
+  return createComment(context.transformRange(comment.range!), comment.comment);
 }

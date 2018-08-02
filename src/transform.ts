@@ -1,5 +1,10 @@
 import assert = require("assert");
 import LinesAndColumns from "lines-and-columns";
+import { createAnchor } from "./factories/anchor";
+import { createComment } from "./factories/comment";
+import { createNonSpecificTag } from "./factories/non-specific-tag";
+import { createShorthandTag } from "./factories/shorthand-tag";
+import { createVerbatimTag } from "./factories/verbatim-tag";
 import { tranformAlias } from "./transforms/alias";
 import { tranformBlockFolded } from "./transforms/blockFolded";
 import { tranformBlockLiteral } from "./transforms/blockLiteral";
@@ -136,11 +141,10 @@ export function transformNode(node: YamlNode, context: Context): YamlUnistNode {
   commentRanges.forEach(commentRange => {
     const { start, end } = commentRange;
 
-    const comment: Comment = {
-      type: "comment",
-      position: transformRange(commentRange, context),
-      value: context.text.slice(commentRange.start + 1, commentRange.end),
-    };
+    const comment = createComment(
+      transformRange(commentRange, context),
+      context.text.slice(commentRange.start + 1, commentRange.end),
+    );
 
     if (
       "middleComments" in transformedNode &&
@@ -167,32 +171,23 @@ export function transformNode(node: YamlNode, context: Context): YamlUnistNode {
     const tag = node.tag!;
     (transformedNode as Content).tag =
       "verbatim" in tag
-        ? {
-            type: "verbatimTag",
-            value: tag.verbatim,
-            position: context.transformRange(tagRange),
-          }
+        ? createVerbatimTag(context.transformRange(tagRange), tag.verbatim)
         : tag.handle === "!" && tag.suffix === ""
-          ? {
-              type: "nonSpecificTag",
-              position: context.transformRange(tagRange),
-            }
-          : {
-              type: "shorthandTag",
-              handle: tag.handle,
-              suffix: tag.suffix,
-              position: context.transformRange(tagRange),
-            };
+          ? createNonSpecificTag(context.transformRange(tagRange))
+          : createShorthandTag(
+              context.transformRange(tagRange),
+              tag.handle,
+              tag.suffix,
+            );
   }
 
   if (anchorRange) {
     assert("anchor" in transformedNode);
     const anchor = node.anchor!;
-    (transformedNode as Content).anchor = {
-      type: "anchor",
-      value: anchor,
-      position: context.transformRange(anchorRange),
-    };
+    (transformedNode as Content).anchor = createAnchor(
+      context.transformRange(anchorRange),
+      anchor,
+    );
   }
 
   return transformedNode;

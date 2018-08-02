@@ -1,4 +1,5 @@
 import assert = require("assert");
+import { createBlockFolded } from "../factories/block-folded";
 import { Context } from "../transform";
 import { BlockFolded } from "../types";
 import { tranformBlockValue } from "./blockValue";
@@ -8,8 +9,5 @@ export function tranformBlockFolded(
   context: Context,
 ): BlockFolded {
   assert(blockFolded.type === "BLOCK_FOLDED");
-  return {
-    ...tranformBlockValue(blockFolded, context),
-    type: "blockFolded",
-  };
+  return createBlockFolded(tranformBlockValue(blockFolded, context));
 }
