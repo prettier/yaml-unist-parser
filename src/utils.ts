@@ -3,11 +3,7 @@ import {
   BlockFolded,
   BlockLiteral,
   Comment,
-  CommentAttachable,
-  Content,
-  EndCommentAttachable,
   MappingItem,
-  Null,
   Point,
   Position,
   YAMLSyntaxError,
@@ -45,37 +41,6 @@ export function createError(
     (rawError.source.range || rawError.source.valueRange)!,
   );
   return error as YAMLSyntaxError;
-}
-
-export function createContentNode(): Content {
-  return {
-    anchor: createNull(),
-    tag: createNull(),
-    middleComments: [],
-  };
-}
-
-export function createCommentAttachableNode(): CommentAttachable {
-  return {
-    leadingComments: [],
-    trailingComments: [],
-  };
-}
-
-export function createEndCommentAttachableNode(): EndCommentAttachable {
-  return {
-    endComments: [],
-  };
-}
-
-export function createNull(): Null {
-  return {
-    type: "null",
-    position: {
-      start: { line: -1, column: -1, offset: -1 },
-      end: { line: -1, column: -1, offset: -1 },
-    },
-  };
 }
 
 export function getStartPoint(node: YamlUnistNode): Point {

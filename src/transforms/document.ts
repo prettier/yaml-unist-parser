@@ -1,7 +1,11 @@
 import assert = require("assert");
+import { createDocument } from "../factories/document";
+import { createDocumentBody } from "../factories/document-body";
+import { createDocumentHead } from "../factories/document-head";
+import { createPosition } from "../factories/position";
 import { Context } from "../transform";
-import { Document, DocumentHead, Position } from "../types";
-import { createCommentAttachableNode, defineParent, getLast } from "../utils";
+import { Document, Position } from "../types";
+import { defineParent, getLast } from "../utils";
 
 export function transformDocument(
   document: yaml.Document,
@@ -72,17 +76,9 @@ export function transformDocument(
     return context.transformRange({ start, end });
   })(context.text.slice(document.valueRange!.end));
 
-  const position = {
-    start: headPosition.start,
-    end: bodyPosition.end,
-  };
+  const position = createPosition(headPosition.start, bodyPosition.end);
 
-  const documentHead: DocumentHead = {
-    type: "documentHead",
-    children: [],
-    position: headPosition,
-  };
-
+  const documentHead = createDocumentHead(headPosition, []);
   documentHead.children = directivesWithoutNonTrailingComments.map(
     directive => {
       if (directive.type === "comment") {
@@ -93,17 +89,12 @@ export function transformDocument(
     },
   );
 
-  return {
-    type: "document",
+  return createDocument(
     position,
-    children: [
-      documentHead,
-      {
-        type: "documentBody",
-        children: contentsWithoutComments, // handle standalone comment in attach
-        position: bodyPosition,
-      },
-    ],
-    ...createCommentAttachableNode(),
-  };
+    documentHead,
+    createDocumentBody(
+      bodyPosition,
+      contentsWithoutComments, // handle standalone comment in attach
+    ),
+  );
 }

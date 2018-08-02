@@ -1,10 +1,8 @@
 import assert = require("assert");
+import { createMappingKey } from "../factories/mapping-key";
+import { createPosition } from "../factories/position";
 import { Context } from "../transform";
 import { MappingKey } from "../types";
-import {
-  createCommentAttachableNode,
-  createEndCommentAttachableNode,
-} from "../utils";
 
 export function transformMapKey(
   mapKey: yaml.MapItem,
@@ -21,14 +19,8 @@ export function transformMapKey(
 
   const start = context.transformOffset(mapKey.valueRange!.start);
 
-  return {
-    type: "mappingKey",
-    position: {
-      start,
-      end: key.type === "null" ? start : key.position.end,
-    },
-    children: [key],
-    ...createCommentAttachableNode(),
-    ...createEndCommentAttachableNode(),
-  };
+  return createMappingKey(
+    createPosition(start, key.type === "null" ? start : key.position.end),
+    key,
+  );
 }

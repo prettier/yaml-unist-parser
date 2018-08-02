@@ -1,7 +1,7 @@
 import assert = require("assert");
+import { createQuoteValue } from "../factories/quote-value";
 import { Context } from "../transform";
 import { QuoteValue } from "../types";
-import { createCommentAttachableNode, createContentNode } from "../utils";
 
 export function transformQuoteValue(
   quoteValue: yaml.QuoteValue,
@@ -9,11 +9,8 @@ export function transformQuoteValue(
 ): QuoteValue {
   assert(quoteValue.valueRange !== null);
   assert(typeof quoteValue.strValue === "string");
-  return {
-    type: "quoteBase",
-    value: quoteValue.strValue as string,
-    position: context.transformRange(quoteValue.valueRange!),
-    ...createCommentAttachableNode(),
-    ...createContentNode(),
-  };
+  return createQuoteValue(
+    context.transformRange(quoteValue.valueRange!),
+    quoteValue.strValue as string,
+  );
 }
