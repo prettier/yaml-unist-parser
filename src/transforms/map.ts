@@ -61,13 +61,12 @@ function transformMapItems(
         return reduced.concat(
           buffer
             .splice(0, unshiftCount)
-            .map(
-              (currentMappingKey): MappingItem =>
-                createMappingItem(
-                  currentMappingKey.position,
-                  currentMappingKey,
-                  context.transformNode(null),
-                ),
+            .map(currentMappingKey =>
+              createMappingItem(
+                currentMappingKey.position,
+                currentMappingKey,
+                context.transformNode(null),
+              ),
             ),
         );
       }
