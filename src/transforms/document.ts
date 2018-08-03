@@ -1,4 +1,5 @@
 import assert = require("assert");
+import YAML from "yaml";
 import { createDocument } from "../factories/document";
 import { createDocumentBody } from "../factories/document-body";
 import { createDocumentHead } from "../factories/document-head";
@@ -8,7 +9,7 @@ import { Document, Position } from "../types";
 import { defineParent, getLast } from "../utils";
 
 export function transformDocument(
-  document: yaml.Document,
+  document: YAML.cst.Document,
   context: Context,
 ): Document {
   assert(document.valueRange !== null);

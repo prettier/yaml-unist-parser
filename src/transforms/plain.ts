@@ -1,11 +1,12 @@
 import assert = require("assert");
+import YAML from "yaml";
 import { createPlain } from "../factories/plain";
 import { Context } from "../transform";
 import { Plain } from "../types";
 import { findLastCharIndex } from "../utils";
 
 export function transformPlain(
-  plain: yaml.PlainValue,
+  plain: YAML.cst.PlainValue,
   context: Context,
 ): Plain {
   assert(plain.strValue !== null);

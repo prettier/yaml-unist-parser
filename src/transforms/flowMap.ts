@@ -1,11 +1,12 @@
 import assert = require("assert");
+import YAML from "yaml";
 import { createFlowMapping } from "../factories/flow-mapping";
 import { Context } from "../transform";
 import { FlowMapping, FlowMappingItem } from "../types";
 import { transformFlowCollection } from "./flowCollection";
 
 export function transformFlowMap(
-  flowCollection: yaml.FlowCollection,
+  flowCollection: YAML.cst.FlowCollection,
   context: Context,
 ): FlowMapping {
   assert(flowCollection.type === "FLOW_MAP");

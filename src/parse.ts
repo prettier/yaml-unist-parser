@@ -1,6 +1,5 @@
 import LinesAndColumns from "lines-and-columns";
 import YAML from "yaml";
-import parseCST from "yaml/parse-cst";
 import { attachComments } from "./attach";
 import { createRoot } from "./factories/root";
 import { Context, transformNode } from "./transform";
@@ -15,7 +14,7 @@ import {
 } from "./utils";
 
 export function parse(text: string): Root {
-  const rawDocuments = parseCST(text);
+  const rawDocuments = YAML.parseCST(text);
   const locator = new LinesAndColumns(text);
   const comments: Comment[] = [];
 

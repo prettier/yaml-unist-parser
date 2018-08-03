@@ -1,11 +1,12 @@
 import assert = require("assert");
+import YAML from "yaml";
 import { createPosition } from "../factories/position";
 import { createSequenceItem } from "../factories/sequence-item";
 import { Context } from "../transform";
 import { SequenceItem } from "../types";
 
 export function transformSeqItem(
-  seqItem: yaml.SeqItem,
+  seqItem: YAML.cst.SeqItem,
   context: Context,
 ): SequenceItem {
   assert(seqItem.valueRange !== null);
@@ -13,7 +14,7 @@ export function transformSeqItem(
 
   const value = context.transformNode(seqItem.node as Exclude<
     typeof seqItem.node,
-    yaml.Comment
+    YAML.cst.Comment
   >);
 
   return createSequenceItem(

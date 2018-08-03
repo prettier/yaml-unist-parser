@@ -1,11 +1,12 @@
 import assert = require("assert");
+import YAML from "yaml";
 import { createMappingKey } from "../factories/mapping-key";
 import { createPosition } from "../factories/position";
 import { Context } from "../transform";
 import { MappingKey } from "../types";
 
 export function transformMapKey(
-  mapKey: yaml.MapItem,
+  mapKey: YAML.cst.MapItem,
   context: Context,
 ): MappingKey {
   assert(mapKey.type === "MAP_KEY");
@@ -14,7 +15,7 @@ export function transformMapKey(
 
   const key = context.transformNode(mapKey.node as Exclude<
     typeof mapKey.node,
-    yaml.Comment
+    YAML.cst.Comment
   >);
 
   const start = context.transformOffset(mapKey.valueRange!.start);

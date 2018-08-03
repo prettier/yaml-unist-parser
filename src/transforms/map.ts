@@ -1,4 +1,5 @@
 import assert = require("assert");
+import YAML from "yaml";
 import { createMapping } from "../factories/mapping";
 import { createMappingItem } from "../factories/mapping-item";
 import { createMappingKey } from "../factories/mapping-key";
@@ -7,7 +8,7 @@ import { Context } from "../transform";
 import { Mapping, MappingItem, MappingKey, MappingValue } from "../types";
 import { getLast } from "../utils";
 
-export function transformMap(map: yaml.Map, context: Context): Mapping {
+export function transformMap(map: YAML.cst.Map, context: Context): Mapping {
   assert(map.valueRange !== null);
   const children = transformMapItems(map.items, context);
   return createMapping(
@@ -17,7 +18,7 @@ export function transformMap(map: yaml.Map, context: Context): Mapping {
 }
 
 function transformMapItems(
-  items: yaml.Map["items"],
+  items: YAML.cst.Map["items"],
   context: Context,
 ): MappingItem[] {
   const itemsWithoutComments = items.filter(item => {
@@ -26,7 +27,7 @@ function transformMapItems(
       return false;
     }
     return true;
-  }) as Array<Exclude<(typeof items)[number], yaml.Comment>>;
+  }) as Array<Exclude<(typeof items)[number], YAML.cst.Comment>>;
 
   const buffer: MappingKey[] = [];
   return itemsWithoutComments.reduce(
@@ -37,7 +38,7 @@ function transformMapItems(
         } else {
           const key = context.transformNode(item as Exclude<
             typeof item,
-            yaml.MapItem
+            YAML.cst.MapItem
           >);
           buffer.push(createMappingKey(key.position, key));
         }

@@ -1,3 +1,4 @@
+import YAML from "yaml";
 import { Context } from "./transform";
 import {
   BlockFolded,
@@ -33,7 +34,7 @@ export function defineParent(node: YamlUnistNode, parent: YamlUnistNode) {
 }
 
 export function createError(
-  rawError: Extract<yaml.YAMLError, SyntaxError>,
+  rawError: Extract<YAML.YAMLError, SyntaxError>,
   context: Context,
 ) {
   const error: Partial<YAMLSyntaxError> = new SyntaxError(rawError.message);
@@ -94,7 +95,7 @@ export function updateEndPoints(
   }
 }
 
-export function isYAMLError(e: any): e is yaml.YAMLError {
+export function isYAMLError(e: any): e is YAML.YAMLError {
   return (
     e instanceof Error &&
     (e.name === "YAMLSyntaxError" || e.name === "YAMLSemanticError")

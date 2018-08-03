@@ -1,4 +1,5 @@
 import assert = require("assert");
+import YAML from "yaml";
 import { createBlockValue } from "../factories/block-value";
 import { Context } from "../transform";
 import { BlockValue } from "../types";
@@ -10,7 +11,7 @@ enum Chomping {
 }
 
 export function tranformBlockValue(
-  blockValue: yaml.BlockValue,
+  blockValue: YAML.cst.BlockValue,
   context: Context,
 ): BlockValue {
   assert(blockValue.valueRange !== null);

@@ -25,7 +25,7 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-6.0.115.tgz#2ebbd6e57589484c043a25ec3b75799c32f67520"
 
 "@types/yaml@file:types/yaml":
-  version "1.0.0-rc.2"
+  version "1.0.0-rc.3"
 
 JSONStream@^1.0.4:
   version "1.3.3"
