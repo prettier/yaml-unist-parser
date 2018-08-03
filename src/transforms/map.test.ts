@@ -26,6 +26,10 @@ testCases([
       root => getFirstContent<Mapping>(root).middleComments[1],
     ],
   ],
+  [
+    "x:\n  - &a\n    key1: value1\n  - &b\n    key2: value2\nfoo:\n  bar: baz\n  <<: *a\n  <<: *b",
+    getMappingItem(1),
+  ],
 ]);
 
 function createTestCases(text: string, hasSecondItem = false): TestCase[] {

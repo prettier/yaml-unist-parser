@@ -608,6 +608,56 @@ mappingValue (1:4 ~ 1:21)
 </mappingValue>
 `;
 
+exports[`"x:\\n  - &a\\n    key1: value1\\n  - &b\\n    key2: value2\\nfoo 1`] = `
+mappingItem (6:1 ~ 9:9)
+1 | x:¶
+2 | ··-·&a¶
+3 | ····key1:·value1¶
+4 | ··-·&b¶
+5 | ····key2:·value2¶
+6 | foo:¶
+  | ^^^^^
+7 | ··bar:·baz¶
+  | ^^^^^^^^^^^
+8 | ··<<:·*a¶
+  | ^^^^^^^^^
+9 | ··<<:·*b¶
+  | ^^^^^^^^
+<mappingItem>
+  <mappingKey>
+    <plain value="foo" />
+  </mappingKey>
+  <mappingValue>
+    <mapping>
+      <mappingItem>
+        <mappingKey>
+          <plain value="bar" />
+        </mappingKey>
+        <mappingValue>
+          <plain value="baz" />
+        </mappingValue>
+      </mappingItem>
+      <mappingItem>
+        <mappingKey>
+          <plain value="<<" />
+        </mappingKey>
+        <mappingValue>
+          <alias value="a" />
+        </mappingValue>
+      </mappingItem>
+      <mappingItem>
+        <mappingKey>
+          <plain value="<<" />
+        </mappingKey>
+        <mappingValue>
+          <alias value="b" />
+        </mappingValue>
+      </mappingItem>
+    </mapping>
+  </mappingValue>
+</mappingItem>
+`;
+
 exports[`Implicit map keys need to be followed by map values 1`] = `
 "Implicit map keys need to be followed by map values
 1 | asd:·123¶
