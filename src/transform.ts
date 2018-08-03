@@ -1,5 +1,6 @@
 import assert = require("assert");
 import LinesAndColumns from "lines-and-columns";
+import YAML from "yaml";
 import { createAnchor } from "./factories/anchor";
 import { createComment } from "./factories/comment";
 import { createNonSpecificTag } from "./factories/non-specific-tag";
@@ -48,34 +49,34 @@ import { defineParent } from "./utils";
 
 export type YamlNode =
   | null
-  | yaml.Alias
-  | yaml.BlockValue
-  | yaml.Comment
-  | yaml.Directive
-  | yaml.Document
-  | yaml.FlowCollection
-  | yaml.Map
-  | yaml.PlainValue
-  | yaml.QuoteValue
-  | yaml.Seq
-  | yaml.MapItem
-  | yaml.SeqItem;
+  | YAML.cst.Alias
+  | YAML.cst.BlockValue
+  | YAML.cst.Comment
+  | YAML.cst.Directive
+  | YAML.cst.Document
+  | YAML.cst.FlowCollection
+  | YAML.cst.Map
+  | YAML.cst.PlainValue
+  | YAML.cst.QuoteValue
+  | YAML.cst.Seq
+  | YAML.cst.MapItem
+  | YAML.cst.SeqItem;
 
 // prettier-ignore
 export type YamlToUnist<T extends YamlNode> =
   T extends null ? null :
-  T extends yaml.Alias ? Alias :
-  T extends yaml.BlockValue ? BlockLiteral | BlockFolded :
-  T extends yaml.Comment ? Comment :
-  T extends yaml.Directive ? Directive :
-  T extends yaml.Document ? Document :
-  T extends yaml.FlowCollection ? FlowMapping | FlowSequence :
-  T extends yaml.Map ? Mapping :
-  T extends yaml.PlainValue ? Plain :
-  T extends yaml.QuoteValue ? QuoteDouble | QuoteSingle :
-  T extends yaml.Seq ? Sequence :
-  T extends yaml.MapItem ? MappingKey | MappingValue :
-  T extends yaml.SeqItem ? SequenceItem :
+  T extends YAML.cst.Alias ? Alias :
+  T extends YAML.cst.BlockValue ? BlockLiteral | BlockFolded :
+  T extends YAML.cst.Comment ? Comment :
+  T extends YAML.cst.Directive ? Directive :
+  T extends YAML.cst.Document ? Document :
+  T extends YAML.cst.FlowCollection ? FlowMapping | FlowSequence :
+  T extends YAML.cst.Map ? Mapping :
+  T extends YAML.cst.PlainValue ? Plain :
+  T extends YAML.cst.QuoteValue ? QuoteDouble | QuoteSingle :
+  T extends YAML.cst.Seq ? Sequence :
+  T extends YAML.cst.MapItem ? MappingKey | MappingValue :
+  T extends YAML.cst.SeqItem ? SequenceItem :
   never;
 
 export interface Context {
@@ -103,10 +104,10 @@ export function transformNode(node: YamlNode, context: Context): YamlUnistNode {
   }
 
   let newStartOffset = -1;
-  const commentRanges: yaml.Range[] = [];
+  const commentRanges: YAML.cst.Range[] = [];
 
-  let tagRange: yaml.Range | null = null;
-  let anchorRange: yaml.Range | null = null;
+  let tagRange: YAML.cst.Range | null = null;
+  let anchorRange: YAML.cst.Range | null = null;
 
   node.props.forEach(prop => {
     const char = context.text[prop.start];
@@ -214,6 +215,6 @@ function _transformNode(
     case "SEQ": return transformSeq(node, context);
     case "SEQ_ITEM": return transformSeqItem(node, context);
     // istanbul ignore next
-    default: throw new Error(`Unexpected node type ${(node as yaml.Node).type}`);
+    default: throw new Error(`Unexpected node type ${(node as YAML.cst.Node).type}`);
   }
 }

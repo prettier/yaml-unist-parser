@@ -1,10 +1,11 @@
 import assert = require("assert");
+import YAML from "yaml";
 import { createQuoteValue } from "../factories/quote-value";
 import { Context } from "../transform";
 import { QuoteValue } from "../types";
 
 export function transformQuoteValue(
-  quoteValue: yaml.QuoteValue,
+  quoteValue: YAML.cst.QuoteValue,
   context: Context,
 ): QuoteValue {
   assert(quoteValue.valueRange !== null);

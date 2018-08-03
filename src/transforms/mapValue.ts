@@ -1,11 +1,12 @@
 import assert = require("assert");
+import YAML from "yaml";
 import { createMappingValue } from "../factories/mapping-value";
 import { createPosition } from "../factories/position";
 import { Context } from "../transform";
 import { MappingValue } from "../types";
 
 export function transformMapValue(
-  mapValue: yaml.MapItem,
+  mapValue: YAML.cst.MapItem,
   context: Context,
 ): MappingValue {
   assert(mapValue.valueRange !== null);
@@ -13,7 +14,7 @@ export function transformMapValue(
 
   const value = context.transformNode(mapValue.node as Exclude<
     typeof mapValue.node,
-    yaml.Comment
+    YAML.cst.Comment
   >);
 
   return createMappingValue(

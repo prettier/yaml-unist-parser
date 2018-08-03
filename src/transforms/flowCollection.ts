@@ -1,4 +1,5 @@
 import assert = require("assert");
+import YAML from "yaml";
 import { createFlowCollection } from "../factories/flow-collection";
 import { createFlowMappingItem } from "../factories/flow-mapping-item";
 import { createFlowSequenceItem } from "../factories/flow-sequence-item";
@@ -18,7 +19,7 @@ type ItemBuffer = Array<"," | "?" | ":" | Exclude<ContentNode, null>>;
 type RangeBuffer = Array<{ start: number; end: number }>;
 
 export function transformFlowCollection(
-  flowCollection: yaml.FlowCollection,
+  flowCollection: YAML.cst.FlowCollection,
   context: Context,
 ): FlowCollection {
   assert(flowCollection.valueRange !== null);
@@ -123,7 +124,7 @@ export function transformFlowCollection(
 }
 
 function transformFlowCollectionItems(
-  type: yaml.FlowCollection["type"],
+  type: YAML.cst.FlowCollection["type"],
   itemBuffer: ItemBuffer,
   rangeBuffer: RangeBuffer,
   context: Context,
