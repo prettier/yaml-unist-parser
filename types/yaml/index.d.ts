@@ -2,6 +2,7 @@ declare module "yaml" {
   export default _;
   namespace _ {
     export class Document {
+      constructor(options?: { merge?: boolean });
       errors: yaml.YAMLError[];
       parse(document: yaml.Document): this;
     }

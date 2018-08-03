@@ -29,7 +29,7 @@ export function parse(text: string): Root {
   };
 
   rawDocuments.forEach(rawDocument => {
-    const rawErrors = new YAML.Document()
+    const rawErrors = new YAML.Document({ merge: true })
       .parse(rawDocument)
       .errors.filter(isYAMLError);
 
