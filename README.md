@@ -8,6 +8,12 @@ A YAML parser that produces output compatible with [unist](https://github.com/sy
 
 [Changelog](https://github.com/ikatyang/yaml-unist-parser/blob/master/CHANGELOG.md)
 
+## Features
+
+- better node positioning
+- better comment attaching
+- [unist-compatible AST](https://github.com/ikatyang/yaml-unist-parser/blob/master/src/types.ts)
+
 ## Install
 
 ```sh
@@ -21,15 +27,13 @@ yarn add yaml-unist-parser yaml
 ## Usage
 
 ```ts
-const yamlUnistParser = require("yaml-unist-parser");
+const { parse } = require("yaml-unist-parser");
 
-const ast = yamlUnistParser.parse(`
+const ast = parse(`
 - hello
 - world
 `);
 ```
-
-See [`src/types.ts`](https://github.com/ikatyang/yaml-unist-parser/blob/master/src/types.ts) for more info about the AST.
 
 ## Development
 
