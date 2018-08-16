@@ -2,7 +2,7 @@ import YAML from "yaml";
 import { createFlowMappingItem } from "../factories/flow-mapping-item";
 import { createMappingItem } from "../factories/mapping-item";
 import { createMappingKey } from "../factories/mapping-key";
-import { createMappingValue } from "../factories/mapping-Value";
+import { createMappingValue } from "../factories/mapping-value";
 import { createEmptyPosition, createPosition } from "../factories/position";
 import { Context } from "../transform";
 import { FlowMappingItem, MappingItem } from "../types";
