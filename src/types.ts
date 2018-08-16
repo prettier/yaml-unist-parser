@@ -16,7 +16,7 @@ export interface Node {
   type: string;
   position: Position;
   /** @internal non-enumerable */
-  parent?: Exclude<YamlUnistNode, null>;
+  _parent?: Exclude<YamlUnistNode, null>;
 }
 
 export interface Parent extends Node {
@@ -27,14 +27,21 @@ export interface Parent extends Node {
 
 export interface Content {
   anchor: null | Anchor;
-  tag: null | VerbatimTag | ShorthandTag | NonSpecificTag;
+  tag: null | Tag;
   /** comments between the node and its tag/anchor */
   middleComments: Comment[];
 }
 
-export interface CommentAttachable {
+export interface CommentAttachable
+  extends LeadingCommentAttachable,
+    TrailingCommentAttachable {}
+
+export interface LeadingCommentAttachable {
   /** comments in front of the node */
   leadingComments: Comment[];
+}
+
+export interface TrailingCommentAttachable {
   /** comments on the same line of the node */
   trailingComments: Comment[];
 }
@@ -51,9 +58,7 @@ export interface YAMLSyntaxError extends SyntaxError {
 
 export type YamlUnistNode =
   | Comment
-  | VerbatimTag
-  | ShorthandTag
-  | NonSpecificTag
+  | Tag
   | Anchor
   | Root
   | Document
@@ -103,19 +108,9 @@ export interface Anchor extends Node {
   value: string;
 }
 
-export interface VerbatimTag extends Node {
-  type: "verbatimTag";
+export interface Tag extends Node {
+  type: "tag";
   value: string;
-}
-
-export interface ShorthandTag extends Node {
-  type: "shorthandTag";
-  handle: string;
-  suffix: string;
-}
-
-export interface NonSpecificTag extends Node {
-  type: "nonSpecificTag";
 }
 
 export interface Root extends Parent {
@@ -124,23 +119,19 @@ export interface Root extends Parent {
   comments: Comment[];
 }
 
-export interface Document extends Parent, CommentAttachable {
+export interface Document extends Parent, TrailingCommentAttachable {
   type: "document";
   children: [DocumentHead, DocumentBody];
-  /** always 0 */
-  leadingComments: Comment[];
-  /** only attachable on `...` */
-  trailingComments: Comment[];
 }
 
-export interface DocumentHead extends Parent {
+export interface DocumentHead extends Parent, EndCommentAttachable {
   type: "documentHead";
-  children: Array<Comment | Directive>;
+  children: Directive[];
 }
 
-export interface DocumentBody extends Parent {
+export interface DocumentBody extends Parent, EndCommentAttachable {
   type: "documentBody";
-  children: Array<Comment | ContentNode>;
+  children: [ContentNode];
 }
 
 export interface Directive extends Node, CommentAttachable {
@@ -154,12 +145,12 @@ export interface Alias extends Node, Content, CommentAttachable {
   value: string;
 }
 
-export interface BlockValue extends Node, Content, CommentAttachable {
+export interface BlockValue extends Node, Content, LeadingCommentAttachable {
   chomping: "clip" | "keep" | "strip";
   indent: null | number;
   value: string;
-  /** comments between indicator and value */
-  trailingComments: Comment[];
+  /** comments between indicator and the value */
+  indicatorComments: Comment[];
 }
 
 export interface BlockLiteral extends BlockValue {
@@ -187,24 +178,23 @@ export interface QuoteDouble extends QuoteValue {
   type: "quoteDouble";
 }
 
-export interface Mapping extends Parent, Content, CommentAttachable {
+export interface Mapping extends Parent, Content, LeadingCommentAttachable {
   type: "mapping";
   children: MappingItem[];
 }
 
-export interface MappingItemBase extends Parent, CommentAttachable {
+export interface MappingItemBase extends Parent, LeadingCommentAttachable {
   /** key-value pair */
-  children: [MappingKey | null, MappingValue | null];
+  children: [MappingKey, MappingValue];
 }
 
 export interface MappingItem extends MappingItemBase {
   type: "mappingItem";
-  children: [MappingKey, MappingValue | null];
 }
 
 export interface MappingKey
   extends Parent,
-    CommentAttachable,
+    TrailingCommentAttachable,
     EndCommentAttachable {
   type: "mappingKey";
   children: [ContentNode];
@@ -221,7 +211,7 @@ export interface MappingValue
 export interface Sequence
   extends Parent,
     Content,
-    CommentAttachable,
+    LeadingCommentAttachable,
     EndCommentAttachable {
   type: "sequence";
   children: SequenceItem[];

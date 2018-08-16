@@ -41,7 +41,7 @@
     "tslint-config-prettier": "1.14.0",
     "tslint-plugin-prettier": "1.3.0",
     "typescript": "2.9.2",
-    "yaml": "ikatyang/yaml#a765c1ee16d6b8a5e715564645f2b85f7e04828b"
+    "yaml": "ikatyang/yaml#1a3903e078fab9ac39ad3bc82162025fcd3de203"
   },
   "peerDependencies": {
     "yaml": "^1.0.0-rc.7"

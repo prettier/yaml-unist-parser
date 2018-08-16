@@ -1,36 +1,34 @@
-import { Context } from "./transform";
 import {
   Comment,
-  CommentAttachable,
   Document,
   EndCommentAttachable,
-  MappingItem,
+  LeadingCommentAttachable,
   Root,
+  TrailingCommentAttachable,
   YamlUnistNode,
 } from "./types";
-import {
-  defineParent,
-  getLast,
-  getStartPoint,
-  isBlockValue,
-  isExplicitMappingItem,
-  updateEndPoints,
-} from "./utils";
+import { defineParents } from "./utils/define-parents";
+import { getLast } from "./utils/get-last";
+import { getStartPoint } from "./utils/get-start-point";
 
-type NodeTable = Array<{
-  leadingAttachableNode: null | Extract<YamlUnistNode, CommentAttachable>;
-  trailingAttachableNode: null | Extract<YamlUnistNode, CommentAttachable>;
-  trailingNode: null | Exclude<YamlUnistNode, null>;
-  comment: null | Comment;
-}>;
+interface NodeTable {
+  [line: number]: {
+    leadingAttachableNode?: Extract<YamlUnistNode, LeadingCommentAttachable>;
+    trailingAttachableNode?: Extract<YamlUnistNode, TrailingCommentAttachable>;
+    trailingNode?: Exclude<YamlUnistNode, null>;
+    comment?: Comment;
+  };
+}
 
-export function attachComments(root: Root, context: Context): void {
-  const nodeTable = createNodeTable(root, context);
+export function attachComments(root: Root, text: string): void {
+  defineParents(root);
+
+  const nodeTable = createNodeTable(root, text);
 
   const restDocuments = root.children.slice();
-  context.comments
+  root.comments
     .sort((a, b) => a.position.start.offset - b.position.end.offset)
-    .filter(comment => comment.parent === undefined)
+    .filter(comment => !comment._parent)
     .forEach(comment => {
       while (
         restDocuments.length > 1 &&
@@ -40,58 +38,52 @@ export function attachComments(root: Root, context: Context): void {
       }
       attachComment(comment, nodeTable, restDocuments[0]);
     });
-
-  updateEndPoints(root);
 }
 
-function createNodeTable(root: Root, context: Context) {
-  const nodeTable: NodeTable = context.text.split("\n").map(() => ({
-    leadingAttachableNode: null,
-    trailingAttachableNode: null,
-    trailingNode: null,
-    comment: null,
-  }));
+function createNodeTable(root: Root, text: string) {
+  const nodeTable: NodeTable = text.split("\n").map(() => ({}));
 
-  for (const comment of context.comments) {
+  for (const comment of root.comments) {
     nodeTable[comment.position.start.line - 1].comment = comment;
   }
 
-  initNodeTable(root, nodeTable, context);
+  initNodeTable(nodeTable, root);
 
   return nodeTable;
 }
 
-function initNodeTable(
-  node: Exclude<YamlUnistNode, null>,
-  nodeTable: NodeTable,
-  context: Context,
-): void {
+function initNodeTable(nodeTable: NodeTable, node: YamlUnistNode): void {
+  if (
+    node === null ||
+    // empty mappingKey/mappingValue
+    node.position.start.offset === node.position.end.offset
+  ) {
+    return;
+  }
+
   if ("leadingComments" in node) {
     const start = getStartPoint(node);
-    const currentStartNode = nodeTable[start.line - 1].leadingAttachableNode;
+    const { leadingAttachableNode } = nodeTable[start.line - 1];
 
     if (
-      node.type !== "document" &&
-      (!currentStartNode ||
-        start.column < currentStartNode.position.start.column)
+      !leadingAttachableNode ||
+      start.column < leadingAttachableNode.position.start.column
     ) {
       nodeTable[start.line - 1].leadingAttachableNode = node;
     }
   }
 
-  if ("trailingComments" in node) {
+  if (
+    "trailingComments" in node &&
+    node.position.end.column > 1 &&
+    node.type !== "document"
+  ) {
     const { end } = node.position;
-    const currentEndNode = nodeTable[end.line - 1].trailingAttachableNode;
+    const { trailingAttachableNode } = nodeTable[end.line - 1];
 
     if (
-      !(
-        node.type === "document" &&
-        context.text.slice(
-          node.position.end.offset - 4,
-          node.position.end.offset,
-        ) !== "\n..."
-      ) &&
-      (!currentEndNode || end.column >= currentEndNode.position.end.column)
+      !trailingAttachableNode ||
+      end.column >= trailingAttachableNode.position.end.column
     ) {
       nodeTable[end.line - 1].trailingAttachableNode = node;
     }
@@ -115,10 +107,9 @@ function initNodeTable(
   }
 
   if ("children" in node) {
-    (node.children as YamlUnistNode[]).forEach(child => {
+    (node.children as Array<(typeof node.children)[number]>).forEach(child => {
       if (child !== null) {
-        defineParent(child, node);
-        initNodeTable(child, nodeTable, context);
+        initNodeTable(nodeTable, child);
       }
     });
   }
@@ -132,12 +123,8 @@ function attachComment(
   const commentLine = comment.position.start.line;
 
   const { trailingAttachableNode } = nodeTable[commentLine - 1];
-  if (
-    trailingAttachableNode !== null &&
-    trailingAttachableNode.type !== "blockFolded" &&
-    trailingAttachableNode.type !== "blockLiteral"
-  ) {
-    defineParent(comment, trailingAttachableNode);
+  if (trailingAttachableNode) {
+    defineParents(comment, trailingAttachableNode);
     trailingAttachableNode.trailingComments.push(comment);
     return;
   }
@@ -147,7 +134,7 @@ function attachComment(
 
     let currentNode: Exclude<YamlUnistNode, null>;
 
-    if (trailingNode === null) {
+    if (!trailingNode) {
       /**
        * a:
        *   b:
@@ -159,8 +146,8 @@ function attachComment(
        *  #a
        *    #a
        */
-      if (line !== commentLine && nodeTable[line - 1].comment !== null) {
-        currentNode = nodeTable[line - 1].comment!.parent!;
+      if (line !== commentLine && nodeTable[line - 1].comment) {
+        currentNode = nodeTable[line - 1].comment!._parent!;
       } else {
         continue;
       }
@@ -169,17 +156,17 @@ function attachComment(
     }
 
     while (true) {
-      if (ownEndComment(currentNode, comment)) {
-        defineParent(comment, currentNode);
+      if (shouldOwnEndComment(currentNode, comment)) {
+        defineParents(comment, currentNode);
         currentNode.endComments.push(comment);
         return;
       }
 
-      if (currentNode.parent === undefined) {
+      if (!currentNode._parent) {
         break;
       }
 
-      currentNode = currentNode.parent;
+      currentNode = currentNode._parent;
     }
 
     break;
@@ -187,19 +174,20 @@ function attachComment(
 
   for (let line = commentLine + 1; line <= document.position.end.line; line++) {
     const { leadingAttachableNode } = nodeTable[line - 1];
-    if (leadingAttachableNode !== null) {
-      defineParent(comment, leadingAttachableNode);
+    if (leadingAttachableNode) {
+      defineParents(comment, leadingAttachableNode);
       leadingAttachableNode.leadingComments.push(comment);
       return;
     }
   }
 
-  defineParent(comment, document.children[1]);
-  document.children[1].children.push(comment);
+  const documentBody = document.children[1];
+  defineParents(comment, documentBody);
+  documentBody.endComments.push(comment);
 }
 
-function ownEndComment(
-  node: Exclude<YamlUnistNode, null>,
+function shouldOwnEndComment(
+  node: NonNullable<YamlUnistNode>,
   comment: Comment,
 ): node is Extract<YamlUnistNode, EndCommentAttachable> {
   if (comment.position.end.offset < node.position.end.offset) {
@@ -209,23 +197,24 @@ function ownEndComment(
   switch (node.type) {
     case "sequence":
       return (
-        node.parent!.type !== "documentBody" &&
+        node._parent!.type !== "documentBody" &&
         comment.position.start.column >= node.position.start.column &&
         comment.position.start.offset >
           getLast(node.children)!.position.end.offset
       );
     case "sequenceItem":
       return comment.position.start.column > node.position.start.column;
+    case "mappingKey":
     case "mappingValue":
       return (
-        comment.position.start.column > node.parent!.position.start.column &&
-        !isBlockValue(node.children[0])
-      );
-    case "mappingKey":
-      return (
-        comment.position.start.column > node.parent!.position.start.column &&
-        !isBlockValue(node.children[0]) &&
-        isExplicitMappingItem(node.parent as MappingItem)
+        comment.position.start.column > node._parent!.position.start.column &&
+        node.children[0] !== null &&
+        node.children[0]!.type !== "blockFolded" &&
+        node.children[0]!.type !== "blockLiteral" &&
+        (node.type === "mappingValue" ||
+          // explicit key
+          node.position.start.offset !==
+            node.children[0]!.position.start.offset)
       );
     default:
       return false;

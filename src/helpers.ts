@@ -1,7 +1,6 @@
 import { wrap } from "jest-snapshot-serializer-raw";
 import { parse } from "./parse";
 import { Comment, Node, Position, Root, YamlUnistNode } from "./types";
-import { isYAMLError } from "./utils";
 
 export type Arrayable<T> = T | T[];
 
@@ -96,6 +95,7 @@ function stringifyNode(
         case "middleComments":
         case "trailingComments":
         case "endComments":
+        case "indicatorComments":
         case "anchor":
         case "tag":
           return false;
@@ -118,6 +118,7 @@ function stringifyNode(
       ? ([] as string[])
           .concat("leadingComments" in node ? "leadingComments" : [])
           .concat("middleComments" in node ? "middleComments" : [])
+          .concat("indicatorComments" in node ? "indicatorComments" : [])
           .concat("trailingComments" in node ? "trailingComments" : [])
           .concat("endComments" in node ? "endComments" : [])
           .map(key =>
@@ -235,4 +236,11 @@ export function testSyntaxError(text: string, message?: string) {
       ).toMatchSnapshot();
     });
   }
+}
+
+function isYAMLError(e: any): e is YAML.YAMLError {
+  return (
+    e instanceof Error &&
+    (e.name === "YAMLSyntaxError" || e.name === "YAMLSemanticError")
+  );
 }

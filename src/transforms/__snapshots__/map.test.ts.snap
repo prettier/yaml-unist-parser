@@ -8,7 +8,7 @@ mapping (4:1 ~ 4:7)
 4 | a:·123¶
   | ^^^^^^
 <mapping>
-  <shorthandTag handle="!!" suffix="map" />
+  <tag value="tag:yaml.org,2002:map" />
   <anchor value="anchor" />
   <middleComment value="123 ">
   <middleComment value=" 456">
@@ -148,7 +148,9 @@ mapping (1:1 ~ 1:6)
     <mappingKey>
       <plain value="123" />
     </mappingKey>
-    <null />
+    <mappingValue>
+      <null />
+    </mappingValue>
   </mappingItem>
 </mapping>
 `;
@@ -161,7 +163,9 @@ mappingItem (1:1 ~ 1:6)
   <mappingKey>
     <plain value="123" />
   </mappingKey>
-  <null />
+  <mappingValue>
+    <null />
+  </mappingValue>
 </mappingItem>
 `;
 
@@ -174,7 +178,14 @@ mappingKey (1:1 ~ 1:6)
 </mappingKey>
 `;
 
-exports[`"? 123" 4`] = `null`;
+exports[`"? 123" 4`] = `
+mappingValue (1:6 ~ 1:6)
+1 | ?·123¶
+  |      ~
+<mappingValue>
+  <null />
+</mappingValue>
+`;
 
 exports[`"? a  \\n: 123  \\n? b  \\n: 456  " 1`] = `
 mapping (1:1 ~ 4:6)
@@ -301,13 +312,17 @@ mapping (1:1 ~ 2:6)
     <mappingKey>
       <plain value="abc" />
     </mappingKey>
-    <null />
+    <mappingValue>
+      <null />
+    </mappingValue>
   </mappingItem>
   <mappingItem>
     <mappingKey>
       <plain value="def" />
     </mappingKey>
-    <null />
+    <mappingValue>
+      <null />
+    </mappingValue>
   </mappingItem>
 </mapping>
 `;
@@ -321,7 +336,9 @@ mappingItem (1:1 ~ 1:6)
   <mappingKey>
     <plain value="abc" />
   </mappingKey>
-  <null />
+  <mappingValue>
+    <null />
+  </mappingValue>
 </mappingItem>
 `;
 
@@ -334,7 +351,9 @@ mappingItem (2:1 ~ 2:6)
   <mappingKey>
     <plain value="def" />
   </mappingKey>
-  <null />
+  <mappingValue>
+    <null />
+  </mappingValue>
 </mappingItem>
 `;
 
@@ -358,9 +377,25 @@ mappingKey (2:1 ~ 2:6)
 </mappingKey>
 `;
 
-exports[`"? abc\\n? def" 6`] = `null`;
+exports[`"? abc\\n? def" 6`] = `
+mappingValue (1:6 ~ 1:6)
+1 | ?·abc¶
+  |      ~
+2 | ?·def¶
+<mappingValue>
+  <null />
+</mappingValue>
+`;
 
-exports[`"? abc\\n? def" 7`] = `null`;
+exports[`"? abc\\n? def" 7`] = `
+mappingValue (2:6 ~ 2:6)
+1 | ?·abc¶
+2 | ?·def¶
+  |      ~
+<mappingValue>
+  <null />
+</mappingValue>
+`;
 
 exports[`"a:   " 1`] = `
 mapping (1:1 ~ 1:3)

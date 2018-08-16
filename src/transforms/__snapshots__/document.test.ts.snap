@@ -1,9 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`"\\n%AAA\\n---\\n123\\n\\n...\\n\\n%BBB\\n---\\n\\n456\\n\\n" 1`] = `
-document (1:1 ~ 6:4)
+document (2:1 ~ 6:4)
  1 | ¶
-   | ^
  2 | %AAA¶
    | ^^^^^
  3 | ---¶
@@ -153,9 +152,8 @@ documentBody (11:1 ~ 13:1)
 `;
 
 exports[`"\\n%AAA\\n---\\n123\\n\\n...\\n\\n---\\n\\n456\\n\\n" 1`] = `
-document (1:1 ~ 6:4)
+document (2:1 ~ 6:4)
  1 | ¶
-   | ^
  2 | %AAA¶
    | ^^^^^
  3 | ---¶
@@ -297,9 +295,8 @@ documentBody (10:1 ~ 12:1)
 `;
 
 exports[`"\\n%AAA\\n---\\n123\\n\\n...\\n\\n456\\n\\n" 1`] = `
-document (1:1 ~ 6:4)
+document (2:1 ~ 6:4)
  1 | ¶
-   | ^
  2 | %AAA¶
    | ^^^^^
  3 | ---¶
@@ -427,9 +424,8 @@ documentBody (8:1 ~ 10:1)
 `;
 
 exports[`"\\n%AAA\\n---\\n123\\n\\n---\\n\\n456\\n\\n" 1`] = `
-document (1:1 ~ 5:1)
+document (2:1 ~ 6:1)
  1 | ¶
-   | ^
  2 | %AAA¶
    | ^^^^^
  3 | ---¶
@@ -518,7 +514,7 @@ documentHead (6:1 ~ 6:4)
 `;
 
 exports[`"\\n%AAA\\n---\\n123\\n\\n---\\n\\n456\\n\\n" 5`] = `
-documentBody (4:1 ~ 5:1)
+documentBody (4:1 ~ 6:1)
  1 | ¶
  2 | %AAA¶
  3 | ---¶
@@ -557,9 +553,8 @@ documentBody (8:1 ~ 10:1)
 `;
 
 exports[`"\\n123\\n\\n...\\n\\n456\\n\\n" 1`] = `
-document (1:1 ~ 4:4)
+document (2:1 ~ 4:4)
 1 | ¶
-  | ^
 2 | 123¶
   | ^^^^
 3 | ¶
@@ -672,9 +667,8 @@ documentBody (6:1 ~ 8:1)
 `;
 
 exports[`"\\n123\\n\\n---\\n\\n456\\n\\n" 1`] = `
-document (1:1 ~ 3:1)
+document (2:1 ~ 4:1)
 1 | ¶
-  | ^
 2 | 123¶
   | ^^^^
 3 | ¶
@@ -752,7 +746,7 @@ documentHead (4:1 ~ 4:4)
 `;
 
 exports[`"\\n123\\n\\n---\\n\\n456\\n\\n" 5`] = `
-documentBody (2:1 ~ 3:1)
+documentBody (2:1 ~ 4:1)
 1 | ¶
 2 | 123¶
   | ^^^^
@@ -787,11 +781,11 @@ documentBody (6:1 ~ 8:1)
 `;
 
 exports[`"- AAA\\n# comment\\n---\\n- BBB" 1`] = `
-document (1:1 ~ 2:10)
+document (1:1 ~ 3:1)
 1 | -·AAA¶
   | ^^^^^^
 2 | #·comment¶
-  | ^^^^^^^^^
+  | ^^^^^^^^^^
 3 | ---¶
 4 | -·BBB¶
 <document>
@@ -799,12 +793,12 @@ document (1:1 ~ 2:10)
 
   </documentHead>
   <documentBody>
+    <endComment value=" comment">
     <sequence>
       <sequenceItem>
         <plain value="AAA" />
       </sequenceItem>
     </sequence>
-    <comment value=" comment" />
   </documentBody>
 </document>
 `;
@@ -856,20 +850,20 @@ documentHead (3:1 ~ 3:4)
 `;
 
 exports[`"- AAA\\n# comment\\n---\\n- BBB" 5`] = `
-documentBody (1:1 ~ 2:10)
+documentBody (1:1 ~ 3:1)
 1 | -·AAA¶
   | ^^^^^^
 2 | #·comment¶
-  | ^^^^^^^^^
+  | ^^^^^^^^^^
 3 | ---¶
 4 | -·BBB¶
 <documentBody>
+  <endComment value=" comment">
   <sequence>
     <sequenceItem>
       <plain value="AAA" />
     </sequenceItem>
   </sequence>
-  <comment value=" comment" />
 </documentBody>
 `;
 

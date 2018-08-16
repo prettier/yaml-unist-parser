@@ -6,7 +6,7 @@ comment (1:3 ~ 1:8)
   |   ^^^^^
 2 | :·#·456¶
 3 | ¶
-mappingKey (1:1 ~ 1:1)
+mappingKey (1:1 ~ 1:2)
 <mappingKey>
   <trailingComment value=" 123">
 </mappingKey>
@@ -47,7 +47,8 @@ comment (4:1 ~ 4:6)
 6 | ---¶
 documentHead (2:1 ~ 6:4)
 <documentHead>
-
+  <endComment value=" 456">
+  <endComment value=" 789">
 </documentHead>
 `;
 
@@ -61,7 +62,8 @@ comment (5:1 ~ 5:6)
 7 | ¶
 documentHead (2:1 ~ 6:4)
 <documentHead>
-
+  <endComment value=" 456">
+  <endComment value=" 789">
 </documentHead>
 `;
 
@@ -73,7 +75,7 @@ comment (3:3 ~ 3:23)
   |   ^^^^^^^^^^^^^^^^^^^^
 4 | :·c¶
 5 | ··#·explicitMappingValue¶
-mappingKey (2:1 ~ 2:4)
+mappingKey (2:1 ~ 3:23)
 <mappingKey>
   <endComment value=" explicitMappingKey">
 </mappingKey>
@@ -86,7 +88,7 @@ comment (5:3 ~ 5:25)
 5 | ··#·explicitMappingValue¶
   |   ^^^^^^^^^^^^^^^^^^^^^^
 6 | ··¶
-mappingValue (4:1 ~ 4:4)
+mappingValue (4:1 ~ 5:25)
 <mappingValue>
   <endComment value=" explicitMappingValue">
 </mappingValue>
@@ -99,7 +101,7 @@ comment (4:3 ~ 4:8)
 4 | ··#·789¶
   |   ^^^^^
 5 | ¶
-sequenceItem (3:1 ~ 3:6)
+sequenceItem (3:1 ~ 4:8)
 <sequenceItem>
   <endComment value=" 789">
 </sequenceItem>
@@ -203,9 +205,9 @@ comment (24:5 ~ 24:11)
     |     ^^^^^^
  25 | ··#·Flow·style¶
  26 | ··Numbers:·!!omap·[·one:·1,·two:·2,·three·:·3·]¶
-sequence (21:5 ~ 23:57)
+sequence (21:5 ~ 24:11)
 <sequence>
-  <shorthandTag handle="!!" suffix="omap" />
+  <tag value="tag:yaml.org,2002:omap" />
   <endComment value=" Etc.">
 </sequence>
 `;
@@ -456,7 +458,7 @@ comment (64:57 ~ 64:64)
     |                                                         ^^^^^^^
  65 | ······················Jupiter,·Saturn,·Uranus,·Neptune,·#·Gas¶
  66 | ······················Pluto·]···························#·Overrated¶
-plain (64:46 ~ 64:50)
+plain (64:46 ~ 64:64)
 <plain value="Mars">
   <trailingComment value=" Rocks">
 </plain>
@@ -470,7 +472,7 @@ comment (65:57 ~ 65:62)
     |                                                         ^^^^^
  66 | ······················Pluto·]···························#·Overrated¶
  67 | ¶
-plain (65:48 ~ 65:55)
+plain (65:48 ~ 65:62)
 <plain value="Neptune">
   <trailingComment value=" Gas">
 </plain>
@@ -486,7 +488,7 @@ comment (66:57 ~ 66:68)
  68 | ¶
 flowSequence (64:21 ~ 66:30)
 <flowSequence>
-  <shorthandTag handle="!!" suffix="seq" />
+  <tag value="tag:yaml.org,2002:seq" />
   <trailingComment value=" Overrated">
 </flowSequence>
 `;
@@ -1301,9 +1303,9 @@ comment (7:1 ~ 7:15)
    | ^^^^^^^^^^^^^^
  8 | ---¶
  9 | -·Chicago·Cubs¶
-documentBody (3:1 ~ 7:15)
+documentBody (3:1 ~ 8:1)
 <documentBody>
-
+  <endComment value=" Team ranking">
 </documentBody>
 `;
 
@@ -1317,7 +1319,7 @@ comment (7:1 ~ 7:15)
  9 | -·Chicago·Cubs¶
 documentBody (3:1 ~ 8:4)
 <documentBody>
-
+  <endComment value=" Team ranking">
 </documentBody>
 `;
 
@@ -1329,7 +1331,7 @@ comment (4:4 ~ 4:6)
    |    ^^
  5 | ·#a¶
  6 | ¶
-mappingValue (3:4 ~ 3:5)
+mappingValue (3:4 ~ 4:6)
 <mappingValue>
   <endComment value="b">
 </mappingValue>
@@ -1343,7 +1345,7 @@ comment (5:2 ~ 5:4)
    |  ^^
  6 | ¶
  7 | A:¶
-mappingValue (2:2 ~ 4:6)
+mappingValue (2:2 ~ 5:4)
 <mappingValue>
   <endComment value="a">
 </mappingValue>
@@ -1357,7 +1359,7 @@ comment (9:2 ~ 9:4)
    |  ^^
 10 | ···#A¶
 11 | ¶
-mappingValue (7:2 ~ 8:5)
+mappingValue (7:2 ~ 10:6)
 <mappingValue>
   <endComment value="A">
   <endComment value="A">
@@ -1371,7 +1373,7 @@ comment (10:4 ~ 10:6)
 10 | ···#A¶
    |    ^^
 11 | ¶
-mappingValue (7:2 ~ 8:5)
+mappingValue (7:2 ~ 10:6)
 <mappingValue>
   <endComment value="A">
   <endComment value="A">
@@ -1386,9 +1388,9 @@ comment (3:1 ~ 3:6)
   | ^^^^^
 4 | ---¶
 5 | #·789¶
-documentBody (2:1 ~ 3:6)
+documentBody (2:1 ~ 4:1)
 <documentBody>
-
+  <endComment value=" 123">
 </documentBody>
 `;
 
@@ -1413,7 +1415,7 @@ comment (4:3 ~ 4:13)
 4 | ··#·sequence¶
   |   ^^^^^^^^^^
 5 | ··¶
-sequence (3:3 ~ 3:8)
+sequence (3:3 ~ 4:13)
 <sequence>
   <endComment value=" sequence">
 </sequence>
@@ -1427,7 +1429,7 @@ comment (4:3 ~ 4:6)
    |   ^^^
  5 | ··-·b¶
  6 | ····#·2¶
-sequenceItem (5:3 ~ 5:6)
+sequenceItem (5:3 ~ 6:8)
 <sequenceItem>
   <leadingComment value=" 1">
   <endComment value=" 2">
@@ -1442,7 +1444,7 @@ comment (6:5 ~ 6:8)
    |     ^^^
  7 | ··-·c¶
  8 | ····#·3¶
-sequenceItem (5:3 ~ 5:6)
+sequenceItem (5:3 ~ 6:8)
 <sequenceItem>
   <leadingComment value=" 1">
   <endComment value=" 2">
@@ -1457,7 +1459,7 @@ comment (8:5 ~ 8:8)
    |     ^^^
  9 | ··#·4¶
 10 | #·5¶
-sequenceItem (7:3 ~ 7:6)
+sequenceItem (7:3 ~ 8:8)
 <sequenceItem>
   <endComment value=" 3">
 </sequenceItem>
@@ -1471,7 +1473,7 @@ comment (9:3 ~ 9:6)
    |   ^^^
 10 | #·5¶
 11 | ¶
-sequence (3:3 ~ 8:8)
+sequence (3:3 ~ 9:6)
 <sequence>
   <endComment value=" 4">
 </sequence>
@@ -1486,7 +1488,7 @@ comment (10:1 ~ 10:4)
 11 | ¶
 documentBody (2:1 ~ 11:1)
 <documentBody>
-
+  <endComment value=" 5">
 </documentBody>
 `;
 
@@ -1497,7 +1499,7 @@ comment (4:5 ~ 4:19)
 4 | ····#·sequenceItem¶
   |     ^^^^^^^^^^^^^^
 5 | ¶
-sequenceItem (3:3 ~ 3:8)
+sequenceItem (3:3 ~ 4:19)
 <sequenceItem>
   <endComment value=" sequenceItem">
 </sequenceItem>
@@ -1510,7 +1512,7 @@ comment (4:3 ~ 4:11)
 4 | ··#·two:·2¶
   |   ^^^^^^^^
 5 | ¶
-mappingValue (2:7 ~ 3:9)
+mappingValue (2:7 ~ 4:11)
 <mappingValue>
   <endComment value=" two: 2">
 </mappingValue>
@@ -1523,7 +1525,7 @@ comment (3:3 ~ 3:24)
 3 | ··#·impicitMappginValue¶
   |   ^^^^^^^^^^^^^^^^^^^^^
 4 | ¶
-mappingValue (1:2 ~ 2:6)
+mappingValue (1:2 ~ 3:24)
 <mappingValue>
   <endComment value=" impicitMappginValue">
 </mappingValue>

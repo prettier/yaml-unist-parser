@@ -6,7 +6,8 @@
 
 declare module "yaml/parse-cst" {
   import YAML from "yaml";
-  export default function parse(src: string): YAML.cst.Document[];
+  const parseCST: typeof YAML.parseCST;
+  export default parseCST;
 }
 
 declare module "yaml/seq" {
@@ -25,6 +26,24 @@ declare module "yaml/pair" {
   import YAML from "yaml";
   const PairConstructor: YAML.ast.PairConstructor;
   export default PairConstructor;
+}
+
+declare module "yaml/scalar" {
+  import YAML from "yaml";
+  const ScalarConstructor: YAML.ast.ScalarConstructor;
+  export default ScalarConstructor;
+}
+
+declare module "yaml/types/binary" {
+  import YAML from "yaml";
+  const binary: YAML.Tag[];
+  export default binary;
+}
+
+declare module "yaml/types/timestamp" {
+  import YAML from "yaml";
+  const timestamp: YAML.Tag[];
+  export default timestamp;
 }
 
 declare module "yaml" {
@@ -73,7 +92,7 @@ declare module "yaml" {
     function createNode(
       value: any,
       wrapScalars?: true
-    ): ast.Map | ast.Seq | ast.Scalar;
+    ): ast.MapBase | ast.SeqBase | ast.Scalar;
 
     /**
      * YAML.createNode recursively turns objects into Map and arrays to Seq collections.
@@ -85,7 +104,7 @@ declare module "yaml" {
     function createNode(
       value: any,
       wrapScalars: false
-    ): ast.Map | ast.Seq | string | number | boolean | null;
+    ): ast.MapBase | ast.SeqBase | string | number | boolean | null;
 
     function parseCST(str: string): cst.Document[];
 
@@ -261,6 +280,14 @@ declare module "yaml" {
         readonly strValue: string | null;
       }
 
+      interface BlockFolded extends BlockValue {
+        type: "BLOCK_FOLDED";
+      }
+
+      interface BlockLiteral extends BlockValue {
+        type: "BLOCK_LITERAL";
+      }
+
       interface PlainValue extends Node {
         type: "PLAIN";
         readonly strValue: string | null;
@@ -274,6 +301,14 @@ declare module "yaml" {
           | { str: string; errors: YAMLSyntaxError[] };
       }
 
+      interface QuoteDouble extends QuoteValue {
+        type: "QUOTE_DOUBLE";
+      }
+
+      interface QuoteSingle extends QuoteValue {
+        type: "QUOTE_SINGLE";
+      }
+
       interface Comment extends Node {
         type: "COMMENT";
         readonly anchor: null;
@@ -285,6 +320,14 @@ declare module "yaml" {
       interface MapItem extends Node {
         type: "MAP_KEY" | "MAP_VALUE";
         node: ContentNode | null;
+      }
+
+      interface MapKey extends MapItem {
+        type: "MAP_KEY";
+      }
+
+      interface MapValue extends MapItem {
+        type: "MAP_VALUE";
       }
 
       interface Map extends Node {
@@ -303,14 +346,25 @@ declare module "yaml" {
         items: Array<Comment | SeqItem>;
       }
 
-      type FlowChar = "{" | "}" | "[" | "]" | "," | "?" | ":";
+      interface FlowChar {
+        char: "{" | "}" | "[" | "]" | "," | "?" | ":";
+        offset: number;
+      }
 
       interface FlowCollection extends Node {
         type: "FLOW_MAP" | "FLOW_SEQ";
         items: Array<FlowChar | Comment | Alias | Scalar | FlowCollection>;
       }
 
-      type ContentNode = Comment | Alias | Scalar | Map | Seq | FlowCollection;
+      interface FlowMap extends FlowCollection {
+        type: "FLOW_MAP";
+      }
+
+      interface FlowSeq extends FlowCollection {
+        type: "FLOW_SEQ";
+      }
+
+      type ContentNode = Alias | Scalar | Map | Seq | FlowCollection;
 
       interface Directive extends Node {
         type: "DIRECTIVE";
@@ -323,7 +377,7 @@ declare module "yaml" {
       interface Document extends Node {
         type: "DOCUMENT";
         directives: Array<Comment | Directive>;
-        contents: ContentNode[];
+        contents: Array<Comment | ContentNode>;
         readonly anchor: null;
         readonly comment: null;
         readonly tag: null;
@@ -331,8 +385,11 @@ declare module "yaml" {
     }
 
     namespace ast {
+      type AstNode = ScalarNode | MapNode | SeqNode | Alias;
+
       type DocumentConstructor = new (options?: ParseOptions) => Document;
       interface Document {
+        type: "DOCUMENT";
         /**
          * Anchors associated with the document's nodes;
          * also provides alias & merge node creators.
@@ -353,7 +410,7 @@ declare module "yaml" {
         /**
          * The document contents.
          */
-        contents: Node | null;
+        contents: AstNode | null;
         /**
          * Errors encountered during parsing.
          */
@@ -471,6 +528,9 @@ declare module "yaml" {
         toJSON(): any;
       }
 
+      type ScalarConstructor = new (
+        value: null | boolean | number | string
+      ) => Scalar;
       interface Scalar extends Node {
         type:
           | "BLOCK_FOLDED"
@@ -484,40 +544,103 @@ declare module "yaml" {
          * The YAML 1.2 core schema only supports 'HEX' and 'OCT'.
          */
         format: "BIN" | "HEX" | "OCT" | "TIME" | undefined;
-        value: any;
+        value: null | boolean | number | string;
       }
 
-      type PairConstructor = new (key: Node, value?: Node) => Pair;
+      type ScalarNode =
+        | BlockFolded
+        | BlockLiteral
+        | PlainValue
+        | QuoteDouble
+        | QuoteSingle;
+
+      interface BlockFolded extends Scalar {
+        type: "BLOCK_FOLDED";
+        cstNode?: cst.BlockFolded;
+      }
+
+      interface BlockLiteral extends Scalar {
+        type: "BLOCK_LITERAL";
+        cstNode?: cst.BlockLiteral;
+      }
+
+      interface PlainValue extends Scalar {
+        type: "PLAIN";
+        cstNode?: cst.PlainValue;
+      }
+
+      interface QuoteDouble extends Scalar {
+        type: "QUOTE_DOUBLE";
+        cstNode?: cst.QuoteDouble;
+      }
+
+      interface QuoteSingle extends Scalar {
+        type: "QUOTE_SINGLE";
+        cstNode?: cst.QuoteSingle;
+      }
+
+      type PairConstructor = new (
+        key: AstNode | null,
+        value?: AstNode | null
+      ) => Pair;
       interface Pair extends Node {
         type: "PAIR";
         /**
          * key is always Node or null when parsed, but can be set to anything.
          */
-        key: Node | null;
+        key: AstNode | null;
         /**
          * value is always Node or null when parsed, but can be set to anything.
          */
-        value: Node | null;
+        value: AstNode | null;
+        cstNode?: never; // no corresponding cstNode
       }
 
-      type MapConstructor = new () => Map;
-      interface Map extends Node {
+      type MapConstructor = new () => MapBase;
+      interface MapBase extends Node {
         type: "FLOW_MAP" | "MAP" | undefined;
-        items: Pair[];
+        items: Array<Pair | Merge>;
       }
 
-      type SeqConstructor = new () => Seq;
-      interface Seq extends Node {
+      type MapNode = FlowMap | Map;
+
+      interface FlowMap extends MapBase {
+        type: "FLOW_MAP";
+        cstNode?: cst.FlowMap;
+      }
+
+      interface Map extends MapBase {
+        type: "MAP";
+        cstNode?: cst.Map;
+      }
+
+      type SeqConstructor = new () => SeqBase;
+      interface SeqBase extends Node {
         type: "FLOW_SEQ" | "SEQ" | undefined;
         /**
          * item is always Node or null when parsed, but can be set to anything.
          */
-        items: Array<Node | null>;
+        items: Array<AstNode | Pair | null>;
+      }
+
+      type SeqNode = FlowSeq | Seq;
+
+      interface FlowSeq extends SeqBase {
+        type: "FLOW_SEQ";
+        items: Array<AstNode | Pair>;
+        cstNode?: cst.FlowSeq;
+      }
+
+      interface Seq extends SeqBase {
+        type: "SEQ";
+        items: Array<AstNode | null>;
+        cstNode?: cst.Seq;
       }
 
       interface Alias extends Node {
         type: "ALIAS";
-        source: Scalar | Map | Seq;
+        source: AstNode;
+        cstNode?: cst.Alias;
       }
 
       interface Merge extends Node {
@@ -525,11 +648,12 @@ declare module "yaml" {
         /**
          * key is always Scalar('<<'), defined by the type specification
          */
-        key: Scalar;
+        key: PlainValue;
         /**
          * value is always Seq<Alias(Map)>, stringified as *A if length = 1
          */
-        value: Seq;
+        value: SeqBase;
+        cstNode?: cst.PlainValue;
       }
     }
   }

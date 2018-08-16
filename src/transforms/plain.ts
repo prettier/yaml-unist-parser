@@ -1,21 +1,21 @@
-import assert = require("assert");
 import YAML from "yaml";
 import { createPlain } from "../factories/plain";
 import { Context } from "../transform";
 import { Plain } from "../types";
-import { findLastCharIndex } from "../utils";
+import { findLastCharIndex } from "../utils/find-last-char-index";
 
 export function transformPlain(
-  plain: YAML.cst.PlainValue,
+  plain: YAML.ast.PlainValue,
   context: Context,
 ): Plain {
-  assert(plain.strValue !== null);
-  assert(plain.valueRange !== null);
+  const cstNode = plain.cstNode!;
   return createPlain(
     context.transformRange({
-      start: plain.valueRange!.start,
-      end: findLastCharIndex(context.text, plain.valueRange!.end - 1, /\S/) + 1,
+      start: cstNode.valueRange!.start,
+      end:
+        findLastCharIndex(context.text, cstNode.valueRange!.end - 1, /\S/) + 1,
     }),
-    plain.strValue!,
+    context.transformContent(plain),
+    cstNode.strValue!,
   );
 }

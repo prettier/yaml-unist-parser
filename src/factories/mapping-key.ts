@@ -1,7 +1,7 @@
 import { ContentNode, MappingKey, Position } from "../types";
-import { createCommentAttachable } from "./comment-attachable";
 import { createEndCommentAttachable } from "./end-comment-attachable";
 import { createNode } from "./node";
+import { createTrailingCommentAttachable } from "./trailing-comment-attachable";
 
 export function createMappingKey(
   position: Position,
@@ -9,7 +9,7 @@ export function createMappingKey(
 ): MappingKey {
   return {
     ...createNode("mappingKey", position),
-    ...createCommentAttachable(),
+    ...createTrailingCommentAttachable(),
     ...createEndCommentAttachable(),
     children: [content],
   };

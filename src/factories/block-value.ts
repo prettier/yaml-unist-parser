@@ -1,20 +1,22 @@
-import { BlockValue, Position } from "../types";
-import { createCommentAttachable } from "./comment-attachable";
-import { createContent } from "./content";
+import { BlockValue, Comment, Content, Position } from "../types";
+import { createLeadingCommentAttachable } from "./leading-comment-attachable";
 import { createNode } from "./node";
 
 export function createBlockValue(
   position: Position,
+  content: Content,
   chomping: "clip" | "keep" | "strip",
   indent: null | number,
   value: string,
+  indicatorComments: Comment[],
 ): BlockValue {
   return {
     ...createNode("blockValue", position),
-    ...createContent(),
-    ...createCommentAttachable(),
+    ...createLeadingCommentAttachable(),
+    ...content,
     chomping,
     indent,
     value,
+    indicatorComments,
   };
 }

@@ -1,4 +1,5 @@
 import {
+  Content,
   FlowMappingItem,
   FlowSequence,
   FlowSequenceItem,
@@ -8,10 +9,11 @@ import { createFlowCollection } from "./flow-collection";
 
 export function createFlowSequence(
   position: Position,
+  content: Content,
   children: Array<FlowMappingItem | FlowSequenceItem>,
 ): FlowSequence {
   return {
-    ...createFlowCollection(position, children),
+    ...createFlowCollection(position, content, children),
     type: "flowSequence",
   };
 }

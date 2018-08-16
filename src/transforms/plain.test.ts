@@ -19,8 +19,6 @@ testCases([
       (getFirstContent<Mapping>(root).children[0].children[1] as MappingValue)
         .children[0],
   ],
-]);
-testCases([
   [
     " !!str # comment 1 \n &anchor # comment 2 \n  123   ",
     [

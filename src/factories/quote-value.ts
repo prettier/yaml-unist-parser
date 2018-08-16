@@ -1,15 +1,15 @@
-import { Position, QuoteValue } from "../types";
+import { Content, Position, QuoteValue } from "../types";
 import { createCommentAttachable } from "./comment-attachable";
-import { createContent } from "./content";
 import { createNode } from "./node";
 
 export function createQuoteValue(
   position: Position,
+  content: Content,
   value: string,
 ): QuoteValue {
   return {
     ...createNode("quoteValue", position),
-    ...createContent(),
+    ...content,
     ...createCommentAttachable(),
     value,
   };

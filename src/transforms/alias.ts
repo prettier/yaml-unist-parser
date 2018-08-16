@@ -1,16 +1,16 @@
-import assert = require("assert");
 import YAML from "yaml";
 import { createAlias } from "../factories/alias";
 import { Context } from "../transform";
 import { Alias } from "../types";
 
-export function tranformAlias(alias: YAML.cst.Alias, context: Context): Alias {
-  assert(alias.valueRange !== null);
+export function transformAlias(alias: YAML.ast.Alias, context: Context): Alias {
+  const cstNode = alias.cstNode!;
   return createAlias(
     context.transformRange({
-      start: alias.valueRange!.start - 1, // *
-      end: alias.valueRange!.end,
+      start: cstNode.valueRange!.start - 1, // include the `*`
+      end: cstNode.valueRange!.end,
     }),
-    alias.rawValue,
+    context.transformContent(alias),
+    cstNode.rawValue,
   );
 }
