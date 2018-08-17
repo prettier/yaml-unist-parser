@@ -2,6 +2,7 @@ import YAML from "yaml";
 import { createFlowMappingItem } from "../factories/flow-mapping-item";
 import { createFlowSequence } from "../factories/flow-sequence";
 import { createFlowSequenceItem } from "../factories/flow-sequence-item";
+import { createPosition } from "../factories/position";
 import { Context } from "../transform";
 import { FlowSequence } from "../types";
 import { extractComments } from "../utils/extract-comments";
@@ -24,7 +25,10 @@ export function transformFlowSeq(
   const flowSequenceItems = flowSeq.items.map((item, index) => {
     if (item.type !== "PAIR") {
       const node = context.transformNode(item);
-      return createFlowSequenceItem(node.position, node);
+      return createFlowSequenceItem(
+        createPosition(node.position.start, node.position.end),
+        node,
+      );
     } else {
       const cstNodes = groupedCstItems[index];
 
