@@ -180,13 +180,15 @@ documentBody (1:1 ~ 1:4)
 `;
 
 exports[`"...\\n\\n#\\n\\n" 4`] = `
-document (5:1 ~ 5:1)
+document (3:1 ~ 5:1)
 1 | ...¶
 2 | ¶
 3 | #¶
+  | ^^
 4 | ¶
+  | ^
 5 | ¶
-  | ~
+  | ^
 <document>
   <documentHead>
 
@@ -199,26 +201,28 @@ document (5:1 ~ 5:1)
 `;
 
 exports[`"...\\n\\n#\\n\\n" 5`] = `
-documentHead (5:1 ~ 5:1)
+documentHead (3:1 ~ 3:1)
 1 | ...¶
 2 | ¶
 3 | #¶
+  | ~
 4 | ¶
 5 | ¶
-  | ~
 <documentHead>
 
 </documentHead>
 `;
 
 exports[`"...\\n\\n#\\n\\n" 6`] = `
-documentBody (5:1 ~ 5:1)
+documentBody (3:1 ~ 5:1)
 1 | ...¶
 2 | ¶
 3 | #¶
+  | ^^
 4 | ¶
+  | ^
 5 | ¶
-  | ~
+  | ^
 <documentBody>
   <endComment value="">
   <null />

@@ -34,6 +34,7 @@ export function updatePositions(node: YamlUnistNode): void {
   );
 
   if ("endComments" in node && node.endComments.length !== 0) {
+    updateStartPoint(getLast(node.endComments)!.position.start);
     updateEndPoint(getLast(node.endComments)!.position.end);
   }
 
