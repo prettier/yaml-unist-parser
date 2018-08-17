@@ -135,6 +135,96 @@ documentBody (4:2 ~ 9:2)
 </documentBody>
 `;
 
+exports[`"...\\n\\n#\\n\\n" 1`] = `
+document (1:1 ~ 1:4)
+1 | ...¶
+  | ^^^
+2 | ¶
+3 | #¶
+4 | ¶
+5 | ¶
+<document>
+  <documentHead>
+
+  </documentHead>
+  <documentBody>
+    <null />
+  </documentBody>
+</document>
+`;
+
+exports[`"...\\n\\n#\\n\\n" 2`] = `
+documentHead (1:1 ~ 1:1)
+1 | ...¶
+  | ~
+2 | ¶
+3 | #¶
+4 | ¶
+5 | ¶
+<documentHead>
+
+</documentHead>
+`;
+
+exports[`"...\\n\\n#\\n\\n" 3`] = `
+documentBody (1:1 ~ 1:4)
+1 | ...¶
+  | ^^^
+2 | ¶
+3 | #¶
+4 | ¶
+5 | ¶
+<documentBody>
+  <null />
+</documentBody>
+`;
+
+exports[`"...\\n\\n#\\n\\n" 4`] = `
+document (5:1 ~ 5:1)
+1 | ...¶
+2 | ¶
+3 | #¶
+4 | ¶
+5 | ¶
+  | ~
+<document>
+  <documentHead>
+
+  </documentHead>
+  <documentBody>
+    <endComment value="">
+    <null />
+  </documentBody>
+</document>
+`;
+
+exports[`"...\\n\\n#\\n\\n" 5`] = `
+documentHead (5:1 ~ 5:1)
+1 | ...¶
+2 | ¶
+3 | #¶
+4 | ¶
+5 | ¶
+  | ~
+<documentHead>
+
+</documentHead>
+`;
+
+exports[`"...\\n\\n#\\n\\n" 6`] = `
+documentBody (5:1 ~ 5:1)
+1 | ...¶
+2 | ¶
+3 | #¶
+4 | ¶
+5 | ¶
+  | ~
+<documentBody>
+  <endComment value="">
+  <null />
+</documentBody>
+`;
+
 exports[`"\\n%AAA\\n---\\n123\\n\\n...\\n\\n%BBB\\n---\\n\\n456\\n\\n" 1`] = `
 document (2:1 ~ 6:4)
  1 | ¶
