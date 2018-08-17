@@ -1,5 +1,4 @@
-import { YamlUnistNode } from "../types";
-import { clone } from "./clone";
+import { Point, Position, YamlUnistNode } from "../types";
 import { createUpdater } from "./create-updater";
 import { getLast } from "./get-last";
 
@@ -11,18 +10,31 @@ export function updatePositions(node: YamlUnistNode): void {
   const children = node.children as Array<(typeof node.children)[number]>;
   children.forEach(updatePositions);
 
-  const startPointUpdater = createUpdater(
-    node.position.start,
-    (reduced, value) => value.offset < reduced.offset,
+  if (node.type === "document") {
+    const [head, body] = node.children;
+    if (head.position.start.offset === head.position.end.offset) {
+      head.position.start = head.position.end = body.position.start;
+    } else if (body.position.start.offset === body.position.end.offset) {
+      body.position.start = body.position.end = head.position.end;
+    }
+  }
+
+  const updateStartPoint = createUpdater(
+    node.position,
+    startPointGetter,
+    startPointSetter,
+    shouldUpdateStartPoint,
   );
 
-  const endPointUpdater = createUpdater(
-    node.position.end,
-    (reduced, value) => value.offset > reduced.offset,
+  const updateEndPoint = createUpdater(
+    node.position,
+    endPointGetter,
+    endPointSetter,
+    shouldUpdateEndPoint,
   );
 
   if ("endComments" in node && node.endComments.length !== 0) {
-    endPointUpdater.update(getLast(node.endComments)!.position.end);
+    updateEndPoint(getLast(node.endComments)!.position.end);
   }
 
   const nonNullChildren = children.filter(
@@ -33,34 +45,47 @@ export function updatePositions(node: YamlUnistNode): void {
     const firstChild = nonNullChildren[0];
     const lastChild = getLast(nonNullChildren)!;
 
-    startPointUpdater.update(firstChild.position.start);
-    endPointUpdater.update(lastChild.position.end);
+    updateStartPoint(firstChild.position.start);
+    updateEndPoint(lastChild.position.end);
 
     if (
       "leadingComments" in firstChild &&
       firstChild.leadingComments.length !== 0
     ) {
-      startPointUpdater.update(firstChild.leadingComments[0].position.start);
+      updateStartPoint(firstChild.leadingComments[0].position.start);
     }
 
     if ("tag" in firstChild && firstChild.tag) {
-      startPointUpdater.update(firstChild.tag.position.start);
+      updateStartPoint(firstChild.tag.position.start);
     }
 
     if ("anchor" in firstChild && firstChild.anchor) {
-      startPointUpdater.update(firstChild.anchor.position.start);
+      updateStartPoint(firstChild.anchor.position.start);
     }
 
     if ("trailingComment" in lastChild && lastChild.trailingComment) {
-      endPointUpdater.update(lastChild.trailingComment.position.end);
+      updateEndPoint(lastChild.trailingComment.position.end);
     }
   }
+}
 
-  if (startPointUpdater.hasUpdated()) {
-    node.position.start = clone(startPointUpdater.get());
-  }
+function startPointGetter(position: Position) {
+  return position.start;
+}
+function startPointSetter(position: Position, point: Point) {
+  position.start = point;
+}
 
-  if (endPointUpdater.hasUpdated()) {
-    node.position.end = clone(endPointUpdater.get());
-  }
+function endPointGetter(position: Position) {
+  return position.end;
+}
+function endPointSetter(position: Position, point: Point) {
+  position.end = point;
+}
+
+function shouldUpdateStartPoint(reduced: Point, value: Point) {
+  return value.offset < reduced.offset;
+}
+function shouldUpdateEndPoint(reduced: Point, value: Point) {
+  return value.offset > reduced.offset;
 }

@@ -1,17 +1,13 @@
-export function createUpdater<T>(
-  origin: T,
-  shouldUpdate: (reduced: T, value: T) => boolean,
+export function createUpdater<T, U>(
+  host: T,
+  getter: (x: T) => U,
+  setter: (x: T, v: U) => void,
+  shouldUpdate: (reduced: U, value: U) => boolean,
 ) {
-  let reduced = origin;
-  let updated = false;
-  return {
-    get: () => reduced,
-    hasUpdated: () => updated,
-    update(value: T) {
-      if (shouldUpdate(reduced, value)) {
-        updated = true;
-        reduced = value;
-      }
-    },
+  let reduced = getter(host);
+  return (value: U) => {
+    if (shouldUpdate(reduced, value)) {
+      setter(host, (reduced = value));
+    }
   };
 }
