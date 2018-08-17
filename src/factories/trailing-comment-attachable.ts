@@ -1,9 +1,9 @@
 import { Comment, TrailingCommentAttachable } from "../types";
 
 export function createTrailingCommentAttachable(
-  trailingComments: Comment[] = [],
+  trailingComment: null | Comment = null,
 ): TrailingCommentAttachable {
   return {
-    trailingComments,
+    trailingComment,
   };
 }

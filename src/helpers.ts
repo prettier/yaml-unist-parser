@@ -1,4 +1,5 @@
 import { wrap } from "jest-snapshot-serializer-raw";
+import YAML from "yaml";
 import { parse } from "./parse";
 import { Comment, Node, Position, Root, YamlUnistNode } from "./types";
 
@@ -93,9 +94,9 @@ function stringifyNode(
         case "comments":
         case "leadingComments":
         case "middleComments":
-        case "trailingComments":
+        case "trailingComment":
         case "endComments":
-        case "indicatorComments":
+        case "indicatorComment":
         case "anchor":
         case "tag":
           return false;
@@ -118,14 +119,16 @@ function stringifyNode(
       ? ([] as string[])
           .concat("leadingComments" in node ? "leadingComments" : [])
           .concat("middleComments" in node ? "middleComments" : [])
-          .concat("indicatorComments" in node ? "indicatorComments" : [])
-          .concat("trailingComments" in node ? "trailingComments" : [])
+          .concat("indicatorComment" in node ? "indicatorComment" : [])
+          .concat("trailingComment" in node ? "trailingComment" : [])
           .concat("endComments" in node ? "endComments" : [])
           .map(key =>
             // @ts-ignore
-            (node[key] as Comment[]).map(
+            ([].concat(node[key]).filter(Boolean) as Comment[]).map(
               comment =>
-                `<${key.slice(0, -1)} value=${JSON.stringify(comment.value)}>`,
+                `<${key.replace(/s$/, "")} value=${JSON.stringify(
+                  comment.value,
+                )}>`,
             ),
           )
           .reduce((a, b) => a.concat(b), [])
@@ -238,7 +241,9 @@ export function testSyntaxError(text: string, message?: string) {
   }
 }
 
-function isYAMLError(e: any): e is YAML.YAMLError {
+function isYAMLError(
+  e: any,
+): e is YAML.YAMLSyntaxError | YAML.YAMLSemanticError {
   return (
     e instanceof Error &&
     (e.name === "YAMLSyntaxError" || e.name === "YAMLSemanticError")

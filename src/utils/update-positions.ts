@@ -63,11 +63,8 @@ function collectPoints(node: Extract<YamlUnistNode, Parent>) {
       startPoints.push(firstChild.leadingComments[0].position.start);
     }
 
-    if (
-      "trailingComments" in lastChild &&
-      lastChild.trailingComments.length !== 0
-    ) {
-      endPoints.push(getLast(lastChild.trailingComments)!.position.end);
+    if ("trailingComment" in lastChild && lastChild.trailingComment) {
+      endPoints.push(lastChild.trailingComment.position.end);
     }
   }
 

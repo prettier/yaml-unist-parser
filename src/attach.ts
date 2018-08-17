@@ -9,6 +9,7 @@ import {
 } from "./types";
 import { defineParents } from "./utils/define-parents";
 import { getLast } from "./utils/get-last";
+import { getPointText } from "./utils/get-point-text";
 import { getStartPoint } from "./utils/get-start-point";
 
 interface NodeTable {
@@ -74,7 +75,7 @@ function initNodeTable(nodeTable: NodeTable, node: YamlUnistNode): void {
   }
 
   if (
-    "trailingComments" in node &&
+    "trailingComment" in node &&
     node.position.end.column > 1 &&
     node.type !== "document"
   ) {
@@ -124,8 +125,17 @@ function attachComment(
 
   const { trailingAttachableNode } = nodeTable[commentLine - 1];
   if (trailingAttachableNode) {
+    // istanbul ignore next
+    if (trailingAttachableNode.trailingComment) {
+      throw new Error(
+        `Unexpected multiple trailing comment at ${getPointText(
+          comment.position.start,
+        )}`,
+      );
+    }
+
     defineParents(comment, trailingAttachableNode);
-    trailingAttachableNode.trailingComments.push(comment);
+    trailingAttachableNode.trailingComment = comment;
     return;
   }
 

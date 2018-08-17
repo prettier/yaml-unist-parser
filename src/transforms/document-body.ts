@@ -3,6 +3,7 @@ import { createDocumentBody } from "../factories/document-body";
 import { Context } from "../transform";
 import { Comment, ContentNode } from "../types";
 import { getMatchIndex } from "../utils/get-match-index";
+import { getPointText } from "../utils/get-point-text";
 import { Range } from "./range";
 
 export function transformDocumentBody(
@@ -11,7 +12,7 @@ export function transformDocumentBody(
 ) {
   const cstNode = document.cstNode!;
 
-  const { comments, endComments, documentTrailingComments } = categorizeNodes(
+  const { comments, endComments, documentTrailingComment } = categorizeNodes(
     cstNode,
     context,
   );
@@ -23,7 +24,7 @@ export function transformDocumentBody(
 
   return {
     documentBody: createDocumentBody(position, [content], endComments),
-    documentTrailingComments,
+    documentTrailingComment,
   };
 }
 
@@ -49,7 +50,23 @@ function categorizeNodes(document: YAML.cst.Document, context: Context) {
     }
   }
 
-  return { comments, endComments, documentTrailingComments };
+  // istanbul ignore next
+  if (documentTrailingComments.length > 1) {
+    throw new Error(
+      `Unexpected multiple trailing comments at ${getPointText(
+        documentTrailingComments[1].position.start,
+      )}`,
+    );
+  }
+
+  return {
+    comments,
+    endComments,
+    documentTrailingComment:
+      documentTrailingComments.length === 0
+        ? null
+        : documentTrailingComments[0],
+  };
 }
 
 function getPosition(

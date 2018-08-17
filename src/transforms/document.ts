@@ -12,12 +12,14 @@ export function transformDocument(
   context: Context,
 ): Document {
   const { documentHead } = transformDocumentHead(document, context);
-  const { documentBody, documentTrailingComments } = transformDocumentBody(
+  const { documentBody, documentTrailingComment } = transformDocumentBody(
     document,
     context,
   );
 
-  context.comments.push(...documentTrailingComments);
+  if (documentTrailingComment) {
+    context.comments.push(documentTrailingComment);
+  }
 
   return createDocument(
     createPosition(
@@ -26,6 +28,6 @@ export function transformDocument(
     ),
     documentHead,
     documentBody,
-    documentTrailingComments,
+    documentTrailingComment,
   );
 }

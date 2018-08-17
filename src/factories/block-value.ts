@@ -8,7 +8,7 @@ export function createBlockValue(
   chomping: "clip" | "keep" | "strip",
   indent: null | number,
   value: string,
-  indicatorComments: Comment[],
+  indicatorComment: null | Comment,
 ): BlockValue {
   return {
     ...createNode("blockValue", position),
@@ -17,6 +17,6 @@ export function createBlockValue(
     chomping,
     indent,
     value,
-    indicatorComments,
+    indicatorComment,
   };
 }

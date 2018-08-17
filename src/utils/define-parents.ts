@@ -31,16 +31,16 @@ export function defineParents(
     node.middleComments.forEach(comment => defineParents(comment, node));
   }
 
-  if ("trailingComments" in node) {
-    node.trailingComments.forEach(comment => defineParents(comment, node));
+  if ("indicatorComment" in node && node.indicatorComment) {
+    defineParents(node.indicatorComment, node);
+  }
+
+  if ("trailingComment" in node && node.trailingComment) {
+    defineParents(node.trailingComment, node);
   }
 
   if ("endComments" in node) {
     node.endComments.forEach(comment => defineParents(comment, node));
-  }
-
-  if ("indicatorComments" in node) {
-    node.indicatorComments.forEach(comment => defineParents(comment, node));
   }
 
   Object.defineProperty(node, "_parent", {

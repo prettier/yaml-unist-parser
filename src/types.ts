@@ -43,7 +43,7 @@ export interface LeadingCommentAttachable {
 
 export interface TrailingCommentAttachable {
   /** comments on the same line of the node */
-  trailingComments: Comment[];
+  trailingComment: null | Comment;
 }
 
 export interface EndCommentAttachable {
@@ -150,7 +150,7 @@ export interface BlockValue extends Node, Content, LeadingCommentAttachable {
   indent: null | number;
   value: string;
   /** comments between indicator and the value */
-  indicatorComments: Comment[];
+  indicatorComment: null | Comment;
 }
 
 export interface BlockLiteral extends BlockValue {

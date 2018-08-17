@@ -12,11 +12,11 @@ export function createDocument(
   position: Position,
   head: DocumentHead,
   body: DocumentBody,
-  trailingComments: Comment[],
+  trailingComment: null | Comment,
 ): Document {
   return {
     ...createNode("document", position),
-    ...createTrailingCommentAttachable(trailingComments),
+    ...createTrailingCommentAttachable(trailingComment),
     children: [head, body],
   };
 }

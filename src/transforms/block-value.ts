@@ -2,6 +2,7 @@ import YAML from "yaml";
 import { createBlockValue } from "../factories/block-value";
 import { Context } from "../transform";
 import { BlockValue, Comment } from "../types";
+import { getPointText } from "../utils/get-point-text";
 import { transformContent } from "./content";
 
 enum Chomping {
@@ -27,9 +28,22 @@ export function transformAstBlockValue(
     end: cstNode.valueRange!.end,
   });
 
-  const indicatorComments: Comment[] = [];
+  let indicatorComment: Comment | null = null;
   const content = transformContent(blockValue, context, nonMiddleComment => {
-    indicatorComments.push(nonMiddleComment);
+    if (
+      position.start.offset < nonMiddleComment.position.start.offset &&
+      nonMiddleComment.position.end.offset < position.end.offset
+    ) {
+      if (indicatorComment) {
+        throw new Error(
+          `Unexpected multiple indicator comments at ${getPointText(
+            nonMiddleComment.position.start,
+          )}`,
+        );
+      }
+
+      indicatorComment = nonMiddleComment;
+    }
   });
 
   return createBlockValue(
@@ -38,6 +52,6 @@ export function transformAstBlockValue(
     Chomping[cstNode.chomping],
     hasExplicitBlockIndent ? cstNode.blockIndent! : null,
     cstNode.strValue!,
-    indicatorComments,
+    indicatorComment,
   );
 }
