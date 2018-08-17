@@ -401,3 +401,12 @@ flowSequenceItem (1:5 ~ 1:8)
   <plain value="123" />
 </flowSequenceItem>
 `;
+
+exports[`"[!!str 123]" 1`] = `
+plain (1:2 ~ 1:11)
+1 | [!!str·123]¶
+  |  ^^^^^^^^^
+<plain value="123">
+  <tag value="tag:yaml.org,2002:str" />
+</plain>
+`;
