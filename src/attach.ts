@@ -19,10 +19,10 @@ interface NodeTable {
   };
 }
 
-export function attachComments(root: Root, text: string): void {
+export function attachComments(root: Root): void {
   defineParents(root);
 
-  const nodeTable = createNodeTable(root, text);
+  const nodeTable = createNodeTable(root);
 
   const restDocuments = root.children.slice();
   root.comments
@@ -39,8 +39,11 @@ export function attachComments(root: Root, text: string): void {
     });
 }
 
-function createNodeTable(root: Root, text: string) {
-  const nodeTable: NodeTable = text.split("\n").map(() => ({}));
+function createNodeTable(root: Root) {
+  const nodeTable: NodeTable = Array.from(
+    new Array(root.position.end.line),
+    () => ({}),
+  );
 
   for (const comment of root.comments) {
     nodeTable[comment.position.start.line - 1].comment = comment;

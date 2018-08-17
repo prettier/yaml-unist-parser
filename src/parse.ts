@@ -43,7 +43,7 @@ export function parse(text: string): Root {
     comments,
   );
 
-  attachComments(root, text);
+  attachComments(root);
   updatePositions(root);
 
   return root;
