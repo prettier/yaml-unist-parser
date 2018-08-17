@@ -205,11 +205,10 @@ comment (24:5 ~ 24:11)
     |     ^^^^^^
  25 | ··#·Flow·style¶
  26 | ··Numbers:·!!omap·[·one:·1,·two:·2,·three·:·3·]¶
-sequence (21:5 ~ 24:11)
-<sequence>
-  <tag value="tag:yaml.org,2002:omap" />
+mappingValue (20:11 ~ 24:11)
+<mappingValue>
   <endComment value=" Etc.">
-</sequence>
+</mappingValue>
 `;
 
 exports[`"\\n---\\n# Collection Types ################################# 8`] = `
@@ -486,7 +485,7 @@ comment (66:57 ~ 66:68)
     |                                                         ^^^^^^^^^^^
  67 | ¶
  68 | ¶
-flowSequence (64:21 ~ 66:30)
+flowSequence (64:15 ~ 66:30)
 <flowSequence>
   <tag value="tag:yaml.org,2002:seq" />
   <trailingComment value=" Overrated">
@@ -1415,10 +1414,10 @@ comment (4:3 ~ 4:13)
 4 | ··#·sequence¶
   |   ^^^^^^^^^^
 5 | ··¶
-sequence (3:3 ~ 4:13)
-<sequence>
+mappingValue (2:2 ~ 4:13)
+<mappingValue>
   <endComment value=" sequence">
-</sequence>
+</mappingValue>
 `;
 
 exports[`"\\nd:\\n  - a\\n  # 1\\n  - b\\n    # 2\\n  - c\\n    # 3\\n  # 4\\n 1`] = `
@@ -1473,10 +1472,10 @@ comment (9:3 ~ 9:6)
    |   ^^^
 10 | #·5¶
 11 | ¶
-sequence (3:3 ~ 9:6)
-<sequence>
+mappingValue (2:2 ~ 9:6)
+<mappingValue>
   <endComment value=" 4">
-</sequence>
+</mappingValue>
 `;
 
 exports[`"\\nd:\\n  - a\\n  # 1\\n  - b\\n    # 2\\n  - c\\n    # 3\\n  # 4\\n 5`] = `

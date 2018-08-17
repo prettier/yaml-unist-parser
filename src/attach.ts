@@ -8,9 +8,7 @@ import {
   YamlUnistNode,
 } from "./types";
 import { defineParents } from "./utils/define-parents";
-import { getLast } from "./utils/get-last";
 import { getPointText } from "./utils/get-point-text";
-import { getStartPoint } from "./utils/get-start-point";
 
 interface NodeTable {
   [line: number]: {
@@ -63,7 +61,7 @@ function initNodeTable(nodeTable: NodeTable, node: YamlUnistNode): void {
   }
 
   if ("leadingComments" in node) {
-    const start = getStartPoint(node);
+    const { start } = node.position;
     const { leadingAttachableNode } = nodeTable[start.line - 1];
 
     if (
@@ -197,7 +195,7 @@ function attachComment(
 }
 
 function shouldOwnEndComment(
-  node: NonNullable<YamlUnistNode>,
+  node: Exclude<YamlUnistNode, null>,
   comment: Comment,
 ): node is Extract<YamlUnistNode, EndCommentAttachable> {
   if (comment.position.end.offset < node.position.end.offset) {
@@ -205,13 +203,6 @@ function shouldOwnEndComment(
   }
 
   switch (node.type) {
-    case "sequence":
-      return (
-        node._parent!.type !== "documentBody" &&
-        comment.position.start.column >= node.position.start.column &&
-        comment.position.start.offset >
-          getLast(node.children)!.position.end.offset
-      );
     case "sequenceItem":
       return comment.position.start.column > node.position.start.column;
     case "mappingKey":
