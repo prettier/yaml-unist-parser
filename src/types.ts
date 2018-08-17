@@ -20,7 +20,7 @@ export interface Node {
 }
 
 export interface Parent extends Node {
-  children: Array<Node | null>;
+  children: Array<Exclude<YamlUnistNode, Comment>>;
 }
 
 // -----------------------------------------------------------------------------
@@ -42,7 +42,7 @@ export interface LeadingCommentAttachable {
 }
 
 export interface TrailingCommentAttachable {
-  /** comments on the same line of the node */
+  /** comment on the same line of the node */
   trailingComment: null | Comment;
 }
 
@@ -149,7 +149,7 @@ export interface BlockValue extends Node, Content, LeadingCommentAttachable {
   chomping: "clip" | "keep" | "strip";
   indent: null | number;
   value: string;
-  /** comments between indicator and the value */
+  /** comment between indicator and the value */
   indicatorComment: null | Comment;
 }
 
