@@ -29,21 +29,26 @@ export function transformAstBlockValue(
   });
 
   let indicatorComment: Comment | null = null;
-  const content = transformContent(blockValue, context, nonMiddleComment => {
-    if (
-      position.start.offset < nonMiddleComment.position.start.offset &&
-      nonMiddleComment.position.end.offset < position.end.offset
-    ) {
-      if (indicatorComment) {
-        throw new Error(
-          `Unexpected multiple indicator comments at ${getPointText(
-            nonMiddleComment.position.start,
-          )}`,
-        );
-      }
+  const content = transformContent(blockValue, context, comment => {
+    const isIndicatorComment =
+      position.start.offset < comment.position.start.offset &&
+      comment.position.end.offset < position.end.offset;
 
-      indicatorComment = nonMiddleComment;
+    if (!isIndicatorComment) {
+      return false;
     }
+
+    // istanbul ignore next
+    if (indicatorComment) {
+      throw new Error(
+        `Unexpected multiple indicator comments at ${getPointText(
+          comment.position.start,
+        )}`,
+      );
+    }
+
+    indicatorComment = comment;
+    return true;
   });
 
   return createBlockValue(

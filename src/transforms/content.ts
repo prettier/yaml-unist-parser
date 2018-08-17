@@ -10,7 +10,7 @@ import { Anchor, Comment, Content, Tag } from "../types";
 export function transformContent(
   node: YAML.ast.Node,
   context: Context,
-  nonMiddleCommentHandler?: (nonMiddleComment: Comment) => void,
+  isNotMiddleComment: (comment: Comment) => boolean = () => false,
 ): Content {
   const cstNode = node.cstNode!;
 
@@ -42,13 +42,12 @@ export function transformContent(
         );
         context.comments.push(comment);
         if (
+          !isNotMiddleComment(comment) &&
           firstTagOrAnchorRange &&
           firstTagOrAnchorRange.end <= propRange.start &&
           propRange.end <= cstNode.valueRange!.start
         ) {
           middleComments.push(comment);
-        } else if (nonMiddleCommentHandler) {
-          nonMiddleCommentHandler(comment);
         }
         break;
       }
