@@ -1,5 +1,138 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`"&123 123 \\"123\\"\\n\\n... #123\\n #\\n\\n123\\n\\n\\n " 1`] = `
+document (1:1 ~ 3:4)
+1 | &123·123·"123"¶
+  | ^^^^^^^^^^^^^^^
+2 | ¶
+  | ^
+3 | ...·#123¶
+  | ^^^
+4 | ·#¶
+5 | ¶
+6 | 123¶
+7 | ¶
+8 | ¶
+9 | ·¶
+<document>
+  <trailingComment value="123">
+  <documentHead>
+
+  </documentHead>
+  <documentBody>
+    <plain value="123 \\"123\\"">
+      <anchor value="123" />
+    </plain>
+  </documentBody>
+</document>
+`;
+
+exports[`"&123 123 \\"123\\"\\n\\n... #123\\n #\\n\\n123\\n\\n\\n " 2`] = `
+documentHead (1:1 ~ 1:1)
+1 | &123·123·"123"¶
+  | ~
+2 | ¶
+3 | ...·#123¶
+4 | ·#¶
+5 | ¶
+6 | 123¶
+7 | ¶
+8 | ¶
+9 | ·¶
+<documentHead>
+
+</documentHead>
+`;
+
+exports[`"&123 123 \\"123\\"\\n\\n... #123\\n #\\n\\n123\\n\\n\\n " 3`] = `
+documentBody (1:1 ~ 3:4)
+1 | &123·123·"123"¶
+  | ^^^^^^^^^^^^^^^
+2 | ¶
+  | ^
+3 | ...·#123¶
+  | ^^^
+4 | ·#¶
+5 | ¶
+6 | 123¶
+7 | ¶
+8 | ¶
+9 | ·¶
+<documentBody>
+  <plain value="123 \\"123\\"">
+    <anchor value="123" />
+  </plain>
+</documentBody>
+`;
+
+exports[`"&123 123 \\"123\\"\\n\\n... #123\\n #\\n\\n123\\n\\n\\n " 4`] = `
+document (6:1 ~ 9:2)
+1 | &123·123·"123"¶
+2 | ¶
+3 | ...·#123¶
+4 | ·#¶
+5 | ¶
+6 | 123¶
+  | ^^^^
+7 | ¶
+  | ^
+8 | ¶
+  | ^
+9 | ·¶
+  | ^
+<document>
+  <documentHead>
+
+  </documentHead>
+  <documentBody>
+    <plain value="123">
+      <leadingComment value="">
+    </plain>
+  </documentBody>
+</document>
+`;
+
+exports[`"&123 123 \\"123\\"\\n\\n... #123\\n #\\n\\n123\\n\\n\\n " 5`] = `
+documentHead (6:1 ~ 6:1)
+1 | &123·123·"123"¶
+2 | ¶
+3 | ...·#123¶
+4 | ·#¶
+5 | ¶
+6 | 123¶
+  | ~
+7 | ¶
+8 | ¶
+9 | ·¶
+<documentHead>
+
+</documentHead>
+`;
+
+exports[`"&123 123 \\"123\\"\\n\\n... #123\\n #\\n\\n123\\n\\n\\n " 6`] = `
+documentBody (4:2 ~ 9:2)
+1 | &123·123·"123"¶
+2 | ¶
+3 | ...·#123¶
+4 | ·#¶
+  |  ^^
+5 | ¶
+  | ^
+6 | 123¶
+  | ^^^^
+7 | ¶
+  | ^
+8 | ¶
+  | ^
+9 | ·¶
+  | ^
+<documentBody>
+  <plain value="123">
+    <leadingComment value="">
+  </plain>
+</documentBody>
+`;
+
 exports[`"\\n%AAA\\n---\\n123\\n\\n...\\n\\n%BBB\\n---\\n\\n456\\n\\n" 1`] = `
 document (2:1 ~ 6:4)
  1 | ¶
