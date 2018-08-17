@@ -3,13 +3,13 @@ import { clone } from "./clone";
 import { createUpdater } from "./create-updater";
 import { getLast } from "./get-last";
 
-export function updatePositionsWithComments(node: YamlUnistNode): void {
+export function updatePositions(node: YamlUnistNode): void {
   if (node === null || !("children" in node)) {
     return;
   }
 
   const children = node.children as Array<(typeof node.children)[number]>;
-  children.forEach(updatePositionsWithComments);
+  children.forEach(updatePositions);
 
   const startPointUpdater = createUpdater(
     node.position.start,
@@ -41,6 +41,14 @@ export function updatePositionsWithComments(node: YamlUnistNode): void {
       firstChild.leadingComments.length !== 0
     ) {
       startPointUpdater.update(firstChild.leadingComments[0].position.start);
+    }
+
+    if ("tag" in firstChild && firstChild.tag) {
+      startPointUpdater.update(firstChild.tag.position.start);
+    }
+
+    if ("anchor" in firstChild && firstChild.anchor) {
+      startPointUpdater.update(firstChild.anchor.position.start);
     }
 
     if ("trailingComment" in lastChild && lastChild.trailingComment) {

@@ -8,8 +8,7 @@ import { transformError } from "./transforms/error";
 import { transformOffset } from "./transforms/offset";
 import { transformRange } from "./transforms/range";
 import { Comment, Root } from "./types";
-import { updatePositionsWithComments } from "./utils/update-positions-with-comments";
-import { updatePositionsWithProps } from "./utils/update-positions-with-props";
+import { updatePositions } from "./utils/update-positions";
 
 export function parse(text: string): Root {
   const documents = YAML.parseAllDocuments(text, {
@@ -44,9 +43,8 @@ export function parse(text: string): Root {
     comments,
   );
 
-  updatePositionsWithProps(root);
   attachComments(root, text);
-  updatePositionsWithComments(root);
+  updatePositions(root);
 
   return root;
 }

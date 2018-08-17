@@ -485,7 +485,7 @@ comment (66:57 ~ 66:68)
     |                                                         ^^^^^^^^^^^
  67 | ¶
  68 | ¶
-flowSequence (64:15 ~ 66:30)
+flowSequence (64:21 ~ 66:30)
 <flowSequence>
   <tag value="tag:yaml.org,2002:seq" />
   <trailingComment value=" Overrated">
