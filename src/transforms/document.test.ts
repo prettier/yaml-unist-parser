@@ -3,10 +3,10 @@ import { Root } from "../types";
 
 const selectors = [
   getDocument(0),
-  getDocument(1),
   getDocumentHead(0),
-  getDocumentHead(1),
   getDocumentBody(0),
+  getDocument(1),
+  getDocumentHead(1),
   getDocumentBody(1),
 ];
 
