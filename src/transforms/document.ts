@@ -3,7 +3,6 @@ import { createDocument } from "../factories/document";
 import { createPosition } from "../factories/position";
 import { Context } from "../transform";
 import { Document } from "../types";
-import { clone } from "../utils/clone";
 import { transformDocumentBody } from "./document-body";
 import { transformDocumentHead } from "./document-head";
 
@@ -22,10 +21,7 @@ export function transformDocument(
   }
 
   return createDocument(
-    createPosition(
-      clone(documentHead.position.start),
-      clone(documentBody.position.end),
-    ),
+    createPosition(documentHead.position.start, documentBody.position.end),
     documentHead,
     documentBody,
     documentTrailingComment,

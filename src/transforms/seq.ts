@@ -4,7 +4,6 @@ import { createSequence } from "../factories/sequence";
 import { createSequenceItem } from "../factories/sequence-item";
 import { Context } from "../transform";
 import { Sequence } from "../types";
-import { clone } from "../utils/clone";
 import { extractComments } from "../utils/extract-comments";
 import { extractPropComments } from "../utils/extract-prop-comments";
 import { getLast } from "../utils/get-last";
@@ -20,7 +19,7 @@ export function transformSeq(seq: YAML.ast.Seq, context: Context): Sequence {
         context.transformOffset(cstItem.valueRange!.start),
         item === null
           ? context.transformOffset(cstItem.valueRange!.start + 1)
-          : clone(item.position.end),
+          : item.position.end,
       ),
       item,
     );
