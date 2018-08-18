@@ -1146,6 +1146,35 @@ document (1:1 ~ 3:4)
 </document>
 `;
 
+exports[`"123\\n--- #666\\n456" 1`] = `
+root (1:1 ~ 3:4)
+1 | 123¶
+  | ^^^^
+2 | ---·#666¶
+  | ^^^^^^^^^
+3 | 456¶
+  | ^^^
+<root>
+  <document>
+    <documentHead>
+
+    </documentHead>
+    <documentBody>
+      <endComment value="666">
+      <plain value="123" />
+    </documentBody>
+  </document>
+  <document>
+    <documentHead>
+
+    </documentHead>
+    <documentBody>
+      <plain value="456" />
+    </documentBody>
+  </document>
+</root>
+`;
+
 exports[`Document is not valid YAML (bad indentation?) 1`] = `
 "Document is not valid YAML (bad indentation?)
 1 | -·123¶
