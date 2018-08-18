@@ -78,7 +78,8 @@ function initNodeTable(nodeTable: NodeTable, node: YamlUnistNode): void {
   if (
     "trailingComment" in node &&
     node.position.end.column > 1 &&
-    node.type !== "document"
+    node.type !== "document" &&
+    node.type !== "documentHead"
   ) {
     const { end } = node.position;
     const { trailingAttachableNode } = nodeTable[end.line - 1];

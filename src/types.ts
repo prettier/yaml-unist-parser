@@ -124,7 +124,10 @@ export interface Document extends Parent, TrailingCommentAttachable {
   children: [DocumentHead, DocumentBody];
 }
 
-export interface DocumentHead extends Parent, EndCommentAttachable {
+export interface DocumentHead
+  extends Parent,
+    EndCommentAttachable,
+    TrailingCommentAttachable {
   type: "documentHead";
   children: Directive[];
 }

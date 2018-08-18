@@ -1160,13 +1160,12 @@ root (1:1 ~ 3:4)
 
     </documentHead>
     <documentBody>
-      <endComment value="666">
       <plain value="123" />
     </documentBody>
   </document>
   <document>
     <documentHead>
-
+      <trailingComment value="666">
     </documentHead>
     <documentBody>
       <plain value="456" />

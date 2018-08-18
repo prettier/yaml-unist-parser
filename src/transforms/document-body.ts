@@ -1,7 +1,8 @@
 import YAML from "yaml";
 import { createDocumentBody } from "../factories/document-body";
 import { Context } from "../transform";
-import { Comment, ContentNode } from "../types";
+import { Comment, ContentNode, Point } from "../types";
+import { getLast } from "../utils/get-last";
 import { getMatchIndex } from "../utils/get-match-index";
 import { getPointText } from "../utils/get-point-text";
 import { Range } from "./range";
@@ -9,13 +10,16 @@ import { Range } from "./range";
 export function transformDocumentBody(
   document: YAML.ast.Document,
   context: Context,
+  headEndMarkerPoint: null | Point,
 ) {
   const cstNode = document.cstNode!;
 
-  const { comments, endComments, documentTrailingComment } = categorizeNodes(
-    cstNode,
-    context,
-  );
+  const {
+    comments,
+    endComments,
+    documentTrailingComment,
+    documentHeadTrailingComment,
+  } = categorizeNodes(cstNode, context, headEndMarkerPoint);
 
   const content = context.transformNode(document.contents);
   const position = getPosition(cstNode, content, context);
@@ -25,20 +29,31 @@ export function transformDocumentBody(
   return {
     documentBody: createDocumentBody(position, [content], endComments),
     documentTrailingComment,
+    documentHeadTrailingComment,
   };
 }
 
-function categorizeNodes(document: YAML.cst.Document, context: Context) {
+function categorizeNodes(
+  document: YAML.cst.Document,
+  context: Context,
+  headEndMarkerPoint: null | Point,
+) {
   const comments: Comment[] = [];
   const endComments: Comment[] = [];
   const documentTrailingComments: Comment[] = [];
+  const documentHeadTrailingComments: Comment[] = [];
 
   let hasContent = false;
   for (let i = document.contents.length - 1; i >= 0; i--) {
     const node = document.contents[i];
     if (node.type === "COMMENT") {
       const comment = context.transformNode(node);
-      if (hasContent) {
+      if (
+        headEndMarkerPoint &&
+        headEndMarkerPoint.line === comment.position.start.line
+      ) {
+        documentHeadTrailingComments.unshift(comment);
+      } else if (hasContent) {
         comments.unshift(comment);
       } else if (comment.position.start.offset >= document.valueRange!.end) {
         documentTrailingComments.unshift(comment);
@@ -53,8 +68,17 @@ function categorizeNodes(document: YAML.cst.Document, context: Context) {
   // istanbul ignore next
   if (documentTrailingComments.length > 1) {
     throw new Error(
-      `Unexpected multiple trailing comments at ${getPointText(
+      `Unexpected multiple document trailing comments at ${getPointText(
         documentTrailingComments[1].position.start,
+      )}`,
+    );
+  }
+
+  // istanbul ignore next
+  if (documentHeadTrailingComments.length > 1) {
+    throw new Error(
+      `Unexpected multiple documentHead trailing comments at ${getPointText(
+        documentHeadTrailingComments[1].position.start,
       )}`,
     );
   }
@@ -62,10 +86,8 @@ function categorizeNodes(document: YAML.cst.Document, context: Context) {
   return {
     comments,
     endComments,
-    documentTrailingComment:
-      documentTrailingComments.length === 0
-        ? null
-        : documentTrailingComments[0],
+    documentTrailingComment: getLast(documentTrailingComments) || null,
+    documentHeadTrailingComment: getLast(documentHeadTrailingComments) || null,
   };
 }
 

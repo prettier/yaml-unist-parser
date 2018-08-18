@@ -16,12 +16,31 @@ export function transformDocumentHead(
     context,
   );
 
-  const position = getPosition(cstNode, directives, context);
+  const { position, endMarkerPoint } = getPosition(
+    cstNode,
+    directives,
+    context,
+  );
 
   context.comments.push(...comments, ...endComments);
 
+  const createDocumentHeadWithTrailingComment = (
+    trailingComment: null | Comment,
+  ) => {
+    if (trailingComment) {
+      context.comments.push(trailingComment);
+    }
+    return createDocumentHead(
+      position,
+      directives,
+      endComments,
+      trailingComment,
+    );
+  };
+
   return {
-    documentHead: createDocumentHead(position, directives, endComments),
+    createDocumentHeadWithTrailingComment,
+    documentHeadEndMarkerPoint: endMarkerPoint,
   };
 }
 
@@ -53,25 +72,29 @@ function getPosition(
   directives: Directive[],
   context: Context,
 ) {
-  const markerIndex = getMatchIndex(
+  const endMarkerIndex = getMatchIndex(
     context.text.slice(0, document.valueRange!.start),
     /---\s*$/,
   );
 
   const range: Range =
-    markerIndex === -1
+    endMarkerIndex === -1
       ? {
           start: document.valueRange!.start,
           end: document.valueRange!.start,
         }
       : {
-          start: markerIndex,
-          end: markerIndex + 3,
+          start: endMarkerIndex,
+          end: endMarkerIndex + 3,
         };
 
   if (directives.length !== 0) {
     range.start = directives[0].position.start.offset;
   }
 
-  return context.transformRange(range);
+  return {
+    position: context.transformRange(range),
+    endMarkerPoint:
+      endMarkerIndex === -1 ? null : context.transformOffset(endMarkerIndex),
+  };
 }
