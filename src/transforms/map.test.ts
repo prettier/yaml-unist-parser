@@ -4,7 +4,7 @@ import {
   testCases,
   testSyntaxError,
 } from "../helpers";
-import { Mapping, Root } from "../types";
+import { Mapping, Root, Sequence } from "../types";
 
 testSyntaxError("asd: 123\nqwe\n");
 
@@ -29,6 +29,10 @@ testCases([
   [
     "x:\n  - &a\n    key1: value1\n  - &b\n    key2: value2\nfoo:\n  bar: baz\n  <<: *a\n  <<: *b",
     getMappingItem(1),
+  ],
+  [
+    "merge:\n- &A { a: 1 }\n- &B { b: 2 }\n- <<: [ *A, *B ]",
+    root => (getMappingValue(0)(root).children[0] as Sequence).children[2],
   ],
 ]);
 

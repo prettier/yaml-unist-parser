@@ -643,6 +643,27 @@ mappingValue (1:4 ~ 1:21)
 </mappingValue>
 `;
 
+exports[`"merge:\\n- &A { a: 1 }\\n- &B { b: 2 }\\n- <<: [ *A, *B ]" 1`] = `
+sequenceItem (4:1 ~ 4:11)
+1 | merge:¶
+2 | -·&A·{·a:·1·}¶
+3 | -·&B·{·b:·2·}¶
+4 | -·<<:·[·*A,·*B·]¶
+  | ^^^^^^^^^^
+<sequenceItem>
+  <mapping>
+    <mappingItem>
+      <mappingKey>
+        <plain value="<<" />
+      </mappingKey>
+      <mappingValue>
+        <alias value="A" />
+      </mappingValue>
+    </mappingItem>
+  </mapping>
+</sequenceItem>
+`;
+
 exports[`"x:\\n  - &a\\n    key1: value1\\n  - &b\\n    key2: value2\\nfoo 1`] = `
 mappingItem (6:1 ~ 9:9)
 1 | x:¶
