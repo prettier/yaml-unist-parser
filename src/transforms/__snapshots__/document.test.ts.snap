@@ -1146,6 +1146,35 @@ document (1:1 ~ 3:4)
 </document>
 `;
 
+exports[`"123\\n...\\n456" 1`] = `
+document (1:1 ~ 2:4)
+1 | 123¶
+  | ^^^^
+2 | ...¶
+  | ^^^
+3 | 456¶
+<document>
+  <documentHead>
+
+  </documentHead>
+  <documentBody>
+    <plain value="123" />
+  </documentBody>
+</document>
+`;
+
+exports[`"123\\n...\\n456" 2`] = `
+documentBody (1:1 ~ 2:4)
+1 | 123¶
+  | ^^^^
+2 | ...¶
+  | ^^^
+3 | 456¶
+<documentBody>
+  <plain value="123" />
+</documentBody>
+`;
+
 exports[`"123\\n--- #666\\n456" 1`] = `
 root (1:1 ~ 3:4)
 1 | 123¶
