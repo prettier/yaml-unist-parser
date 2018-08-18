@@ -644,12 +644,12 @@ mappingValue (1:4 ~ 1:21)
 `;
 
 exports[`"merge:\\n- &A { a: 1 }\\n- &B { b: 2 }\\n- <<: [ *A, *B ]" 1`] = `
-sequenceItem (4:1 ~ 4:11)
+sequenceItem (4:1 ~ 4:17)
 1 | merge:¶
 2 | -·&A·{·a:·1·}¶
 3 | -·&B·{·b:·2·}¶
 4 | -·<<:·[·*A,·*B·]¶
-  | ^^^^^^^^^^
+  | ^^^^^^^^^^^^^^^^
 <sequenceItem>
   <mapping>
     <mappingItem>
@@ -657,7 +657,14 @@ sequenceItem (4:1 ~ 4:11)
         <plain value="<<" />
       </mappingKey>
       <mappingValue>
-        <alias value="A" />
+        <flowSequence>
+          <flowSequenceItem>
+            <alias value="A" />
+          </flowSequenceItem>
+          <flowSequenceItem>
+            <alias value="B" />
+          </flowSequenceItem>
+        </flowSequence>
       </mappingValue>
     </mappingItem>
   </mapping>

@@ -32,7 +32,9 @@ export function transformAstPair(
   const keyContent = context.transformNode(pair.key);
   const valueContent = context.transformNode(
     pair.type === "MERGE_PAIR"
-      ? (pair.value.items[0] as YAML.ast.Alias)
+      ? !pair.value.type
+        ? (pair.value.items[0] as YAML.ast.Alias)
+        : (pair.value as YAML.ast.FlowSeq)
       : pair.value,
   );
 

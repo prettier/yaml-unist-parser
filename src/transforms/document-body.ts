@@ -5,7 +5,6 @@ import { Comment, ContentNode, Point } from "../types";
 import { getLast } from "../utils/get-last";
 import { getMatchIndex } from "../utils/get-match-index";
 import { getPointText } from "../utils/get-point-text";
-import { Range } from "./range";
 
 export function transformDocumentBody(
   document: YAML.ast.Document,
