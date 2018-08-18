@@ -17,6 +17,7 @@ export function transformDocument(
 
   const {
     documentBody,
+    documentEndPoint,
     documentTrailingComment,
     documentHeadTrailingComment,
   } = transformDocumentBody(document, context, documentHeadEndMarkerPoint);
@@ -30,7 +31,7 @@ export function transformDocument(
   }
 
   return createDocument(
-    createPosition(documentHead.position.start, documentBody.position.end),
+    createPosition(documentHead.position.start, documentEndPoint),
     documentHead,
     documentBody,
     documentTrailingComment,

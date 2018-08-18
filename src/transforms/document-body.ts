@@ -22,12 +22,13 @@ export function transformDocumentBody(
   } = categorizeNodes(cstNode, context, headEndMarkerPoint);
 
   const content = context.transformNode(document.contents);
-  const position = getPosition(cstNode, content, context);
+  const { position, documentEndPoint } = getPosition(cstNode, content, context);
 
   context.comments.push(...comments, ...endComments);
 
   return {
     documentBody: createDocumentBody(position, [content], endComments),
+    documentEndPoint,
     documentTrailingComment,
     documentHeadTrailingComment,
   };
@@ -101,14 +102,18 @@ function getPosition(
     /^\.\.\./,
   );
 
-  const range: Range = {
-    start: document.valueRange!.end,
-    end: document.valueRange!.end + (markerIndex === -1 ? 0 : 3),
-  };
+  const position = context.transformRange({
+    start:
+      content !== null
+        ? content.position.start.offset
+        : document.valueRange!.end,
+    end: document.valueRange!.end,
+  });
 
-  if (content !== null) {
-    range.start = content.position.start.offset;
-  }
+  const documentEndPoint =
+    markerIndex === -1
+      ? position.end
+      : context.transformOffset(position.end.offset + 3);
 
-  return context.transformRange(range);
+  return { position, documentEndPoint };
 }
