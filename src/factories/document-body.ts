@@ -4,12 +4,12 @@ import { createNode } from "./node";
 
 export function createDocumentBody(
   position: Position,
-  children: [ContentNode],
+  content: null | ContentNode,
   endComments: Comment[],
 ): DocumentBody {
   return {
     ...createNode("documentBody", position),
     ...createEndCommentAttachable(endComments),
-    children,
+    children: !content ? [] : [content],
   };
 }

@@ -50,10 +50,10 @@ mapping (1:1 ~ 1:2)
 <mapping>
   <mappingItem>
     <mappingKey>
-      <null />
+
     </mappingKey>
     <mappingValue>
-      <null />
+
     </mappingValue>
   </mappingItem>
 </mapping>
@@ -65,10 +65,10 @@ mappingItem (1:1 ~ 1:2)
   | ^
 <mappingItem>
   <mappingKey>
-    <null />
+
   </mappingKey>
   <mappingValue>
-    <null />
+
   </mappingValue>
 </mappingItem>
 `;
@@ -78,7 +78,7 @@ mappingKey (1:1 ~ 1:1)
 1 | :···¶
   | ~
 <mappingKey>
-  <null />
+
 </mappingKey>
 `;
 
@@ -87,7 +87,7 @@ mappingValue (1:1 ~ 1:2)
 1 | :···¶
   | ^
 <mappingValue>
-  <null />
+
 </mappingValue>
 `;
 
@@ -98,7 +98,7 @@ mapping (1:1 ~ 1:6)
 <mapping>
   <mappingItem>
     <mappingKey>
-      <null />
+
     </mappingKey>
     <mappingValue>
       <plain value="123" />
@@ -113,7 +113,7 @@ mappingItem (1:1 ~ 1:6)
   | ^^^^^
 <mappingItem>
   <mappingKey>
-    <null />
+
   </mappingKey>
   <mappingValue>
     <plain value="123" />
@@ -126,7 +126,7 @@ mappingKey (1:1 ~ 1:1)
 1 | :·123··¶
   | ~
 <mappingKey>
-  <null />
+
 </mappingKey>
 `;
 
@@ -149,7 +149,7 @@ mapping (1:1 ~ 1:6)
       <plain value="123" />
     </mappingKey>
     <mappingValue>
-      <null />
+
     </mappingValue>
   </mappingItem>
 </mapping>
@@ -164,7 +164,7 @@ mappingItem (1:1 ~ 1:6)
     <plain value="123" />
   </mappingKey>
   <mappingValue>
-    <null />
+
   </mappingValue>
 </mappingItem>
 `;
@@ -183,7 +183,7 @@ mappingValue (1:6 ~ 1:6)
 1 | ?·123¶
   |      ~
 <mappingValue>
-  <null />
+
 </mappingValue>
 `;
 
@@ -313,7 +313,7 @@ mapping (1:1 ~ 2:6)
       <plain value="abc" />
     </mappingKey>
     <mappingValue>
-      <null />
+
     </mappingValue>
   </mappingItem>
   <mappingItem>
@@ -321,7 +321,7 @@ mapping (1:1 ~ 2:6)
       <plain value="def" />
     </mappingKey>
     <mappingValue>
-      <null />
+
     </mappingValue>
   </mappingItem>
 </mapping>
@@ -337,7 +337,7 @@ mappingItem (1:1 ~ 1:6)
     <plain value="abc" />
   </mappingKey>
   <mappingValue>
-    <null />
+
   </mappingValue>
 </mappingItem>
 `;
@@ -352,7 +352,7 @@ mappingItem (2:1 ~ 2:6)
     <plain value="def" />
   </mappingKey>
   <mappingValue>
-    <null />
+
   </mappingValue>
 </mappingItem>
 `;
@@ -383,7 +383,7 @@ mappingValue (1:6 ~ 1:6)
   |      ~
 2 | ?·def¶
 <mappingValue>
-  <null />
+
 </mappingValue>
 `;
 
@@ -393,7 +393,7 @@ mappingValue (2:6 ~ 2:6)
 2 | ?·def¶
   |      ~
 <mappingValue>
-  <null />
+
 </mappingValue>
 `;
 
@@ -407,7 +407,7 @@ mapping (1:1 ~ 1:3)
       <plain value="a" />
     </mappingKey>
     <mappingValue>
-      <null />
+
     </mappingValue>
   </mappingItem>
 </mapping>
@@ -422,7 +422,7 @@ mappingItem (1:1 ~ 1:3)
     <plain value="a" />
   </mappingKey>
   <mappingValue>
-    <null />
+
   </mappingValue>
 </mappingItem>
 `;
@@ -441,7 +441,7 @@ mappingValue (1:2 ~ 1:3)
 1 | a:···¶
   |  ^
 <mappingValue>
-  <null />
+
 </mappingValue>
 `;
 

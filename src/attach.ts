@@ -14,7 +14,7 @@ interface NodeTable {
   [line: number]: {
     leadingAttachableNode?: Extract<YamlUnistNode, LeadingCommentAttachable>;
     trailingAttachableNode?: Extract<YamlUnistNode, TrailingCommentAttachable>;
-    trailingNode?: Exclude<YamlUnistNode, null>;
+    trailingNode?: YamlUnistNode;
     comment?: Comment;
   };
 }
@@ -55,11 +55,8 @@ function createNodeTable(root: Root) {
 }
 
 function initNodeTable(nodeTable: NodeTable, node: YamlUnistNode): void {
-  if (
-    node === null ||
-    // empty mappingKey/mappingValue
-    node.position.start.offset === node.position.end.offset
-  ) {
+  // empty mappingKey/mappingValue
+  if (node.position.start.offset === node.position.end.offset) {
     return;
   }
 
@@ -111,9 +108,7 @@ function initNodeTable(nodeTable: NodeTable, node: YamlUnistNode): void {
 
   if ("children" in node) {
     (node.children as Array<(typeof node.children)[number]>).forEach(child => {
-      if (child !== null) {
-        initNodeTable(nodeTable, child);
-      }
+      initNodeTable(nodeTable, child);
     });
   }
 }
@@ -144,7 +139,7 @@ function attachComment(
   for (let line = commentLine; line >= document.position.start.line; line--) {
     const { trailingNode } = nodeTable[line - 1];
 
-    let currentNode: Exclude<YamlUnistNode, null>;
+    let currentNode: YamlUnistNode;
 
     if (!trailingNode) {
       /**
@@ -199,7 +194,7 @@ function attachComment(
 }
 
 function shouldOwnEndComment(
-  node: Exclude<YamlUnistNode, null>,
+  node: YamlUnistNode,
   comment: Comment,
 ): node is Extract<YamlUnistNode, EndCommentAttachable> {
   if (comment.position.end.offset < node.position.end.offset) {
@@ -213,7 +208,7 @@ function shouldOwnEndComment(
     case "mappingValue":
       return (
         comment.position.start.column > node._parent!.position.start.column &&
-        node.children[0] !== null &&
+        node.children.length === 1 &&
         node.children[0]!.type !== "blockFolded" &&
         node.children[0]!.type !== "blockLiteral" &&
         (node.type === "mappingValue" ||

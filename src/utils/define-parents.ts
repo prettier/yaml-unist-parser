@@ -2,23 +2,19 @@ import { YamlUnistNode } from "../types";
 
 export function defineParents(
   node: YamlUnistNode,
-  parent: YamlUnistNode = null,
+  parent: YamlUnistNode | null = null,
 ): void {
-  if (node === null) {
-    return;
-  }
-
   if ("children" in node) {
     (node.children as Array<(typeof node.children)[number]>).forEach(child =>
       defineParents(child, node),
     );
   }
 
-  if ("anchor" in node) {
+  if ("anchor" in node && node.anchor) {
     defineParents(node.anchor, node);
   }
 
-  if ("tag" in node) {
+  if ("tag" in node && node.tag) {
     defineParents(node.tag, node);
   }
 

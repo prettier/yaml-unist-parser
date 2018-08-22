@@ -42,10 +42,10 @@ flowMapping (1:3 ~ 1:8)
 <flowMapping>
   <flowMappingItem>
     <mappingKey>
-      <null />
+
     </mappingKey>
     <mappingValue>
-      <null />
+
     </mappingValue>
   </flowMappingItem>
 </flowMapping>
@@ -57,10 +57,10 @@ flowMappingItem (1:5 ~ 1:6)
   |     ^
 <flowMappingItem>
   <mappingKey>
-    <null />
+
   </mappingKey>
   <mappingValue>
-    <null />
+
   </mappingValue>
 </flowMappingItem>
 `;
@@ -70,7 +70,7 @@ mappingKey (1:5 ~ 1:5)
 1 | ··{·:·}··¶
   |     ~
 <mappingKey>
-  <null />
+
 </mappingKey>
 `;
 
@@ -79,7 +79,7 @@ mappingValue (1:5 ~ 1:6)
 1 | ··{·:·}··¶
   |     ^
 <mappingValue>
-  <null />
+
 </mappingValue>
 `;
 
@@ -90,7 +90,7 @@ flowMapping (1:3 ~ 1:12)
 <flowMapping>
   <flowMappingItem>
     <mappingKey>
-      <null />
+
     </mappingKey>
     <mappingValue>
       <plain value="123" />
@@ -105,7 +105,7 @@ flowMappingItem (1:5 ~ 1:10)
   |     ^^^^^
 <flowMappingItem>
   <mappingKey>
-    <null />
+
   </mappingKey>
   <mappingValue>
     <plain value="123" />
@@ -118,7 +118,7 @@ mappingKey (1:5 ~ 1:5)
 1 | ··{·:·123·}··¶
   |     ~
 <mappingKey>
-  <null />
+
 </mappingKey>
 `;
 
@@ -138,10 +138,10 @@ flowMapping (1:3 ~ 1:10)
 <flowMapping>
   <flowMappingItem>
     <mappingKey>
-      <null />
+
     </mappingKey>
     <mappingValue>
-      <null />
+
     </mappingValue>
   </flowMappingItem>
 </flowMapping>
@@ -153,10 +153,10 @@ flowMappingItem (1:5 ~ 1:8)
   |     ^^^
 <flowMappingItem>
   <mappingKey>
-    <null />
+
   </mappingKey>
   <mappingValue>
-    <null />
+
   </mappingValue>
 </flowMappingItem>
 `;
@@ -166,7 +166,7 @@ mappingKey (1:5 ~ 1:6)
 1 | ··{·?·:·}··¶
   |     ^
 <mappingKey>
-  <null />
+
 </mappingKey>
 `;
 
@@ -175,7 +175,7 @@ mappingValue (1:7 ~ 1:8)
 1 | ··{·?·:·}··¶
   |       ^
 <mappingValue>
-  <null />
+
 </mappingValue>
 `;
 
@@ -186,7 +186,7 @@ flowMapping (1:3 ~ 1:14)
 <flowMapping>
   <flowMappingItem>
     <mappingKey>
-      <null />
+
     </mappingKey>
     <mappingValue>
       <plain value="123" />
@@ -201,7 +201,7 @@ flowMappingItem (1:5 ~ 1:12)
   |     ^^^^^^^
 <flowMappingItem>
   <mappingKey>
-    <null />
+
   </mappingKey>
   <mappingValue>
     <plain value="123" />
@@ -214,7 +214,7 @@ mappingKey (1:5 ~ 1:6)
 1 | ··{·?·:·123·}··¶
   |     ^
 <mappingKey>
-  <null />
+
 </mappingKey>
 `;
 
@@ -234,10 +234,10 @@ flowMapping (1:3 ~ 1:8)
 <flowMapping>
   <flowMappingItem>
     <mappingKey>
-      <null />
+
     </mappingKey>
     <mappingValue>
-      <null />
+
     </mappingValue>
   </flowMappingItem>
 </flowMapping>
@@ -249,10 +249,10 @@ flowMappingItem (1:5 ~ 1:6)
   |     ^
 <flowMappingItem>
   <mappingKey>
-    <null />
+
   </mappingKey>
   <mappingValue>
-    <null />
+
   </mappingValue>
 </flowMappingItem>
 `;
@@ -262,7 +262,7 @@ mappingKey (1:5 ~ 1:6)
 1 | ··{·?·}··¶
   |     ^
 <mappingKey>
-  <null />
+
 </mappingKey>
 `;
 
@@ -271,7 +271,7 @@ mappingValue (1:6 ~ 1:6)
 1 | ··{·?·}··¶
   |      ~
 <mappingValue>
-  <null />
+
 </mappingValue>
 `;
 
@@ -285,7 +285,7 @@ flowMapping (1:3 ~ 1:14)
       <plain value="123" />
     </mappingKey>
     <mappingValue>
-      <null />
+
     </mappingValue>
   </flowMappingItem>
 </flowMapping>
@@ -300,7 +300,7 @@ flowMappingItem (1:5 ~ 1:12)
     <plain value="123" />
   </mappingKey>
   <mappingValue>
-    <null />
+
   </mappingValue>
 </flowMappingItem>
 `;
@@ -319,7 +319,7 @@ mappingValue (1:11 ~ 1:12)
 1 | ··{·?·123·:·}··¶
   |           ^
 <mappingValue>
-  <null />
+
 </mappingValue>
 `;
 
@@ -381,7 +381,7 @@ flowMapping (1:3 ~ 1:12)
       <plain value="123" />
     </mappingKey>
     <mappingValue>
-      <null />
+
     </mappingValue>
   </flowMappingItem>
 </flowMapping>
@@ -396,7 +396,7 @@ flowMappingItem (1:5 ~ 1:10)
     <plain value="123" />
   </mappingKey>
   <mappingValue>
-    <null />
+
   </mappingValue>
 </flowMappingItem>
 `;
@@ -415,7 +415,7 @@ mappingValue (1:10 ~ 1:10)
 1 | ··{·?·123·}··¶
   |          ~
 <mappingValue>
-  <null />
+
 </mappingValue>
 `;
 
@@ -429,7 +429,7 @@ flowMapping (1:3 ~ 1:12)
       <plain value="123" />
     </mappingKey>
     <mappingValue>
-      <null />
+
     </mappingValue>
   </flowMappingItem>
 </flowMapping>
@@ -444,7 +444,7 @@ flowMappingItem (1:5 ~ 1:10)
     <plain value="123" />
   </mappingKey>
   <mappingValue>
-    <null />
+
   </mappingValue>
 </flowMappingItem>
 `;
@@ -463,7 +463,7 @@ mappingValue (1:9 ~ 1:10)
 1 | ··{·123·:·}··¶
   |         ^
 <mappingValue>
-  <null />
+
 </mappingValue>
 `;
 
@@ -525,7 +525,7 @@ flowMapping (1:3 ~ 1:10)
       <plain value="123" />
     </mappingKey>
     <mappingValue>
-      <null />
+
     </mappingValue>
   </flowMappingItem>
 </flowMapping>
@@ -540,7 +540,7 @@ flowMappingItem (1:5 ~ 1:8)
     <plain value="123" />
   </mappingKey>
   <mappingValue>
-    <null />
+
   </mappingValue>
 </flowMappingItem>
 `;
@@ -559,7 +559,7 @@ mappingValue (1:8 ~ 1:8)
 1 | ··{·123·}··¶
   |        ~
 <mappingValue>
-  <null />
+
 </mappingValue>
 `;
 
@@ -577,7 +577,7 @@ flowMapping (1:3 ~ 2:3)
       </plain>
     </mappingKey>
     <mappingValue>
-      <null />
+
     </mappingValue>
   </flowMappingItem>
 </flowMapping>
@@ -595,7 +595,7 @@ flowMappingItem (1:5 ~ 1:8)
     </plain>
   </mappingKey>
   <mappingValue>
-    <null />
+
   </mappingValue>
 </flowMappingItem>
 `;
@@ -618,7 +618,7 @@ mappingValue (1:8 ~ 1:8)
   |        ~
 2 | ·}··¶
 <mappingValue>
-  <null />
+
 </mappingValue>
 `;
 
@@ -632,7 +632,7 @@ flowMapping (1:3 ~ 1:11)
       <plain value="123" />
     </mappingKey>
     <mappingValue>
-      <null />
+
     </mappingValue>
   </flowMappingItem>
 </flowMapping>
@@ -647,7 +647,7 @@ flowMappingItem (1:5 ~ 1:8)
     <plain value="123" />
   </mappingKey>
   <mappingValue>
-    <null />
+
   </mappingValue>
 </flowMappingItem>
 `;
@@ -666,6 +666,6 @@ mappingValue (1:8 ~ 1:8)
 1 | ··{·123,·}··¶
   |        ~
 <mappingValue>
-  <null />
+
 </mappingValue>
 `;

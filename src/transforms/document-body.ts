@@ -26,7 +26,7 @@ export function transformDocumentBody(
   context.comments.push(...comments, ...endComments);
 
   return {
-    documentBody: createDocumentBody(position, [content], endComments),
+    documentBody: createDocumentBody(position, content, endComments),
     documentEndPoint,
     documentTrailingComment,
     documentHeadTrailingComment,
@@ -93,7 +93,7 @@ function categorizeNodes(
 
 function getPosition(
   document: YAML.cst.Document,
-  content: ContentNode,
+  content: null | ContentNode,
   context: Context,
 ) {
   const markerIndex = getMatchIndex(

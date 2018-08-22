@@ -51,7 +51,7 @@ sequence (1:1 ~ 1:2)
   | ^
 <sequence>
   <sequenceItem>
-    <null />
+
   </sequenceItem>
 </sequence>
 `;
@@ -61,7 +61,7 @@ sequenceItem (1:1 ~ 1:2)
 1 | -···¶
   | ^
 <sequenceItem>
-  <null />
+
 </sequenceItem>
 `;
 

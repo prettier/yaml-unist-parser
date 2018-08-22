@@ -16,11 +16,11 @@ export interface Node {
   type: string;
   position: Position;
   /** @internal non-enumerable */
-  _parent?: Exclude<YamlUnistNode, null>;
+  _parent?: YamlUnistNode | null;
 }
 
 export interface Parent extends Node {
-  children: Array<Exclude<YamlUnistNode, Comment>>;
+  children: Node[];
 }
 
 // -----------------------------------------------------------------------------
@@ -80,21 +80,9 @@ export type YamlUnistNode =
   | FlowMapping
   | FlowMappingItem
   | FlowSequence
-  | FlowSequenceItem
-  | null;
+  | FlowSequenceItem;
 
-export type ContentNode =
-  | Alias
-  | BlockLiteral
-  | BlockFolded
-  | Plain
-  | QuoteSingle
-  | QuoteDouble
-  | Mapping
-  | Sequence
-  | FlowMapping
-  | FlowSequence
-  | null;
+export type ContentNode = Extract<YamlUnistNode, Content>;
 
 // -----------------------------------------------------------------------------
 
@@ -134,7 +122,7 @@ export interface DocumentHead
 
 export interface DocumentBody extends Parent, EndCommentAttachable {
   type: "documentBody";
-  children: [ContentNode];
+  children: [] | [ContentNode];
 }
 
 export interface Directive extends Node, CommentAttachable {
@@ -200,7 +188,7 @@ export interface MappingKey
     TrailingCommentAttachable,
     EndCommentAttachable {
   type: "mappingKey";
-  children: [ContentNode];
+  children: [] | [ContentNode];
 }
 
 export interface MappingValue
@@ -208,7 +196,7 @@ export interface MappingValue
     CommentAttachable,
     EndCommentAttachable {
   type: "mappingValue";
-  children: [ContentNode];
+  children: [] | [ContentNode];
 }
 
 export interface Sequence
@@ -221,7 +209,7 @@ export interface Sequence
 }
 
 export interface SequenceItemBase extends Parent {
-  children: [ContentNode];
+  children: [] | [ContentNode];
 }
 
 export interface SequenceItem

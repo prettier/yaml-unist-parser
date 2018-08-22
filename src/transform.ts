@@ -83,7 +83,10 @@ export function transformNode<T extends YamlNode>(
   node: T,
   context: Context,
 ): YamlToUnist<T>;
-export function transformNode(node: YamlNode, context: Context): YamlUnistNode {
+export function transformNode(
+  node: YamlNode,
+  context: Context,
+): YamlUnistNode | null {
   if (node === null) {
     return null;
   }

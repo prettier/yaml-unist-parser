@@ -161,7 +161,7 @@ document (1:1 ~ 1:4)
 
   </documentHead>
   <documentBody>
-    <null />
+
   </documentBody>
 </document>
 `;
@@ -188,7 +188,7 @@ documentBody (1:1 ~ 1:1)
 4 | ¶
 5 | ¶
 <documentBody>
-  <null />
+
 </documentBody>
 `;
 
@@ -208,7 +208,6 @@ document (3:1 ~ 5:1)
   </documentHead>
   <documentBody>
     <endComment value="">
-    <null />
   </documentBody>
 </document>
 `;
@@ -238,7 +237,6 @@ documentBody (3:1 ~ 5:1)
   | ^
 <documentBody>
   <endComment value="">
-  <null />
 </documentBody>
 `;
 

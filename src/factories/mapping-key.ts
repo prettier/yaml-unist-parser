@@ -5,12 +5,12 @@ import { createTrailingCommentAttachable } from "./trailing-comment-attachable";
 
 export function createMappingKey(
   position: Position,
-  content: ContentNode,
+  content: null | ContentNode,
 ): MappingKey {
   return {
     ...createNode("mappingKey", position),
     ...createTrailingCommentAttachable(),
     ...createEndCommentAttachable(),
-    children: [content],
+    children: !content ? [] : [content],
   };
 }
