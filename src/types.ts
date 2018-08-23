@@ -1,3 +1,15 @@
+export interface Node {
+  type: string;
+  position: Position;
+  /** @internal non-enumerable */
+  _parent?: YamlUnistNode | null;
+}
+
+export interface Position {
+  start: Point;
+  end: Point;
+}
+
 export interface Point {
   /** 1-based */
   line: number;
@@ -7,20 +19,12 @@ export interface Point {
   offset: number;
 }
 
-export interface Position {
-  start: Point;
-  end: Point;
-}
-
-export interface Node {
-  type: string;
-  position: Position;
-  /** @internal non-enumerable */
-  _parent?: YamlUnistNode | null;
-}
-
 export interface Parent extends Node {
   children: Node[];
+}
+
+export interface Text extends Node {
+  value: string;
 }
 
 // -----------------------------------------------------------------------------
@@ -86,19 +90,16 @@ export type ContentNode = Extract<YamlUnistNode, Content>;
 
 // -----------------------------------------------------------------------------
 
-export interface Comment extends Node {
+export interface Comment extends Text {
   type: "comment";
-  value: string;
 }
 
-export interface Anchor extends Node {
+export interface Anchor extends Text {
   type: "anchor";
-  value: string;
 }
 
-export interface Tag extends Node {
+export interface Tag extends Text {
   type: "tag";
-  value: string;
 }
 
 export interface Root extends Parent {
@@ -131,15 +132,13 @@ export interface Directive extends Node, CommentAttachable {
   parameters: string[];
 }
 
-export interface Alias extends Node, Content, CommentAttachable {
+export interface Alias extends Text, Content, CommentAttachable {
   type: "alias";
-  value: string;
 }
 
-export interface BlockValue extends Node, Content, LeadingCommentAttachable {
+export interface BlockValue extends Text, Content, LeadingCommentAttachable {
   chomping: "clip" | "keep" | "strip";
   indent: null | number;
-  value: string;
   /** comment between indicator and the value */
   indicatorComment: null | Comment;
 }
@@ -152,14 +151,11 @@ export interface BlockFolded extends BlockValue {
   type: "blockFolded";
 }
 
-export interface Plain extends Node, Content, CommentAttachable {
+export interface Plain extends Text, Content, CommentAttachable {
   type: "plain";
-  value: string;
 }
 
-export interface QuoteValue extends Node, Content, CommentAttachable {
-  value: string;
-}
+export interface QuoteValue extends Text, Content, CommentAttachable {}
 
 export interface QuoteSingle extends QuoteValue {
   type: "quoteSingle";
