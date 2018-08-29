@@ -110,9 +110,9 @@ function stringifyNode(
     .join(" ");
   const propNodes =
     "tag" in node
-      ? [node.tag, node.anchor]
-          .filter(propNode => propNode !== null)
-          .map(propNode => stringifyNode(propNode))
+      ? ([node.tag, node.anchor].filter(propNode => propNode !== null) as Array<
+          NonNullable<Tag | Anchor>
+        >).map(propNode => stringifyNode(propNode))
       : [];
   const comments =
     options.maxCommentsLevel === undefined || options.maxCommentsLevel > 0
