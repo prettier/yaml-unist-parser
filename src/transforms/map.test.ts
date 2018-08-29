@@ -35,6 +35,7 @@ testCases([
     root => (getMappingValue(0)(root).children[0] as Sequence).children[2],
   ],
   ["a:\n  b:\n   #b\n #a\n", getFirstContent()],
+  ["a: !!str", getFirstContent()],
 ]);
 
 function createTestCases(text: string, hasSecondItem = false): TestCase[] {

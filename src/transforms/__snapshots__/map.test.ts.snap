@@ -445,6 +445,24 @@ mappingValue (1:2 ~ 1:3)
 </mappingValue>
 `;
 
+exports[`"a: !!str" 1`] = `
+mapping (1:1 ~ 1:9)
+1 | a:·!!str¶
+  | ^^^^^^^^
+<mapping>
+  <mappingItem>
+    <mappingKey>
+      <plain value="a" />
+    </mappingKey>
+    <mappingValue>
+      <plain value="">
+        <tag value="tag:yaml.org,2002:str" />
+      </plain>
+    </mappingValue>
+  </mappingItem>
+</mapping>
+`;
+
 exports[`"a: 123  " 1`] = `
 mapping (1:1 ~ 1:7)
 1 | a:·123··¶
@@ -614,7 +632,6 @@ mapping (1:1 ~ 4:4)
           </mappingKey>
           <mappingValue>
             <endComment value="b">
-            <plain value="" />
           </mappingValue>
         </mappingItem>
       </mapping>

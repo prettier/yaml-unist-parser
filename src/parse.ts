@@ -8,6 +8,7 @@ import { transformError } from "./transforms/error";
 import { transformOffset } from "./transforms/offset";
 import { transformRange } from "./transforms/range";
 import { Comment, Root } from "./types";
+import { removeFakeNodes } from './utils/remove-fake-nodes';
 import { updatePositions } from "./utils/update-positions";
 
 export function parse(text: string): Root {
@@ -45,6 +46,7 @@ export function parse(text: string): Root {
 
   attachComments(root);
   updatePositions(root);
+  removeFakeNodes(root);
 
   return root;
 }
