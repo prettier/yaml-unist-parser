@@ -1316,7 +1316,7 @@ comment (7:1 ~ 7:15)
    | ^^^^^^^^^^^^^^
  8 | ...¶
  9 | -·Chicago·Cubs¶
-documentBody (3:1 ~ 8:1)
+documentBody (3:1 ~ 7:15)
 <documentBody>
   <endComment value=" Team ranking">
 </documentBody>

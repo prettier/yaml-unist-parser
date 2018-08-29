@@ -101,18 +101,20 @@ function getPosition(
     /^\.\.\./,
   );
 
+  const end =
+    markerIndex === -1
+      ? document.valueRange!.end
+      : Math.max(0, document.valueRange!.end - 1);
+
   const position = context.transformRange({
-    start:
-      content !== null
-        ? content.position.start.offset
-        : document.valueRange!.end,
-    end: document.valueRange!.end,
+    start: content !== null ? content.position.start.offset : end,
+    end,
   });
 
   const documentEndPoint =
     markerIndex === -1
       ? position.end
-      : context.transformOffset(position.end.offset + 3);
+      : context.transformOffset(document.valueRange!.end + 3);
 
   return { position, documentEndPoint };
 }

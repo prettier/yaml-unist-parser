@@ -59,7 +59,7 @@ documentHead (1:1 ~ 1:1)
 `;
 
 exports[`"&123 123 \\"123\\"\\n\\n... #123\\n #\\n\\n123\\n\\n\\n " 3`] = `
-documentBody (1:1 ~ 3:1)
+documentBody (1:1 ~ 2:1)
 1 | &123·123·"123"¶
   | ^^^^^^^^^^^^^^^
 2 | ¶
@@ -293,7 +293,7 @@ documentHead (2:1 ~ 3:4)
 `;
 
 exports[`"\\n%AAA\\n---\\n123\\n\\n...\\n\\n%BBB\\n---\\n\\n456\\n\\n" 3`] = `
-documentBody (4:1 ~ 6:1)
+documentBody (4:1 ~ 5:1)
  1 | ¶
  2 | %AAA¶
  3 | ---¶
@@ -441,7 +441,7 @@ documentHead (2:1 ~ 3:4)
 `;
 
 exports[`"\\n%AAA\\n---\\n123\\n\\n...\\n\\n---\\n\\n456\\n\\n" 3`] = `
-documentBody (4:1 ~ 6:1)
+documentBody (4:1 ~ 5:1)
  1 | ¶
  2 | %AAA¶
  3 | ---¶
@@ -579,7 +579,7 @@ documentHead (2:1 ~ 3:4)
 `;
 
 exports[`"\\n%AAA\\n---\\n123\\n\\n...\\n\\n456\\n\\n" 3`] = `
-documentBody (4:1 ~ 6:1)
+documentBody (4:1 ~ 5:1)
  1 | ¶
  2 | %AAA¶
  3 | ---¶
@@ -829,7 +829,7 @@ documentHead (2:1 ~ 2:1)
 `;
 
 exports[`"\\n123\\n\\n...\\n\\n456\\n\\n" 3`] = `
-documentBody (2:1 ~ 4:1)
+documentBody (2:1 ~ 3:1)
 1 | ¶
 2 | 123¶
   | ^^^^
@@ -1157,9 +1157,9 @@ document (1:1 ~ 2:4)
 `;
 
 exports[`"123\\n...\\n456" 2`] = `
-documentBody (1:1 ~ 2:1)
+documentBody (1:1 ~ 1:4)
 1 | 123¶
-  | ^^^^
+  | ^^^
 2 | ...¶
 3 | 456¶
 <documentBody>
