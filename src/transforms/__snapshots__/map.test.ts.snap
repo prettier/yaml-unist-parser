@@ -589,6 +589,40 @@ mappingValue (2:2 ~ 2:7)
 </mappingValue>
 `;
 
+exports[`"a:\\n  b:\\n   #b\\n #a\\n" 1`] = `
+mapping (1:1 ~ 4:4)
+1 | a:¶
+  | ^^^
+2 | ··b:¶
+  | ^^^^^
+3 | ···#b¶
+  | ^^^^^^
+4 | ·#a¶
+  | ^^^
+5 | ¶
+<mapping>
+  <mappingItem>
+    <mappingKey>
+      <plain value="a" />
+    </mappingKey>
+    <mappingValue>
+      <endComment value="a">
+      <mapping>
+        <mappingItem>
+          <mappingKey>
+            <plain value="b" />
+          </mappingKey>
+          <mappingValue>
+            <endComment value="b">
+            <plain value="" />
+          </mappingValue>
+        </mappingItem>
+      </mapping>
+    </mappingValue>
+  </mappingItem>
+</mapping>
+`;
+
 exports[`"def:     456 # hello" 1`] = `
 mapping (1:1 ~ 1:21)
 1 | def:·····456·#·hello¶

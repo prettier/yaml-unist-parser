@@ -34,6 +34,7 @@ testCases([
     "merge:\n- &A { a: 1 }\n- &B { b: 2 }\n- <<: [ *A, *B ]",
     root => (getMappingValue(0)(root).children[0] as Sequence).children[2],
   ],
+  ["a:\n  b:\n   #b\n #a\n", getFirstContent()],
 ]);
 
 function createTestCases(text: string, hasSecondItem = false): TestCase[] {
