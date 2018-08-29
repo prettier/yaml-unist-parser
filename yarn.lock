@@ -4110,9 +4110,9 @@ yallist@^3.0.0, yallist@^3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/yallist/-/yallist-3.0.2.tgz#8452b4bb7e83c7c188d8041c1a837c773d6d8bb9"
 
-yaml@ikatyang/yaml#1a3903e078fab9ac39ad3bc82162025fcd3de203:
-  version "1.0.0-rc.7"
-  resolved "https://codeload.github.com/ikatyang/yaml/tar.gz/1a3903e078fab9ac39ad3bc82162025fcd3de203"
+yaml@1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/yaml/-/yaml-1.0.0-rc.8.tgz#e5604c52b7b07b16e469bcf875ab0dfe08c50d42"
 
 yargs-parser@^7.0.0:
   version "7.0.0"

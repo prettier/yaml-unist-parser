@@ -106,7 +106,11 @@ declare module "yaml" {
       wrapScalars: false
     ): ast.MapBase | ast.SeqBase | string | number | boolean | null;
 
-    function parseCST(str: string): cst.Document[];
+    function parseCST(str: string): ParsedCST;
+
+    interface ParsedCST extends Array<cst.Document> {
+      setOrigRanges(): boolean;
+    }
 
     const Document: ast.DocumentConstructor;
 
@@ -216,8 +220,9 @@ declare module "yaml" {
       interface Range {
         start: number;
         end: number;
-        readonly length: number;
-        readonly isEmpty: boolean;
+        origStart?: number;
+        origEnd?: number;
+        isEmpty(): boolean;
       }
 
       interface ParseContext {

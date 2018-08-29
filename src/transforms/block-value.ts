@@ -20,8 +20,9 @@ export function transformAstBlockValue(
   const indicatorLength = 1;
   const chompingLength = cstNode.chomping === "CLIP" ? 0 : 1;
 
+  const headerLength = cstNode.header.end - cstNode.header.start;
   const hasExplicitBlockIndent =
-    cstNode.header.length - indicatorLength - chompingLength !== 0;
+    headerLength - indicatorLength - chompingLength !== 0;
 
   const position = context.transformRange({
     start: cstNode.header.start,
