@@ -23,7 +23,7 @@ export interface Parent extends Node {
   children: Node[];
 }
 
-export interface Text extends Node {
+export interface Literal extends Node {
   value: string;
 }
 
@@ -90,15 +90,15 @@ export type ContentNode = Extract<YamlUnistNode, Content>;
 
 // -----------------------------------------------------------------------------
 
-export interface Comment extends Text {
+export interface Comment extends Literal {
   type: "comment";
 }
 
-export interface Anchor extends Text {
+export interface Anchor extends Literal {
   type: "anchor";
 }
 
-export interface Tag extends Text {
+export interface Tag extends Literal {
   type: "tag";
 }
 
@@ -132,11 +132,11 @@ export interface Directive extends Node, CommentAttachable {
   parameters: string[];
 }
 
-export interface Alias extends Text, Content, CommentAttachable {
+export interface Alias extends Literal, Content, CommentAttachable {
   type: "alias";
 }
 
-export interface BlockValue extends Text, Content, LeadingCommentAttachable {
+export interface BlockValue extends Literal, Content, LeadingCommentAttachable {
   chomping: "clip" | "keep" | "strip";
   indent: null | number;
   /** comment between indicator and the value */
@@ -151,11 +151,11 @@ export interface BlockFolded extends BlockValue {
   type: "blockFolded";
 }
 
-export interface Plain extends Text, Content, CommentAttachable {
+export interface Plain extends Literal, Content, CommentAttachable {
   type: "plain";
 }
 
-export interface QuoteValue extends Text, Content, CommentAttachable {}
+export interface QuoteValue extends Literal, Content, CommentAttachable {}
 
 export interface QuoteSingle extends QuoteValue {
   type: "quoteSingle";
