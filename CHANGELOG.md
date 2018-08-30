@@ -2,6 +2,32 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-rc.4"></a>
+# [1.0.0-rc.4](https://github.com/ikatyang/yaml-unist-parser/compare/v1.0.0-rc.3...v1.0.0-rc.4) (2018-08-30)
+
+
+### Bug Fixes
+
+* enable merge (`<<`) parsing so that multiple `<<` won't be marked as duplicate keys ([#74](https://github.com/ikatyang/yaml-unist-parser/issues/74)) ([7a5b482](https://github.com/ikatyang/yaml-unist-parser/commit/7a5b482))
+
+
+### Features
+
+- transform AST from `yaml` AST+CST ([#82](https://github.com/ikatyang/yaml-unist-parser/issues/82)) ([2045635](https://github.com/ikatyang/yaml-unist-parser/commit/2045635))
+  - `mappingKey` and `mappingValue` are now always presented in [`mappingItem`](https://github.com/ikatyang/yaml-unist-parser/blob/284fdf8d04aec5e58e186254056ec33357eebd10/src/types.ts#L173-L176)
+  - `comment`s aren't presented in `children` anymore (moved to `*Comments?` fields)
+  - attach `trailingComment` on `document` (`... #comment`)
+  - attach `trailingComment` on `documentHead` (`--- #comment`)
+  - `comment` between `blockValue` indicator and its value is now placed in [`indicatorComment`](https://github.com/ikatyang/yaml-unist-parser/blob/284fdf8d04aec5e58e186254056ec33357eebd10/src/types.ts#L143)
+
+### BREAKING CHANGES
+
+- remove some unnecessary `leadingComments`/`trailingComments` fields
+- rename `trailingComments` with [`trailingComment`](https://github.com/ikatyang/yaml-unist-parser/blob/284fdf8d04aec5e58e186254056ec33357eebd10/src/types.ts#L48-L51) as it's only possible to be 0 or 1
+- replace `shorthandTag`/`verbatimTag`/`nonSpecificTag` with [`tag`](https://github.com/ikatyang/yaml-unist-parser/blob/284fdf8d04aec5e58e186254056ec33357eebd10/src/types.ts#L101-L103)
+
+
+
 <a name="1.0.0-rc.3"></a>
 # [1.0.0-rc.3](https://github.com/ikatyang/yaml-unist-parser/compare/v1.0.0-rc.2...v1.0.0-rc.3) (2018-07-31)
 
