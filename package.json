@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "@types/jest": "23.3.1",
-    "@types/node": "6.0.116",
+    "@types/node": "6.0.117",
     "@types/yaml": "file:types/yaml",
     "jest": "23.5.0",
     "jest-snapshot-serializer-raw": "1.1.0",
