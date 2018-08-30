@@ -1,15 +1,15 @@
 import { FlowMappingItem, MappingKey, MappingValue, Position } from "../types";
-import { createCommentAttachable } from "./comment-attachable";
+import { createLeadingCommentAttachable } from "./leading-comment-attachable";
 import { createNode } from "./node";
 
 export function createFlowMappingItem(
   position: Position,
-  key: MappingKey | null,
-  value: MappingValue | null,
+  key: MappingKey,
+  value: MappingValue,
 ): FlowMappingItem {
   return {
     ...createNode("flowMappingItem", position),
-    ...createCommentAttachable(),
+    ...createLeadingCommentAttachable(),
     children: [key, value],
   };
 }

@@ -1,7 +1,9 @@
-import { EndCommentAttachable } from "../types";
+import { Comment, EndCommentAttachable } from "../types";
 
-export function createEndCommentAttachable(): EndCommentAttachable {
+export function createEndCommentAttachable(
+  endComments: Comment[] = [],
+): EndCommentAttachable {
   return {
-    endComments: [],
+    endComments,
   };
 }

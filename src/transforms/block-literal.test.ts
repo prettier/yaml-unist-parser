@@ -17,4 +17,5 @@ testCases([
       root => getFirstContent<BlockLiteral>(root).middleComments[0],
     ],
   ],
+  ["!!str\n#middleComment\n| #indicatorComment\n value", getFirstContent()],
 ]);

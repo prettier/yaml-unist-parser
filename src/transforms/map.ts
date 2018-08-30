@@ -1,100 +1,82 @@
-import assert = require("assert");
 import YAML from "yaml";
 import { createMapping } from "../factories/mapping";
 import { createMappingItem } from "../factories/mapping-item";
-import { createMappingKey } from "../factories/mapping-key";
 import { createPosition } from "../factories/position";
 import { Context } from "../transform";
-import { Mapping, MappingItem, MappingKey, MappingValue } from "../types";
-import { getLast } from "../utils";
+import { Mapping } from "../types";
+import { createSlicer } from "../utils/create-slicer";
+import { extractComments } from "../utils/extract-comments";
+import { extractPropComments } from "../utils/extract-prop-comments";
+import { getLast } from "../utils/get-last";
+import { transformAstPair } from "./pair";
 
-export function transformMap(map: YAML.cst.Map, context: Context): Mapping {
-  assert(map.valueRange !== null);
-  const children = transformMapItems(map.items, context);
+export function transformMap(map: YAML.ast.Map, context: Context): Mapping {
+  const cstNode = map.cstNode!;
+
+  cstNode.items
+    .filter(item => item.type === "MAP_KEY" || item.type === "MAP_VALUE")
+    .forEach(item => extractPropComments(item, context));
+
+  const cstItemsWithoutComments = extractComments(cstNode.items, context);
+
+  const groupedCstItems = groupCstItems(cstItemsWithoutComments);
+
+  const mappingItems = map.items.map((pair, index) => {
+    const cstNodes = groupedCstItems[index];
+    const [keyRange, valueRange] =
+      cstNodes[0].type === "MAP_VALUE"
+        ? [null, cstNodes[0].range!]
+        : [
+            cstNodes[0].range!,
+            cstNodes.length === 1 ? null : cstNodes[1].range!,
+          ];
+
+    return transformAstPair(
+      pair,
+      context,
+      createMappingItem,
+      keyRange,
+      valueRange,
+    );
+  });
+
   return createMapping(
-    createPosition(children[0].position.start, getLast(children)!.position.end),
-    children,
+    createPosition(
+      mappingItems[0].position.start,
+      getLast(mappingItems)!.position.end,
+    ),
+    context.transformContent(map),
+    mappingItems,
   );
 }
 
-function transformMapItems(
-  items: YAML.cst.Map["items"],
-  context: Context,
-): MappingItem[] {
-  const itemsWithoutComments = items.filter(item => {
-    if (item.type === "COMMENT") {
-      context.comments.push(context.transformNode(item));
-      return false;
+function groupCstItems(
+  cstItems: Array<Exclude<YAML.cst.Map["items"][number], YAML.cst.Comment>>,
+) {
+  const groups: Array<typeof cstItems> = [];
+  const sliceCstItems = createSlicer(cstItems, 0);
+
+  let hasKey = false;
+
+  for (let i = 0; i < cstItems.length; i++) {
+    const cstItem = cstItems[i];
+
+    if (cstItem.type === "MAP_VALUE") {
+      groups.push(sliceCstItems(i + 1));
+      hasKey = false;
+      continue;
     }
-    return true;
-  }) as Array<Exclude<(typeof items)[number], YAML.cst.Comment>>;
 
-  const buffer: MappingKey[] = [];
-  return itemsWithoutComments.reduce(
-    (reduced, item, index) => {
-      if (item.type !== "MAP_VALUE") {
-        if (item.type === "MAP_KEY") {
-          buffer.push(context.transformNode(item) as MappingKey);
-        } else {
-          const key = context.transformNode(item as Exclude<
-            typeof item,
-            YAML.cst.MapItem
-          >);
-          buffer.push(createMappingKey(key.position, key));
-        }
+    if (hasKey) {
+      groups.push(sliceCstItems(i));
+    }
 
-        if (buffer.length === 1 && index !== itemsWithoutComments.length - 1) {
-          return reduced;
-        }
+    hasKey = true;
+  }
 
-        let unshiftCount = 0;
+  if (hasKey) {
+    groups.push(sliceCstItems(Infinity));
+  }
 
-        if (buffer.length !== 1) {
-          unshiftCount++;
-          assert(itemsWithoutComments[index - 1].type === "MAP_KEY");
-        }
-
-        if (index === itemsWithoutComments.length - 1) {
-          unshiftCount++;
-          assert(itemsWithoutComments[index].type === "MAP_KEY");
-        }
-
-        return reduced.concat(
-          buffer
-            .splice(0, unshiftCount)
-            .map(currentMappingKey =>
-              createMappingItem(
-                currentMappingKey.position,
-                currentMappingKey,
-                context.transformNode(null),
-              ),
-            ),
-        );
-      }
-
-      const mappingValue = context.transformNode(item) as MappingValue;
-
-      assert(buffer.length <= 1);
-
-      const mappingKey: MappingKey =
-        buffer.length !== 0
-          ? buffer.pop()!
-          : createMappingKey(
-              createPosition(
-                mappingValue.position.start,
-                mappingValue.position.start,
-              ),
-              context.transformNode(null),
-            );
-
-      return reduced.concat(
-        createMappingItem(
-          createPosition(mappingKey.position.start, mappingValue.position.end),
-          mappingKey,
-          mappingValue,
-        ),
-      );
-    },
-    [] as MappingItem[],
-  );
+  return groups;
 }

@@ -5,12 +5,12 @@ import { createNode } from "./node";
 
 export function createMappingValue(
   position: Position,
-  content: ContentNode,
+  content: null | ContentNode,
 ): MappingValue {
   return {
     ...createNode("mappingValue", position),
     ...createCommentAttachable(),
     ...createEndCommentAttachable(),
-    children: [content],
+    children: !content ? [] : [content],
   };
 }

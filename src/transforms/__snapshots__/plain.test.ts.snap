@@ -8,10 +8,10 @@ plain (1:4 ~ 1:7)
 `;
 
 exports[`" ! 12  " 1`] = `
-nonSpecificTag (1:2 ~ 1:3)
+tag (1:2 ~ 1:3)
 1 | ·!·12··¶
   |  ^
-<nonSpecificTag />
+<tag value="tag:yaml.org,2002:str" />
 `;
 
 exports[`" !!str # comment 1 \\n &anchor # comment 2 \\n  123   " 1`] = `
@@ -21,7 +21,7 @@ plain (3:3 ~ 3:6)
 3 | ··123···¶
   |   ^^^
 <plain value="123">
-  <shorthandTag handle="!!" suffix="str" />
+  <tag value="tag:yaml.org,2002:str" />
   <anchor value="anchor" />
   <middleComment value=" comment 1 ">
   <middleComment value=" comment 2 ">
@@ -52,18 +52,18 @@ plain (2:16 ~ 2:19)
 2 | &anchor·!<tag>·123¶
   |                ^^^
 <plain value="123">
-  <verbatimTag value="tag" />
+  <tag value="tag" />
   <anchor value="anchor" />
   <leadingComment value=" comment">
 </plain>
 `;
 
 exports[`"# comment\\n&anchor !<tag> 123" 2`] = `
-verbatimTag (2:9 ~ 2:15)
+tag (2:9 ~ 2:15)
 1 | #·comment¶
 2 | &anchor·!<tag>·123¶
   |         ^^^^^^
-<verbatimTag value="tag" />
+<tag value="tag" />
 `;
 
 exports[`"# comment\\n&anchor !<tag> 123" 3`] = `

@@ -1,15 +1,15 @@
 import { MappingItem, MappingKey, MappingValue, Position } from "../types";
-import { createCommentAttachable } from "./comment-attachable";
+import { createLeadingCommentAttachable } from "./leading-comment-attachable";
 import { createNode } from "./node";
 
 export function createMappingItem(
   position: Position,
   key: MappingKey,
-  value: MappingValue | null,
+  value: MappingValue,
 ): MappingItem {
   return {
     ...createNode("mappingItem", position),
-    ...createCommentAttachable(),
+    ...createLeadingCommentAttachable(),
     children: [key, value],
   };
 }

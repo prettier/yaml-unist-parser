@@ -10,7 +10,7 @@ sequence (4:1 ~ 5:6)
 5 | -·456··¶
   | ^^^^^
 <sequence>
-  <shorthandTag handle="!!" suffix="set" />
+  <tag value="tag:yaml.org,2002:set" />
   <anchor value="anchor" />
   <middleComment value="comment1">
   <middleComment value="comment2   ">
@@ -51,7 +51,7 @@ sequence (1:1 ~ 1:2)
   | ^
 <sequence>
   <sequenceItem>
-    <null />
+
   </sequenceItem>
 </sequence>
 `;
@@ -61,7 +61,7 @@ sequenceItem (1:1 ~ 1:2)
 1 | -···¶
   | ^
 <sequenceItem>
-  <null />
+
 </sequenceItem>
 `;
 

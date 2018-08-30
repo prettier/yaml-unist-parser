@@ -1,12 +1,15 @@
 import { Comment, ContentNode, DocumentBody, Position } from "../types";
+import { createEndCommentAttachable } from "./end-comment-attachable";
 import { createNode } from "./node";
 
 export function createDocumentBody(
   position: Position,
-  children: Array<Comment | ContentNode>,
+  content: null | ContentNode,
+  endComments: Comment[],
 ): DocumentBody {
   return {
     ...createNode("documentBody", position),
-    children,
+    ...createEndCommentAttachable(endComments),
+    children: !content ? [] : [content],
   };
 }

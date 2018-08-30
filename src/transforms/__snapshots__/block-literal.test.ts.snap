@@ -17,7 +17,7 @@ blockLiteral (3:1 ~ 8:1)
 8 | ¶
   | ^
 <blockLiteral chomping="clip" indent=null value="123\\n456\\n">
-  <shorthandTag handle="!!" suffix="str" />
+  <tag value="tag:yaml.org,2002:str" />
   <anchor value="anchor" />
   <middleComment value=" comment  ">
 </blockLiteral>
@@ -35,6 +35,21 @@ comment (2:3 ~ 2:14)
 7 | ¶
 8 | ¶
 <comment value=" comment  " />
+`;
+
+exports[`"!!str\\n#middleComment\\n| #indicatorComment\\n value" 1`] = `
+blockLiteral (3:1 ~ 4:7)
+1 | !!str¶
+2 | #middleComment¶
+3 | |·#indicatorComment¶
+  | ^^^^^^^^^^^^^^^^^^^^
+4 | ·value¶
+  | ^^^^^^
+<blockLiteral chomping="clip" indent=null value="value\\n">
+  <tag value="tag:yaml.org,2002:str" />
+  <middleComment value="middleComment">
+  <indicatorComment value="indicatorComment">
+</blockLiteral>
 `;
 
 exports[`"| # hello \\n  123\\n  456\\n\\n\\n" 1`] = `
@@ -58,7 +73,7 @@ root (1:1 ~ 6:1)
     </documentHead>
     <documentBody>
       <blockLiteral chomping="clip" indent=null value="123\\n456\\n">
-        <trailingComment value=" hello ">
+        <indicatorComment value=" hello ">
       </blockLiteral>
     </documentBody>
   </document>
@@ -78,7 +93,7 @@ root (1:1 ~ 2:1)
     </documentHead>
     <documentBody>
       <blockLiteral chomping="clip" indent=null value="">
-        <trailingComment value=" hello">
+        <indicatorComment value=" hello">
       </blockLiteral>
     </documentBody>
   </document>

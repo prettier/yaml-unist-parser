@@ -1,3 +1,15 @@
+export interface Node {
+  type: string;
+  position: Position;
+  /** @internal non-enumerable */
+  _parent?: YamlUnistNode | null;
+}
+
+export interface Position {
+  start: Point;
+  end: Point;
+}
+
 export interface Point {
   /** 1-based */
   line: number;
@@ -7,36 +19,35 @@ export interface Point {
   offset: number;
 }
 
-export interface Position {
-  start: Point;
-  end: Point;
-}
-
-export interface Node {
-  type: string;
-  position: Position;
-  /** @internal non-enumerable */
-  parent?: Exclude<YamlUnistNode, null>;
-}
-
 export interface Parent extends Node {
-  children: Array<Node | null>;
+  children: Node[];
+}
+
+export interface Literal extends Node {
+  value: string;
 }
 
 // -----------------------------------------------------------------------------
 
 export interface Content {
   anchor: null | Anchor;
-  tag: null | VerbatimTag | ShorthandTag | NonSpecificTag;
+  tag: null | Tag;
   /** comments between the node and its tag/anchor */
   middleComments: Comment[];
 }
 
-export interface CommentAttachable {
+export interface CommentAttachable
+  extends LeadingCommentAttachable,
+    TrailingCommentAttachable {}
+
+export interface LeadingCommentAttachable {
   /** comments in front of the node */
   leadingComments: Comment[];
-  /** comments on the same line of the node */
-  trailingComments: Comment[];
+}
+
+export interface TrailingCommentAttachable {
+  /** comment on the same line of the node */
+  trailingComment: null | Comment;
 }
 
 export interface EndCommentAttachable {
@@ -51,9 +62,7 @@ export interface YAMLSyntaxError extends SyntaxError {
 
 export type YamlUnistNode =
   | Comment
-  | VerbatimTag
-  | ShorthandTag
-  | NonSpecificTag
+  | Tag
   | Anchor
   | Root
   | Document
@@ -75,47 +84,22 @@ export type YamlUnistNode =
   | FlowMapping
   | FlowMappingItem
   | FlowSequence
-  | FlowSequenceItem
-  | null;
+  | FlowSequenceItem;
 
-export type ContentNode =
-  | Alias
-  | BlockLiteral
-  | BlockFolded
-  | Plain
-  | QuoteSingle
-  | QuoteDouble
-  | Mapping
-  | Sequence
-  | FlowMapping
-  | FlowSequence
-  | null;
+export type ContentNode = Extract<YamlUnistNode, Content>;
 
 // -----------------------------------------------------------------------------
 
-export interface Comment extends Node {
+export interface Comment extends Literal {
   type: "comment";
-  value: string;
 }
 
-export interface Anchor extends Node {
+export interface Anchor extends Literal {
   type: "anchor";
-  value: string;
 }
 
-export interface VerbatimTag extends Node {
-  type: "verbatimTag";
-  value: string;
-}
-
-export interface ShorthandTag extends Node {
-  type: "shorthandTag";
-  handle: string;
-  suffix: string;
-}
-
-export interface NonSpecificTag extends Node {
-  type: "nonSpecificTag";
+export interface Tag extends Literal {
+  type: "tag";
 }
 
 export interface Root extends Parent {
@@ -124,23 +108,22 @@ export interface Root extends Parent {
   comments: Comment[];
 }
 
-export interface Document extends Parent, CommentAttachable {
+export interface Document extends Parent, TrailingCommentAttachable {
   type: "document";
   children: [DocumentHead, DocumentBody];
-  /** always 0 */
-  leadingComments: Comment[];
-  /** only attachable on `...` */
-  trailingComments: Comment[];
 }
 
-export interface DocumentHead extends Parent {
+export interface DocumentHead
+  extends Parent,
+    EndCommentAttachable,
+    TrailingCommentAttachable {
   type: "documentHead";
-  children: Array<Comment | Directive>;
+  children: Directive[];
 }
 
-export interface DocumentBody extends Parent {
+export interface DocumentBody extends Parent, EndCommentAttachable {
   type: "documentBody";
-  children: Array<Comment | ContentNode>;
+  children: [] | [ContentNode];
 }
 
 export interface Directive extends Node, CommentAttachable {
@@ -149,17 +132,15 @@ export interface Directive extends Node, CommentAttachable {
   parameters: string[];
 }
 
-export interface Alias extends Node, Content, CommentAttachable {
+export interface Alias extends Literal, Content, CommentAttachable {
   type: "alias";
-  value: string;
 }
 
-export interface BlockValue extends Node, Content, CommentAttachable {
+export interface BlockValue extends Literal, Content, LeadingCommentAttachable {
   chomping: "clip" | "keep" | "strip";
   indent: null | number;
-  value: string;
-  /** comments between indicator and value */
-  trailingComments: Comment[];
+  /** comment between indicator and the value */
+  indicatorComment: null | Comment;
 }
 
 export interface BlockLiteral extends BlockValue {
@@ -170,14 +151,11 @@ export interface BlockFolded extends BlockValue {
   type: "blockFolded";
 }
 
-export interface Plain extends Node, Content, CommentAttachable {
+export interface Plain extends Literal, Content, CommentAttachable {
   type: "plain";
-  value: string;
 }
 
-export interface QuoteValue extends Node, Content, CommentAttachable {
-  value: string;
-}
+export interface QuoteValue extends Literal, Content, CommentAttachable {}
 
 export interface QuoteSingle extends QuoteValue {
   type: "quoteSingle";
@@ -187,27 +165,26 @@ export interface QuoteDouble extends QuoteValue {
   type: "quoteDouble";
 }
 
-export interface Mapping extends Parent, Content, CommentAttachable {
+export interface Mapping extends Parent, Content, LeadingCommentAttachable {
   type: "mapping";
   children: MappingItem[];
 }
 
-export interface MappingItemBase extends Parent, CommentAttachable {
+export interface MappingItemBase extends Parent, LeadingCommentAttachable {
   /** key-value pair */
-  children: [MappingKey | null, MappingValue | null];
+  children: [MappingKey, MappingValue];
 }
 
 export interface MappingItem extends MappingItemBase {
   type: "mappingItem";
-  children: [MappingKey, MappingValue | null];
 }
 
 export interface MappingKey
   extends Parent,
-    CommentAttachable,
+    TrailingCommentAttachable,
     EndCommentAttachable {
   type: "mappingKey";
-  children: [ContentNode];
+  children: [] | [ContentNode];
 }
 
 export interface MappingValue
@@ -215,20 +192,20 @@ export interface MappingValue
     CommentAttachable,
     EndCommentAttachable {
   type: "mappingValue";
-  children: [ContentNode];
+  children: [] | [ContentNode];
 }
 
 export interface Sequence
   extends Parent,
     Content,
-    CommentAttachable,
+    LeadingCommentAttachable,
     EndCommentAttachable {
   type: "sequence";
   children: SequenceItem[];
 }
 
 export interface SequenceItemBase extends Parent {
-  children: [ContentNode];
+  children: [] | [ContentNode];
 }
 
 export interface SequenceItem

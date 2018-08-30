@@ -5,12 +5,12 @@ import { createNode } from "./node";
 
 export function createSequenceItem(
   position: Position,
-  content: ContentNode,
+  content: null | ContentNode,
 ): SequenceItem {
   return {
     ...createNode("sequenceItem", position),
     ...createCommentAttachable(),
     ...createEndCommentAttachable(),
-    children: [content],
+    children: !content ? [] : [content],
   };
 }

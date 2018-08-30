@@ -1,14 +1,12 @@
-import assert = require("assert");
 import YAML from "yaml";
 import { createQuoteSingle } from "../factories/quote-single";
 import { Context } from "../transform";
 import { QuoteSingle } from "../types";
-import { transformQuoteValue } from "./quoteValue";
+import { transformAstQuoteValue } from "./quote-value";
 
 export function transformQuoteSingle(
-  quoteSingle: YAML.cst.QuoteValue,
+  quoteSingle: YAML.ast.QuoteSingle,
   context: Context,
 ): QuoteSingle {
-  assert(quoteSingle.type === "QUOTE_SINGLE");
-  return createQuoteSingle(transformQuoteValue(quoteSingle, context));
+  return createQuoteSingle(transformAstQuoteValue(quoteSingle, context));
 }
