@@ -3,12 +3,14 @@ import { Context } from "../transform";
 import { Point } from "../types";
 
 export function transformOffset(offset: number, context: Context): Point {
-  const location = context.locator.locationForIndex(offset);
-
   // istanbul ignore next
-  if (location === null) {
-    throw new Error(`Unexpected offset ${offset}`);
+  if (offset < 0) {
+    offset = 0;
+  } else if (offset > context.text.length) {
+    offset = context.text.length;
   }
+
+  const location = context.locator.locationForIndex(offset)!;
 
   return createPoint(offset, location.line + 1, location.column + 1);
 }
