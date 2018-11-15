@@ -1,4 +1,4 @@
-import YAML from "yaml";
+import * as YAML from "yaml";
 import { createQuoteValue } from "../factories/quote-value";
 import { Context } from "../transform";
 import { QuoteValue } from "../types";

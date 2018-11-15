@@ -1,4 +1,4 @@
-import YAML from "yaml";
+import * as YAML from "yaml";
 import { createPlain } from "../factories/plain";
 import { Context } from "../transform";
 import { Plain } from "../types";

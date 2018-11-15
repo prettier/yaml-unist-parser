@@ -1,4 +1,4 @@
-import YAML from "yaml";
+import * as YAML from "yaml";
 import { createFlowMappingItem } from "../factories/flow-mapping-item";
 import { createMappingItem } from "../factories/mapping-item";
 import { createMappingKey } from "../factories/mapping-key";

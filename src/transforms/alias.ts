@@ -1,4 +1,4 @@
-import YAML from "yaml";
+import * as YAML from "yaml";
 import { createAlias } from "../factories/alias";
 import { Context } from "../transform";
 import { Alias } from "../types";

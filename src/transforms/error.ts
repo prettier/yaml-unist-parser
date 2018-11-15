@@ -1,4 +1,4 @@
-import YAML from "yaml";
+import * as YAML from "yaml";
 import { createError } from "../factories/error";
 import { Context } from "../transform";
 import { YAMLSyntaxError } from "../types";

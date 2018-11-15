@@ -1,4 +1,4 @@
-import YAML from "yaml";
+import * as YAML from "yaml";
 import { createMapping } from "../factories/mapping";
 import { createMappingItem } from "../factories/mapping-item";
 import { createPosition } from "../factories/position";

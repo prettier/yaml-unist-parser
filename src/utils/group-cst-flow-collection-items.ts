@@ -1,4 +1,4 @@
-import YAML from "yaml";
+import * as YAML from "yaml";
 import { createSlicer } from "./create-slicer";
 
 type CstFlowMapItemWithoutComment = Exclude<

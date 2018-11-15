@@ -1,4 +1,4 @@
-import YAML from "yaml";
+import * as YAML from "yaml";
 import { createBlockFolded } from "../factories/block-folded";
 import { Context } from "../transform";
 import { BlockFolded } from "../types";
