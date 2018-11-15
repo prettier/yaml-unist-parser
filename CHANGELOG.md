@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0"></a>
+# [1.0.0](https://github.com/ikatyang/yaml-unist-parser/compare/v1.0.0-rc.4...v1.0.0) (2018-11-15)
+
+
+### Bug Fixes
+
+* support CRLF ([f3801ca](https://github.com/ikatyang/yaml-unist-parser/commit/f3801ca))
+* suppress offset errors ([470916c](https://github.com/ikatyang/yaml-unist-parser/commit/470916c))
+
+
+### Chores
+
+* upgrade yaml to v1 ([4830974](https://github.com/ikatyang/yaml-unist-parser/commit/4830974))
+
+
+### BREAKING CHANGES
+
+* require `yaml@^1.0.2`
+
+
+
 <a name="1.0.0-rc.4"></a>
 # [1.0.0-rc.4](https://github.com/ikatyang/yaml-unist-parser/compare/v1.0.0-rc.3...v1.0.0-rc.4) (2018-08-30)
 
