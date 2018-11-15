@@ -7,8 +7,8 @@ export function transformAlias(alias: YAML.ast.Alias, context: Context): Alias {
   const cstNode = alias.cstNode!;
   return createAlias(
     context.transformRange({
-      start: cstNode.valueRange!.start - 1, // include the `*`
-      end: cstNode.valueRange!.end,
+      origStart: cstNode.valueRange!.origStart - 1, // include the `*`
+      origEnd: cstNode.valueRange!.origEnd,
     }),
     context.transformContent(alias),
     cstNode.rawValue,

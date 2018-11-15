@@ -42,8 +42,8 @@ export function transformFlowMap(
 
   return createFlowMapping(
     context.transformRange({
-      start: openMarker.offset,
-      end: closeMarker.offset + 1,
+      origStart: openMarker.origOffset,
+      origEnd: closeMarker.origOffset + 1,
     }),
     context.transformContent(flowMap),
     flowMappingItems,

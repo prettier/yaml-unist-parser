@@ -16,9 +16,9 @@ export function transformSeq(seq: YAML.ast.Seq, context: Context): Sequence {
     const item = context.transformNode(seq.items[index]);
     return createSequenceItem(
       createPosition(
-        context.transformOffset(cstItem.valueRange!.start),
+        context.transformOffset(cstItem.valueRange!.origStart),
         item === null
-          ? context.transformOffset(cstItem.valueRange!.start + 1)
+          ? context.transformOffset(cstItem.valueRange!.origStart + 1)
           : item.position.end,
       ),
       item,

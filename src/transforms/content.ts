@@ -22,7 +22,7 @@ export function transformContent(
   let anchor: Anchor | null = null;
 
   for (const propRange of cstNode.props) {
-    const leadingChar = context.text[propRange.start];
+    const leadingChar = context.text[propRange.origStart];
     switch (leadingChar) {
       case PropLeadingCharacter.Tag:
         firstTagOrAnchorRange = firstTagOrAnchorRange || propRange;
@@ -38,14 +38,14 @@ export function transformContent(
       case PropLeadingCharacter.Comment: {
         const comment = createComment(
           context.transformRange(propRange),
-          context.text.slice(propRange.start + 1, propRange.end),
+          context.text.slice(propRange.origStart + 1, propRange.origEnd),
         );
         context.comments.push(comment);
         if (
           !isNotMiddleComment(comment) &&
           firstTagOrAnchorRange &&
-          firstTagOrAnchorRange.end <= propRange.start &&
-          propRange.end <= cstNode.valueRange!.start
+          firstTagOrAnchorRange.origEnd <= propRange.origStart &&
+          propRange.origEnd <= cstNode.valueRange!.origStart
         ) {
           middleComments.push(comment);
         }

@@ -42,12 +42,12 @@ export function transformAstPair(
     keyContent || additionalKeyRange
       ? createMappingKey(
           context.transformRange({
-            start: additionalKeyRange
-              ? additionalKeyRange.start
+            origStart: additionalKeyRange
+              ? additionalKeyRange.origStart
               : keyContent!.position.start.offset,
-            end: keyContent
+            origEnd: keyContent
               ? keyContent.position.end.offset
-              : additionalKeyRange!.start + 1,
+              : additionalKeyRange!.origStart + 1,
           }),
           keyContent,
         )
@@ -57,13 +57,13 @@ export function transformAstPair(
     valueContent || additionalValueRange
       ? createMappingValue(
           context.transformRange({
-            start: additionalValueRange
-              ? additionalValueRange.start
+            origStart: additionalValueRange
+              ? additionalValueRange.origStart
               : // istanbul ignore next
                 valueContent!.position.start.offset,
-            end: valueContent
+            origEnd: valueContent
               ? valueContent.position.end.offset
-              : additionalValueRange!.start + 1,
+              : additionalValueRange!.origStart + 1,
           }),
           valueContent,
         )

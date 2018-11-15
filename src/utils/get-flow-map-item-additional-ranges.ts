@@ -9,7 +9,7 @@ export function getFlowMapItemAdditionalRanges(
         "char" in cstNode && cstNode.char === char,
     );
     return flowChar
-      ? { start: flowChar.offset, end: flowChar.offset + 1 }
+      ? { origStart: flowChar.origOffset, origEnd: flowChar.origOffset + 1 }
       : null;
   });
 
