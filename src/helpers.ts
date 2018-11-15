@@ -1,7 +1,15 @@
 import { wrap } from "jest-snapshot-serializer-raw";
 import * as YAML from "yaml";
 import { parse } from "./parse";
-import { Comment, Node, Position, Root, YamlUnistNode } from "./types";
+import {
+  Anchor,
+  Comment,
+  Node,
+  Position,
+  Root,
+  Tag,
+  YamlUnistNode,
+} from "./types";
 
 export type Arrayable<T> = T | T[];
 
@@ -227,7 +235,7 @@ function stringifyNode(
             comments,
             (options.maxChildrenLevel === undefined ||
               options.maxChildrenLevel > 0) &&
-            "children" in node
+              "children" in node
               ? (node.children as YamlUnistNode[]).map(childNode =>
                   stringifyNode(childNode, {
                     ...options,

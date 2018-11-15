@@ -3,13 +3,13 @@ import { Mapping, MappingValue, Plain } from "../types";
 
 testCases([
   ["   123   ", getFirstContent()],
-  [" ! 12  ", root => getFirstContent<Plain>(root).tag],
+  [" ! 12  ", root => getFirstContent<Plain>(root).tag!],
   [
     "# comment\n&anchor !<tag> 123",
     [
       getFirstContent(),
-      root => getFirstContent<Plain>(root).tag,
-      root => getFirstContent<Plain>(root).anchor,
+      root => getFirstContent<Plain>(root).tag!,
+      root => getFirstContent<Plain>(root).anchor!,
       root => root.comments,
     ],
   ],
