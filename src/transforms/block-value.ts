@@ -20,13 +20,13 @@ export function transformAstBlockValue(
   const indicatorLength = 1;
   const chompingLength = cstNode.chomping === "CLIP" ? 0 : 1;
 
-  const headerLength = cstNode.header.end - cstNode.header.start;
+  const headerLength = cstNode.header.origEnd - cstNode.header.origStart;
   const hasExplicitBlockIndent =
     headerLength - indicatorLength - chompingLength !== 0;
 
   const position = context.transformRange({
-    start: cstNode.header.start,
-    end: cstNode.valueRange!.end,
+    origStart: cstNode.header.origStart,
+    origEnd: cstNode.valueRange!.origEnd,
   });
 
   let indicatorComment: Comment | null = null;

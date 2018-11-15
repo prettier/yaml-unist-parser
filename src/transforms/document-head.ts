@@ -73,23 +73,23 @@ function getPosition(
   context: Context,
 ) {
   const endMarkerIndex = getMatchIndex(
-    context.text.slice(0, document.valueRange!.start),
+    context.text.slice(0, document.valueRange!.origStart),
     /---\s*$/,
   );
 
   const range: Range =
     endMarkerIndex === -1
       ? {
-          start: document.valueRange!.start,
-          end: document.valueRange!.start,
+          origStart: document.valueRange!.origStart,
+          origEnd: document.valueRange!.origStart,
         }
       : {
-          start: endMarkerIndex,
-          end: endMarkerIndex + 3,
+          origStart: endMarkerIndex,
+          origEnd: endMarkerIndex + 3,
         };
 
   if (directives.length !== 0) {
-    range.start = directives[0].position.start.offset;
+    range.origStart = directives[0].position.start.offset;
   }
 
   return {

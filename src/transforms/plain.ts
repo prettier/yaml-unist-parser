@@ -11,9 +11,10 @@ export function transformPlain(
   const cstNode = plain.cstNode!;
   return createPlain(
     context.transformRange({
-      start: cstNode.valueRange!.start,
-      end:
-        findLastCharIndex(context.text, cstNode.valueRange!.end - 1, /\S/) + 1,
+      origStart: cstNode.valueRange!.origStart,
+      origEnd:
+        findLastCharIndex(context.text, cstNode.valueRange!.origEnd - 1, /\S/) +
+        1,
     }),
     context.transformContent(plain),
     cstNode.strValue!,

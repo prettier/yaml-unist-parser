@@ -17,7 +17,8 @@
   },
   "license": "MIT",
   "scripts": {
-    "prepublish": "yarn run build",
+    "fix-types": "replace '(orig(Start|End))\\?:' '$1:' node_modules/@types/yaml/index.d.ts",
+    "prepublish": "yarn run fix-types && yarn run build",
     "lint": "tslint -p ./tsconfig.json",
     "test": "jest",
     "prebuild": "rm -rf ./lib",
@@ -35,6 +36,7 @@
     "jest": "23.6.0",
     "jest-snapshot-serializer-raw": "1.1.0",
     "prettier": "1.14.3",
+    "replace": "1.0.0",
     "standard-version": "4.4.0",
     "ts-jest": "23.1.4",
     "tslint": "5.11.0",

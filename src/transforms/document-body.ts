@@ -55,7 +55,9 @@ function categorizeNodes(
         documentHeadTrailingComments.unshift(comment);
       } else if (hasContent) {
         comments.unshift(comment);
-      } else if (comment.position.start.offset >= document.valueRange!.end) {
+      } else if (
+        comment.position.start.offset >= document.valueRange!.origEnd
+      ) {
         documentTrailingComments.unshift(comment);
       } else {
         endComments.unshift(comment);
@@ -97,24 +99,29 @@ function getPosition(
   context: Context,
 ) {
   const markerIndex = getMatchIndex(
-    context.text.slice(document.valueRange!.end),
+    context.text.slice(document.valueRange!.origEnd),
     /^\.\.\./,
   );
 
-  const end =
+  let origEnd =
     markerIndex === -1
-      ? document.valueRange!.end
-      : Math.max(0, document.valueRange!.end - 1);
+      ? document.valueRange!.origEnd
+      : Math.max(0, document.valueRange!.origEnd - 1);
+
+  // CRLF fix
+  if (context.text[origEnd - 1] === "\r") {
+    origEnd--;
+  }
 
   const position = context.transformRange({
-    start: content !== null ? content.position.start.offset : end,
-    end,
+    origStart: content !== null ? content.position.start.offset : origEnd,
+    origEnd,
   });
 
   const documentEndPoint =
     markerIndex === -1
       ? position.end
-      : context.transformOffset(document.valueRange!.end + 3);
+      : context.transformOffset(document.valueRange!.origEnd + 3);
 
   return { position, documentEndPoint };
 }

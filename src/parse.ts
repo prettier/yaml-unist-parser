@@ -8,14 +8,21 @@ import { transformError } from "./transforms/error";
 import { transformOffset } from "./transforms/offset";
 import { transformRange } from "./transforms/range";
 import { Comment, Root } from "./types";
+import { addOrigRange } from "./utils/add-orig-range";
 import { removeFakeNodes } from "./utils/remove-fake-nodes";
 import { updatePositions } from "./utils/update-positions";
 
 export function parse(text: string): Root {
-  const documents = YAML.parseAllDocuments(text, {
-    merge: true,
-    keepCstNodes: true,
-  });
+  const cst = YAML.parseCST(text);
+
+  addOrigRange(cst);
+
+  const documents = cst.map(cstDocument =>
+    new YAML.Document({
+      merge: true,
+      keepCstNodes: true,
+    }).parse(cstDocument),
+  );
 
   const locator = new LinesAndColumns(text);
   const comments: Comment[] = [];
@@ -39,7 +46,7 @@ export function parse(text: string): Root {
   }
 
   const root = createRoot(
-    context.transformRange({ start: 0, end: context.text.length }),
+    context.transformRange({ origStart: 0, origEnd: context.text.length }),
     documents.map(context.transformNode),
     comments,
   );

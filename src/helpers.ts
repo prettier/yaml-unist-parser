@@ -31,16 +31,102 @@ export function testCases(
   cases.forEach(testCase => {
     const [text, selector] = testCase;
     const root = parse(text);
+
+    testCrLf(root, text);
+
     const selectNodes = ([] as TestCaseSelector[]).concat(selector);
     selectNodes.forEach(selectNode => {
       const nodes = ([] as YamlUnistNode[]).concat(selectNode(root));
       nodes.forEach(node => {
-        test(`${JSON.stringify(text).slice(0, 60)}`, () => {
+        test(getTestTitle(text), () => {
           expect(wrap(snapshotNode(text, node, options))).toMatchSnapshot();
         });
       });
     });
   });
+}
+
+function testCrLf(lfRoot: Root, lfText: string) {
+  const crLfText = lfText.replace(/\n/g, "\r\n");
+
+  test(getTestTitle(lfText), () => {
+    const crLfRoot = parse(crLfText);
+    testNode(lfRoot, crLfRoot);
+  });
+
+  function testNode(lfNode: Node, crLfNode: Node) {
+    const [lfNodeProps, lfValueProps] = groupProps(lfNode);
+    const [crLfNodeProps, crLfValueProps] = groupProps(crLfNode);
+
+    expect(lfNodeProps).toEqual(crLfNodeProps);
+    expect(lfValueProps).toEqual(crLfValueProps);
+
+    for (const prop of lfValueProps as Array<keyof Node>) {
+      const lfValue = lfNode[prop];
+      const crLfValue = crLfNode[prop];
+
+      if (typeof crLfValue === "string") {
+        expect(crLfValue.replace(/\r\n/g, "\n")).toEqual(lfValue);
+      } else {
+        expect(crLfValue).toEqual(lfValue);
+      }
+    }
+
+    for (const prop of lfNodeProps as Array<keyof Node>) {
+      const lfChildNode = lfNode[prop];
+      const crLfChildNode = crLfNode[prop];
+
+      if (Array.isArray(lfChildNode) && Array.isArray(crLfChildNode)) {
+        for (let i = 0; i < lfChildNode.length; i++) {
+          testNode(lfChildNode[i], crLfChildNode[i]);
+        }
+      } else {
+        expect(isNode(lfChildNode)).toBe(true);
+        expect(isNode(crLfChildNode)).toBe(true);
+        testNode(lfChildNode as Node, crLfChildNode as Node);
+      }
+    }
+
+    expect([
+      crLfNode.type,
+      JSON.stringify(
+        getOriginalText(crLfNode, crLfText).replace(/\r\n/g, "\n"),
+      ),
+    ]).toEqual([lfNode.type, JSON.stringify(getOriginalText(lfNode, lfText))]);
+  }
+
+  function getOriginalText(node: Node, text: string) {
+    return text.slice(node.position.start.offset, node.position.end.offset);
+  }
+
+  function groupProps(node: Node) {
+    const nodeProps: string[] = [];
+    const valueProps: string[] = [];
+
+    for (const key of Object.keys(node) as Array<keyof Node>) {
+      if (key === "position") {
+        continue;
+      }
+
+      const value = node[key];
+
+      if (isNode(value) || (Array.isArray(value) && value.some(isNode))) {
+        nodeProps.push(key);
+      } else {
+        valueProps.push(key);
+      }
+    }
+
+    return [nodeProps, valueProps];
+  }
+
+  function isNode(value: any): value is Node {
+    return value ? typeof value.type === "string" : false;
+  }
+}
+
+function getTestTitle(text: string) {
+  return JSON.stringify(text).slice(0, 60);
 }
 
 function getNodeDescription(node: Exclude<YamlUnistNode, null>) {

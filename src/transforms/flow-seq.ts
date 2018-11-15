@@ -52,8 +52,8 @@ export function transformFlowSeq(
 
   return createFlowSequence(
     context.transformRange({
-      start: openMarker.offset,
-      end: closeMarker.offset + 1,
+      origStart: openMarker.origOffset,
+      origEnd: closeMarker.origOffset + 1,
     }),
     context.transformContent(flowSeq),
     flowSequenceItems,
