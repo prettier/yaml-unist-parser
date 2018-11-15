@@ -24,8 +24,9 @@
   version "6.0.118"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-6.0.118.tgz#8014a9b1dee0b72b4d7cd142563f1af21241c3a2"
 
-"@types/yaml@file:types/yaml":
-  version "1.0.0-rc.5"
+"@types/yaml@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@types/yaml/-/yaml-1.0.0.tgz#4bd87eb73fcb25ac0a8510eede6251ada2d91369"
 
 JSONStream@^1.0.4:
   version "1.3.4"
@@ -3788,9 +3789,9 @@ yallist@^3.0.0, yallist@^3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/yallist/-/yallist-3.0.2.tgz#8452b4bb7e83c7c188d8041c1a837c773d6d8bb9"
 
-yaml@1.0.0-rc.8:
-  version "1.0.0-rc.8"
-  resolved "https://registry.yarnpkg.com/yaml/-/yaml-1.0.0-rc.8.tgz#e5604c52b7b07b16e469bcf875ab0dfe08c50d42"
+yaml@1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/yaml/-/yaml-1.0.2.tgz#77941a457090e17b8ca65b53322e68a050e090d4"
 
 yargs-parser@^7.0.0:
   version "7.0.0"

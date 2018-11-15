@@ -1,4 +1,4 @@
-import YAML from "yaml";
+import * as YAML from "yaml";
 import { createDocumentHead } from "../factories/document-head";
 import { Context } from "../transform";
 import { Comment, Directive } from "../types";

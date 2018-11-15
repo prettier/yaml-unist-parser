@@ -1,4 +1,4 @@
-import YAML from "yaml";
+import * as YAML from "yaml";
 import { createDocument } from "../factories/document";
 import { createPosition } from "../factories/position";
 import { Context } from "../transform";

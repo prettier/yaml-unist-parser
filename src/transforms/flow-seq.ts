@@ -1,4 +1,4 @@
-import YAML from "yaml";
+import * as YAML from "yaml";
 import { createFlowMappingItem } from "../factories/flow-mapping-item";
 import { createFlowSequence } from "../factories/flow-sequence";
 import { createFlowSequenceItem } from "../factories/flow-sequence-item";

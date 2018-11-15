@@ -1,4 +1,4 @@
-import YAML from "yaml";
+import * as YAML from "yaml";
 import { createFlowMapping } from "../factories/flow-mapping";
 import { createFlowMappingItem } from "../factories/flow-mapping-item";
 import { Context } from "../transform";

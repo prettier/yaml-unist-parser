@@ -1,4 +1,4 @@
-import YAML from "yaml";
+import * as YAML from "yaml";
 import { Context } from "../transform";
 
 export function extractComments<T extends null | object>(

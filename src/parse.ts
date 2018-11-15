@@ -1,5 +1,5 @@
 import LinesAndColumns from "lines-and-columns";
-import YAML from "yaml";
+import * as YAML from "yaml";
 import { attachComments } from "./attach";
 import { createRoot } from "./factories/root";
 import { Context, transformNode } from "./transform";

@@ -1,5 +1,5 @@
 import LinesAndColumns from "lines-and-columns";
-import YAML from "yaml";
+import * as YAML from "yaml";
 import { transformAlias } from "./transforms/alias";
 import { transformBlockFolded } from "./transforms/block-folded";
 import { transformBlockLiteral } from "./transforms/block-literal";

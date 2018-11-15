@@ -1,4 +1,4 @@
-import YAML from "yaml";
+import * as YAML from "yaml";
 import { createDirective } from "../factories/directive";
 import { Context } from "../transform";
 import { Directive } from "../types";

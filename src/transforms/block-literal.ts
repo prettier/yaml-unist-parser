@@ -1,4 +1,4 @@
-import YAML from "yaml";
+import * as YAML from "yaml";
 import { createBlockLiteral } from "../factories/block-literal";
 import { Context } from "../transform";
 import { BlockLiteral } from "../types";

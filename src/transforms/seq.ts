@@ -1,4 +1,4 @@
-import YAML from "yaml";
+import * as YAML from "yaml";
 import { createPosition } from "../factories/position";
 import { createSequence } from "../factories/sequence";
 import { createSequenceItem } from "../factories/sequence-item";

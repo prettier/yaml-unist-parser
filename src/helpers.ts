@@ -1,5 +1,5 @@
 import { wrap } from "jest-snapshot-serializer-raw";
-import YAML from "yaml";
+import * as YAML from "yaml";
 import { parse } from "./parse";
 import { Comment, Node, Position, Root, YamlUnistNode } from "./types";
 

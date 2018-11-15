@@ -1,4 +1,4 @@
-import YAML from "yaml";
+import * as YAML from "yaml";
 import { PropLeadingCharacter } from "../constants";
 import { createAnchor } from "../factories/anchor";
 import { createComment } from "../factories/comment";

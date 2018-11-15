@@ -1,4 +1,4 @@
-import YAML from "yaml";
+import * as YAML from "yaml";
 import { createDocumentBody } from "../factories/document-body";
 import { Context } from "../transform";
 import { Comment, ContentNode, Point } from "../types";
