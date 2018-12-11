@@ -17,7 +17,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "fix-types": "replace '(orig(Start|End))\\?:' '$1:' node_modules/@types/yaml/index.d.ts",
+    "fix-types": "replace '(orig(Start|End|Offset))\\?:' '$1:' node_modules/@types/yaml/index.d.ts",
     "prepublish": "yarn run fix-types && yarn run build",
     "lint": "tslint -p ./tsconfig.json",
     "test": "jest",
@@ -32,7 +32,7 @@
   "devDependencies": {
     "@types/jest": "23.3.10",
     "@types/node": "6.14.2",
-    "@types/yaml": "1.0.0",
+    "@types/yaml": "1.0.1",
     "jest": "23.6.0",
     "jest-snapshot-serializer-raw": "1.1.0",
     "prettier": "1.15.3",
@@ -43,7 +43,7 @@
     "tslint-config-prettier": "1.17.0",
     "tslint-plugin-prettier": "2.0.1",
     "typescript": "3.2.2",
-    "yaml": "1.0.2"
+    "yaml": "1.0.3"
   },
   "peerDependencies": {
     "yaml": "^1.0.2"
