@@ -17,7 +17,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "fix-types": "replace '(orig(Start|End))\\?:' '$1:' node_modules/@types/yaml/index.d.ts",
+    "fix-types": "replace '(orig(Start|End|Offset))\\?:' '$1:' node_modules/@types/yaml/index.d.ts",
     "prepublish": "yarn run fix-types && yarn run build",
     "lint": "tslint -p ./tsconfig.json",
     "test": "jest",
