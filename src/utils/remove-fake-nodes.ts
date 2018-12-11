@@ -4,7 +4,7 @@ import { YamlUnistNode } from "../types";
 export function removeFakeNodes(node: YamlUnistNode) {
   if ("children" in node) {
     if (node.children.length === 1) {
-      const child = node.children[0];
+      const child = node.children[0]!;
       if (
         child.type === "plain" &&
         child.tag === null &&

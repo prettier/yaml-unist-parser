@@ -25,7 +25,7 @@ testCases([
       root => getFirstContent<FlowSequence>(root).middleComments[1],
     ],
   ],
-  ["[!!str 123]", root => getFlowSequenceItem(0)(root).children[0]],
+  ["[!!str 123]", root => getFlowSequenceItem(0)(root).children[0]!],
 ]);
 
 function getFlowSequence() {
