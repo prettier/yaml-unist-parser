@@ -17,7 +17,7 @@ testCases([
     "a: b\n c",
     root =>
       (getFirstContent<Mapping>(root).children[0].children[1] as MappingValue)
-        .children[0],
+        .children[0]!,
   ],
   [
     " !!str # comment 1 \n &anchor # comment 2 \n  123   ",
