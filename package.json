@@ -35,7 +35,7 @@
     "@types/yaml": "1.0.1",
     "jest": "23.6.0",
     "jest-snapshot-serializer-raw": "1.1.0",
-    "prettier": "1.16.3",
+    "prettier": "1.16.4",
     "replace": "1.0.1",
     "standard-version": "4.4.0",
     "ts-jest": "23.10.5",
