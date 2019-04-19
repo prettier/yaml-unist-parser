@@ -20,9 +20,9 @@
   version "23.3.14"
   resolved "https://registry.yarnpkg.com/@types/jest/-/jest-23.3.14.tgz#37daaf78069e7948520474c87b80092ea912520a"
 
-"@types/node@6.14.4":
-  version "6.14.4"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-6.14.4.tgz#d8de576bdeaaafcf54a158af1e38cbb6e6d3db46"
+"@types/node@6.14.5":
+  version "6.14.5"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-6.14.5.tgz#36dfa8fd73d6fc3725393a2fe98964b92a4999c1"
 
 "@types/yaml@1.0.1":
   version "1.0.1"
