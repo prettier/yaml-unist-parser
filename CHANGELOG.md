@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.1"></a>
+## [1.0.1](https://github.com/ikatyang/yaml-unist-parser/compare/v1.0.0...v1.0.1) (2019-10-08)
+
+
+### Chores
+
+* `yaml@1.2.0+` is not supported in `yaml-unist-parser@1.0.x` ([207589e](https://github.com/ikatyang/yaml-unist-parser/commit/207589e))
+
+
 <a name="1.0.0"></a>
 # [1.0.0](https://github.com/ikatyang/yaml-unist-parser/compare/v1.0.0-rc.4...v1.0.0) (2018-11-15)
 
