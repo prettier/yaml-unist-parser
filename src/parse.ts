@@ -2,6 +2,7 @@ import LinesAndColumns from "lines-and-columns";
 import * as YAML from "yaml";
 import { attachComments } from "./attach";
 import { createRoot } from "./factories/root";
+import { removeCstBlankLine } from "./preprocess";
 import { Context, transformNode } from "./transform";
 import { transformContent } from "./transforms/content";
 import { transformError } from "./transforms/error";
@@ -44,6 +45,8 @@ export function parse(text: string): Root {
   if (errorDocument) {
     throw transformError(errorDocument.errors[0], context);
   }
+
+  documents.forEach(document => removeCstBlankLine(document.cstNode!));
 
   const root = createRoot(
     context.transformRange({ origStart: 0, origEnd: context.text.length }),

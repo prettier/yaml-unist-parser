@@ -208,13 +208,14 @@ function shouldOwnEndComment(
     case "mappingValue":
       return (
         comment.position.start.column > node._parent!.position.start.column &&
-        node.children.length === 1 &&
-        node.children[0]!.type !== "blockFolded" &&
-        node.children[0]!.type !== "blockLiteral" &&
-        (node.type === "mappingValue" ||
-          // explicit key
-          node.position.start.offset !==
-            node.children[0]!.position.start.offset)
+        (node.children.length === 0 ||
+          (node.children.length === 1 &&
+            node.children[0]!.type !== "blockFolded" &&
+            node.children[0]!.type !== "blockLiteral" &&
+            (node.type === "mappingValue" ||
+              // explicit key
+              node.position.start.offset !==
+                node.children[0]!.position.start.offset)))
       );
     default:
       return false;
