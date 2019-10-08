@@ -776,7 +776,6 @@ exports[`Implicit map keys need to be followed by map values 1`] = `
 "Implicit map keys need to be followed by map values
 1 | asd:·123¶
 2 | qwe¶
-  | ^^^^
-3 | ¶
-  | ^"
+  | ^^^
+3 | ¶"
 `;

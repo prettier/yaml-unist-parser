@@ -37,6 +37,7 @@ import {
 export type YamlNode =
   | null
   | YAML.ast.Alias
+  | YAML.cst.BlankLine
   | YAML.ast.BlockFolded
   | YAML.ast.BlockLiteral
   | YAML.cst.Comment

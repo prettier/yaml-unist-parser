@@ -60,7 +60,7 @@ function categorizeNodes(
       ) {
         documentTrailingComments.unshift(comment);
       } else {
-        endComments.unshift(comment);
+        comments.unshift(comment);
       }
     } else {
       hasContent = true;

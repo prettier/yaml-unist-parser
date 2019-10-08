@@ -824,7 +824,7 @@ comment (177:1 ~ 177:80)
     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 178 | ¶
 179 | function:·!!js/function·>¶
-mappingItem (179:1 ~ 185:1)
+mappingItem (179:1 ~ 183:1)
 <mappingItem>
   <leadingComment value=" https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function">
 </mappingItem>
