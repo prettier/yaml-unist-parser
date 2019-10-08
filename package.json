@@ -32,7 +32,7 @@
   "devDependencies": {
     "@types/jest": "23.3.14",
     "@types/node": "6.14.7",
-    "@types/yaml": "1.0.1",
+    "@types/yaml": "1.2.0",
     "jest": "23.6.0",
     "jest-snapshot-serializer-raw": "1.1.0",
     "prettier": "1.18.2",
@@ -43,10 +43,10 @@
     "tslint-config-prettier": "1.18.0",
     "tslint-plugin-prettier": "2.0.1",
     "typescript": "3.6.3",
-    "yaml": "1.0.3"
+    "yaml": "1.7.1"
   },
   "peerDependencies": {
-    "yaml": ">= 1.0.2 < 1.2.0"
+    "yaml": ">= 1.0.2 < 1.7.2"
   },
   "engines": {
     "node": ">= 6"
