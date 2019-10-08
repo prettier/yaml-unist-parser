@@ -18,10 +18,10 @@ A YAML parser that produces output compatible with [unist](https://github.com/sy
 
 ```sh
 # using npm
-npm install --save yaml-unist-parser yaml
+npm install --save yaml-unist-parser
 
 # using yarn
-yarn add yaml-unist-parser yaml
+yarn add yaml-unist-parser
 ```
 
 ## Usage
