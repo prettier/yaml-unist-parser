@@ -40,7 +40,7 @@
     "replace": "1.1.1",
     "standard-version": "4.4.0",
     "ts-jest": "23.10.5",
-    "tslint": "5.20.0",
+    "tslint": "5.20.1",
     "tslint-config-prettier": "1.18.0",
     "tslint-plugin-prettier": "2.0.1",
     "typescript": "3.7.2"
