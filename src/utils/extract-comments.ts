@@ -1,5 +1,5 @@
-import * as YAML from "yaml";
 import { Context } from "../transform";
+import * as YAML from "../yaml";
 
 export function extractComments<T extends null | object>(
   nodes: Array<T | YAML.cst.Comment>,

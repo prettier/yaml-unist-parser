@@ -1,8 +1,8 @@
-import * as YAML from "yaml";
 import { createBlockValue } from "../factories/block-value";
 import { Context } from "../transform";
 import { BlockValue, Comment } from "../types";
 import { getPointText } from "../utils/get-point-text";
+import * as YAML from "../yaml";
 import { transformContent } from "./content";
 
 enum Chomping {

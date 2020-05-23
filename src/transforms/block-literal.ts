@@ -1,7 +1,7 @@
-import * as YAML from "yaml";
 import { createBlockLiteral } from "../factories/block-literal";
 import { Context } from "../transform";
 import { BlockLiteral } from "../types";
+import * as YAML from "../yaml";
 import { transformAstBlockValue } from "./block-value";
 
 export function transformBlockLiteral(

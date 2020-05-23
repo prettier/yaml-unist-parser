@@ -1,8 +1,8 @@
-import * as YAML from "yaml";
 import { createDocumentHead } from "../factories/document-head";
 import { Context } from "../transform";
 import { Comment, Directive } from "../types";
 import { getMatchIndex } from "../utils/get-match-index";
+import * as YAML from "../yaml";
 import { Range } from "./range";
 
 export function transformDocumentHead(

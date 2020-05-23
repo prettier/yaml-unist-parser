@@ -1,5 +1,4 @@
 import LinesAndColumns from "lines-and-columns";
-import * as YAML from "yaml";
 import { transformAlias } from "./transforms/alias";
 import { transformBlockFolded } from "./transforms/block-folded";
 import { transformBlockLiteral } from "./transforms/block-literal";
@@ -33,6 +32,7 @@ import {
   Sequence,
   YamlUnistNode,
 } from "./types";
+import * as YAML from "./yaml";
 
 export type YamlNode =
   | null

@@ -1,8 +1,8 @@
-import * as YAML from "yaml";
 import { createPlain } from "../factories/plain";
 import { Context } from "../transform";
 import { Plain } from "../types";
 import { findLastCharIndex } from "../utils/find-last-char-index";
+import * as YAML from "../yaml";
 
 export function transformPlain(
   plain: YAML.ast.PlainValue,

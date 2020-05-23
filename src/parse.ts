@@ -1,5 +1,4 @@
 import LinesAndColumns from "lines-and-columns";
-import * as YAML from "yaml";
 import { attachComments } from "./attach";
 import { createRoot } from "./factories/root";
 import { removeCstBlankLine } from "./preprocess";
@@ -12,6 +11,7 @@ import { Comment, Root } from "./types";
 import { addOrigRange } from "./utils/add-orig-range";
 import { removeFakeNodes } from "./utils/remove-fake-nodes";
 import { updatePositions } from "./utils/update-positions";
+import * as YAML from "./yaml";
 
 export function parse(text: string): Root {
   const cst = YAML.parseCST(text);

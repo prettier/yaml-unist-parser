@@ -1,8 +1,8 @@
-import * as YAML from "yaml";
 import { createDocument } from "../factories/document";
 import { createPosition } from "../factories/position";
 import { Context } from "../transform";
 import { Document } from "../types";
+import * as YAML from "../yaml";
 import { transformDocumentBody } from "./document-body";
 import { transformDocumentHead } from "./document-head";
 

@@ -1,16 +1,4 @@
-import * as YAML from "yaml";
-
-declare module "yaml" {
-  namespace cst {
-    interface Range {
-      origStart: number;
-      origEnd: number;
-    }
-    interface FlowChar {
-      origOffset: number;
-    }
-  }
-}
+import * as YAML from "../yaml";
 
 const FINISH = true;
 
