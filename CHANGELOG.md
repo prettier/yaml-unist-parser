@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.2.0"></a>
+# [1.2.0](https://github.com/ikatyang/yaml-unist-parser/compare/v1.1.1...v1.2.0) (2020-05-23)
+
+
+### Bug Fixes
+
+* **attach:** end comments in flow collections ([#270](https://github.com/ikatyang/yaml-unist-parser/issues/270)) ([1346a27](https://github.com/ikatyang/yaml-unist-parser/commit/1346a27))
+
+
+### Chores
+
+* **deps:** update dependency `yaml` to 1.10.0 ([#269](https://github.com/ikatyang/yaml-unist-parser/issues/269)) ([2cf5008](https://github.com/ikatyang/yaml-unist-parser/commit/2cf5008))
+
+
+
 <a name="1.1.1"></a>
 ## [1.1.1](https://github.com/ikatyang/yaml-unist-parser/compare/v1.1.0...v1.1.1) (2019-10-09)
 
