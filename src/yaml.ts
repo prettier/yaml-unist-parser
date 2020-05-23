@@ -4,7 +4,13 @@
 
 import { AST, Document as _Document } from "yaml";
 import { CST } from "yaml/parse-cst";
-import { Pair as _Pair } from "yaml/types";
+import {
+  Alias as _Alias,
+  Merge as _Merge,
+  Node as _Node,
+  Pair as _Pair,
+  Scalar as _Scalar,
+} from "yaml/types";
 
 export const Document = _Document;
 export { parseCST } from "yaml";
@@ -12,20 +18,20 @@ export { ParsedCST } from "yaml/parse-cst";
 export { YAMLError, YAMLSyntaxError, YAMLSemanticError } from "yaml/util";
 
 export namespace ast {
-  export type Alias = AST.Alias;
+  export type Alias = _Alias;
   export type BlockFolded = AST.BlockFolded;
   export type BlockLiteral = AST.BlockLiteral;
   export type Document = _Document;
   export type FlowMap = AST.FlowMap;
   export type FlowSeq = AST.FlowSeq;
   export type Map = AST.BlockMap;
-  export type Merge = AST.Merge;
-  export type Node = AST.Node;
+  export type Merge = _Merge;
+  export type Node = _Node;
   export type Pair = _Pair;
   export type PlainValue = AST.PlainValue;
   export type QuoteDouble = AST.QuoteDouble;
   export type QuoteSingle = AST.QuoteSingle;
-  export type Scalar = AST.ScalarNode;
+  export type Scalar = _Scalar;
   export type Seq = AST.BlockSeq;
 }
 

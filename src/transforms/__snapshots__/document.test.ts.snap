@@ -1195,8 +1195,8 @@ root (1:1 ~ 3:4)
 </root>
 `;
 
-exports[`Document is not valid YAML (bad indentation?) 1`] = `
-"Document is not valid YAML (bad indentation?)
+exports[`Document contains trailing content not separated by a ... or --- line 1`] = `
+"Document contains trailing content not separated by a ... or --- line
 1 | -·123¶
 2 | a:¶
   | ^^^
