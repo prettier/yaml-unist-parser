@@ -305,6 +305,20 @@ A:
 - Chicago Cubs
 - St Louis Cardinals
 `,
+  `a:
+  [
+    foo,
+    # end comment
+  ]`,
+  `a:
+  {
+    # leading comment
+    foo,
+  }`,
+  `a:
+  {
+    # end comment
+  }`,
 ];
 
 testCases(cases.map((x): TestCaseSingle => [x, selector]), {
