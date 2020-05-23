@@ -1517,6 +1517,46 @@ mappingValue (2:7 ~ 4:11)
 </mappingValue>
 `;
 
+exports[`"a:\\n  [\\n    foo,\\n    # end comment\\n  ]" 1`] = `
+comment (4:5 ~ 4:18)
+2 | ··[¶
+3 | ····foo,¶
+4 | ····#·end·comment¶
+  |     ^^^^^^^^^^^^^
+5 | ··]¶
+flowSequence (2:3 ~ 5:4)
+<flowSequence>
+  <endComment value=" end comment">
+</flowSequence>
+`;
+
+exports[`"a:\\n  {\\n    # end comment\\n  }" 1`] = `
+comment (3:5 ~ 3:18)
+1 | a:¶
+2 | ··{¶
+3 | ····#·end·comment¶
+  |     ^^^^^^^^^^^^^
+4 | ··}¶
+flowMapping (2:3 ~ 4:4)
+<flowMapping>
+  <endComment value=" end comment">
+</flowMapping>
+`;
+
+exports[`"a:\\n  {\\n    # leading comment\\n    foo,\\n  }" 1`] = `
+comment (3:5 ~ 3:22)
+1 | a:¶
+2 | ··{¶
+3 | ····#·leading·comment¶
+  |     ^^^^^^^^^^^^^^^^^
+4 | ····foo,¶
+5 | ··}¶
+flowMappingItem (4:5 ~ 4:8)
+<flowMappingItem>
+  <leadingComment value=" leading comment">
+</flowMappingItem>
+`;
+
 exports[`"a:\\n  123\\n  # impicitMappginValue\\n" 1`] = `
 comment (3:3 ~ 3:24)
 1 | a:¶

@@ -1,5 +1,6 @@
 import { Content, FlowMappingItem, FlowSequenceItem, Position } from "../types";
 import { createCommentAttachable } from "./comment-attachable";
+import { createEndCommentAttachable } from "./end-comment-attachable";
 import { createNode } from "./node";
 
 export function createFlowCollection<
@@ -8,6 +9,7 @@ export function createFlowCollection<
   return {
     ...createNode("flowCollection", position),
     ...createCommentAttachable(),
+    ...createEndCommentAttachable(),
     ...content,
     children,
   };
