@@ -1,7 +1,7 @@
-import * as YAML from "yaml";
 import { createBlockFolded } from "../factories/block-folded";
 import { Context } from "../transform";
 import { BlockFolded } from "../types";
+import * as YAML from "../yaml";
 import { transformAstBlockValue } from "./block-value";
 
 export function transformBlockFolded(

@@ -1,11 +1,17 @@
-import * as YAML from "yaml";
 import { createFlowMappingItem } from "../factories/flow-mapping-item";
 import { createMappingItem } from "../factories/mapping-item";
 import { createMappingKey } from "../factories/mapping-key";
 import { createMappingValue } from "../factories/mapping-value";
 import { createEmptyPosition, createPosition } from "../factories/position";
 import { Context } from "../transform";
-import { FlowMappingItem, MappingItem } from "../types";
+import {
+  Comment,
+  Directive,
+  Document,
+  FlowMappingItem,
+  MappingItem,
+} from "../types";
+import * as YAML from "../yaml";
 import { Range } from "./range";
 
 export function transformAstPair(
@@ -49,7 +55,10 @@ export function transformAstPair(
               ? keyContent.position.end.offset
               : additionalKeyRange!.origStart + 1,
           }),
-          keyContent,
+          keyContent as Exclude<
+            typeof keyContent,
+            Comment | Directive | Document
+          >,
         )
       : null;
 
@@ -65,7 +74,10 @@ export function transformAstPair(
               ? valueContent.position.end.offset
               : additionalValueRange!.origStart + 1,
           }),
-          valueContent,
+          valueContent as Exclude<
+            typeof valueContent,
+            Comment | Directive | Document
+          >,
         )
       : null;
 

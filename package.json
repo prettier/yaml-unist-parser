@@ -17,8 +17,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "fix-types": "replace '(orig(Start|End|Offset))\\?:' '$1:' node_modules/@types/yaml/index.d.ts",
-    "prepublish": "yarn run fix-types && yarn run build",
+    "prepublish": "patch-package && yarn run build",
     "lint": "tslint -p ./tsconfig.json",
     "test": "jest",
     "prebuild": "rm -rf ./lib",
@@ -28,16 +27,15 @@
   "dependencies": {
     "lines-and-columns": "^1.1.6",
     "tslib": "^1.10.0",
-    "yaml": "^1.7.1"
+    "yaml": "^1.10.0"
   },
   "devDependencies": {
     "@types/jest": "23.3.14",
     "@types/node": "6.14.9",
-    "@types/yaml": "1.2.0",
     "jest": "23.6.0",
     "jest-snapshot-serializer-raw": "1.1.0",
+    "patch-package": "6.2.2",
     "prettier": "1.18.2",
-    "replace": "1.1.5",
     "standard-version": "4.4.0",
     "ts-jest": "23.10.5",
     "tslint": "5.20.1",

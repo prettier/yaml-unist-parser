@@ -1,4 +1,3 @@
-import * as YAML from "yaml";
 import { createFlowMapping } from "../factories/flow-mapping";
 import { createFlowMappingItem } from "../factories/flow-mapping-item";
 import { Context } from "../transform";
@@ -7,6 +6,7 @@ import { extractComments } from "../utils/extract-comments";
 import { getFlowMapItemAdditionalRanges } from "../utils/get-flow-map-item-additional-ranges";
 import { getLast } from "../utils/get-last";
 import { groupCstFlowCollectionItems } from "../utils/group-cst-flow-collection-items";
+import * as YAML from "../yaml";
 import { transformAstPair } from "./pair";
 
 export function transformFlowMap(

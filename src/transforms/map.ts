@@ -1,4 +1,3 @@
-import * as YAML from "yaml";
 import { createMapping } from "../factories/mapping";
 import { createMappingItem } from "../factories/mapping-item";
 import { createPosition } from "../factories/position";
@@ -8,6 +7,7 @@ import { createSlicer } from "../utils/create-slicer";
 import { extractComments } from "../utils/extract-comments";
 import { extractPropComments } from "../utils/extract-prop-comments";
 import { getLast } from "../utils/get-last";
+import * as YAML from "../yaml";
 import { transformAstPair } from "./pair";
 
 export function transformMap(map: YAML.ast.Map, context: Context): Mapping {

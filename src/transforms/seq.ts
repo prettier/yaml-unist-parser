@@ -1,4 +1,3 @@
-import * as YAML from "yaml";
 import { createPosition } from "../factories/position";
 import { createSequence } from "../factories/sequence";
 import { createSequenceItem } from "../factories/sequence-item";
@@ -7,6 +6,7 @@ import { Sequence } from "../types";
 import { extractComments } from "../utils/extract-comments";
 import { extractPropComments } from "../utils/extract-prop-comments";
 import { getLast } from "../utils/get-last";
+import * as YAML from "../yaml";
 
 export function transformSeq(seq: YAML.ast.Seq, context: Context): Sequence {
   const cstItemsWithoutComments = extractComments(seq.cstNode!.items, context);
