@@ -215,7 +215,11 @@ export interface SequenceItem
   type: "sequenceItem";
 }
 
-export interface FlowCollection extends Parent, Content, CommentAttachable {
+export interface FlowCollection
+  extends Parent,
+    Content,
+    CommentAttachable,
+    EndCommentAttachable {
   children: Array<FlowMappingItem | FlowSequenceItem>;
 }
 

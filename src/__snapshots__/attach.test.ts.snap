@@ -1524,10 +1524,10 @@ comment (4:5 ~ 4:18)
 4 | ····#·end·comment¶
   |     ^^^^^^^^^^^^^
 5 | ··]¶
-documentBody (1:1 ~ 5:4)
-<documentBody>
+flowSequence (2:3 ~ 5:4)
+<flowSequence>
   <endComment value=" end comment">
-</documentBody>
+</flowSequence>
 `;
 
 exports[`"a:\\n  {\\n    # end comment\\n  }" 1`] = `
@@ -1537,10 +1537,10 @@ comment (3:5 ~ 3:18)
 3 | ····#·end·comment¶
   |     ^^^^^^^^^^^^^
 4 | ··}¶
-documentBody (1:1 ~ 4:4)
-<documentBody>
+flowMapping (2:3 ~ 4:4)
+<flowMapping>
   <endComment value=" end comment">
-</documentBody>
+</flowMapping>
 `;
 
 exports[`"a:\\n  {\\n    # leading comment\\n    foo,\\n  }" 1`] = `

@@ -197,6 +197,21 @@ function shouldOwnEndComment(
   node: YamlUnistNode,
   comment: Comment,
 ): node is Extract<YamlUnistNode, EndCommentAttachable> {
+  if (
+    node.position.start.offset < comment.position.start.offset &&
+    node.position.end.offset > comment.position.end.offset
+  ) {
+    switch (node.type) {
+      case "flowMapping":
+      case "flowSequence":
+        return (
+          node.children.length === 0 ||
+          comment.position.start.line >
+            node.children[node.children.length - 1].position.end.line
+        );
+    }
+  }
+
   if (comment.position.end.offset < node.position.end.offset) {
     return false;
   }
