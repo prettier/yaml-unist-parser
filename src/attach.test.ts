@@ -319,6 +319,8 @@ A:
   {
     # end comment
   }`,
+  `# --`,
+  `# ---`,
 ];
 
 testCases(cases.map((x): TestCaseSingle => [x, selector]), {
