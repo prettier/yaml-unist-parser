@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.2.1"></a>
+## [1.2.1](https://github.com/ikatyang/yaml-unist-parser/compare/v1.2.0...v1.2.1) (2020-05-24)
+
+
+### Bug Fixes
+
+* no false positive for document head end marker position ([#272](https://github.com/ikatyang/yaml-unist-parser/issues/272)) ([4da66cb](https://github.com/ikatyang/yaml-unist-parser/commit/4da66cb))
+
+
+
 <a name="1.2.0"></a>
 # [1.2.0](https://github.com/ikatyang/yaml-unist-parser/compare/v1.1.1...v1.2.0) (2020-05-23)
 
