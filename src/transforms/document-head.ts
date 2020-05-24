@@ -72,10 +72,14 @@ function getPosition(
   directives: Directive[],
   context: Context,
 ) {
-  const endMarkerIndex = getMatchIndex(
+  let endMarkerIndex = getMatchIndex(
     context.text.slice(0, document.valueRange!.origStart),
     /---\s*$/,
   );
+  // end marker should start with the first character on the line
+  if (endMarkerIndex > 0 && !/[\r\n]/.test(context.text[endMarkerIndex - 1])) {
+    endMarkerIndex = -1;
+  }
 
   const range: Range =
     endMarkerIndex === -1
