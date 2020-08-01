@@ -20,7 +20,7 @@ export function parse(text: string): Root {
 
   const documents = cst.map(cstDocument =>
     new YAML.Document({
-      merge: true,
+      merge: false,
       keepCstNodes: true,
     }).parse(cstDocument),
   );
@@ -38,12 +38,16 @@ export function parse(text: string): Root {
     transformContent: node => transformContent(node, context),
   };
 
-  const errorDocument = documents.find(
-    document => document.errors.length !== 0,
-  );
-
-  if (errorDocument) {
-    throw transformError(errorDocument.errors[0], context);
+  for (const document of documents) {
+    for (const error of document.errors) {
+      if (
+        error instanceof YAML.YAMLSemanticError &&
+        error.message === 'Map keys must be unique; "<<" is repeated'
+      ) {
+        continue;
+      }
+      throw transformError(error, context);
+    }
   }
 
   documents.forEach(document => removeCstBlankLine(document.cstNode!));
