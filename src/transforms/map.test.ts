@@ -36,6 +36,7 @@ testCases([
   ],
   ["a:\n  b:\n   #b\n #a\n", getFirstContent()],
   ["a: !!str", getFirstContent()],
+  ["<<:\n  a: b", getFirstContent()],
 ]);
 
 function createTestCases(text: string, hasSecondItem = false): TestCase[] {

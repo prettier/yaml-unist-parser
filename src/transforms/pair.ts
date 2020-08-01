@@ -36,13 +36,7 @@ export function transformAstPair(
   additionalValueRange: null | Range,
 ): MappingItem | FlowMappingItem {
   const keyContent = context.transformNode(pair.key);
-  const valueContent = context.transformNode(
-    pair.type === "MERGE_PAIR"
-      ? !pair.value.type
-        ? (pair.value.items[0] as YAML.ast.Alias)
-        : (pair.value as YAML.ast.FlowSeq)
-      : pair.value,
-  );
+  const valueContent = context.transformNode(pair.value);
 
   const mappingKey =
     keyContent || additionalKeyRange

@@ -139,6 +139,33 @@ mappingValue (1:1 ~ 1:6)
 </mappingValue>
 `;
 
+exports[`"<<:\\n  a: b" 1`] = `
+mapping (1:1 ~ 2:7)
+1 | <<:¶
+  | ^^^^
+2 | ··a:·b¶
+  | ^^^^^^
+<mapping>
+  <mappingItem>
+    <mappingKey>
+      <plain value="<<" />
+    </mappingKey>
+    <mappingValue>
+      <mapping>
+        <mappingItem>
+          <mappingKey>
+            <plain value="a" />
+          </mappingKey>
+          <mappingValue>
+            <plain value="b" />
+          </mappingValue>
+        </mappingItem>
+      </mapping>
+    </mappingValue>
+  </mappingItem>
+</mapping>
+`;
+
 exports[`"? 123" 1`] = `
 mapping (1:1 ~ 1:6)
 1 | ?·123¶
