@@ -88,7 +88,7 @@ export function transformNode(
   node: YamlNode,
   context: Context,
 ): YamlUnistNode | null {
-  if (node === null) {
+  if (node === null || (node.type === undefined && node.value === null)) {
     return null;
   }
 

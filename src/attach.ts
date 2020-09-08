@@ -3,6 +3,7 @@ import {
   Document,
   EndCommentAttachable,
   LeadingCommentAttachable,
+  MappingKey,
   Root,
   TrailingCommentAttachable,
   YamlUnistNode,
@@ -162,6 +163,17 @@ function attachComment(
       currentNode = trailingNode;
     }
 
+    if (currentNode.type === "sequence" || currentNode.type === "mapping") {
+      currentNode = currentNode.children[0];
+    }
+
+    if (currentNode.type === "mappingItem") {
+      const [mappingKey, mappingValue] = currentNode.children;
+      currentNode = isExplicitMappingKey(mappingKey)
+        ? mappingKey
+        : mappingValue;
+    }
+
     while (true) {
       if (shouldOwnEndComment(currentNode, comment)) {
         defineParents(comment, currentNode);
@@ -226,13 +238,18 @@ function shouldOwnEndComment(
         (node.children.length === 0 ||
           (node.children.length === 1 &&
             node.children[0]!.type !== "blockFolded" &&
-            node.children[0]!.type !== "blockLiteral" &&
-            (node.type === "mappingValue" ||
-              // explicit key
-              node.position.start.offset !==
-                node.children[0]!.position.start.offset)))
+            node.children[0]!.type !== "blockLiteral")) &&
+        (node.type === "mappingValue" || isExplicitMappingKey(node))
       );
     default:
       return false;
   }
+}
+
+function isExplicitMappingKey(node: MappingKey) {
+  return (
+    node.position.start !== node.position.end &&
+    (node.children.length === 0 ||
+      node.position.start.offset !== node.children[0]!.position.start.offset)
+  );
 }
