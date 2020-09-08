@@ -321,6 +321,30 @@ A:
   }`,
   `# --`,
   `# ---`,
+  `- a
+  # comment 1
+- b
+  # comment 2`,
+  `- a
+  # comment 1
+- bb
+  # comment 2`,
+  `a:
+  # comment 1
+b:
+  # comment 2`,
+  `a:
+  # comment 1
+bb:
+  # comment 2`,
+  `?
+  # comment 1
+b:
+  # comment 2`,
+  `?
+  # comment 1
+bb:
+  # comment 2`,
 ];
 
 testCases(cases.map((x): TestCaseSingle => [x, selector]), {
