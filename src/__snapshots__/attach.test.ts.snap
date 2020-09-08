@@ -44,6 +44,56 @@ mappingValue (2:1 ~ 2:2)
 </mappingValue>
 `;
 
+exports[`"?\\n  # comment 1\\nb:\\n  # comment 2" 1`] = `
+comment (2:3 ~ 2:14)
+1 | ?¶
+2 | ··#·comment·1¶
+  |   ^^^^^^^^^^^
+3 | b:¶
+4 | ··#·comment·2¶
+mappingKey (1:1 ~ 2:14)
+<mappingKey>
+  <endComment value=" comment 1">
+</mappingKey>
+`;
+
+exports[`"?\\n  # comment 1\\nb:\\n  # comment 2" 2`] = `
+comment (4:3 ~ 4:14)
+2 | ··#·comment·1¶
+3 | b:¶
+4 | ··#·comment·2¶
+  |   ^^^^^^^^^^^
+mappingValue (3:2 ~ 4:14)
+<mappingValue>
+  <endComment value=" comment 2">
+</mappingValue>
+`;
+
+exports[`"?\\n  # comment 1\\nbb:\\n  # comment 2" 1`] = `
+comment (2:3 ~ 2:14)
+1 | ?¶
+2 | ··#·comment·1¶
+  |   ^^^^^^^^^^^
+3 | bb:¶
+4 | ··#·comment·2¶
+mappingKey (1:1 ~ 2:14)
+<mappingKey>
+  <endComment value=" comment 1">
+</mappingKey>
+`;
+
+exports[`"?\\n  # comment 1\\nbb:\\n  # comment 2" 2`] = `
+comment (4:3 ~ 4:14)
+2 | ··#·comment·1¶
+3 | bb:¶
+4 | ··#·comment·2¶
+  |   ^^^^^^^^^^^
+mappingValue (3:3 ~ 4:14)
+<mappingValue>
+  <endComment value=" comment 2">
+</mappingValue>
+`;
+
 exports[`"\\n# 123\\n%YAML 1.2\\n# 456\\n# 789\\n---\\n" 1`] = `
 comment (2:1 ~ 2:6)
 1 | ¶
@@ -1534,6 +1584,106 @@ comment (4:3 ~ 4:11)
 mappingValue (2:7 ~ 4:11)
 <mappingValue>
   <endComment value=" two: 2">
+</mappingValue>
+`;
+
+exports[`"- a\\n  # comment 1\\n- b\\n  # comment 2" 1`] = `
+comment (2:3 ~ 2:14)
+1 | -·a¶
+2 | ··#·comment·1¶
+  |   ^^^^^^^^^^^
+3 | -·b¶
+4 | ··#·comment·2¶
+sequenceItem (1:1 ~ 2:14)
+<sequenceItem>
+  <endComment value=" comment 1">
+</sequenceItem>
+`;
+
+exports[`"- a\\n  # comment 1\\n- b\\n  # comment 2" 2`] = `
+comment (4:3 ~ 4:14)
+2 | ··#·comment·1¶
+3 | -·b¶
+4 | ··#·comment·2¶
+  |   ^^^^^^^^^^^
+sequenceItem (3:1 ~ 4:14)
+<sequenceItem>
+  <endComment value=" comment 2">
+</sequenceItem>
+`;
+
+exports[`"- a\\n  # comment 1\\n- bb\\n  # comment 2" 1`] = `
+comment (2:3 ~ 2:14)
+1 | -·a¶
+2 | ··#·comment·1¶
+  |   ^^^^^^^^^^^
+3 | -·bb¶
+4 | ··#·comment·2¶
+sequenceItem (1:1 ~ 2:14)
+<sequenceItem>
+  <endComment value=" comment 1">
+</sequenceItem>
+`;
+
+exports[`"- a\\n  # comment 1\\n- bb\\n  # comment 2" 2`] = `
+comment (4:3 ~ 4:14)
+2 | ··#·comment·1¶
+3 | -·bb¶
+4 | ··#·comment·2¶
+  |   ^^^^^^^^^^^
+sequenceItem (3:1 ~ 4:14)
+<sequenceItem>
+  <endComment value=" comment 2">
+</sequenceItem>
+`;
+
+exports[`"a:\\n  # comment 1\\nb:\\n  # comment 2" 1`] = `
+comment (2:3 ~ 2:14)
+1 | a:¶
+2 | ··#·comment·1¶
+  |   ^^^^^^^^^^^
+3 | b:¶
+4 | ··#·comment·2¶
+mappingValue (1:2 ~ 2:14)
+<mappingValue>
+  <endComment value=" comment 1">
+</mappingValue>
+`;
+
+exports[`"a:\\n  # comment 1\\nb:\\n  # comment 2" 2`] = `
+comment (4:3 ~ 4:14)
+2 | ··#·comment·1¶
+3 | b:¶
+4 | ··#·comment·2¶
+  |   ^^^^^^^^^^^
+mappingValue (3:2 ~ 4:14)
+<mappingValue>
+  <endComment value=" comment 2">
+</mappingValue>
+`;
+
+exports[`"a:\\n  # comment 1\\nbb:\\n  # comment 2" 1`] = `
+comment (2:3 ~ 2:14)
+1 | a:¶
+2 | ··#·comment·1¶
+  |   ^^^^^^^^^^^
+3 | bb:¶
+4 | ··#·comment·2¶
+mappingValue (1:2 ~ 2:14)
+<mappingValue>
+  <endComment value=" comment 1">
+</mappingValue>
+`;
+
+exports[`"a:\\n  # comment 1\\nbb:\\n  # comment 2" 2`] = `
+comment (4:3 ~ 4:14)
+2 | ··#·comment·1¶
+3 | bb:¶
+4 | ··#·comment·2¶
+  |   ^^^^^^^^^^^
+mappingValue (3:3 ~ 4:14)
+<mappingValue>
+  <endComment value=" comment 2">
 </mappingValue>
 `;
 
