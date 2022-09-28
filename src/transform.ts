@@ -1,4 +1,4 @@
-import LinesAndColumns from "lines-and-columns";
+import { LinesAndColumns } from "lines-and-columns";
 import { transformAlias } from "./transforms/alias";
 import { transformBlockFolded } from "./transforms/block-folded";
 import { transformBlockLiteral } from "./transforms/block-literal";
