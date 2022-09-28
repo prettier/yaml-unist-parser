@@ -23,10 +23,8 @@ export function transformFlowMap(
   const flowMappingItems = flowMap.items.map((pair, index) => {
     const cstNodes = groupedCstItems[index];
 
-    const {
-      additionalKeyRange,
-      additionalValueRange,
-    } = getFlowMapItemAdditionalRanges(cstNodes);
+    const { additionalKeyRange, additionalValueRange } =
+      getFlowMapItemAdditionalRanges(cstNodes);
 
     return transformAstPair(
       pair,

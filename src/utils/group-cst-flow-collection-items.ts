@@ -12,7 +12,7 @@ type CstFlowSeqItemWithoutComment = Exclude<
 >;
 
 export function groupCstFlowCollectionItems<
-  T extends CstFlowMapItemWithoutComment[] | CstFlowSeqItemWithoutComment[]
+  T extends CstFlowMapItemWithoutComment[] | CstFlowSeqItemWithoutComment[],
 >(cstItems: T): T[];
 export function groupCstFlowCollectionItems(
   cstItems: CstFlowMapItemWithoutComment[] | CstFlowSeqItemWithoutComment[],

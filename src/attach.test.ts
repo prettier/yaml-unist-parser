@@ -347,9 +347,12 @@ bb:
   # comment 2`,
 ];
 
-testCases(cases.map((x): TestCaseSingle => [x, selector]), {
-  maxChildrenLevel: 0,
-  maxCommentsLevel: 1,
-  codeFrameMaxHeight: 2,
-  selectNodeToStringify: node => (node as Comment)._parent!,
-});
+testCases(
+  cases.map((x): TestCaseSingle => [x, selector]),
+  {
+    maxChildrenLevel: 0,
+    maxCommentsLevel: 1,
+    codeFrameMaxHeight: 2,
+    selectNodeToStringify: node => (node as Comment)._parent!,
+  },
+);

@@ -7,7 +7,7 @@ export function updatePositions(node: YamlUnistNode): void {
     return;
   }
 
-  const children = node.children as Array<(typeof node.children)[number]>;
+  const children = node.children as Array<typeof node.children[number]>;
   children.forEach(updatePositions);
 
   if (node.type === "document") {

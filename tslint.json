@@ -2,7 +2,7 @@
   "rulesDirectory": ["tslint-plugin-prettier"],
   "extends": ["tslint:recommended", "tslint-config-prettier"],
   "rules": {
-    "prettier": [true, { "trailingComma": "all" }],
+    "prettier": true,
     "object-literal-sort-keys": false,
     "interface-name": false,
     "variable-name": [
@@ -11,6 +11,7 @@
       "ban-keywords",
       "allow-leading-underscore"
     ],
-    "no-duplicate-switch-case": true
+    "no-duplicate-switch-case": true,
+    "array-type": false
   }
 }

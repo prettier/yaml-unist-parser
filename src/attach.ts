@@ -108,7 +108,7 @@ function initNodeTable(nodeTable: NodeTable, node: YamlUnistNode): void {
   }
 
   if ("children" in node) {
-    (node.children as Array<(typeof node.children)[number]>).forEach(child => {
+    (node.children as Array<typeof node.children[number]>).forEach(child => {
       initNodeTable(nodeTable, child);
     });
   }
