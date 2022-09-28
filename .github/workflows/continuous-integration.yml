@@ -22,9 +22,6 @@ jobs:
           - "16"
           - "14"
           - "12"
-          - "10"
-          - "8"
-          - "6"
     name: Node.js ${{ matrix.node_version }} on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     env:
