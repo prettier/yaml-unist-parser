@@ -24,10 +24,9 @@ export function transformFlowSeq(
 
   const flowSequenceItems = flowSeq.items.map((item, index) => {
     if (item.type !== "PAIR") {
-      const node = context.transformNode(item as Exclude<
-        typeof item,
-        YAML.ast.Pair
-      >);
+      const node = context.transformNode(
+        item as Exclude<typeof item, YAML.ast.Pair>,
+      );
       return createFlowSequenceItem(
         createPosition(node.position.start, node.position.end),
         node,
@@ -35,10 +34,8 @@ export function transformFlowSeq(
     } else {
       const cstNodes = groupedCstItems[index];
 
-      const {
-        additionalKeyRange,
-        additionalValueRange,
-      } = getFlowMapItemAdditionalRanges(cstNodes);
+      const { additionalKeyRange, additionalValueRange } =
+        getFlowMapItemAdditionalRanges(cstNodes);
 
       return transformAstPair(
         item,

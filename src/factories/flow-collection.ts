@@ -4,7 +4,7 @@ import { createEndCommentAttachable } from "./end-comment-attachable";
 import { createNode } from "./node";
 
 export function createFlowCollection<
-  T extends FlowMappingItem | FlowSequenceItem
+  T extends FlowMappingItem | FlowSequenceItem,
 >(position: Position, content: Content, children: T[]) {
   return {
     ...createNode("flowCollection", position),

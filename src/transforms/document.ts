@@ -10,10 +10,8 @@ export function transformDocument(
   document: YAML.ast.Document,
   context: Context,
 ): Document {
-  const {
-    createDocumentHeadWithTrailingComment,
-    documentHeadEndMarkerPoint,
-  } = transformDocumentHead(document, context);
+  const { createDocumentHeadWithTrailingComment, documentHeadEndMarkerPoint } =
+    transformDocumentHead(document, context);
 
   const {
     documentBody,

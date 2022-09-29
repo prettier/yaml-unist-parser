@@ -1,4 +1,4 @@
-import LinesAndColumns from "lines-and-columns";
+import { LinesAndColumns } from "lines-and-columns";
 import { attachComments } from "./attach";
 import { createRoot } from "./factories/root";
 import { removeCstBlankLine } from "./preprocess";
