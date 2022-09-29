@@ -645,7 +645,7 @@
   dependencies:
     "@types/istanbul-lib-report" "*"
 
-"@types/jest@^29.1.0":
+"@types/jest@29.1.0":
   version "29.1.0"
   resolved "https://registry.yarnpkg.com/@types/jest/-/jest-29.1.0.tgz#9cfbe1b0d4408f9732aaf37447460f10f2c71ce6"
   integrity sha512-CqlKkMNaUhFSRvqVKniNhbcy9fc/Rj2cmFD5t8Jtu4HlHzSit27h7XKfP5kkxBeROQ8WAvQQmy93FIz9or8jKg==
@@ -2150,7 +2150,7 @@ jest-worker@^29.1.0:
     merge-stream "^2.0.0"
     supports-color "^8.0.0"
 
-jest@^29.1.1:
+jest@29.1.1:
   version "29.1.1"
   resolved "https://registry.yarnpkg.com/jest/-/jest-29.1.1.tgz#22d9d828f01335ec17225bcb267fe669319983be"
   integrity sha512-Doe41PZ8MvGLtOZIW2RIVu94wa7jm/N775BBloVXk/G/vV6VYnDCOxBwrqekEgrd3Pn/bv8b5UdB2x0pAoQpwQ==
