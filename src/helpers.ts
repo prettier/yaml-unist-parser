@@ -322,7 +322,7 @@ export function testSyntaxError(text: string, message?: string) {
   try {
     parse(text);
     throw new Error("SyntaxError not found");
-  } catch (error) {
+  } catch (error: any) {
     if (!isYAMLError(error)) {
       throw error;
     }
