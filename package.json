@@ -22,8 +22,7 @@
     "test": "jest",
     "prebuild": "rm -rf ./lib",
     "build": "tsc -p ./tsconfig.build.json",
-    "release": "standard-version",
-    "typecheck": "tsc --noEmit"
+    "release": "standard-version"
   },
   "dependencies": {
     "lines-and-columns": "^2.0.3",
