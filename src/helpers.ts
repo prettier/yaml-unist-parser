@@ -219,7 +219,7 @@ function stringifyNode(
           .concat("trailingComment" in node ? "trailingComment" : [])
           .concat("endComments" in node ? "endComments" : [])
           .map(key =>
-            // @ts-ignore
+            // @ts-expect-error why?
             ([].concat(node[key]).filter(Boolean) as Comment[]).map(
               comment =>
                 `<${key.replace(/s$/, "")} value=${JSON.stringify(
