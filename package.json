@@ -18,8 +18,7 @@
   "license": "MIT",
   "scripts": {
     "prepublish": "patch-package && yarn run build",
-    "lint": "tslint -p ./tsconfig.json",
-    "eslint": "eslint --ext=.ts .",
+    "lint": "eslint --ext=.ts .",
     "test": "jest",
     "prebuild": "rm -rf ./lib",
     "build": "tsc -p ./tsconfig.build.json",
@@ -43,9 +42,6 @@
     "prettier": "2.7.1",
     "standard-version": "9.5.0",
     "ts-jest": "29.0.2",
-    "tslint": "6.1.3",
-    "tslint-config-prettier": "1.18.0",
-    "tslint-plugin-prettier": "2.3.0",
     "typescript": "4.8.4"
   },
   "engines": {
