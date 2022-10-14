@@ -3,6 +3,7 @@
 // tslint:disable:variable-name
 
 import YAML from "yaml";
+// eslint-disable-next-line import/extensions
 import { CST } from "yaml/parse-cst";
 import {
   Alias as _Alias,
@@ -10,10 +11,13 @@ import {
   Node as _Node,
   Pair as _Pair,
   Scalar as _Scalar,
+  // eslint-disable-next-line import/extensions
 } from "yaml/types";
 
 export const { Document, parseCST } = YAML;
+// eslint-disable-next-line import/extensions
 export { ParsedCST } from "yaml/parse-cst";
+// eslint-disable-next-line import/extensions
 export { YAMLError, YAMLSyntaxError, YAMLSemanticError } from "yaml/util";
 
 export namespace ast {
