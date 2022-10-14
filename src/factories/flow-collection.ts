@@ -1,4 +1,9 @@
-import { Content, FlowMappingItem, FlowSequenceItem, Position } from "../types.js";
+import {
+  Content,
+  FlowMappingItem,
+  FlowSequenceItem,
+  Position,
+} from "../types.js";
 import { createCommentAttachable } from "./comment-attachable.js";
 import { createEndCommentAttachable } from "./end-comment-attachable.js";
 import { createNode } from "./node.js";
