@@ -3,18 +3,18 @@
 // tslint:disable:variable-name
 
 import YAML from "yaml";
-import { CST } from "yaml/parse-cst.js";
+import { CST } from "yaml/parse-cst";
 import {
   Alias as _Alias,
   Merge as _Merge,
   Node as _Node,
   Pair as _Pair,
   Scalar as _Scalar,
-} from "yaml/types.js";
+} from "yaml/types";
 
 export const { Document, parseCST } = YAML;
-export { ParsedCST } from "yaml/parse-cst.js";
-export { YAMLError, YAMLSyntaxError, YAMLSemanticError } from "yaml/util.js";
+export { ParsedCST } from "yaml/parse-cst";
+export { YAMLError, YAMLSyntaxError, YAMLSemanticError } from "yaml/util";
 
 export namespace ast {
   export type Alias = _Alias;
