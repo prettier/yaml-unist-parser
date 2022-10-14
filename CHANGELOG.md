@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.1](https://github.com/prettier/yaml-unist-parser/compare/v2.0.0...v2.0.1) (2022-10-14)
+
+
+### Bug Fixes
+
+* fix import/export path ([#289](https://github.com/prettier/yaml-unist-parser/issues/289)) ([5c41875](https://github.com/prettier/yaml-unist-parser/commit/5c4187537fbb96ed204b05798fb2fcf964c1cd75))
+
 ## [2.0.0](https://github.com/prettier/yaml-unist-parser/compare/v1.1.1...v2.0.0) (2022-10-14)
 
 
