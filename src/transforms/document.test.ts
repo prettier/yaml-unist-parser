@@ -1,5 +1,5 @@
-import { testCases, testSyntaxError } from "../helpers";
-import { Root } from "../types";
+import { testCases, testSyntaxError } from "../helpers.js";
+import { Root } from "../types.js";
 
 const selectors = [
   getDocument(0),

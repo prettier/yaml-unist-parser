@@ -1,8 +1,8 @@
-import { createPlain } from "../factories/plain";
-import { Context } from "../transform";
-import { Plain } from "../types";
-import { findLastCharIndex } from "../utils/find-last-char-index";
-import * as YAML from "../yaml";
+import { createPlain } from "../factories/plain.js";
+import { Context } from "../transform.js";
+import { Plain } from "../types.js";
+import { findLastCharIndex } from "../utils/find-last-char-index.js";
+import * as YAML from "../yaml.js";
 
 export function transformPlain(
   plain: YAML.ast.PlainValue,

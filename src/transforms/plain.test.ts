@@ -1,5 +1,5 @@
-import { getFirstContent, testCases } from "../helpers";
-import { Mapping, MappingValue, Plain } from "../types";
+import { getFirstContent, testCases } from "../helpers.js";
+import { Mapping, MappingValue, Plain } from "../types.js";
 
 testCases([
   ["   123   ", getFirstContent()],

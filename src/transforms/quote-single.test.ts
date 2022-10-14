@@ -1,5 +1,5 @@
-import { getFirstContent, testCases } from "../helpers";
-import { QuoteSingle } from "../types";
+import { getFirstContent, testCases } from "../helpers.js";
+import { QuoteSingle } from "../types.js";
 
 testCases([["   '123 '  ", getFirstContent()]]);
 testCases([

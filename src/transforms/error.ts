@@ -1,7 +1,7 @@
-import { createError } from "../factories/error";
-import { Context } from "../transform";
-import { YAMLSyntaxError } from "../types";
-import * as YAML from "../yaml";
+import { createError } from "../factories/error.js";
+import { Context } from "../transform.js";
+import { YAMLSyntaxError } from "../types.js";
+import * as YAML from "../yaml.js";
 
 export function transformError(
   error: Extract<YAML.YAMLError, SyntaxError>,

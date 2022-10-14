@@ -1,9 +1,9 @@
-import { createDocumentHead } from "../factories/document-head";
-import { Context } from "../transform";
-import { Comment, Directive } from "../types";
-import { getMatchIndex } from "../utils/get-match-index";
-import * as YAML from "../yaml";
-import { Range } from "./range";
+import { createDocumentHead } from "../factories/document-head.js";
+import { Context } from "../transform.js";
+import { Comment, Directive } from "../types.js";
+import { getMatchIndex } from "../utils/get-match-index.js";
+import * as YAML from "../yaml.js";
+import { Range } from "./range.js";
 
 export function transformDocumentHead(
   document: YAML.ast.Document,

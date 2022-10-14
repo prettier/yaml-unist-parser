@@ -1,4 +1,4 @@
-import { Comment, TrailingCommentAttachable } from "../types";
+import { Comment, TrailingCommentAttachable } from "../types.js";
 
 export function createTrailingCommentAttachable(
   trailingComment: null | Comment = null,

@@ -1,14 +1,14 @@
-import { createMapping } from "../factories/mapping";
-import { createMappingItem } from "../factories/mapping-item";
-import { createPosition } from "../factories/position";
-import { Context } from "../transform";
-import { Mapping } from "../types";
-import { createSlicer } from "../utils/create-slicer";
-import { extractComments } from "../utils/extract-comments";
-import { extractPropComments } from "../utils/extract-prop-comments";
-import { getLast } from "../utils/get-last";
-import * as YAML from "../yaml";
-import { transformAstPair } from "./pair";
+import { createMapping } from "../factories/mapping.js";
+import { createMappingItem } from "../factories/mapping-item.js";
+import { createPosition } from "../factories/position.js";
+import { Context } from "../transform.js";
+import { Mapping } from "../types.js";
+import { createSlicer } from "../utils/create-slicer.js";
+import { extractComments } from "../utils/extract-comments.js";
+import { extractPropComments } from "../utils/extract-prop-comments.js";
+import { getLast } from "../utils/get-last.js";
+import * as YAML from "../yaml.js";
+import { transformAstPair } from "./pair.js";
 
 export function transformMap(map: YAML.ast.Map, context: Context): Mapping {
   const cstNode = map.cstNode!;

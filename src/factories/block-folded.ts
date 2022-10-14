@@ -1,4 +1,4 @@
-import { BlockFolded, BlockValue } from "../types";
+import { BlockFolded, BlockValue } from "../types.js";
 
 export function createBlockFolded(blockValue: BlockValue): BlockFolded {
   return {

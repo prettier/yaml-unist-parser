@@ -1,9 +1,9 @@
-import { createBlockValue } from "../factories/block-value";
-import { Context } from "../transform";
-import { BlockValue, Comment } from "../types";
-import { getPointText } from "../utils/get-point-text";
-import * as YAML from "../yaml";
-import { transformContent } from "./content";
+import { createBlockValue } from "../factories/block-value.js";
+import { Context } from "../transform.js";
+import { BlockValue, Comment } from "../types.js";
+import { getPointText } from "../utils/get-point-text.js";
+import * as YAML from "../yaml.js";
+import { transformContent } from "./content.js";
 
 enum Chomping {
   CLIP = "clip",

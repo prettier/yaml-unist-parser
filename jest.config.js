@@ -1,11 +1,23 @@
-module.exports = {
+export default {
   testEnvironment: "node",
   moduleFileExtensions: ["ts", "js", "json"],
   testMatch: ["**/tests/**/*.ts", "**/*.test.ts"],
-  transform: { "\\.ts$": "ts-jest" },
+  extensionsToTreatAsEsm: ['.ts'],
+  transform: {
+    '\\.ts$': [
+      'ts-jest',
+      {
+        diagnostics: true,
+        useESM: true,
+      },
+    ],
+  },
+  moduleNameMapper: {
+    '^(\\.{1,2}/.*)\\.js$': '$1',
+  },
   snapshotSerializers: ['jest-snapshot-serializer-raw'],
   coverageReporters: ["lcov", "text-summary"],
-  collectCoverage: !!process.env.CI,
+  collectCoverage: true,
   collectCoverageFrom: ["src/**/*.ts"],
   coveragePathIgnorePatterns: [
     "src/index.ts",
@@ -15,8 +27,7 @@ module.exports = {
   coverageThreshold: {
     global: {
       branches: 100,
-      // TODO: 100
-      functions: 98,
+      functions: 100,
       lines: 100,
       statements: 100
     }

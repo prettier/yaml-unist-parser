@@ -1,10 +1,10 @@
-import { createDocumentBody } from "../factories/document-body";
-import { Context } from "../transform";
-import { Comment, ContentNode, Point } from "../types";
-import { getLast } from "../utils/get-last";
-import { getMatchIndex } from "../utils/get-match-index";
-import { getPointText } from "../utils/get-point-text";
-import * as YAML from "../yaml";
+import { createDocumentBody } from "../factories/document-body.js";
+import { Context } from "../transform.js";
+import { Comment, ContentNode, Point } from "../types.js";
+import { getLast } from "../utils/get-last.js";
+import { getMatchIndex } from "../utils/get-match-index.js";
+import { getPointText } from "../utils/get-point-text.js";
+import * as YAML from "../yaml.js";
 
 export function transformDocumentBody(
   document: YAML.ast.Document,

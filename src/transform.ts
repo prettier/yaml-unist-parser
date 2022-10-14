@@ -1,18 +1,18 @@
 import { LinesAndColumns } from "lines-and-columns";
-import { transformAlias } from "./transforms/alias";
-import { transformBlockFolded } from "./transforms/block-folded";
-import { transformBlockLiteral } from "./transforms/block-literal";
-import { transformComment } from "./transforms/comment";
-import { transformDirective } from "./transforms/directive";
-import { transformDocument } from "./transforms/document";
-import { transformFlowMap } from "./transforms/flow-map";
-import { transformFlowSeq } from "./transforms/flow-seq";
-import { transformMap } from "./transforms/map";
-import { transformPlain } from "./transforms/plain";
-import { transformQuoteDouble } from "./transforms/quote-double";
-import { transformQuoteSingle } from "./transforms/quote-single";
-import { Range } from "./transforms/range";
-import { transformSeq } from "./transforms/seq";
+import { transformAlias } from "./transforms/alias.js";
+import { transformBlockFolded } from "./transforms/block-folded.js";
+import { transformBlockLiteral } from "./transforms/block-literal.js";
+import { transformComment } from "./transforms/comment.js";
+import { transformDirective } from "./transforms/directive.js";
+import { transformDocument } from "./transforms/document.js";
+import { transformFlowMap } from "./transforms/flow-map.js";
+import { transformFlowSeq } from "./transforms/flow-seq.js";
+import { transformMap } from "./transforms/map.js";
+import { transformPlain } from "./transforms/plain.js";
+import { transformQuoteDouble } from "./transforms/quote-double.js";
+import { transformQuoteSingle } from "./transforms/quote-single.js";
+import { Range } from "./transforms/range.js";
+import { transformSeq } from "./transforms/seq.js";
 import {
   Alias,
   BlockFolded,
@@ -31,8 +31,8 @@ import {
   QuoteSingle,
   Sequence,
   YamlUnistNode,
-} from "./types";
-import * as YAML from "./yaml";
+} from "./types.js";
+import * as YAML from "./yaml.js";
 
 export type YamlNode =
   | null

@@ -1,8 +1,8 @@
-import { createQuoteDouble } from "../factories/quote-double";
-import { Context } from "../transform";
-import { QuoteDouble } from "../types";
-import * as YAML from "../yaml";
-import { transformAstQuoteValue } from "./quote-value";
+import { createQuoteDouble } from "../factories/quote-double.js";
+import { Context } from "../transform.js";
+import { QuoteDouble } from "../types.js";
+import * as YAML from "../yaml.js";
+import { transformAstQuoteValue } from "./quote-value.js";
 
 export function transformQuoteDouble(
   quoteDouble: YAML.ast.QuoteDouble,

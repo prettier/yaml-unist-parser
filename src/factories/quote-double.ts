@@ -1,4 +1,4 @@
-import { QuoteDouble, QuoteValue } from "../types";
+import { QuoteDouble, QuoteValue } from "../types.js";
 
 export function createQuoteDouble(quoteValue: QuoteValue): QuoteDouble {
   return {

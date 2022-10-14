@@ -1,4 +1,4 @@
-import * as YAML from "./yaml";
+import * as YAML from "./yaml.js";
 
 type YamlCstNode =
   | YAML.cst.Alias

@@ -1,5 +1,5 @@
-import { ContentNode, FlowSequenceItem, Position } from "../types";
-import { createNode } from "./node";
+import { ContentNode, FlowSequenceItem, Position } from "../types.js";
+import { createNode } from "./node.js";
 
 export function createFlowSequenceItem(
   position: Position,

@@ -27,7 +27,7 @@ yarn add yaml-unist-parser
 ## Usage
 
 ```ts
-const { parse } = require("yaml-unist-parser");
+import { parse } from "yaml-unist-parser";
 
 const ast = parse(`
 - hello

@@ -1,12 +1,14 @@
 {
   "compilerOptions": {
     "strict": true,
-    "lib": ["es6"],
-    "module": "commonjs",
     "declaration": true,
     "importHelpers": true,
     "noUnusedLocals": true,
-    "noUnusedParameters": true
+    "noUnusedParameters": true,
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "esModuleInterop": true
   },
   "include": ["src/**/*.ts", "tests/**/*.ts"]
 }

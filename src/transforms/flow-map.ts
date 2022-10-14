@@ -1,13 +1,13 @@
-import { createFlowMapping } from "../factories/flow-mapping";
-import { createFlowMappingItem } from "../factories/flow-mapping-item";
-import { Context } from "../transform";
-import { FlowMapping } from "../types";
-import { extractComments } from "../utils/extract-comments";
-import { getFlowMapItemAdditionalRanges } from "../utils/get-flow-map-item-additional-ranges";
-import { getLast } from "../utils/get-last";
-import { groupCstFlowCollectionItems } from "../utils/group-cst-flow-collection-items";
-import * as YAML from "../yaml";
-import { transformAstPair } from "./pair";
+import { createFlowMapping } from "../factories/flow-mapping.js";
+import { createFlowMappingItem } from "../factories/flow-mapping-item.js";
+import { Context } from "../transform.js";
+import { FlowMapping } from "../types.js";
+import { extractComments } from "../utils/extract-comments.js";
+import { getFlowMapItemAdditionalRanges } from "../utils/get-flow-map-item-additional-ranges.js";
+import { getLast } from "../utils/get-last.js";
+import { groupCstFlowCollectionItems } from "../utils/group-cst-flow-collection-items.js";
+import * as YAML from "../yaml.js";
+import { transformAstPair } from "./pair.js";
 
 export function transformFlowMap(
   flowMap: YAML.ast.FlowMap,

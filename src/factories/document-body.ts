@@ -1,6 +1,6 @@
-import { Comment, ContentNode, DocumentBody, Position } from "../types";
-import { createEndCommentAttachable } from "./end-comment-attachable";
-import { createNode } from "./node";
+import { Comment, ContentNode, DocumentBody, Position } from "../types.js";
+import { createEndCommentAttachable } from "./end-comment-attachable.js";
+import { createNode } from "./node.js";
 
 export function createDocumentBody(
   position: Position,
