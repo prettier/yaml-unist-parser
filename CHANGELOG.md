@@ -1,6 +1,29 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+## [2.0.0](https://github.com/prettier/yaml-unist-parser/compare/v1.1.1...v2.0.0) (2022-10-14)
+
+
+### ⚠ BREAKING CHANGES
+
+* switch to esm (#288)
+* drop support for Node.js < 14 (#285)
+
+### Features
+
+* switch to esm ([#288](https://github.com/prettier/yaml-unist-parser/issues/288)) ([a23343e](https://github.com/prettier/yaml-unist-parser/commit/a23343e717e599667180b19bd18c616bfcdd7167))
+* treat "<<" as normal key but allow duplication ([#274](https://github.com/prettier/yaml-unist-parser/issues/274)) ([2fda6ef](https://github.com/prettier/yaml-unist-parser/commit/2fda6ef24eaaea2da1a14098b3cdf4a564021822))
+
+
+### Bug Fixes
+
+* **attach:** end comments for the first item in block mapping/sequence ([#276](https://github.com/prettier/yaml-unist-parser/issues/276)) ([92568ad](https://github.com/prettier/yaml-unist-parser/commit/92568ad6780f278bfd90a0aba3cb16e12a1fe03d))
+* **attach:** end comments in flow collections ([#270](https://github.com/prettier/yaml-unist-parser/issues/270)) ([1346a27](https://github.com/prettier/yaml-unist-parser/commit/1346a279fdc0b3df436972dc3eebc7f5a0e4a766))
+* no false positive for document head end marker position ([#272](https://github.com/prettier/yaml-unist-parser/issues/272)) ([4da66cb](https://github.com/prettier/yaml-unist-parser/commit/4da66cb1b9e6294d0501bddada7713eb00bd6e35))
+
+
+* drop support for Node.js < 14 ([#285](https://github.com/prettier/yaml-unist-parser/issues/285)) ([ce6a042](https://github.com/prettier/yaml-unist-parser/commit/ce6a042703b32fa12f8718ac1682b3725cd94097))
 
 <a name="1.3.1"></a>
 ## [1.3.1](https://github.com/ikatyang/yaml-unist-parser/compare/v1.3.0...v1.3.1) (2020-09-08)
