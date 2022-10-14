@@ -3,8 +3,10 @@
     "strict": true,
     "declaration": true,
     "importHelpers": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
     "target": "ESNext",
-    "module": "CommonJS",
+    "module": "ESNext",
     "moduleResolution": "Node",
     "esModuleInterop": true
   },

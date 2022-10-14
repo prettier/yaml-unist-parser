@@ -17,7 +17,7 @@ export default {
   },
   snapshotSerializers: ['jest-snapshot-serializer-raw'],
   coverageReporters: ["lcov", "text-summary"],
-  collectCoverage: !!process.env.CI,
+  collectCoverage: true,
   collectCoverageFrom: ["src/**/*.ts"],
   coveragePathIgnorePatterns: [
     "src/index.ts",

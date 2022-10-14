@@ -3,7 +3,6 @@
   "include": ["src/index.ts"],
   "compilerOptions": {
     "rootDir": "src",
-    "outDir": "lib",
-    "module": "ESNext"
+    "outDir": "lib"
   }
 }
