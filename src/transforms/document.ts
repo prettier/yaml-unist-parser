@@ -1,10 +1,10 @@
-import { createDocument } from "../factories/document";
-import { createPosition } from "../factories/position";
-import { Context } from "../transform";
-import { Document } from "../types";
-import * as YAML from "../yaml";
-import { transformDocumentBody } from "./document-body";
-import { transformDocumentHead } from "./document-head";
+import { createDocument } from "../factories/document.js";
+import { createPosition } from "../factories/position.js";
+import { Context } from "../transform.js";
+import { Document } from "../types.js";
+import * as YAML from "../yaml.js";
+import { transformDocumentBody } from "./document-body.js";
+import { transformDocumentHead } from "./document-head.js";
 
 export function transformDocument(
   document: YAML.ast.Document,

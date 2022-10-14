@@ -1,17 +1,17 @@
 import { LinesAndColumns } from "lines-and-columns";
-import { attachComments } from "./attach";
-import { createRoot } from "./factories/root";
-import { removeCstBlankLine } from "./preprocess";
-import { Context, transformNode } from "./transform";
-import { transformContent } from "./transforms/content";
-import { transformError } from "./transforms/error";
-import { transformOffset } from "./transforms/offset";
-import { transformRange } from "./transforms/range";
-import { Comment, Root } from "./types";
-import { addOrigRange } from "./utils/add-orig-range";
-import { removeFakeNodes } from "./utils/remove-fake-nodes";
-import { updatePositions } from "./utils/update-positions";
-import * as YAML from "./yaml";
+import { attachComments } from "./attach.js";
+import { createRoot } from "./factories/root.js";
+import { removeCstBlankLine } from "./preprocess.js";
+import { Context, transformNode } from "./transform.js";
+import { transformContent } from "./transforms/content.js";
+import { transformError } from "./transforms/error.js";
+import { transformOffset } from "./transforms/offset.js";
+import { transformRange } from "./transforms/range.js";
+import { Comment, Root } from "./types.js";
+import { addOrigRange } from "./utils/add-orig-range.js";
+import { removeFakeNodes } from "./utils/remove-fake-nodes.js";
+import { updatePositions } from "./utils/update-positions.js";
+import * as YAML from "./yaml.js";
 
 export function parse(text: string): Root {
   const cst = YAML.parseCST(text);

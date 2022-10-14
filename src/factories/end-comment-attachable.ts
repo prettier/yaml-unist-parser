@@ -1,4 +1,4 @@
-import { Comment, EndCommentAttachable } from "../types";
+import { Comment, EndCommentAttachable } from "../types.js";
 
 export function createEndCommentAttachable(
   endComments: Comment[] = [],

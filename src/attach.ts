@@ -7,9 +7,9 @@ import {
   Root,
   TrailingCommentAttachable,
   YamlUnistNode,
-} from "./types";
-import { defineParents } from "./utils/define-parents";
-import { getPointText } from "./utils/get-point-text";
+} from "./types.js";
+import { defineParents } from "./utils/define-parents.js";
+import { getPointText } from "./utils/get-point-text.js";
 
 interface NodeTable {
   [line: number]: {

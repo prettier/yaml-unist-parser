@@ -1,6 +1,6 @@
-import { BlockValue, Comment, Content, Position } from "../types";
-import { createLeadingCommentAttachable } from "./leading-comment-attachable";
-import { createNode } from "./node";
+import { BlockValue, Comment, Content, Position } from "../types.js";
+import { createLeadingCommentAttachable } from "./leading-comment-attachable.js";
+import { createNode } from "./node.js";
 
 export function createBlockValue(
   position: Position,

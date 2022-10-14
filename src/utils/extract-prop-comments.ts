@@ -1,7 +1,7 @@
-import { PropLeadingCharacter } from "../constants";
-import { createComment } from "../factories/comment";
-import { Context } from "../transform";
-import * as YAML from "../yaml";
+import { PropLeadingCharacter } from "../constants.js";
+import { createComment } from "../factories/comment.js";
+import { Context } from "../transform.js";
+import * as YAML from "../yaml.js";
 
 export function extractPropComments(
   node: YAML.cst.Node,

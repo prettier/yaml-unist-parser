@@ -1,6 +1,6 @@
-import { createPosition } from "../factories/position";
-import { Context } from "../transform";
-import { Position } from "../types";
+import { createPosition } from "../factories/position.js";
+import { Context } from "../transform.js";
+import { Position } from "../types.js";
 
 export interface Range {
   origStart: number;

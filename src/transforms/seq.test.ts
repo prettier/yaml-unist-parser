@@ -1,5 +1,5 @@
-import { getFirstContent, testCases } from "../helpers";
-import { Root, Sequence } from "../types";
+import { getFirstContent, testCases } from "../helpers.js";
+import { Root, Sequence } from "../types.js";
 
 testCases([
   ["-   ", [getSequence(), getSequenceItem(0)]],

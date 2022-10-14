@@ -1,6 +1,6 @@
-import { createPoint } from "../factories/point";
-import { Context } from "../transform";
-import { Point } from "../types";
+import { createPoint } from "../factories/point.js";
+import { Context } from "../transform.js";
+import { Point } from "../types.js";
 
 export function transformOffset(offset: number, context: Context): Point {
   // istanbul ignore next

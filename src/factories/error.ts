@@ -1,4 +1,4 @@
-import { Position, YAMLSyntaxError } from "../types";
+import { Position, YAMLSyntaxError } from "../types.js";
 
 export function createError(
   message: string,

@@ -1,4 +1,4 @@
-import { Point } from "../types";
+import { Point } from "../types.js";
 
 export function createPoint(
   offset: number,

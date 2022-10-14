@@ -1,7 +1,7 @@
-import { createComment } from "../factories/comment";
-import { Context } from "../transform";
-import { Comment } from "../types";
-import * as YAML from "../yaml";
+import { createComment } from "../factories/comment.js";
+import { Context } from "../transform.js";
+import { Comment } from "../types.js";
+import * as YAML from "../yaml.js";
 
 export function transformComment(
   comment: YAML.cst.Comment,

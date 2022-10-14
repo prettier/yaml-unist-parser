@@ -1,5 +1,5 @@
-import { Position } from "../types";
-import { createNode } from "./node";
+import { Position } from "../types.js";
+import { createNode } from "./node.js";
 
 export function createComment(position: Position, value: string) {
   return {

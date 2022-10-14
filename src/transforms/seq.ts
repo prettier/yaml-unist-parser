@@ -1,12 +1,12 @@
-import { createPosition } from "../factories/position";
-import { createSequence } from "../factories/sequence";
-import { createSequenceItem } from "../factories/sequence-item";
-import { Context } from "../transform";
-import { Sequence } from "../types";
-import { extractComments } from "../utils/extract-comments";
-import { extractPropComments } from "../utils/extract-prop-comments";
-import { getLast } from "../utils/get-last";
-import * as YAML from "../yaml";
+import { createPosition } from "../factories/position.js";
+import { createSequence } from "../factories/sequence.js";
+import { createSequenceItem } from "../factories/sequence-item.js";
+import { Context } from "../transform.js";
+import { Sequence } from "../types.js";
+import { extractComments } from "../utils/extract-comments.js";
+import { extractPropComments } from "../utils/extract-prop-comments.js";
+import { getLast } from "../utils/get-last.js";
+import * as YAML from "../yaml.js";
 
 export function transformSeq(seq: YAML.ast.Seq, context: Context): Sequence {
   const cstItemsWithoutComments = extractComments(seq.cstNode!.items, context);

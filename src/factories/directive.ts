@@ -1,6 +1,6 @@
-import { Directive, Position } from "../types";
-import { createCommentAttachable } from "./comment-attachable";
-import { createNode } from "./node";
+import { Directive, Position } from "../types.js";
+import { createCommentAttachable } from "./comment-attachable.js";
+import { createNode } from "./node.js";
 
 export function createDirective(
   position: Position,

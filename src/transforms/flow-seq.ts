@@ -1,15 +1,15 @@
-import { createFlowMappingItem } from "../factories/flow-mapping-item";
-import { createFlowSequence } from "../factories/flow-sequence";
-import { createFlowSequenceItem } from "../factories/flow-sequence-item";
-import { createPosition } from "../factories/position";
-import { Context } from "../transform";
-import { FlowSequence } from "../types";
-import { extractComments } from "../utils/extract-comments";
-import { getFlowMapItemAdditionalRanges } from "../utils/get-flow-map-item-additional-ranges";
-import { getLast } from "../utils/get-last";
-import { groupCstFlowCollectionItems } from "../utils/group-cst-flow-collection-items";
-import * as YAML from "../yaml";
-import { transformAstPair } from "./pair";
+import { createFlowMappingItem } from "../factories/flow-mapping-item.js";
+import { createFlowSequence } from "../factories/flow-sequence.js";
+import { createFlowSequenceItem } from "../factories/flow-sequence-item.js";
+import { createPosition } from "../factories/position.js";
+import { Context } from "../transform.js";
+import { FlowSequence } from "../types.js";
+import { extractComments } from "../utils/extract-comments.js";
+import { getFlowMapItemAdditionalRanges } from "../utils/get-flow-map-item-additional-ranges.js";
+import { getLast } from "../utils/get-last.js";
+import { groupCstFlowCollectionItems } from "../utils/group-cst-flow-collection-items.js";
+import * as YAML from "../yaml.js";
+import { transformAstPair } from "./pair.js";
 
 export function transformFlowSeq(
   flowSeq: YAML.ast.FlowSeq,

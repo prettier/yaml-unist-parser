@@ -1,6 +1,6 @@
-import { Content, Position, QuoteValue } from "../types";
-import { createCommentAttachable } from "./comment-attachable";
-import { createNode } from "./node";
+import { Content, Position, QuoteValue } from "../types.js";
+import { createCommentAttachable } from "./comment-attachable.js";
+import { createNode } from "./node.js";
 
 export function createQuoteValue(
   position: Position,

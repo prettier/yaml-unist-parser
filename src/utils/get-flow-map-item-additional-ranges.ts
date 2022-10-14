@@ -1,4 +1,4 @@
-import * as YAML from "../yaml";
+import * as YAML from "../yaml.js";
 
 export function getFlowMapItemAdditionalRanges(
   cstNodes: YAML.cst.FlowMap["items"],

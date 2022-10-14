@@ -1,7 +1,7 @@
-import { createAlias } from "../factories/alias";
-import { Context } from "../transform";
-import { Alias } from "../types";
-import * as YAML from "../yaml";
+import { createAlias } from "../factories/alias.js";
+import { Context } from "../transform.js";
+import { Alias } from "../types.js";
+import * as YAML from "../yaml.js";
 
 export function transformAlias(alias: YAML.ast.Alias, context: Context): Alias {
   const cstNode = alias.cstNode!;

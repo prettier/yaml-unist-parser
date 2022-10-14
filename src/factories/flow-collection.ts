@@ -1,7 +1,7 @@
-import { Content, FlowMappingItem, FlowSequenceItem, Position } from "../types";
-import { createCommentAttachable } from "./comment-attachable";
-import { createEndCommentAttachable } from "./end-comment-attachable";
-import { createNode } from "./node";
+import { Content, FlowMappingItem, FlowSequenceItem, Position } from "../types.js";
+import { createCommentAttachable } from "./comment-attachable.js";
+import { createEndCommentAttachable } from "./end-comment-attachable.js";
+import { createNode } from "./node.js";
 
 export function createFlowCollection<
   T extends FlowMappingItem | FlowSequenceItem,

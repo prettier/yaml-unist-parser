@@ -1,4 +1,4 @@
-import { testSyntaxError } from "../helpers";
+import { testSyntaxError } from "../helpers.js";
 
 testSyntaxError("{");
 testSyntaxError("{]");
