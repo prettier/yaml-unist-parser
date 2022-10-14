@@ -1,8 +1,8 @@
 # yaml-unist-parser
 
 [![npm](https://img.shields.io/npm/v/yaml-unist-parser.svg)](https://www.npmjs.com/package/yaml-unist-parser)
-[![build](https://img.shields.io/travis/ikatyang/yaml-unist-parser/master.svg)](https://travis-ci.com/ikatyang/yaml-unist-parser/builds)
-[![coverage](https://img.shields.io/codecov/c/github/ikatyang/yaml-unist-parser/master.svg)](https://codecov.io/gh/ikatyang/yaml-unist-parser)
+[![build](https://img.shields.io/github/workflow/status/prettier/yaml-unist-parser/CI)](https://github.com/prettier/yaml-unist-parser/actions?query=workflow%3ACI+branch%3Amain)
+[![coverage](https://img.shields.io/codecov/c/github/prettier/yaml-unist-parser/main.svg)](https://codecov.io/gh/prettier/yaml-unist-parser)
 
 A YAML parser that produces output compatible with [unist](https://github.com/syntax-tree/unist)
 
