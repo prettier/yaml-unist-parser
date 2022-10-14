@@ -10,7 +10,7 @@
   "types": "lib/index.d.ts",
   "exports": {
     ".": "./lib/index.js",
-    "./*": "./"
+    "./*": "./*"
   },
   "repository": "prettier/yaml-unist-parser",
   "homepage": "https://github.com/prettier/yaml-unist-parser#readme",
