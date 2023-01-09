@@ -5,7 +5,7 @@ export function defineParents(
   parent: YamlUnistNode | null = null,
 ): void {
   if ("children" in node) {
-    (node.children as Array<typeof node.children[number]>).forEach(child =>
+    (node.children as Array<(typeof node.children)[number]>).forEach(child =>
       defineParents(child, node),
     );
   }
