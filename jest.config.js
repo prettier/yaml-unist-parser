@@ -15,7 +15,6 @@ export default {
   moduleNameMapper: {
     "^(\\.{1,2}/.*)\\.js$": "$1",
   },
-  snapshotSerializers: ["jest-snapshot-serializer-raw"],
   coverageReporters: ["lcov", "text-summary"],
   collectCoverage: true,
   collectCoverageFrom: ["src/**/*.ts"],
