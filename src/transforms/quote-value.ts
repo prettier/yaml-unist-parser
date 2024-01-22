@@ -1,10 +1,9 @@
 import { createQuoteValue } from "../factories/quote-value.js";
 import { Context } from "../transform.js";
-import { QuoteValue } from "../types.js";
-import * as YAML from "../yaml.js";
+import { QuoteValue, YAMLQuoteDouble, YAMLQuoteSingle } from "../types.js";
 
 export function transformAstQuoteValue(
-  quoteValue: YAML.ast.QuoteDouble | YAML.ast.QuoteSingle,
+  quoteValue: YAMLQuoteDouble | YAMLQuoteSingle,
   context: Context,
 ): QuoteValue {
   const cstNode = quoteValue.cstNode!;

@@ -6,8 +6,8 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "target": "ESNext",
-    "module": "ESNext",
-    "moduleResolution": "Node",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
     "esModuleInterop": true
   },
   "include": ["src/**/*.ts", "tests/**/*.ts"]

@@ -1,27 +1,26 @@
-import * as YAML from "./yaml.js";
+import YAML from "yaml";
+import {
+  YAMLBlockFolded,
+  YAMLBlockLiteral,
+  YAMLPlain,
+  YAMLQuoteDouble,
+  YAMLQuoteSingle,
+} from "./types.js";
 
 type YamlCstNode =
-  | YAML.cst.Alias
-  | YAML.cst.BlankLine
-  | YAML.cst.BlockFolded
-  | YAML.cst.BlockLiteral
-  | YAML.cst.BlockValue
-  | YAML.cst.Comment
-  | YAML.cst.Directive
-  | YAML.cst.Document
-  | YAML.cst.FlowCollection
-  | YAML.cst.FlowMap
-  | YAML.cst.FlowSeq
-  | YAML.cst.Map
-  | YAML.cst.MapItem
-  | YAML.cst.MapKey
-  | YAML.cst.MapValue
-  | YAML.cst.PlainValue
-  | YAML.cst.QuoteDouble
-  | YAML.cst.QuoteSingle
-  | YAML.cst.QuoteValue
-  | YAML.cst.Seq
-  | YAML.cst.SeqItem;
+  | YAML.Alias
+  | YAMLBlockFolded
+  | YAMLBlockLiteral
+  | YAML.CST.Directive
+  | YAML.Document
+  | YAML.CST.FlowCollection
+  | YAML.CST.BlockMap
+  | YAML.CST.BlockSequence
+  | YAML.YAMLMap
+  | YAMLPlain
+  | YAMLQuoteDouble
+  | YAMLQuoteSingle
+  | YAML.YAMLSeq;
 
 export function removeCstBlankLine(node: YamlCstNode) {
   switch (node.type) {

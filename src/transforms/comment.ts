@@ -1,11 +1,16 @@
 import { createComment } from "../factories/comment.js";
 import { Context } from "../transform.js";
-import { Comment } from "../types.js";
-import * as YAML from "../yaml.js";
+import { Comment, YAMLComment } from "../types.js";
 
 export function transformComment(
-  comment: YAML.cst.Comment,
+  comment: YAMLComment,
   context: Context,
 ): Comment {
-  return createComment(context.transformRange(comment.range!), comment.comment);
+  return createComment(
+    context.transformRange({
+      origStart: comment.range![0],
+      origEnd: comment.range![1],
+    }),
+    comment.value,
+  );
 }

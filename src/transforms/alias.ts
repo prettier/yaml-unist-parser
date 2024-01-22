@@ -1,16 +1,16 @@
+import YAML from "yaml";
+
 import { createAlias } from "../factories/alias.js";
 import { Context } from "../transform.js";
 import { Alias } from "../types.js";
-import * as YAML from "../yaml.js";
 
-export function transformAlias(alias: YAML.ast.Alias, context: Context): Alias {
-  const cstNode = alias.cstNode!;
+export function transformAlias(alias: YAML.Alias, context: Context): Alias {
   return createAlias(
     context.transformRange({
-      origStart: cstNode.valueRange!.origStart - 1, // include the `*`
-      origEnd: cstNode.valueRange!.origEnd,
+      origStart: alias.range![0] - 1, // include the `*`
+      origEnd: alias.range![1],
     }),
     context.transformContent(alias),
-    cstNode.rawValue,
+    alias.source,
   );
 }

@@ -1,3 +1,5 @@
+import YAML from "yaml";
+
 import { createFlowMappingItem } from "../factories/flow-mapping-item.js";
 import { createFlowSequence } from "../factories/flow-sequence.js";
 import { createFlowSequenceItem } from "../factories/flow-sequence-item.js";
@@ -8,17 +10,13 @@ import { extractComments } from "../utils/extract-comments.js";
 import { getFlowMapItemAdditionalRanges } from "../utils/get-flow-map-item-additional-ranges.js";
 import { getLast } from "../utils/get-last.js";
 import { groupCstFlowCollectionItems } from "../utils/group-cst-flow-collection-items.js";
-import * as YAML from "../yaml.js";
 import { transformAstPair } from "./pair.js";
 
 export function transformFlowSeq(
-  flowSeq: YAML.ast.FlowSeq,
+  flowSeq: YAML.CST.BlockSequence,
   context: Context,
 ): FlowSequence {
-  const cstItemsWithoutComments = extractComments(
-    flowSeq.cstNode!.items,
-    context,
-  );
+  const cstItemsWithoutComments = extractComments(flowSeq!.items, context);
 
   const groupedCstItems = groupCstFlowCollectionItems(cstItemsWithoutComments);
 
