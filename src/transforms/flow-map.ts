@@ -1,3 +1,5 @@
+import YAML from "yaml";
+
 import { createFlowMapping } from "../factories/flow-mapping.js";
 import { createFlowMappingItem } from "../factories/flow-mapping-item.js";
 import { Context } from "../transform.js";
@@ -5,16 +7,18 @@ import { FlowMapping } from "../types.js";
 import { extractComments } from "../utils/extract-comments.js";
 import { getFlowMapItemAdditionalRanges } from "../utils/get-flow-map-item-additional-ranges.js";
 import { getLast } from "../utils/get-last.js";
-import { groupCstFlowCollectionItems } from "../utils/group-cst-flow-collection-items.js";
-import * as YAML from "../yaml.js";
+import {
+  type CstFlowMapItemWithoutComment,
+  groupCstFlowCollectionItems,
+} from "../utils/group-cst-flow-collection-items.js";
 import { transformAstPair } from "./pair.js";
 
 export function transformFlowMap(
-  flowMap: YAML.ast.FlowMap,
+  flowMap: YAML.CST.BlockMap,
   context: Context,
 ): FlowMapping {
-  const cstItemsWithoutComments = extractComments(
-    flowMap.cstNode!.items,
+  const cstItemsWithoutComments = extractComments<CstFlowMapItemWithoutComment>(
+    flowMap!.items,
     context,
   );
 

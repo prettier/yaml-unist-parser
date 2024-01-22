@@ -1,3 +1,5 @@
+import YAML from "yaml";
+
 import { createMapping } from "../factories/mapping.js";
 import { createMappingItem } from "../factories/mapping-item.js";
 import { createPosition } from "../factories/position.js";
@@ -7,15 +9,12 @@ import { createSlicer } from "../utils/create-slicer.js";
 import { extractComments } from "../utils/extract-comments.js";
 import { extractPropComments } from "../utils/extract-prop-comments.js";
 import { getLast } from "../utils/get-last.js";
-import * as YAML from "../yaml.js";
 import { transformAstPair } from "./pair.js";
 
-export function transformMap(map: YAML.ast.Map, context: Context): Mapping {
-  const cstNode = map.cstNode!;
+export function transformMap(map: YAML.YAMLMap, context: Context): Mapping {
+  const cstNode = map;
 
-  cstNode.items
-    .filter(item => item.type === "MAP_KEY" || item.type === "MAP_VALUE")
-    .forEach(item => extractPropComments(item, context));
+  cstNode.items.forEach(item => extractPropComments(item, context));
 
   const cstItemsWithoutComments = extractComments(cstNode.items, context);
 

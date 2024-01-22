@@ -1,12 +1,10 @@
+import YAML from "yaml";
+
 import { PropLeadingCharacter } from "../constants.js";
 import { createComment } from "../factories/comment.js";
 import { Context } from "../transform.js";
-import * as YAML from "../yaml.js";
 
-export function extractPropComments(
-  node: YAML.cst.Node,
-  context: Context,
-): void {
+export function extractPropComments(node: YAML.Node, context: Context): void {
   for (const propRange of node.props) {
     const leadingChar = context.text[propRange.origStart];
     switch (leadingChar) {

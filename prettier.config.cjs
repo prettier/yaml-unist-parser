@@ -2,5 +2,5 @@
 
 module.exports = {
   trailingComma: "all",
-  arrowParens: "avoid"
+  arrowParens: "avoid",
 };

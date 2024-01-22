@@ -1,13 +1,14 @@
+import YAML from "yaml";
+
 import { createDocument } from "../factories/document.js";
 import { createPosition } from "../factories/position.js";
 import { Context } from "../transform.js";
 import { Document } from "../types.js";
-import * as YAML from "../yaml.js";
 import { transformDocumentBody } from "./document-body.js";
 import { transformDocumentHead } from "./document-head.js";
 
 export function transformDocument(
-  document: YAML.ast.Document,
+  document: YAML.Document,
   context: Context,
 ): Document {
   const { createDocumentHeadWithTrailingComment, documentHeadEndMarkerPoint } =

@@ -1,3 +1,5 @@
+import YAML from "yaml";
+
 export interface Node {
   type: string;
   position: Position;
@@ -53,11 +55,6 @@ export interface TrailingCommentAttachable {
 export interface EndCommentAttachable {
   /** comments after the node with greater column */
   endComments: Comment[];
-}
-
-export interface YAMLSyntaxError extends SyntaxError {
-  source: string;
-  position: Position;
 }
 
 export type YamlUnistNode =
@@ -143,12 +140,12 @@ export interface BlockValue extends Literal, Content, LeadingCommentAttachable {
   indicatorComment: null | Comment;
 }
 
-export interface BlockLiteral extends BlockValue {
-  type: "blockLiteral";
-}
-
 export interface BlockFolded extends BlockValue {
   type: "blockFolded";
+}
+
+export interface BlockLiteral extends BlockValue {
+  type: "blockLiteral";
 }
 
 export interface Plain extends Literal, Content, CommentAttachable {
@@ -239,4 +236,35 @@ export interface FlowSequence extends FlowCollection {
 
 export interface FlowSequenceItem extends SequenceItemBase {
   type: "flowSequenceItem";
+}
+
+export interface LinePos {
+  line: number;
+  col: number;
+}
+
+export type YAMLBlockFolded = YAML.Scalar<string> & {
+  type: YAML.Scalar.BLOCK_FOLDED;
+};
+
+export type YAMLBlockLiteral = YAML.Scalar<string> & {
+  type: YAML.Scalar.BLOCK_LITERAL;
+};
+
+export type YAMLPlain = YAML.Scalar<string> & {
+  type: YAML.Scalar.PLAIN;
+};
+
+export type YAMLQuoteDouble = YAML.Scalar<string> & {
+  type: YAML.Scalar.QUOTE_DOUBLE;
+};
+
+export type YAMLQuoteSingle = YAML.Scalar<string> & {
+  type: YAML.Scalar.QUOTE_SINGLE;
+};
+
+export interface YAMLComment {
+  type: "comment";
+  range?: [number, number];
+  value: string;
 }
