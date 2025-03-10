@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`"%TEST aaa bbb\\n---\\n" 1`] = `
 directive (1:1 ~ 1:14)
