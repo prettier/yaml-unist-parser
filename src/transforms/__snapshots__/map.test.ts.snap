@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`"!!map\\n #123 \\n&anchor # 456\\na: 123" 1`] = `
 mapping (4:1 ~ 4:7)

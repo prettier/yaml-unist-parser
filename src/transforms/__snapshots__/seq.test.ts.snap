@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`"  !!set #comment1\\n\\n&anchor    #comment2   \\n- 123  \\n- 45 1`] = `
 sequence (4:1 ~ 5:6)
