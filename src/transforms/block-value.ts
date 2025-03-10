@@ -1,8 +1,12 @@
 import { createBlockValue } from "../factories/block-value.js";
 import { Context } from "../transform.js";
-import { BlockValue, Comment } from "../types.js";
+import {
+  BlockValue,
+  Comment,
+  YAMLBlockFolded,
+  YAMLBlockLiteral,
+} from "../types.js";
 import { getPointText } from "../utils/get-point-text.js";
-import * as YAML from "../yaml.js";
 import { transformContent } from "./content.js";
 
 enum Chomping {
@@ -12,7 +16,7 @@ enum Chomping {
 }
 
 export function transformAstBlockValue(
-  blockValue: YAML.ast.BlockFolded | YAML.ast.BlockLiteral,
+  blockValue: YAMLBlockFolded | YAMLBlockLiteral,
   context: Context,
 ): BlockValue {
   const cstNode = blockValue.cstNode!;

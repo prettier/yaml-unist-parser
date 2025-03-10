@@ -1,15 +1,17 @@
 import { wrap } from "jest-snapshot-serializer-raw";
+import YAML from "yaml";
+
 import { parse } from "./parse.js";
 import {
   Anchor,
   Comment,
+  LinePos,
   Node,
   Position,
   Root,
   Tag,
   YamlUnistNode,
 } from "./types.js";
-import * as YAML from "./yaml.js";
 
 export type Arrayable<T> = T | T[];
 
@@ -265,38 +267,43 @@ function indent(text: string) {
 
 function codeFrameColumns(
   text: string,
-  position: Position,
+  position: Position | [LinePos, LinePos],
   codeFrameMaxHeight = Infinity,
 ) {
+  const isLinePos = Array.isArray(position);
+
+  const startLine = isLinePos ? position[0].line : position.start.line;
+  const startColumn = isLinePos ? position[0].col : position.start.column;
+  const endLine = isLinePos ? position[1].line : position.end.line;
+  const endColumn = isLinePos ? position[1].col : position.end.column;
+
   const lines = text.split("\n").map(line => `${line}¶`);
   const markerLines = lines.map((line, index) => {
-    if (index < position.start.line - 1 || index > position.end.line - 1) {
+    if (!position || index < startLine - 1 || index > endLine - 1) {
       return "";
     }
-    if (index === position.start.line - 1) {
+
+    if (index === startLine - 1) {
       return (
-        " ".repeat(position.start.column - 1) +
-        (index === position.end.line - 1 &&
-        position.start.column === position.end.column
+        " ".repeat(startColumn - 1) +
+        (index === endLine - 1 && startColumn === endColumn
           ? "~"
           : "^".repeat(
-              (index === position.end.line - 1
-                ? position.end.column - 1
-                : line.length) -
-                (position.start.column - 1),
+              (index === endLine - 1 ? endColumn - 1 : line.length) -
+                (startColumn - 1),
             ))
       );
-    } else if (index === position.end.line - 1) {
-      return position.end.column === 1 && line === "¶"
-        ? "^"
-        : "^".repeat(position.end.column - 1);
-    } else {
-      return "^".repeat(line.length);
     }
+
+    if (index === endLine - 1) {
+      return endColumn === 1 && line === "¶" ? "^" : "^".repeat(endColumn - 1);
+    }
+
+    return "^".repeat(line.length);
   });
 
-  const start = Math.max(0, position.start.line - 1 - codeFrameMaxHeight);
-  const end = Math.min(lines.length, position.end.line + codeFrameMaxHeight);
+  const start = Math.max(0, startLine - 1 - codeFrameMaxHeight);
+  const end = Math.min(lines.length, endLine + codeFrameMaxHeight);
 
   const gutterWidth = Math.floor(Math.log10(lines.length)) + 1;
 
@@ -323,22 +330,15 @@ export function testSyntaxError(text: string, message?: string) {
     parse(text);
     throw new Error("SyntaxError not found");
   } catch (error: any) {
-    if (!isYAMLError(error)) {
+    if (!(error instanceof YAML.YAMLError)) {
       throw error;
     }
     test(message || error.message, () => {
       expect(
-        error.message + "\n" + codeFrameColumns(error.source, error.position),
+        error.message +
+          "\n" +
+          codeFrameColumns(error.code, error.linePos as [LinePos, LinePos]),
       ).toMatchSnapshot();
     });
   }
-}
-
-function isYAMLError(
-  e: any,
-): e is YAML.YAMLSyntaxError | YAML.YAMLSemanticError {
-  return (
-    e instanceof Error &&
-    (e.name === "YAMLSyntaxError" || e.name === "YAMLSemanticError")
-  );
 }
