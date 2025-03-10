@@ -21,8 +21,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "postinstall": "patch-package",
-    "prepublish": "patch-package && yarn run build",
+    "prepublish": "yarn run build",
     "lint": "run-p \"lint:*\"",
     "lint:eslint": "eslint .",
     "lint:prettier": "prettier . --check",
@@ -36,7 +35,7 @@
   },
   "dependencies": {
     "lines-and-columns": "^2.0.4",
-    "yaml": "2.3.4"
+    "yaml": "^2.7.0"
   },
   "devDependencies": {
     "@eslint/js": "9.22.0",
@@ -46,9 +45,7 @@
     "eslint-config-prettier": "10.1.1",
     "globals": "16.0.0",
     "jest-snapshot-serializer-raw": "2.0.0",
-    "npm-run-all": "4.1.5",
-    "npm-run-all2": "^7.0.2",
-    "patch-package": "8.0.0",
+    "npm-run-all2": "7.0.2",
     "prettier": "3.5.3",
     "standard-version": "9.5.0",
     "typescript": "5.8.2",
