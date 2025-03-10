@@ -18,6 +18,8 @@ jobs:
           - "macos-latest"
           - "windows-latest"
         node_version:
+          - "22"
+          - "20"
           - "18"
           - "16"
           - "14"
@@ -27,10 +29,10 @@ jobs:
       YARN_ENABLE_IMMUTABLE_INSTALLS: false
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node_version }}
 
@@ -40,9 +42,12 @@ jobs:
       - name: Run Test
         run: yarn test
 
-      - uses: codecov/codecov-action@v3
+      - uses: codecov/codecov-action@v5
         with:
           fail_ci_if_error: true
+          disable_search: true
+          files: coverage/lcov.info
+          token: ${{ secrets.CODECOV_TOKEN }}
 
   lint:
     name: Lint
@@ -51,10 +56,10 @@ jobs:
       YARN_ENABLE_IMMUTABLE_INSTALLS: false
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
 
       - name: Install Dependencies
         run: yarn
