@@ -5,8 +5,13 @@ on:
     branches:
       - main
   pull_request:
-  # schedule:
-  #   - cron: "0 23 * * 6"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   test:
@@ -58,8 +63,5 @@ jobs:
       - name: Install Dependencies
         run: yarn --immutable
 
-      - name: Run ESLint
-        run: yarn lint:eslint
-
-      - name: Run Prettier
-        run: yarn lint:prettier
+      - name: Run Lint
+        run: yarn lint
