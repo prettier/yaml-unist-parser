@@ -1,6 +1,7 @@
 coverage/
 lib/
 node_modules/
+.vscode/settings.json
 **/.yarn/*
 !.yarn/releases
 !.yarn/plugins
