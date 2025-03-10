@@ -23,8 +23,6 @@ jobs:
           - "18"
     name: Node.js ${{ matrix.node_version }} on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
-    env:
-      YARN_ENABLE_IMMUTABLE_INSTALLS: false
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -35,7 +33,7 @@ jobs:
           node-version: ${{ matrix.node_version }}
 
       - name: Install Dependencies
-        run: yarn
+        run: yarn --immutable
 
       - name: Run Test
         run: yarn test
@@ -50,8 +48,6 @@ jobs:
   lint:
     name: Lint
     runs-on: ubuntu-latest
-    env:
-      YARN_ENABLE_IMMUTABLE_INSTALLS: false
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -60,7 +56,7 @@ jobs:
         uses: actions/setup-node@v4
 
       - name: Install Dependencies
-        run: yarn
+        run: yarn --immutable
 
       - name: Run ESLint
         run: yarn lint:eslint
