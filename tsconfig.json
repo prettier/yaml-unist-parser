@@ -6,9 +6,10 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "target": "ESNext",
-    "module": "ESNext",
-    "moduleResolution": "Node",
-    "esModuleInterop": true
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "esModuleInterop": true,
+    "types": ["vitest/globals"]
   },
   "include": ["src/**/*.ts", "tests/**/*.ts"]
 }
