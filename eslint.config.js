@@ -18,5 +18,5 @@ export default tseslint.config(
       "no-constant-condition": ["error", { checkLoops: false }],
     },
   },
-  { ignores: ["lib/", '.yarn/'] },
+  { ignores: ["lib/", ".yarn/"] },
 );
