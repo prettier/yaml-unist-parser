@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`"  !!map\\n #123 \\n&anchor # 456 \\n {}  " 1`] = `
 flowMapping (4:2 ~ 4:4)
