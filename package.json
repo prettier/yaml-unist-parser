@@ -1,6 +1,6 @@
 {
   "name": "yaml-unist-parser",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "A YAML parser that produces output compatible with unist",
   "keywords": [
     "unist",
