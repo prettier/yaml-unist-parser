@@ -78,22 +78,35 @@ export function transformNode(
     return null;
   }
 
-  // prettier-ignore
   switch (node.type) {
-    case "ALIAS": return transformAlias(node, context);
-    case "BLOCK_FOLDED": return transformBlockFolded(node as YAML.ast.BlockFolded, context);
-    case "BLOCK_LITERAL": return transformBlockLiteral(node as YAML.ast.BlockLiteral, context);
-    case "COMMENT": return transformComment(node, context);
-    case "DIRECTIVE": return transformDirective(node, context);
-    case "DOCUMENT": return transformDocument(node, context);
-    case "FLOW_MAP": return transformFlowMap(node, context);
-    case "FLOW_SEQ": return transformFlowSeq(node, context);
-    case "MAP": return transformMap(node, context);
-    case "PLAIN": return transformPlain(node as YAML.ast.PlainValue, context);
-    case "QUOTE_DOUBLE": return transformQuoteDouble(node as YAML.ast.QuoteDouble, context);
-    case "QUOTE_SINGLE": return transformQuoteSingle(node as YAML.ast.QuoteSingle, context);
-    case "SEQ": return transformSeq(node, context);
+    case "ALIAS":
+      return transformAlias(node, context);
+    case "BLOCK_FOLDED":
+      return transformBlockFolded(node as YAML.ast.BlockFolded, context);
+    case "BLOCK_LITERAL":
+      return transformBlockLiteral(node as YAML.ast.BlockLiteral, context);
+    case "COMMENT":
+      return transformComment(node, context);
+    case "DIRECTIVE":
+      return transformDirective(node, context);
+    case "DOCUMENT":
+      return transformDocument(node, context);
+    case "FLOW_MAP":
+      return transformFlowMap(node, context);
+    case "FLOW_SEQ":
+      return transformFlowSeq(node, context);
+    case "MAP":
+      return transformMap(node, context);
+    case "PLAIN":
+      return transformPlain(node as YAML.ast.PlainValue, context);
+    case "QUOTE_DOUBLE":
+      return transformQuoteDouble(node as YAML.ast.QuoteDouble, context);
+    case "QUOTE_SINGLE":
+      return transformQuoteSingle(node as YAML.ast.QuoteSingle, context);
+    case "SEQ":
+      return transformSeq(node, context);
     // istanbul ignore next
-    default: throw new Error(`Unexpected node type ${node.type}`);
+    default:
+      throw new Error(`Unexpected node type ${node.type}`);
   }
 }

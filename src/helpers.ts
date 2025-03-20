@@ -328,6 +328,7 @@ export function testSyntaxError(text: string, message?: string) {
     }
     test(message || error.message, () => {
       expect(
+        // @ts-expect-error -- FIXME
         error.message + "\n" + codeFrameColumns(error.source, error.position),
       ).toMatchSnapshot();
     });
