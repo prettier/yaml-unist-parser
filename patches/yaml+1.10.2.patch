@@ -1,26 +1,28 @@
 diff --git a/node_modules/yaml/index.d.ts b/node_modules/yaml/index.d.ts
-index 36aa3c6..2ffad3b 100644
+index 53eb011..dcb722e 100644
 --- a/node_modules/yaml/index.d.ts
 +++ b/node_modules/yaml/index.d.ts
-@@ -205,7 +205,7 @@ export class Document extends Collection {
+@@ -205,8 +205,8 @@ export class Document extends Collection {
     */
    anchors: Document.Anchors
    /** The document contents. */
 -  contents: any
+-  /** Errors encountered during parsing. */
 +  contents: AST.BlockFolded | AST.BlockLiteral | AST.BlockMap | AST.BlockSeq | AST.FlowMap | AST.FlowSeq | AST.PlainValue | AST.QuoteDouble | AST.QuoteSingle | Alias | null
-   /** Errors encountered during parsing. */
++   /** Errors encountered during parsing. */
    errors: YAMLError[]
    /**
+    * The schema used with the document. Use `setSchema()` to change or
 @@ -260,7 +260,6 @@ export class Document extends Collection {
-
+ 
  export namespace Document {
    interface Parsed extends Document {
--    contents: Node | null
+-    contents: Scalar | YAMLMap | YAMLSeq | null
      /** The schema used with the document. */
      schema: Schema
    }
 diff --git a/node_modules/yaml/parse-cst.d.ts b/node_modules/yaml/parse-cst.d.ts
-index bd8a5b4..1c764a9 100644
+index 9fd2ebf..35ae387 100644
 --- a/node_modules/yaml/parse-cst.d.ts
 +++ b/node_modules/yaml/parse-cst.d.ts
 @@ -10,8 +10,8 @@ export namespace CST {
@@ -33,29 +35,29 @@ index bd8a5b4..1c764a9 100644
 +    origEnd: number
      isEmpty(): boolean
    }
-
-@@ -148,7 +148,7 @@ export namespace CST {
+ 
+@@ -152,7 +152,7 @@ export namespace CST {
    interface FlowChar {
      char: '{' | '}' | '[' | ']' | ',' | '?' | ':'
      offset: number
 -    origOffset?: number
 +    origOffset: number
    }
-
+ 
    interface FlowCollection extends Node {
 diff --git a/node_modules/yaml/types.d.ts b/node_modules/yaml/types.d.ts
-index 411e74e..c13f624 100644
+index 411e74e..0c60eb0 100644
 --- a/node_modules/yaml/types.d.ts
 +++ b/node_modules/yaml/types.d.ts
 @@ -395,13 +395,13 @@ export namespace AST {
-
+ 
    interface FlowSeq extends YAMLSeq {
      type: Type.FLOW_SEQ
 -    items: Array<Node>
 +    items: Array<FlowMap | FlowSeq | QuoteDouble | QuoteSingle | PlainValue | Alias | Pair>
      cstNode?: CST.FlowSeq
    }
-
+ 
    interface BlockSeq extends YAMLSeq {
      type: Type.SEQ
 -    items: Array<Node | null>

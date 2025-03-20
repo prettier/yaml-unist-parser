@@ -35,7 +35,7 @@
     "release": "yarn build && standard-version"
   },
   "dependencies": {
-    "yaml": "1.10.0"
+    "yaml": "^1.10.2"
   },
   "devDependencies": {
     "@eslint/js": "9.22.0",
