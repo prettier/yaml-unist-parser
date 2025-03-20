@@ -1,4 +1,4 @@
-import { Directive, Position } from "../types.js";
+import { type Directive, type Position } from "../types.js";
 import { createCommentAttachable } from "./comment-attachable.js";
 import { createNode } from "./node.js";
 

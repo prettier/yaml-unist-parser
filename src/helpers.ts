@@ -1,15 +1,15 @@
 import { wrap } from "jest-snapshot-serializer-raw";
 import { parse } from "./parse.js";
 import {
-  Anchor,
-  Comment,
-  Node,
-  Position,
-  Root,
-  Tag,
-  YamlUnistNode,
+  type Anchor,
+  type Comment,
+  type Node,
+  type Position,
+  type Root,
+  type Tag,
+  type YamlUnistNode,
 } from "./types.js";
-import * as YAML from "./yaml.js";
+import type * as YAML from "./yaml.js";
 
 export type Arrayable<T> = T | T[];
 
@@ -328,6 +328,7 @@ export function testSyntaxError(text: string, message?: string) {
     }
     test(message || error.message, () => {
       expect(
+        // @ts-expect-error -- FIXME
         error.message + "\n" + codeFrameColumns(error.source, error.position),
       ).toMatchSnapshot();
     });

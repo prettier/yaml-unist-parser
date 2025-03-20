@@ -1,5 +1,5 @@
 import { getFirstContent, testCases } from "../helpers.js";
-import { BlockLiteral } from "../types.js";
+import { type BlockLiteral } from "../types.js";
 
 testCases([
   ["|\n  123\n  456\n\n\n", getFirstContent()],

@@ -1,4 +1,9 @@
-import { Comment, Directive, DocumentHead, Position } from "../types.js";
+import {
+  type Comment,
+  type Directive,
+  type DocumentHead,
+  type Position,
+} from "../types.js";
 import { createEndCommentAttachable } from "./end-comment-attachable.js";
 import { createNode } from "./node.js";
 import { createTrailingCommentAttachable } from "./trailing-comment-attachable.js";

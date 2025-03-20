@@ -1,4 +1,9 @@
-import { Comment, Document, Position, Root } from "../types.js";
+import {
+  type Comment,
+  type Document,
+  type Position,
+  type Root,
+} from "../types.js";
 import { createNode } from "./node.js";
 
 export function createRoot(

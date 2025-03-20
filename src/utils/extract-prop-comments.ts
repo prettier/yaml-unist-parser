@@ -1,20 +1,21 @@
 import { PropLeadingCharacter } from "../constants.js";
 import { createComment } from "../factories/comment.js";
-import { Context } from "../transform.js";
-import * as YAML from "../yaml.js";
+import type Context from "../transforms/context.js";
+import type * as YAML from "../yaml.js";
+import type { Range } from "../types.ts";
 
 export function extractPropComments(
   node: YAML.cst.Node,
   context: Context,
 ): void {
   for (const propRange of node.props) {
-    const leadingChar = context.text[propRange.origStart];
+    const leadingChar = context.text[propRange.origStart!];
     switch (leadingChar) {
       case PropLeadingCharacter.Comment:
         context.comments.push(
           createComment(
-            context.transformRange(propRange),
-            context.text.slice(propRange.origStart + 1, propRange.origEnd),
+            context.transformRange(propRange as Range),
+            context.text.slice(propRange.origStart! + 1, propRange.origEnd),
           ),
         );
         break;

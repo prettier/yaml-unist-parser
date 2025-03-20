@@ -1,4 +1,4 @@
-import { Point } from "../types.js";
+import { type Point } from "../types.js";
 
 // istanbul ignore next
 export function getPointText(point: Point) {

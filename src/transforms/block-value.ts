@@ -1,8 +1,8 @@
 import { createBlockValue } from "../factories/block-value.js";
-import { Context } from "../transform.js";
-import { BlockValue, Comment } from "../types.js";
+import type Context from "./context.js";
+import { type BlockValue, type Comment } from "../types.js";
 import { getPointText } from "../utils/get-point-text.js";
-import * as YAML from "../yaml.js";
+import type * as YAML from "../yaml.js";
 import { transformContent } from "./content.js";
 
 enum Chomping {
@@ -20,13 +20,13 @@ export function transformAstBlockValue(
   const indicatorLength = 1;
   const chompingLength = cstNode.chomping === "CLIP" ? 0 : 1;
 
-  const headerLength = cstNode.header.origEnd - cstNode.header.origStart;
+  const headerLength = cstNode.header.origEnd! - cstNode.header.origStart!;
   const hasExplicitBlockIndent =
     headerLength - indicatorLength - chompingLength !== 0;
 
   const position = context.transformRange({
-    origStart: cstNode.header.origStart,
-    origEnd: cstNode.valueRange!.origEnd,
+    origStart: cstNode.header.origStart!,
+    origEnd: cstNode.valueRange!.origEnd!,
   });
 
   let indicatorComment: Comment | null = null;

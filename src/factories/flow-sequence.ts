@@ -1,9 +1,9 @@
 import {
-  Content,
-  FlowMappingItem,
-  FlowSequence,
-  FlowSequenceItem,
-  Position,
+  type Content,
+  type FlowMappingItem,
+  type FlowSequence,
+  type FlowSequenceItem,
+  type Position,
 } from "../types.js";
 import { createFlowCollection } from "./flow-collection.js";
 
