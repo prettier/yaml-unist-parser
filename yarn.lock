@@ -3100,13 +3100,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lines-and-columns@npm:^2.0.4":
-  version: 2.0.4
-  resolution: "lines-and-columns@npm:2.0.4"
-  checksum: 10/81ac2f943f5428a46bd4ea2561c74ba674a107d8e6cc70cd317d16892a36ff3ba0dc6e599aca8b6f8668d26c85288394c6edf7a40e985ca843acab3701b80d4c
-  languageName: node
-  linkType: hard
-
 "load-json-file@npm:^4.0.0":
   version: 4.0.0
   resolution: "load-json-file@npm:4.0.0"
@@ -5246,7 +5239,6 @@ __metadata:
     eslint-config-prettier: "npm:10.1.1"
     globals: "npm:16.0.0"
     jest-snapshot-serializer-raw: "npm:2.0.0"
-    lines-and-columns: "npm:^2.0.4"
     npm-run-all: "npm:4.1.5"
     npm-run-all2: "npm:^7.0.2"
     patch-package: "npm:8.0.0"

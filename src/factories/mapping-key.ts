@@ -1,4 +1,4 @@
-import { ContentNode, MappingKey, Position } from "../types.js";
+import { type ContentNode, type MappingKey, type Position } from "../types.js";
 import { createEndCommentAttachable } from "./end-comment-attachable.js";
 import { createNode } from "./node.js";
 import { createTrailingCommentAttachable } from "./trailing-comment-attachable.js";

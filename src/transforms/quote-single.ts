@@ -1,7 +1,7 @@
 import { createQuoteSingle } from "../factories/quote-single.js";
-import { Context } from "../transform.js";
-import { QuoteSingle } from "../types.js";
-import * as YAML from "../yaml.js";
+import type Context from "./context.js";
+import { type QuoteSingle } from "../types.js";
+import type * as YAML from "../yaml.js";
 import { transformAstQuoteValue } from "./quote-value.js";
 
 export function transformQuoteSingle(

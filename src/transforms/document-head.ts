@@ -1,9 +1,8 @@
 import { createDocumentHead } from "../factories/document-head.js";
-import { Context } from "../transform.js";
-import { Comment, Directive } from "../types.js";
+import type Context from "./context.js";
+import type { Comment, Directive, Range } from "../types.js";
 import { getMatchIndex } from "../utils/get-match-index.js";
-import * as YAML from "../yaml.js";
-import { Range } from "./range.js";
+import type * as YAML from "../yaml.js";
 
 export function transformDocumentHead(
   document: YAML.ast.Document,
@@ -84,11 +83,11 @@ function getPosition(
   const range: Range =
     endMarkerIndex === -1
       ? {
-          origStart: document.valueRange!.origStart,
-          origEnd: document.valueRange!.origStart,
+          origStart: document.valueRange!.origStart!,
+          origEnd: document.valueRange!.origStart!,
         }
       : {
-          origStart: endMarkerIndex,
+          origStart: endMarkerIndex!,
           origEnd: endMarkerIndex + 3,
         };
 

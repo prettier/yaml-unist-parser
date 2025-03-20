@@ -1,4 +1,4 @@
-import { Point, Position, YamlUnistNode } from "../types.js";
+import { type Point, type Position, type YamlUnistNode } from "../types.js";
 import { createUpdater } from "./create-updater.js";
 import { getLast } from "./get-last.js";
 

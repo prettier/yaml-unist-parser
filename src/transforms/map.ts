@@ -1,13 +1,13 @@
 import { createMapping } from "../factories/mapping.js";
 import { createMappingItem } from "../factories/mapping-item.js";
 import { createPosition } from "../factories/position.js";
-import { Context } from "../transform.js";
-import { Mapping } from "../types.js";
+import type Context from "./context.js";
+import { type Mapping } from "../types.js";
 import { createSlicer } from "../utils/create-slicer.js";
 import { extractComments } from "../utils/extract-comments.js";
 import { extractPropComments } from "../utils/extract-prop-comments.js";
 import { getLast } from "../utils/get-last.js";
-import * as YAML from "../yaml.js";
+import type * as YAML from "../yaml.js";
 import { transformAstPair } from "./pair.js";
 
 export function transformMap(map: YAML.ast.Map, context: Context): Mapping {

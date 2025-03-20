@@ -1,4 +1,4 @@
-import { Alias, Content, Position } from "../types.js";
+import { type Alias, type Content, type Position } from "../types.js";
 import { createCommentAttachable } from "./comment-attachable.js";
 import { createNode } from "./node.js";
 

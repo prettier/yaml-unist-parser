@@ -1,17 +1,13 @@
-import { LinesAndColumns } from "lines-and-columns";
 import { attachComments } from "./attach.js";
 import { createRoot } from "./factories/root.js";
 import { removeCstBlankLine } from "./preprocess.js";
-import { Context, transformNode } from "./transform.js";
-import { transformContent } from "./transforms/content.js";
 import { transformError } from "./transforms/error.js";
-import { transformOffset } from "./transforms/offset.js";
-import { transformRange } from "./transforms/range.js";
-import { Comment, Root } from "./types.js";
+import { type Root } from "./types.js";
 import { addOrigRange } from "./utils/add-orig-range.js";
 import { removeFakeNodes } from "./utils/remove-fake-nodes.js";
 import { updatePositions } from "./utils/update-positions.js";
 import * as YAML from "./yaml.js";
+import Context from "./transforms/context.js";
 
 export function parse(text: string): Root {
   const cst = YAML.parseCST(text);
@@ -25,18 +21,7 @@ export function parse(text: string): Root {
     }).parse(cstDocument),
   );
 
-  const locator = new LinesAndColumns(text);
-  const comments: Comment[] = [];
-
-  const context: Context = {
-    text,
-    locator,
-    comments,
-    transformOffset: offset => transformOffset(offset, context),
-    transformRange: range => transformRange(range, context),
-    transformNode: node => transformNode(node, context),
-    transformContent: node => transformContent(node, context),
-  };
+  const context = new Context(cst, text);
 
   for (const document of documents) {
     for (const error of document.errors) {
@@ -54,8 +39,8 @@ export function parse(text: string): Root {
 
   const root = createRoot(
     context.transformRange({ origStart: 0, origEnd: context.text.length }),
-    documents.map(context.transformNode),
-    comments,
+    documents.map(document => context.transformNode(document)),
+    context.comments,
   );
 
   attachComments(root);

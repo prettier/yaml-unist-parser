@@ -35,7 +35,6 @@
     "release": "yarn build && standard-version"
   },
   "dependencies": {
-    "lines-and-columns": "^2.0.4",
     "yaml": "1.10.0"
   },
   "devDependencies": {

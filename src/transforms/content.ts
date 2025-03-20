@@ -3,9 +3,9 @@ import { createAnchor } from "../factories/anchor.js";
 import { createComment } from "../factories/comment.js";
 import { createContent } from "../factories/content.js";
 import { createTag } from "../factories/tag.js";
-import { Context } from "../transform.js";
-import { Anchor, Comment, Content, Tag } from "../types.js";
-import * as YAML from "../yaml.js";
+import type Context from "./context.js";
+import { type Anchor, type Comment, type Content, type Tag } from "../types.js";
+import type * as YAML from "../yaml.js";
 
 export function transformContent(
   node: YAML.ast.Node,

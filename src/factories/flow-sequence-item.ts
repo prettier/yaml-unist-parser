@@ -1,4 +1,8 @@
-import { ContentNode, FlowSequenceItem, Position } from "../types.js";
+import {
+  type ContentNode,
+  type FlowSequenceItem,
+  type Position,
+} from "../types.js";
 import { createNode } from "./node.js";
 
 export function createFlowSequenceItem(

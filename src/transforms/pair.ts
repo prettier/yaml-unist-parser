@@ -1,18 +1,18 @@
-import { createFlowMappingItem } from "../factories/flow-mapping-item.js";
-import { createMappingItem } from "../factories/mapping-item.js";
+import { type createFlowMappingItem } from "../factories/flow-mapping-item.js";
+import { type createMappingItem } from "../factories/mapping-item.js";
 import { createMappingKey } from "../factories/mapping-key.js";
 import { createMappingValue } from "../factories/mapping-value.js";
 import { createEmptyPosition, createPosition } from "../factories/position.js";
-import { Context } from "../transform.js";
-import {
+import type Context from "./context.js";
+import type {
   Comment,
   Directive,
   Document,
   FlowMappingItem,
   MappingItem,
+  Range,
 } from "../types.js";
-import * as YAML from "../yaml.js";
-import { Range } from "./range.js";
+import type * as YAML from "../yaml.js";
 
 export function transformAstPair(
   pair: YAML.ast.Pair | YAML.ast.Merge,

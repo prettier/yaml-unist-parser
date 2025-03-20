@@ -1,4 +1,4 @@
-import { YamlUnistNode } from "../types.js";
+import { type YamlUnistNode } from "../types.js";
 
 // eemeli/yaml uses fake `plain`s to store comments https://github.com/eemeli/yaml/commit/c04ab2c2
 export function removeFakeNodes(node: YamlUnistNode) {

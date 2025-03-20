@@ -1,11 +1,11 @@
 import YAML from "yaml";
-import { CST } from "yaml/parse-cst";
+import { type CST } from "yaml/parse-cst";
 import {
-  Alias as _Alias,
-  Merge as _Merge,
-  Node as _Node,
-  Pair as _Pair,
-  Scalar as _Scalar,
+  type Alias as _Alias,
+  type Merge as _Merge,
+  type Node as _Node,
+  type Pair as _Pair,
+  type Scalar as _Scalar,
 } from "yaml/types";
 
 export const { Document, parseCST } = YAML;

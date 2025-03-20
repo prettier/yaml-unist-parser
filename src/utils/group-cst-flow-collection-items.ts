@@ -1,4 +1,4 @@
-import * as YAML from "../yaml.js";
+import type * as YAML from "../yaml.js";
 import { createSlicer } from "./create-slicer.js";
 
 type CstFlowMapItemWithoutComment = Exclude<

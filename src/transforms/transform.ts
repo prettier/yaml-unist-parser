@@ -1,38 +1,34 @@
-import { LinesAndColumns } from "lines-and-columns";
-import { transformAlias } from "./transforms/alias.js";
-import { transformBlockFolded } from "./transforms/block-folded.js";
-import { transformBlockLiteral } from "./transforms/block-literal.js";
-import { transformComment } from "./transforms/comment.js";
-import { transformDirective } from "./transforms/directive.js";
-import { transformDocument } from "./transforms/document.js";
-import { transformFlowMap } from "./transforms/flow-map.js";
-import { transformFlowSeq } from "./transforms/flow-seq.js";
-import { transformMap } from "./transforms/map.js";
-import { transformPlain } from "./transforms/plain.js";
-import { transformQuoteDouble } from "./transforms/quote-double.js";
-import { transformQuoteSingle } from "./transforms/quote-single.js";
-import { Range } from "./transforms/range.js";
-import { transformSeq } from "./transforms/seq.js";
-import {
+import { transformAlias } from "./alias.js";
+import { transformBlockFolded } from "./block-folded.js";
+import { transformBlockLiteral } from "./block-literal.js";
+import { transformComment } from "./comment.js";
+import { transformDirective } from "./directive.js";
+import { transformDocument } from "./document.js";
+import { transformFlowMap } from "./flow-map.js";
+import { transformFlowSeq } from "./flow-seq.js";
+import { transformMap } from "./map.js";
+import { transformPlain } from "./plain.js";
+import { transformQuoteDouble } from "./quote-double.js";
+import { transformQuoteSingle } from "./quote-single.js";
+import { transformSeq } from "./seq.js";
+import type {
   Alias,
   BlockFolded,
   BlockLiteral,
   Comment,
-  Content,
   Directive,
   Document,
   FlowMapping,
   FlowSequence,
   Mapping,
   Plain,
-  Point,
-  Position,
   QuoteDouble,
   QuoteSingle,
   Sequence,
   YamlUnistNode,
-} from "./types.js";
-import * as YAML from "./yaml.js";
+} from "../types.js";
+import type * as YAML from "../yaml.js";
+import type Context from "./context.js";
 
 export type YamlNode =
   | null
@@ -69,16 +65,6 @@ export type YamlToUnist<T extends YamlNode> =
   T extends YAML.ast.QuoteSingle ? QuoteSingle :
   T extends YAML.ast.Seq ? Sequence :
   never;
-
-export interface Context {
-  text: string;
-  locator: LinesAndColumns;
-  comments: Comment[];
-  transformOffset: (offset: number) => Point;
-  transformRange: (range: Range) => Position;
-  transformNode: <T extends YamlNode>(node: T) => YamlToUnist<T>;
-  transformContent: (node: YAML.ast.Node) => Content;
-}
 
 export function transformNode<T extends YamlNode>(
   node: T,
