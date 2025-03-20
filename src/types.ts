@@ -12,6 +12,11 @@ export interface Position {
   end: Point;
 }
 
+export interface Range {
+  origStart: number;
+  origEnd: number;
+}
+
 export interface Point {
   /** 1-based */
   line: number;

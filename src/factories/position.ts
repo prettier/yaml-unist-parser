@@ -1,4 +1,4 @@
-import { Point, Position } from "../types.js";
+import { type Point, type Position } from "../types.js";
 
 export function createPosition(start: Point, end: Point): Position {
   return { start, end };

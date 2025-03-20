@@ -1,16 +1,12 @@
-import { LinesAndColumns } from "lines-and-columns";
 import YAML from "yaml";
 
-import { attachComments } from "./attach.js";
 import { createRoot } from "./factories/root.js";
 import { removeCstBlankLine } from "./preprocess.js";
-import { Context, transformNode } from "./transform.js";
-import { transformContent } from "./transforms/content.js";
-import { transformOffset } from "./transforms/offset.js";
-import { transformRange } from "./transforms/range.js";
-import { Comment, Document, Root } from "./types.js";
+import { type Root } from "./types.js";
 import { removeFakeNodes } from "./utils/remove-fake-nodes.js";
 import { updatePositions } from "./utils/update-positions.js";
+import { attachComments } from "./attach.js";
+import Context from "./transforms/context.js";
 
 export function parse(text: string): Root {
   const documents = YAML.parseAllDocuments(text, {
@@ -18,18 +14,7 @@ export function parse(text: string): Root {
     uniqueKeys: false,
   });
 
-  const locator = new LinesAndColumns(text);
-  const comments: Comment[] = [];
-
-  const context: Context = {
-    text,
-    locator,
-    comments,
-    transformOffset: offset => transformOffset(offset, context),
-    transformRange: range => transformRange(range, context),
-    transformNode: node => transformNode(node, context),
-    transformContent: node => transformContent(node, context),
-  };
+  const context = new Context(cst, text);
 
   for (const document of documents) {
     for (const error of document.errors) {
@@ -38,7 +23,6 @@ export function parse(text: string): Root {
         error.code === "DUPLICATE_KEY"
       ) {
         continue;
-        8;
       }
       throw error;
     }
@@ -48,8 +32,8 @@ export function parse(text: string): Root {
 
   const root = createRoot(
     context.transformRange({ origStart: 0, origEnd: context.text.length }),
-    documents.map(context.transformNode).filter(Boolean) as Document[],
-    comments,
+    documents.map(document => context.transformNode(document)),
+    context.comments,
   );
 
   attachComments(root);

@@ -1,7 +1,6 @@
-import YAML from "yaml";
-
+import type YAML from "yaml";
 import { createSlicer } from "./create-slicer.js";
-import { YAMLComment } from "../types.js";
+import { type YAMLComment } from "../types.js";
 
 export type CstFlowMapItemWithoutComment = Exclude<
   YAML.CST.FlowCollection["items"][number],

@@ -1,10 +1,10 @@
-import YAML from "yaml";
+import type YAML from "yaml";
 import {
-  YAMLBlockFolded,
-  YAMLBlockLiteral,
-  YAMLPlain,
-  YAMLQuoteDouble,
-  YAMLQuoteSingle,
+  type YAMLBlockFolded,
+  type YAMLBlockLiteral,
+  type YAMLPlain,
+  type YAMLQuoteDouble,
+  type YAMLQuoteSingle,
 } from "./types.js";
 
 type YamlCstNode =

@@ -1,4 +1,9 @@
-import { Content, FlowMapping, FlowMappingItem, Position } from "../types.js";
+import {
+  type Content,
+  type FlowMapping,
+  type FlowMappingItem,
+  type Position,
+} from "../types.js";
 import { createFlowCollection } from "./flow-collection.js";
 
 export function createFlowMapping(

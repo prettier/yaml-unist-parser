@@ -1,4 +1,4 @@
-import { Anchor, Position } from "../types.js";
+import { type Anchor, type Position } from "../types.js";
 import { createNode } from "./node.js";
 
 export function createAnchor(position: Position, value: string): Anchor {

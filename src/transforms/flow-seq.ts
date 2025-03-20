@@ -1,11 +1,11 @@
-import YAML from "yaml";
+import type YAML from "yaml";
 
 import { createFlowMappingItem } from "../factories/flow-mapping-item.js";
 import { createFlowSequence } from "../factories/flow-sequence.js";
 import { createFlowSequenceItem } from "../factories/flow-sequence-item.js";
 import { createPosition } from "../factories/position.js";
-import { Context } from "../transform.js";
-import { FlowSequence } from "../types.js";
+import type Context from "./context.js";
+import { type FlowSequence } from "../types.js";
 import { extractComments } from "../utils/extract-comments.js";
 import { getFlowMapItemAdditionalRanges } from "../utils/get-flow-map-item-additional-ranges.js";
 import { getLast } from "../utils/get-last.js";

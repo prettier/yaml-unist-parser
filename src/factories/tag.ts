@@ -1,4 +1,4 @@
-import { Position, Tag } from "../types.js";
+import { type Position, type Tag } from "../types.js";
 import { createNode } from "./node.js";
 
 export function createTag(position: Position, value: string): Tag {

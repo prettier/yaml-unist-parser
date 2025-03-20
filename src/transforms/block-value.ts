@@ -1,11 +1,11 @@
 import { createBlockValue } from "../factories/block-value.js";
-import { Context } from "../transform.js";
 import {
-  BlockValue,
-  Comment,
-  YAMLBlockFolded,
-  YAMLBlockLiteral,
+  type BlockValue,
+  type Comment,
+  type YAMLBlockFolded,
+  type YAMLBlockLiteral,
 } from "../types.js";
+import type Context from "./context.js";
 import { getPointText } from "../utils/get-point-text.js";
 import { transformContent } from "./content.js";
 
@@ -24,13 +24,13 @@ export function transformAstBlockValue(
   const indicatorLength = 1;
   const chompingLength = cstNode.chomping === "CLIP" ? 0 : 1;
 
-  const headerLength = cstNode.header.origEnd - cstNode.header.origStart;
+  const headerLength = cstNode.header.origEnd! - cstNode.header.origStart!;
   const hasExplicitBlockIndent =
     headerLength - indicatorLength - chompingLength !== 0;
 
   const position = context.transformRange({
-    origStart: cstNode.header.origStart,
-    origEnd: cstNode.valueRange!.origEnd,
+    origStart: cstNode.header.origStart!,
+    origEnd: cstNode.valueRange!.origEnd!,
   });
 
   let indicatorComment: Comment | null = null;

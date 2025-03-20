@@ -1,4 +1,3 @@
-import { LinesAndColumns } from "lines-and-columns";
 import YAML, { isAlias, isDocument, isMap, isScalar, isSeq } from "yaml";
 
 import { transformAlias } from "./transforms/alias.js";
@@ -13,32 +12,32 @@ import { transformMap } from "./transforms/map.js";
 import { transformPlain } from "./transforms/plain.js";
 import { transformQuoteDouble } from "./transforms/quote-double.js";
 import { transformQuoteSingle } from "./transforms/quote-single.js";
-import { Range } from "./transforms/range.js";
+import { type Range } from "./transforms/range.js";
 import { transformSeq } from "./transforms/seq.js";
 import {
-  Alias,
-  BlockFolded,
-  BlockLiteral,
-  Comment,
-  Content,
-  Directive,
-  Document,
-  FlowMapping,
-  FlowSequence,
-  Mapping,
-  Plain,
-  Point,
-  Position,
-  QuoteDouble,
-  QuoteSingle,
-  Sequence,
-  YAMLBlockFolded,
-  YAMLBlockLiteral,
-  YAMLComment,
-  YAMLPlain,
-  YAMLQuoteDouble,
-  YAMLQuoteSingle,
-  YamlUnistNode,
+  type Alias,
+  type BlockFolded,
+  type BlockLiteral,
+  type Comment,
+  type Content,
+  type Directive,
+  type Document,
+  type FlowMapping,
+  type FlowSequence,
+  type Mapping,
+  type Plain,
+  type Point,
+  type Position,
+  type QuoteDouble,
+  type QuoteSingle,
+  type Sequence,
+  type YAMLBlockFolded,
+  type YAMLBlockLiteral,
+  type YAMLComment,
+  type YAMLPlain,
+  type YAMLQuoteDouble,
+  type YAMLQuoteSingle,
+  type YamlUnistNode,
 } from "./types.js";
 
 export type YamlNode<T = unknown, V = unknown> =

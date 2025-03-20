@@ -1,5 +1,5 @@
-import { Context } from "../transform.js";
-import { YAMLComment } from "../types.js";
+import { type YAMLComment } from "../types.js";
+import type Context from "../transforms/context.js";
 
 export function extractComments<T extends null | object>(
   nodes: Array<T | YAMLComment>,

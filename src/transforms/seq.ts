@@ -1,13 +1,14 @@
-import YAML from "yaml";
+import type YAML from "yaml";
 
 import { createPosition } from "../factories/position.js";
 import { createSequence } from "../factories/sequence.js";
 import { createSequenceItem } from "../factories/sequence-item.js";
-import { Context, YamlNode } from "../transform.js";
-import { ContentNode, Sequence } from "../types.js";
+import { type YamlNode } from "../transform.js";
+import { type ContentNode, type Sequence } from "../types.js";
 import { extractComments } from "../utils/extract-comments.js";
 import { extractPropComments } from "../utils/extract-prop-comments.js";
 import { getLast } from "../utils/get-last.js";
+import type Context from "./context.js";
 
 export function transformSeq(
   seq: YAML.YAMLSeq<YAML.Node>,
@@ -18,6 +19,7 @@ export function transformSeq(
   const sequenceItems = cstItemsWithoutComments.map((cstItem, index) => {
     extractPropComments(cstItem, context);
     const item = context.transformNode(seq.items[index] as YamlNode);
+
     return createSequenceItem(
       createPosition(
         context.transformOffset(cstItem.range![0]),

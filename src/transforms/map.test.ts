@@ -1,10 +1,10 @@
 import {
   getFirstContent,
-  TestCase,
+  type TestCase,
   testCases,
   testSyntaxError,
 } from "../helpers.js";
-import { Mapping, Root, Sequence } from "../types.js";
+import { type Mapping, type Root, type Sequence } from "../types.js";
 
 testSyntaxError("asd: 123\nqwe\n");
 

@@ -1,9 +1,9 @@
 import {
-  Comment,
-  Document,
-  DocumentBody,
-  DocumentHead,
-  Position,
+  type Comment,
+  type Document,
+  type DocumentBody,
+  type DocumentHead,
+  type Position,
 } from "../types.js";
 import { createNode } from "./node.js";
 import { createTrailingCommentAttachable } from "./trailing-comment-attachable.js";

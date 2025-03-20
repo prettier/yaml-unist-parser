@@ -1,4 +1,4 @@
-import { Content, Position, QuoteValue } from "../types.js";
+import { type Content, type Position, type QuoteValue } from "../types.js";
 import { createCommentAttachable } from "./comment-attachable.js";
 import { createNode } from "./node.js";
 

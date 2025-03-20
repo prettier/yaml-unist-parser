@@ -1,5 +1,5 @@
 import { getFirstContent, testCases, testSyntaxError } from "../helpers.js";
-import { Sequence } from "../types.js";
+import { type Sequence } from "../types.js";
 
 testCases([
   [

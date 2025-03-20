@@ -1,10 +1,10 @@
 import { createDocumentBody } from "../factories/document-body.js";
-import { Context } from "../transform.js";
-import { Comment, ContentNode, Point } from "../types.js";
+import type Context from "./context.js";
+import { type Comment, type ContentNode, type Point } from "../types.js";
 import { getLast } from "../utils/get-last.js";
 import { getMatchIndex } from "../utils/get-match-index.js";
 import { getPointText } from "../utils/get-point-text.js";
-import * as YAML from "../yaml.js";
+import type * as YAML from "../yaml.js";
 
 export function transformDocumentBody(
   document: YAML.ast.Document,
@@ -56,7 +56,7 @@ function categorizeNodes(
       } else if (hasContent) {
         comments.unshift(comment);
       } else if (
-        comment.position.start.offset >= document.valueRange!.origEnd
+        comment.position.start.offset >= document.valueRange!.origEnd!
       ) {
         documentTrailingComments.unshift(comment);
       } else {

@@ -1,6 +1,6 @@
 import { createBlockLiteral } from "../factories/block-literal.js";
-import { Context } from "../transform.js";
-import { BlockLiteral, YAMLBlockLiteral } from "../types.js";
+import { type BlockLiteral, type YAMLBlockLiteral } from "../types.js";
+import type Context from "./context.js";
 import { transformAstBlockValue } from "./block-value.js";
 
 export function transformBlockLiteral(

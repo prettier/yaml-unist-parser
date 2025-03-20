@@ -1,4 +1,4 @@
-import { BlockLiteral, BlockValue } from "../types.js";
+import { type BlockLiteral, type BlockValue } from "../types.js";
 
 export function createBlockLiteral(blockValue: BlockValue): BlockLiteral {
   return {
