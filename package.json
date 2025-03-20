@@ -21,7 +21,6 @@
   },
   "license": "MIT",
   "scripts": {
-    "postinstall": "patch-package",
     "prepublish": "patch-package && yarn run build",
     "lint": "run-p \"lint:*\"",
     "lint:eslint": "eslint .",
