@@ -4846,18 +4846,11 @@ __metadata:
     typescript: "npm:5.8.2"
     typescript-eslint: "npm:8.26.0"
     vitest: "npm:3.0.8"
-    yaml: "npm:^1.10.2"
+    yaml: "npm:^2.7.0"
   languageName: unknown
   linkType: soft
 
-"yaml@npm:^1.10.2":
-  version: 1.10.2
-  resolution: "yaml@npm:1.10.2"
-  checksum: 10/e088b37b4d4885b70b50c9fa1b7e54bd2e27f5c87205f9deaffd1fb293ab263d9c964feadb9817a7b129a5bf30a06582cb08750f810568ecc14f3cdbabb79cb3
-  languageName: node
-  linkType: hard
-
-"yaml@npm:^2.2.2":
+"yaml@npm:^2.2.2, yaml@npm:^2.7.0":
   version: 2.7.0
   resolution: "yaml@npm:2.7.0"
   bin:

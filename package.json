@@ -21,8 +21,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "postinstall": "patch-package",
-    "prepublish": "patch-package && yarn run build",
+    "prepublish": "yarn run build",
     "lint": "run-p \"lint:*\"",
     "lint:eslint": "eslint .",
     "lint:prettier": "prettier . --check",
@@ -35,7 +34,7 @@
     "release": "yarn build && standard-version"
   },
   "dependencies": {
-    "yaml": "^1.10.2"
+    "yaml": "^2.7.0"
   },
   "devDependencies": {
     "@eslint/js": "9.22.0",

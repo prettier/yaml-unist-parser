@@ -1,28 +1,33 @@
+import type YAML from "yaml";
+
 import { createPosition } from "../factories/position.js";
 import { createSequence } from "../factories/sequence.js";
 import { createSequenceItem } from "../factories/sequence-item.js";
-import type Context from "./context.js";
-import { type Sequence } from "../types.js";
+import { type YamlNode } from "../transform.js";
+import { type ContentNode, type Sequence } from "../types.js";
 import { extractComments } from "../utils/extract-comments.js";
 import { extractPropComments } from "../utils/extract-prop-comments.js";
 import { getLast } from "../utils/get-last.js";
-import type * as YAML from "../yaml.js";
+import type Context from "./context.js";
 
-export function transformSeq(seq: YAML.ast.Seq, context: Context): Sequence {
-  const cstItemsWithoutComments = extractComments(seq.cstNode!.items, context);
+export function transformSeq(
+  seq: YAML.YAMLSeq<YAML.Node>,
+  context: Context,
+): Sequence {
+  const cstItemsWithoutComments = extractComments(seq.items, context);
 
   const sequenceItems = cstItemsWithoutComments.map((cstItem, index) => {
     extractPropComments(cstItem, context);
-    const item = context.transformNode(seq.items[index]);
+    const item = context.transformNode(seq.items[index] as YamlNode);
 
     return createSequenceItem(
       createPosition(
-        context.transformOffset(cstItem.valueRange!.origStart),
+        context.transformOffset(cstItem.range![0]),
         item === null
-          ? context.transformOffset(cstItem.valueRange!.origStart + 1)
+          ? context.transformOffset(cstItem.range![0] + 1)
           : item.position.end,
       ),
-      item,
+      item as ContentNode,
     );
   });
 
