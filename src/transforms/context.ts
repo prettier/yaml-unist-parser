@@ -43,6 +43,7 @@ class Context {
     }
 
     // From `yaml/parse-cst`
+    // https://github.com/eemeli/yaml/blob/4cdcde632ece71155f3108ec0120c1a0329a6914/src/cst/parse.js#L22
     for (const document of this.#cst) {
       document.setOrigRanges([], 0);
     }
