@@ -1,6 +1,14 @@
-import type * as YAML from "../yaml.js";
+import type * as YAML from "yaml";
+import type * as YAMLTypes from "yaml/types";
 import { createPosition } from "../factories/position.js";
-import type { Comment, Point, Position, Content, Range } from "../types.js";
+import type {
+  Comment,
+  Content,
+  ParsedCST,
+  Point,
+  Position,
+  Range,
+} from "../types.js";
 import { transformContent } from "./content.js";
 import { transformNode, type YamlNode, type YamlToUnist } from "./transform.js";
 
@@ -24,7 +32,7 @@ class Context {
   #cst;
   #cstContext: CSTContext | undefined;
 
-  constructor(cst: YAML.ParsedCST, text: string) {
+  constructor(cst: ParsedCST, text: string) {
     this.text = text;
     this.#cst = cst;
   }
@@ -34,7 +42,7 @@ class Context {
       const [document] = this.#cst;
       const Node = Object.getPrototypeOf(
         Object.getPrototypeOf(document),
-      ) as YAML.cst.Node;
+      ) as YAML.CST.Node;
       rangeAsLinePosGetter = Object.getOwnPropertyDescriptor(
         Node,
         "rangeAsLinePos",
@@ -88,7 +96,7 @@ class Context {
     return transformNode(node, this);
   }
 
-  transformContent(node: YAML.ast.Node): Content {
+  transformContent(node: YAMLTypes.Node): Content {
     return transformContent(node, this);
   }
 }

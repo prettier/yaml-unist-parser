@@ -1,14 +1,15 @@
+import type * as YAML from "yaml";
+import type * as YAMLTypes from "yaml/types";
 import { PropLeadingCharacter } from "../constants.js";
 import { createAnchor } from "../factories/anchor.js";
 import { createComment } from "../factories/comment.js";
 import { createContent } from "../factories/content.js";
 import { createTag } from "../factories/tag.js";
-import type Context from "./context.js";
 import { type Anchor, type Comment, type Content, type Tag } from "../types.js";
-import type * as YAML from "../yaml.js";
+import type Context from "./context.js";
 
 export function transformContent(
-  node: YAML.ast.Node,
+  node: YAMLTypes.Node,
   context: Context,
   isNotMiddleComment: (comment: Comment) => boolean = () => false,
 ): Content {
@@ -16,7 +17,7 @@ export function transformContent(
 
   const middleComments: Comment[] = [];
 
-  let firstTagOrAnchorRange: YAML.cst.Range | null = null;
+  let firstTagOrAnchorRange: YAML.CST.Range | null = null;
 
   let tag: Tag | null = null;
   let anchor: Anchor | null = null;

@@ -1,4 +1,5 @@
 import { wrap } from "jest-snapshot-serializer-raw";
+import { type YAMLSemanticError, type YAMLSyntaxError } from "yaml/util";
 import { parse } from "./parse.js";
 import {
   type Anchor,
@@ -9,7 +10,6 @@ import {
   type Tag,
   type YamlUnistNode,
 } from "./types.js";
-import type * as YAML from "./yaml.js";
 
 export type Arrayable<T> = T | T[];
 
@@ -335,9 +335,7 @@ export function testSyntaxError(text: string, message?: string) {
   }
 }
 
-function isYAMLError(
-  e: any,
-): e is YAML.YAMLSyntaxError | YAML.YAMLSemanticError {
+function isYAMLError(e: any): e is YAMLSyntaxError | YAMLSemanticError {
   return (
     e instanceof Error &&
     (e.name === "YAMLSyntaxError" || e.name === "YAMLSemanticError")

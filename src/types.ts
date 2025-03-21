@@ -1,3 +1,7 @@
+import type * as YAML from "yaml";
+
+export type ParsedCST = ReturnType<typeof YAML.parseCST>;
+
 export interface Node {
   type: string;
   position: Position;

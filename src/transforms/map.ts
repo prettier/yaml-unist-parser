@@ -1,16 +1,19 @@
+import type * as YAML from "yaml";
 import { createMapping } from "../factories/mapping.js";
 import { createMappingItem } from "../factories/mapping-item.js";
 import { createPosition } from "../factories/position.js";
-import type Context from "./context.js";
 import { type Mapping } from "../types.js";
 import { createSlicer } from "../utils/create-slicer.js";
 import { extractComments } from "../utils/extract-comments.js";
 import { extractPropComments } from "../utils/extract-prop-comments.js";
 import { getLast } from "../utils/get-last.js";
-import type * as YAML from "../yaml.js";
+import type Context from "./context.js";
 import { transformAstPair } from "./pair.js";
 
-export function transformMap(map: YAML.ast.Map, context: Context): Mapping {
+export function transformMap(
+  map: YAML.AST.BlockMap,
+  context: Context,
+): Mapping {
   const cstNode = map.cstNode!;
 
   cstNode.items
@@ -51,7 +54,7 @@ export function transformMap(map: YAML.ast.Map, context: Context): Mapping {
 }
 
 function groupCstItems(
-  cstItems: Array<Exclude<YAML.cst.Map["items"][number], YAML.cst.Comment>>,
+  cstItems: Array<Exclude<YAML.CST.Map["items"][number], YAML.CST.Comment>>,
 ) {
   const groups: Array<typeof cstItems> = [];
   const sliceCstItems = createSlicer(cstItems, 0);

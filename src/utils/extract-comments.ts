@@ -1,12 +1,12 @@
+import type * as YAML from "yaml";
 import type Context from "../transforms/context.js";
-import type * as YAML from "../yaml.js";
 
 export function extractComments<T extends null | object>(
-  nodes: Array<T | YAML.cst.Comment>,
+  nodes: Array<T | YAML.CST.Comment>,
   context: Context,
 ): T[];
 export function extractComments(
-  nodes: Array<null | object | YAML.cst.Comment>,
+  nodes: Array<null | object | YAML.CST.Comment>,
   context: Context,
 ): Array<null | object> {
   const restNodes: Array<null | object> = [];

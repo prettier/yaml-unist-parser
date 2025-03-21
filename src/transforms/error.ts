@@ -1,10 +1,10 @@
+import { type YAMLError } from "yaml/util";
 import { createError } from "../factories/error.js";
+import type { Range, YAMLSyntaxError } from "../types.js";
 import type Context from "./context.js";
-import type { YAMLSyntaxError, Range } from "../types.js";
-import type * as YAML from "../yaml.js";
 
 export function transformError(
-  error: Extract<YAML.YAMLError, SyntaxError>,
+  error: Extract<YAMLError, SyntaxError>,
   context: Context,
 ): YAMLSyntaxError {
   // istanbul ignore next
