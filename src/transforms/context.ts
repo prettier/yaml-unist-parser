@@ -37,6 +37,16 @@ class Context {
     this.#cst = cst;
   }
 
+  setOrigRanges() {
+    if (this.#cst.setOrigRanges()) {
+      return;
+    }
+
+    for (const document of this.#cst) {
+      document.setOrigRanges([], 0);
+    }
+  }
+
   #getRangePosition(range: Range): { start: Point; end: Point } {
     if (!rangeAsLinePosGetter) {
       const [document] = this.#cst;

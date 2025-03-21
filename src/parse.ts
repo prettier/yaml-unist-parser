@@ -6,14 +6,13 @@ import { removeCstBlankLine } from "./preprocess.js";
 import Context from "./transforms/context.js";
 import { transformError } from "./transforms/error.js";
 import { type Root } from "./types.js";
-import { addOrigRange } from "./utils/add-orig-range.js";
 import { removeFakeNodes } from "./utils/remove-fake-nodes.js";
 import { updatePositions } from "./utils/update-positions.js";
 
 export function parse(text: string): Root {
   const cst = parseCST(text);
-
-  addOrigRange(cst);
+  const context = new Context(cst, text);
+  context.setOrigRanges();
 
   const documents = cst.map(cstDocument =>
     new Document({
@@ -21,8 +20,6 @@ export function parse(text: string): Root {
       keepCstNodes: true,
     }).parse(cstDocument),
   );
-
-  const context = new Context(cst, text);
 
   for (const document of documents) {
     for (const error of document.errors) {
@@ -39,7 +36,7 @@ export function parse(text: string): Root {
   documents.forEach(document => removeCstBlankLine(document.cstNode!));
 
   const root = createRoot(
-    context.transformRange({ origStart: 0, origEnd: context.text.length }),
+    context.transformRange({ origStart: 0, origEnd: text.length }),
     documents.map(document => context.transformNode(document)),
     context.comments,
   );
