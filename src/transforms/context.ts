@@ -42,6 +42,7 @@ class Context {
       return;
     }
 
+    // From `yaml/parse-cst`
     for (const document of this.#cst) {
       document.setOrigRanges([], 0);
     }
