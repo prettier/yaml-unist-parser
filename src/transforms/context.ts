@@ -1,10 +1,10 @@
 import type * as YAML from "yaml";
+import type { ParsedCST } from "yaml/parse-cst";
 import type * as YAMLTypes from "yaml/types";
 import { createPosition } from "../factories/position.js";
-import type { Comment, Point, Position, Content, Range } from "../types.js";
+import type { Comment, Content, Point, Position, Range } from "../types.js";
 import { transformContent } from "./content.js";
 import { transformNode, type YamlNode, type YamlToUnist } from "./transform.js";
-import type { ParsedCST } from "yaml/parse-cst";
 
 type RangeAsLinePosGetter = (this: {
   range: { start: number; end: number };

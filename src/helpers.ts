@@ -1,4 +1,5 @@
 import { wrap } from "jest-snapshot-serializer-raw";
+import { type YAMLSemanticError, type YAMLSyntaxError } from "yaml/util";
 import { parse } from "./parse.js";
 import {
   type Anchor,
@@ -9,7 +10,6 @@ import {
   type Tag,
   type YamlUnistNode,
 } from "./types.js";
-import { type YAMLSyntaxError, type YAMLSemanticError } from "yaml/util";
 
 export type Arrayable<T> = T | T[];
 

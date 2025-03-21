@@ -1,14 +1,14 @@
+import { Document, parseCST } from "yaml";
+import { YAMLSemanticError } from "yaml/util";
 import { attachComments } from "./attach.js";
 import { createRoot } from "./factories/root.js";
 import { removeCstBlankLine } from "./preprocess.js";
+import Context from "./transforms/context.js";
 import { transformError } from "./transforms/error.js";
 import { type Root } from "./types.js";
 import { addOrigRange } from "./utils/add-orig-range.js";
 import { removeFakeNodes } from "./utils/remove-fake-nodes.js";
 import { updatePositions } from "./utils/update-positions.js";
-import Context from "./transforms/context.js";
-import { Document, parseCST } from "yaml";
-import { YAMLSemanticError } from "yaml/util";
 
 export function parse(text: string): Root {
   const cst = parseCST(text);

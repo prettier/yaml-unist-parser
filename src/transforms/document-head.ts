@@ -1,8 +1,8 @@
+import type * as YAML from "yaml";
 import { createDocumentHead } from "../factories/document-head.js";
-import type Context from "./context.js";
 import type { Comment, Directive, Range } from "../types.js";
 import { getMatchIndex } from "../utils/get-match-index.js";
-import type * as YAML from "yaml";
+import type Context from "./context.js";
 
 export function transformDocumentHead(
   document: YAML.Document,

@@ -1,7 +1,7 @@
-import { createQuoteValue } from "../factories/quote-value.js";
-import type Context from "./context.js";
-import { type QuoteValue } from "../types.js";
 import type * as YAML from "yaml";
+import { createQuoteValue } from "../factories/quote-value.js";
+import { type QuoteValue } from "../types.js";
+import type Context from "./context.js";
 
 export function transformAstQuoteValue(
   quoteValue: YAML.AST.QuoteDouble | YAML.AST.QuoteSingle,

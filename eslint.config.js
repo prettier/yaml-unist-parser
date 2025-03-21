@@ -1,7 +1,7 @@
-import globals from "globals";
 import eslintJs from "@eslint/js";
 import eslintConfigPrettier from "eslint-config-prettier/flat";
 import eslintPluginSimpleImportSort from "eslint-plugin-simple-import-sort";
+import globals from "globals";
 import tseslint from "typescript-eslint";
 
 export default tseslint.config(

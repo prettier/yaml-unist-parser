@@ -1,7 +1,7 @@
+import type * as YAML from "yaml";
 import { PropLeadingCharacter } from "../constants.js";
 import { createComment } from "../factories/comment.js";
 import type Context from "../transforms/context.js";
-import type * as YAML from "yaml";
 import type { Range } from "../types.ts";
 
 export function extractPropComments(

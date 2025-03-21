@@ -1,12 +1,12 @@
+import type * as YAML from "yaml";
+import type * as YAMLTypes from "yaml/types";
 import { PropLeadingCharacter } from "../constants.js";
 import { createAnchor } from "../factories/anchor.js";
 import { createComment } from "../factories/comment.js";
 import { createContent } from "../factories/content.js";
 import { createTag } from "../factories/tag.js";
-import type Context from "./context.js";
 import { type Anchor, type Comment, type Content, type Tag } from "../types.js";
-import type * as YAML from "yaml";
-import type * as YAMLTypes from "yaml/types";
+import type Context from "./context.js";
 
 export function transformContent(
   node: YAMLTypes.Node,

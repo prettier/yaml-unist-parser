@@ -1,9 +1,9 @@
+import type * as YAMLTypes from "yaml/types";
 import { type createFlowMappingItem } from "../factories/flow-mapping-item.js";
 import { type createMappingItem } from "../factories/mapping-item.js";
 import { createMappingKey } from "../factories/mapping-key.js";
 import { createMappingValue } from "../factories/mapping-value.js";
 import { createEmptyPosition, createPosition } from "../factories/position.js";
-import type Context from "./context.js";
 import type {
   Comment,
   Directive,
@@ -12,7 +12,7 @@ import type {
   MappingItem,
   Range,
 } from "../types.js";
-import type * as YAMLTypes from "yaml/types";
+import type Context from "./context.js";
 
 export function transformAstPair(
   pair: YAMLTypes.Pair | YAMLTypes.Merge,

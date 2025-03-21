@@ -1,8 +1,8 @@
+import type * as YAML from "yaml";
 import { createDocument } from "../factories/document.js";
 import { createPosition } from "../factories/position.js";
-import type Context from "./context.js";
 import { type Document } from "../types.js";
-import type * as YAML from "yaml";
+import type Context from "./context.js";
 import { transformDocumentBody } from "./document-body.js";
 import { transformDocumentHead } from "./document-head.js";
 

@@ -1,9 +1,9 @@
+import type * as YAML from "yaml";
 import { createBlockValue } from "../factories/block-value.js";
-import type Context from "./context.js";
 import { type BlockValue, type Comment } from "../types.js";
 import { getPointText } from "../utils/get-point-text.js";
-import type * as YAML from "yaml";
 import { transformContent } from "./content.js";
+import type Context from "./context.js";
 
 enum Chomping {
   CLIP = "clip",
