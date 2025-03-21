@@ -1,6 +1,7 @@
 {
   "preset": "angular",
   "scripts": {
-    "postchangelog": "prettier --write CHANGELOG.md"
-  }
+    "postchangelog": "prettier --write changelog.md"
+  },
+  "infile": "changelog.md"
 }
