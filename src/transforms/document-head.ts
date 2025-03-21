@@ -2,10 +2,10 @@ import { createDocumentHead } from "../factories/document-head.js";
 import type Context from "./context.js";
 import type { Comment, Directive, Range } from "../types.js";
 import { getMatchIndex } from "../utils/get-match-index.js";
-import type * as YAML from "../yaml.js";
+import type * as YAML from "yaml";
 
 export function transformDocumentHead(
-  document: YAML.ast.Document,
+  document: YAML.Document,
   context: Context,
 ) {
   const cstNode = document.cstNode!;
@@ -43,7 +43,7 @@ export function transformDocumentHead(
   };
 }
 
-function categorizeNodes(document: YAML.cst.Document, context: Context) {
+function categorizeNodes(document: YAML.CST.Document, context: Context) {
   const directives: Directive[] = [];
   const comments: Comment[] = [];
   const endComments: Comment[] = [];
@@ -67,7 +67,7 @@ function categorizeNodes(document: YAML.cst.Document, context: Context) {
 }
 
 function getPosition(
-  document: YAML.cst.Document,
+  document: YAML.CST.Document,
   directives: Directive[],
   context: Context,
 ) {

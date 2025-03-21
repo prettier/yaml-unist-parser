@@ -1,27 +1,27 @@
-import type * as YAML from "./yaml.js";
+import type * as YAML from "yaml";
 
 type YamlCstNode =
-  | YAML.cst.Alias
-  | YAML.cst.BlankLine
-  | YAML.cst.BlockFolded
-  | YAML.cst.BlockLiteral
-  | YAML.cst.BlockValue
-  | YAML.cst.Comment
-  | YAML.cst.Directive
-  | YAML.cst.Document
-  | YAML.cst.FlowCollection
-  | YAML.cst.FlowMap
-  | YAML.cst.FlowSeq
-  | YAML.cst.Map
-  | YAML.cst.MapItem
-  | YAML.cst.MapKey
-  | YAML.cst.MapValue
-  | YAML.cst.PlainValue
-  | YAML.cst.QuoteDouble
-  | YAML.cst.QuoteSingle
-  | YAML.cst.QuoteValue
-  | YAML.cst.Seq
-  | YAML.cst.SeqItem;
+  | YAML.CST.Alias
+  | YAML.CST.BlankLine
+  | YAML.CST.BlockFolded
+  | YAML.CST.BlockLiteral
+  | YAML.CST.BlockValue
+  | YAML.CST.Comment
+  | YAML.CST.Directive
+  | YAML.CST.Document
+  | YAML.CST.FlowCollection
+  | YAML.CST.FlowMap
+  | YAML.CST.FlowSeq
+  | YAML.CST.Map
+  | YAML.CST.MapItem
+  | YAML.CST.MapKey
+  | YAML.CST.MapValue
+  | YAML.CST.PlainValue
+  | YAML.CST.QuoteDouble
+  | YAML.CST.QuoteSingle
+  | YAML.CST.QuoteValue
+  | YAML.CST.Seq
+  | YAML.CST.SeqItem;
 
 export function removeCstBlankLine(node: YamlCstNode) {
   switch (node.type) {

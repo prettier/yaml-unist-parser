@@ -9,7 +9,7 @@ import {
   type Tag,
   type YamlUnistNode,
 } from "./types.js";
-import type * as YAML from "./yaml.js";
+import { type YAMLSyntaxError, type YAMLSemanticError } from "yaml/util";
 
 export type Arrayable<T> = T | T[];
 
@@ -335,9 +335,7 @@ export function testSyntaxError(text: string, message?: string) {
   }
 }
 
-function isYAMLError(
-  e: any,
-): e is YAML.YAMLSyntaxError | YAML.YAMLSemanticError {
+function isYAMLError(e: any): e is YAMLSyntaxError | YAMLSemanticError {
   return (
     e instanceof Error &&
     (e.name === "YAMLSyntaxError" || e.name === "YAMLSemanticError")

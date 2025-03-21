@@ -1,9 +1,12 @@
 import { createAlias } from "../factories/alias.js";
 import type Context from "./context.js";
 import { type Alias } from "../types.js";
-import type * as YAML from "../yaml.js";
+import type * as YAMLTypes from "yaml/types";
 
-export function transformAlias(alias: YAML.ast.Alias, context: Context): Alias {
+export function transformAlias(
+  alias: YAMLTypes.Alias,
+  context: Context,
+): Alias {
   const cstNode = alias.cstNode!;
   return createAlias(
     context.transformRange({

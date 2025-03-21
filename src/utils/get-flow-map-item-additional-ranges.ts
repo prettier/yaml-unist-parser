@@ -1,11 +1,11 @@
-import type * as YAML from "../yaml.js";
+import type * as YAML from "yaml";
 
 export function getFlowMapItemAdditionalRanges(
-  cstNodes: YAML.cst.FlowMap["items"],
+  cstNodes: YAML.CST.FlowMap["items"],
 ) {
   const [questionMarkRange, colonRange] = ["?", ":"].map(char => {
     const flowChar = cstNodes.find(
-      (cstNode): cstNode is YAML.cst.FlowChar =>
+      (cstNode): cstNode is YAML.CST.FlowChar =>
         "char" in cstNode && cstNode.char === char,
     );
     return flowChar

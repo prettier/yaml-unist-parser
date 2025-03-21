@@ -12,24 +12,24 @@ import type {
   MappingItem,
   Range,
 } from "../types.js";
-import type * as YAML from "../yaml.js";
+import type * as YAMLTypes from "yaml/types";
 
 export function transformAstPair(
-  pair: YAML.ast.Pair | YAML.ast.Merge,
+  pair: YAMLTypes.Pair | YAMLTypes.Merge,
   context: Context,
   createNode: typeof createMappingItem,
   additionalKeyRange: null | Range,
   additionalValueRange: null | Range,
 ): MappingItem;
 export function transformAstPair(
-  pair: YAML.ast.Pair | YAML.ast.Merge,
+  pair: YAMLTypes.Pair | YAMLTypes.Merge,
   context: Context,
   createNode: typeof createFlowMappingItem,
   additionalKeyRange: null | Range,
   additionalValueRange: null | Range,
 ): FlowMappingItem;
 export function transformAstPair(
-  pair: YAML.ast.Pair | YAML.ast.Merge,
+  pair: YAMLTypes.Pair | YAMLTypes.Merge,
   context: Context,
   createNode: typeof createMappingItem | typeof createFlowMappingItem,
   additionalKeyRange: null | Range,
