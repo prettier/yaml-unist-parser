@@ -1,5 +1,5 @@
 import type * as YAML from "yaml";
-import type { ParsedCST } from "yaml/parse-cst";
+import type { ParsedCST } from "../types.js";
 
 const FINISH = true;
 
