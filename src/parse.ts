@@ -19,7 +19,6 @@ export function parse(text: string): Root {
     new Document({
       merge: false,
       keepCstNodes: true,
-      prettyErrors: false,
     }).parse(cstDocument),
   );
 
