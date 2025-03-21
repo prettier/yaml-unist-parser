@@ -1,4 +1,4 @@
-import { Document, parseCST } from "yaml";
+import YAML from "yaml";
 import { YAMLSemanticError } from "yaml/util";
 import { attachComments } from "./attach.js";
 import { createRoot } from "./factories/root.js";
@@ -10,12 +10,12 @@ import { removeFakeNodes } from "./utils/remove-fake-nodes.js";
 import { updatePositions } from "./utils/update-positions.js";
 
 export function parse(text: string): Root {
-  const cst = parseCST(text);
+  const cst = YAML.parseCST(text);
   const context = new Context(cst, text);
   context.setOrigRanges();
 
   const documents = cst.map(cstDocument =>
-    new Document({
+    new YAML.Document({
       merge: false,
       keepCstNodes: true,
     }).parse(cstDocument),
