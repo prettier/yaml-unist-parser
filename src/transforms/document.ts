@@ -28,8 +28,12 @@ export function transformDocument(
     context.comments.push(documentTrailingComment);
   }
 
+  const cstNode = document.cstNode!;
+
   return createDocument(
     createPosition(documentHead.position.start, documentEndPoint),
+    Boolean(cstNode.directivesEndMarker),
+    Boolean(cstNode.documentEndMarker),
     documentHead,
     documentBody,
     documentTrailingComment,

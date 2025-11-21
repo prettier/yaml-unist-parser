@@ -10,6 +10,8 @@ import { createTrailingCommentAttachable } from "./trailing-comment-attachable.j
 
 export function createDocument(
   position: Position,
+  startMark: boolean,
+  endMark: boolean,
   head: DocumentHead,
   body: DocumentBody,
   trailingComment: null | Comment,
@@ -17,6 +19,8 @@ export function createDocument(
   return {
     ...createNode("document", position),
     ...createTrailingCommentAttachable(trailingComment),
+    startMark,
+    endMark,
     children: [head, body],
   };
 }

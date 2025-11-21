@@ -179,8 +179,12 @@ function stringifyNode(
     return "<null />";
   }
 
-  const attributes = Object.keys(node)
-    .filter(key => {
+  const attributes = Object.entries(node)
+    .filter(([key, value]) => {
+      if (value === false) {
+        return false;
+      }
+
       switch (key) {
         case "type":
         case "position":
@@ -198,7 +202,9 @@ function stringifyNode(
           return true;
       }
     })
-    .map(key => `${key}=${JSON.stringify(node[key as keyof typeof node])}`)
+    .map(([key, value]) =>
+      value === true ? key : `${key}=${JSON.stringify(value)}`,
+    )
     .sort()
     .map((attribute, index) => (index === 0 ? " " + attribute : attribute))
     .join(" ");
