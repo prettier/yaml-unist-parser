@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [2.1.0](https://github.com/prettier/yaml-unist-parser/compare/v2.0.5...v2.1.0) (2025-11-21)
+
+### Bug Fixes
+
+- fix empty string parsing ([#297](https://github.com/prettier/yaml-unist-parser/issues/297)) ([5b73153](https://github.com/prettier/yaml-unist-parser/commit/5b7315346cb268b8f86a4818454af0bd7c99a50d))
+
+### Features
+
+- add `startMark` and `endMark` information to `Document` ([#298](https://github.com/prettier/yaml-unist-parser/issues/298)) ([7c4de43](https://github.com/prettier/yaml-unist-parser/commit/7c4de437de33793b6cacfc5bd87e0e08d45faf04))
+
 ## [2.0.5](https://github.com/prettier/yaml-unist-parser/compare/v2.0.4...v2.0.5) (2025-03-21)
 
 ### Bug Fixes
