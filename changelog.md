@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.1](https://github.com/prettier/yaml-unist-parser/compare/v2.1.0...v2.1.1) (2025-11-21)
+
+### Bug Fixes
+
+- rename `startMark` to `directivesEndMarker`, `endMark` to `documentEndMarker` ([cc3216b](https://github.com/prettier/yaml-unist-parser/commit/cc3216b0e9e34ec0b6a0f614f28a1658c67e8087))
+
 # [2.1.0](https://github.com/prettier/yaml-unist-parser/compare/v2.0.5...v2.1.0) (2025-11-21)
 
 ### Bug Fixes
