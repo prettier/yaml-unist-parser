@@ -119,6 +119,8 @@ export interface Root extends Parent {
 
 export interface Document extends Parent, TrailingCommentAttachable {
   type: "document";
+  startMark: boolean;
+  endMark: boolean;
   children: [DocumentHead, DocumentBody];
 }
 

@@ -65,7 +65,7 @@ root (1:1 ~ 6:1)
 6 | ¶
   | ^
 <root>
-  <document>
+  <document endMark=false startMark=false>
     <documentHead>
 
     </documentHead>
@@ -85,7 +85,7 @@ root (1:1 ~ 2:1)
 2 | ¶
   | ^
 <root>
-  <document>
+  <document endMark=false startMark=false>
     <documentHead>
 
     </documentHead>

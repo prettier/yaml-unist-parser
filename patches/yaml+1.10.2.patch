@@ -22,7 +22,7 @@ index 53eb011..dcb722e 100644
      schema: Schema
    }
 diff --git a/node_modules/yaml/parse-cst.d.ts b/node_modules/yaml/parse-cst.d.ts
-index 9fd2ebf..45c1923 100644
+index 9fd2ebf..b028a9c 100644
 --- a/node_modules/yaml/parse-cst.d.ts
 +++ b/node_modules/yaml/parse-cst.d.ts
 @@ -10,8 +10,8 @@ export namespace CST {
@@ -45,7 +45,7 @@ index 9fd2ebf..45c1923 100644
    }
  
    interface FlowCollection extends Node {
-@@ -184,6 +184,7 @@ export namespace CST {
+@@ -184,8 +184,11 @@ export namespace CST {
      type: Type.DOCUMENT
      directives: Array<BlankLine | Comment | Directive>
      contents: Array<BlankLine | Comment | ContentNode>
@@ -53,6 +53,10 @@ index 9fd2ebf..45c1923 100644
      readonly anchor: null
      readonly comment: null
      readonly tag: null
++    readonly directivesEndMarker: Range | null,
++    readonly documentEndMarker: Range | null,
+   }
+ }
 diff --git a/node_modules/yaml/types.d.ts b/node_modules/yaml/types.d.ts
 index 411e74e..0c60eb0 100644
 --- a/node_modules/yaml/types.d.ts
