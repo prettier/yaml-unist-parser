@@ -63,6 +63,13 @@ class Context {
 
     this.#cstContext ??= { root: { context: { src: this.text } } };
 
+    if (!this.text && range.origStart === 0 && range.origEnd === 0) {
+      return {
+        start: { offset: 0, line: 1, column: 1 },
+        end: { offset: 0, line: 1, column: 1 },
+      };
+    }
+
     const {
       start: { line: startLine, col: startColumn },
       end: { line: endLine, col: endColumn },

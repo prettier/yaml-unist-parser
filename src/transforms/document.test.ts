@@ -26,6 +26,9 @@ testCases([
   ["#123\n#456\n---", getDocumentHead(0)],
   ["123\n--- #666\n456", root => root],
   ["123\n...\n456", [getDocument(0), getDocumentBody(0)]],
+  ["", root => root],
+  [" ", root => root],
+  ["\n", root => root],
 ]);
 
 function getDocument(documentIndex: number) {
