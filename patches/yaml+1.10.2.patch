@@ -22,7 +22,7 @@ index 53eb011..dcb722e 100644
      schema: Schema
    }
 diff --git a/node_modules/yaml/parse-cst.d.ts b/node_modules/yaml/parse-cst.d.ts
-index 9fd2ebf..b028a9c 100644
+index 9fd2ebf..4e25756 100644
 --- a/node_modules/yaml/parse-cst.d.ts
 +++ b/node_modules/yaml/parse-cst.d.ts
 @@ -10,8 +10,8 @@ export namespace CST {
@@ -53,8 +53,8 @@ index 9fd2ebf..b028a9c 100644
      readonly anchor: null
      readonly comment: null
      readonly tag: null
-+    readonly directivesEndMarker: Range | null,
-+    readonly documentEndMarker: Range | null,
++    readonly directivesEndMarker: Range | null
++    readonly documentEndMarker: Range | null
    }
  }
 diff --git a/node_modules/yaml/types.d.ts b/node_modules/yaml/types.d.ts
