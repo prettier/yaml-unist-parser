@@ -15,7 +15,7 @@ export function transformDocumentHead(
     context,
   );
 
-  const { position, endMarkerPoint } = getPosition(
+  const { position, documentEndMarkererPoint } = getPosition(
     cstNode,
     directives,
     context,
@@ -39,7 +39,7 @@ export function transformDocumentHead(
 
   return {
     createDocumentHeadWithTrailingComment,
-    documentHeadEndMarkerPoint: endMarkerPoint,
+    documentHeadEndMarkerPoint: documentEndMarkererPoint,
   };
 }
 
@@ -71,24 +71,27 @@ function getPosition(
   directives: Directive[],
   context: Context,
 ) {
-  let endMarkerIndex = getMatchIndex(
+  let documentEndMarkererIndex = getMatchIndex(
     context.text.slice(0, document.valueRange!.origStart),
     /---\s*$/,
   );
   // end marker should start with the first character on the line
-  if (endMarkerIndex > 0 && !/[\r\n]/.test(context.text[endMarkerIndex - 1])) {
-    endMarkerIndex = -1;
+  if (
+    documentEndMarkererIndex > 0 &&
+    !/[\r\n]/.test(context.text[documentEndMarkererIndex - 1])
+  ) {
+    documentEndMarkererIndex = -1;
   }
 
   const range: Range =
-    endMarkerIndex === -1
+    documentEndMarkererIndex === -1
       ? {
           origStart: document.valueRange!.origStart!,
           origEnd: document.valueRange!.origStart!,
         }
       : {
-          origStart: endMarkerIndex!,
-          origEnd: endMarkerIndex + 3,
+          origStart: documentEndMarkererIndex!,
+          origEnd: documentEndMarkererIndex + 3,
         };
 
   if (directives.length !== 0) {
@@ -97,7 +100,9 @@ function getPosition(
 
   return {
     position: context.transformRange(range),
-    endMarkerPoint:
-      endMarkerIndex === -1 ? null : context.transformOffset(endMarkerIndex),
+    documentEndMarkererPoint:
+      documentEndMarkererIndex === -1
+        ? null
+        : context.transformOffset(documentEndMarkererIndex),
   };
 }

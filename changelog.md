@@ -10,7 +10,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Features
 
-- add `startMark` and `endMark` information to `Document` ([#298](https://github.com/prettier/yaml-unist-parser/issues/298)) ([7c4de43](https://github.com/prettier/yaml-unist-parser/commit/7c4de437de33793b6cacfc5bd87e0e08d45faf04))
+- add `directivesEndMarker` and `documentEndMarker` information to `Document` ([#298](https://github.com/prettier/yaml-unist-parser/issues/298)) ([7c4de43](https://github.com/prettier/yaml-unist-parser/commit/7c4de437de33793b6cacfc5bd87e0e08d45faf04))
 
 ## [2.0.5](https://github.com/prettier/yaml-unist-parser/compare/v2.0.4...v2.0.5) (2025-03-21)
 

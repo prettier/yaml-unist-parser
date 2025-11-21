@@ -60,7 +60,7 @@ document (1:1 ~ 3:4)
 7 | ¶
 8 | ¶
 9 | ·¶
-<document endMark>
+<document documentEndMarker>
   <trailingComment value="123">
   <documentHead>
 
@@ -188,7 +188,7 @@ document (1:1 ~ 1:4)
 3 | #¶
 4 | ¶
 5 | ¶
-<document endMark>
+<document documentEndMarker>
   <documentHead>
 
   </documentHead>
@@ -310,7 +310,7 @@ document (2:1 ~ 6:4)
 11 | 456¶
 12 | ¶
 13 | ¶
-<document endMark startMark>
+<document documentEndMarker directivesEndMarker>
   <documentHead>
     <directive name="AAA" parameters=[] />
   </documentHead>
@@ -385,7 +385,7 @@ document (8:1 ~ 13:1)
    | ^
 13 | ¶
    | ^
-<document startMark>
+<document directivesEndMarker>
   <documentHead>
     <directive name="BBB" parameters=[] />
   </documentHead>
@@ -459,7 +459,7 @@ document (2:1 ~ 6:4)
 10 | 456¶
 11 | ¶
 12 | ¶
-<document endMark startMark>
+<document documentEndMarker directivesEndMarker>
   <documentHead>
     <directive name="AAA" parameters=[] />
   </documentHead>
@@ -530,7 +530,7 @@ document (8:1 ~ 12:1)
    | ^
 12 | ¶
    | ^
-<document startMark>
+<document directivesEndMarker>
   <documentHead>
 
   </documentHead>
@@ -599,7 +599,7 @@ document (2:1 ~ 6:4)
  8 | 456¶
  9 | ¶
 10 | ¶
-<document endMark startMark>
+<document documentEndMarker directivesEndMarker>
   <documentHead>
     <directive name="AAA" parameters=[] />
   </documentHead>
@@ -726,7 +726,7 @@ document (2:1 ~ 6:1)
  8 | 456¶
  9 | ¶
 10 | ¶
-<document startMark>
+<document directivesEndMarker>
   <documentHead>
     <directive name="AAA" parameters=[] />
   </documentHead>
@@ -791,7 +791,7 @@ document (6:1 ~ 10:1)
    | ^
 10 | ¶
    | ^
-<document startMark>
+<document directivesEndMarker>
   <documentHead>
 
   </documentHead>
@@ -852,7 +852,7 @@ document (2:1 ~ 4:4)
 6 | 456¶
 7 | ¶
 8 | ¶
-<document endMark>
+<document documentEndMarker>
   <documentHead>
 
   </documentHead>
@@ -1022,7 +1022,7 @@ document (4:1 ~ 8:1)
   | ^
 8 | ¶
   | ^
-<document startMark>
+<document directivesEndMarker>
   <documentHead>
 
   </documentHead>
@@ -1127,7 +1127,7 @@ document (3:1 ~ 4:6)
   | ^^^^
 4 | -·BBB¶
   | ^^^^^
-<document startMark>
+<document directivesEndMarker>
   <documentHead>
 
   </documentHead>
@@ -1178,7 +1178,7 @@ document (1:1 ~ 3:4)
 3 | ...·#documentEndComment¶
   | ^^^
 4 | ¶
-<document endMark startMark>
+<document documentEndMarker directivesEndMarker>
   <trailingComment value="documentEndComment">
   <documentHead>
 
@@ -1196,7 +1196,7 @@ document (1:1 ~ 2:4)
 2 | ...¶
   | ^^^
 3 | 456¶
-<document endMark>
+<document documentEndMarker>
   <documentHead>
 
   </documentHead>
@@ -1234,7 +1234,7 @@ root (1:1 ~ 3:4)
       <plain value="123" />
     </documentBody>
   </document>
-  <document startMark>
+  <document directivesEndMarker>
     <documentHead>
       <trailingComment value="666">
     </documentHead>
