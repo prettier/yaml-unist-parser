@@ -310,7 +310,7 @@ document (2:1 ~ 6:4)
 11 | 456¶
 12 | ¶
 13 | ¶
-<document documentEndMarker directivesEndMarker>
+<document directivesEndMarker documentEndMarker>
   <documentHead>
     <directive name="AAA" parameters=[] />
   </documentHead>
@@ -459,7 +459,7 @@ document (2:1 ~ 6:4)
 10 | 456¶
 11 | ¶
 12 | ¶
-<document documentEndMarker directivesEndMarker>
+<document directivesEndMarker documentEndMarker>
   <documentHead>
     <directive name="AAA" parameters=[] />
   </documentHead>
@@ -599,7 +599,7 @@ document (2:1 ~ 6:4)
  8 | 456¶
  9 | ¶
 10 | ¶
-<document documentEndMarker directivesEndMarker>
+<document directivesEndMarker documentEndMarker>
   <documentHead>
     <directive name="AAA" parameters=[] />
   </documentHead>
@@ -1178,7 +1178,7 @@ document (1:1 ~ 3:4)
 3 | ...·#documentEndComment¶
   | ^^^
 4 | ¶
-<document documentEndMarker directivesEndMarker>
+<document directivesEndMarker documentEndMarker>
   <trailingComment value="documentEndComment">
   <documentHead>
 
