@@ -4755,6 +4755,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"yaml-test-suite@npm:0.1.0":
+  version: 0.1.0
+  resolution: "yaml-test-suite@npm:0.1.0"
+  checksum: 10/7b2fc994a554079074091bc05fdc9e3bd225b72560ee41ac359900b8d490720a2c3a3da7f1f8fcc1e507b6795a11401845675882dc7d3a3f7674cc77cec35c58
+  languageName: node
+  linkType: hard
+
 "yaml-unist-parser@workspace:.":
   version: 0.0.0-use.local
   resolution: "yaml-unist-parser@workspace:."
@@ -4775,6 +4782,7 @@ __metadata:
     typescript-eslint: "npm:8.47.0"
     vitest: "npm:4.0.12"
     yaml: "npm:^1.10.2"
+    yaml-test-suite: "npm:0.1.0"
   languageName: unknown
   linkType: soft
 
