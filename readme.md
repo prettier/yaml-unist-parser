@@ -5,8 +5,6 @@
 
 A YAML parser that produces output compatible with [unist](https://github.com/syntax-tree/unist)
 
-[Changelog](https://github.com/prettier/yaml-unist-parser/blob/main/changelog.md)
-
 ## Features
 
 - better node positioning
