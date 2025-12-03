@@ -4,6 +4,7 @@ import {
   type Anchor,
   type Comment,
   type Node,
+  type ParseOptions,
   type Position,
   type Root,
   type Tag,
@@ -16,8 +17,12 @@ export type Arrayable<T> = T | T[];
 export type TestCase = TestCaseSingle | TestCaseMulti;
 export type TestCaseSelector = (root: Root) => Arrayable<YamlUnistNode>;
 
-export type TestCaseSingle = [string, TestCaseSelector];
-export type TestCaseMulti = [string, TestCaseSelector[]];
+export type TestCaseSingle =
+  | [string, TestCaseSelector]
+  | [string, TestCaseSelector, ParseOptions];
+export type TestCaseMulti =
+  | [string, TestCaseSelector[]]
+  | [string, TestCaseSelector[], ParseOptions];
 
 export function getFirstContent<T extends YamlUnistNode>(): (root: Root) => T;
 export function getFirstContent<T extends YamlUnistNode>(root: Root): T;
@@ -37,10 +42,10 @@ export function testCases(
   options: SnapshotNodeOptions = {},
 ) {
   cases.forEach(testCase => {
-    const [text, selector] = testCase;
-    const root = parse(text);
+    const [text, selector, parseOptions] = testCase;
+    const root = parse(text, parseOptions);
 
-    testCrLf(root, text);
+    testCrLf(root, text, parseOptions);
 
     const selectNodes = ([] as TestCaseSelector[]).concat(selector);
     selectNodes.forEach(selectNode => {
@@ -54,11 +59,11 @@ export function testCases(
   });
 }
 
-function testCrLf(lfRoot: Root, lfText: string) {
+function testCrLf(lfRoot: Root, lfText: string, parseOptions?: ParseOptions) {
   const crLfText = lfText.replace(/\n/g, "\r\n");
 
   test(getTestTitle(lfText), () => {
-    const crLfRoot = parse(crLfText);
+    const crLfRoot = parse(crLfText, parseOptions);
     testNode(lfRoot, crLfRoot);
   });
 

@@ -34,6 +34,23 @@ const ast = parse(`
 `);
 ```
 
+## Options
+
+### `uniqueKeys`
+
+type `boolean`\
+default: `true`
+
+Whether key uniqueness is checked.
+
+```js
+parse("a: 1\na: 2");
+// Uncaught SyntaxError [YAMLSyntaxError]: Map keys must be unique
+
+parse("a: 1\na: 2", { uniqueKeys: false });
+// {type: 'root',...}
+```
+
 ## Development
 
 ```sh

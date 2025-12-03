@@ -29,6 +29,7 @@ testCases([
   [
     "x:\n  - &a\n    key1: value1\n  - &b\n    key2: value2\nfoo:\n  bar: baz\n  <<: *a\n  <<: *b",
     getMappingItem(1),
+    { uniqueKeys: false },
   ],
   [
     "merge:\n- &A { a: 1 }\n- &B { b: 2 }\n- <<: [ *A, *B ]",
