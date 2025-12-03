@@ -8,11 +8,12 @@ import { removeFakeNodes } from "./utils/remove-fake-nodes.js";
 import { updatePositions } from "./utils/update-positions.js";
 
 export function parse(text: string, options?: ParseOptions): Root {
-  // const allowDuplicateKeysInMap = options?.allowDuplicateKeysInMap;
   const parser = new YAML.Parser();
   const composer = new YAML.Composer({
     keepSourceTokens: true,
-    uniqueKeys: true,
+    // Intentionally to not cast to boolean, so user can pass a function (undocumented)
+    // https://eemeli.org/yaml/#options
+    uniqueKeys: options?.uniqueKeys,
   });
   const documentNodes: YAML.Document.Parsed[] = [];
   const cstTokens: YAML.CST.Token[] = [];
@@ -29,12 +30,8 @@ export function parse(text: string, options?: ParseOptions): Root {
     documentNodes.push(doc);
   }
 
-  const allowDuplicateKeysInMap = options?.allowDuplicateKeysInMap;
   for (const doc of documentNodes) {
     for (const error of doc.errors) {
-      if (shouldIgnoreError(text, error, allowDuplicateKeysInMap)) {
-        continue;
-      }
       throw transformError(error, context);
     }
   }
@@ -50,32 +47,4 @@ export function parse(text: string, options?: ParseOptions): Root {
   removeFakeNodes(root);
 
   return root;
-}
-
-const ERROR_CODE_DUPLICATE_KEY = "DUPLICATE_KEY";
-function shouldIgnoreError(
-  text: string,
-  error: unknown,
-  allowDuplicateKeysInMap: boolean | undefined,
-): boolean | undefined {
-  if (
-    !(
-      error instanceof YAML.YAMLParseError &&
-      error.code === ERROR_CODE_DUPLICATE_KEY
-    )
-  ) {
-    return false;
-  }
-
-  if (allowDuplicateKeysInMap) {
-    return true;
-  }
-
-  const index = error.pos[0];
-  const character = text.charAt(index);
-  const key =
-    character === "<"
-      ? text.slice(index, index + 2)
-      : text.slice(index + 1, index + 3);
-  return key === "<<";
 }

@@ -1,5 +1,5 @@
 export interface ParseOptions {
-  allowDuplicateKeysInMap?: boolean;
+  uniqueKeys?: boolean;
 }
 
 export interface Node {
