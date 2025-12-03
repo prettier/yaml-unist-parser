@@ -30,13 +30,6 @@ class Context {
   }
 
   #getRangePosition(range: Range): { start: Point; end: Point } {
-    if (this.text === "" && range.origStart === 0 && range.origEnd === 0) {
-      return {
-        start: { offset: 0, line: 1, column: 1 },
-        end: { offset: 0, line: 1, column: 1 },
-      };
-    }
-
     return {
       start: this.#linesAndColumns.getPoint(range.origStart),
       end: this.#linesAndColumns.getPoint(range.origEnd),
