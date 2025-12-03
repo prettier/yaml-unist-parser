@@ -80,9 +80,8 @@ jobs:
       - name: Install Dependencies
         run: yarn --immutable
 
-      - name: Preview
-        run: yarn lint
+      - name: Build Package
+        run: yarn build
 
-      - run: |
-          yarn build
-          npx pkg-pr-new publish --compact
+      - name: Preview
+        run: npx pkg-pr-new publish --compact --packageManager=yarn
