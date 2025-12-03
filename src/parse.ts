@@ -2,10 +2,10 @@ import * as YAML from "yaml";
 import { attachComments } from "./attach.ts";
 import { createRoot } from "./factories/root.ts";
 import Context from "./transforms/context.ts";
-import { transformError } from "./transforms/error.ts";
 import type { ParseOptions, Root } from "./types.ts";
 import { removeFakeNodes } from "./utils/remove-fake-nodes.ts";
 import { updatePositions } from "./utils/update-positions.ts";
+import { YAMLSyntaxError } from "./yaml-syntax-error.ts";
 
 export function parse(text: string, options?: ParseOptions): Root {
   const lineCounter = new YAML.LineCounter();
@@ -48,7 +48,7 @@ export function parse(text: string, options?: ParseOptions): Root {
 function throwParseError(document: YAML.Document.Parsed, context: Context) {
   const { errors } = document;
   if (errors.length > 0) {
-    throw transformError(errors[0], context);
+    throw new YAMLSyntaxError(context, errors[0]);
   }
   return document;
 }
