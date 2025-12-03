@@ -5,10 +5,10 @@ import { createRoot } from "./factories/root.js";
 import { removeCstBlankLine } from "./preprocess.js";
 import Context from "./transforms/context.js";
 import { transformError } from "./transforms/error.js";
+import type { Document } from "./types.js";
 import { type ParseOptions, type Root } from "./types.js";
 import { removeFakeNodes } from "./utils/remove-fake-nodes.js";
 import { updatePositions } from "./utils/update-positions.js";
-import type { Document } from "./types.js";
 
 const MAP_KEY_DUPLICATE_ERROR_MESSAGE_PREFIX = 'Map keys must be unique; "';
 const MAP_KEY_DUPLICATE_ERROR_MESSAGE_SUFFIX = '" is repeated';
@@ -32,17 +32,11 @@ function shouldIgnoreError(
 
 export function parse(text: string, options?: ParseOptions): Root {
   const allowDuplicateKeysInMap = options?.allowDuplicateKeysInMap;
-  const context = new Context(text);
-
+  const cst = YAML.parseCST(text);
+  const context = new Context(cst, text);
   const documents: Document[] = [];
 
-  const root = createRoot(
-    context.transformRange({ origStart: 0, origEnd: text.length }),
-    documents,
-    context.comments,
-  );
-
-  for (const cstDocument of context.cst) {
+  for (const cstDocument of cst) {
     const yamlDocument = new YAML.Document({
       merge: false,
       keepCstNodes: true,
@@ -60,6 +54,12 @@ export function parse(text: string, options?: ParseOptions): Root {
     const document = context.transformNode(yamlDocument);
     documents.push(document);
   }
+
+  const root = createRoot(
+    context.transformRange({ origStart: 0, origEnd: text.length }),
+    documents,
+    context.comments,
+  );
 
   attachComments(root);
   updatePositions(root);
