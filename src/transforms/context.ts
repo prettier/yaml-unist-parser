@@ -29,18 +29,13 @@ class Context {
     this.#lineCounter = lineCounter;
   }
 
-  #getRangePosition(range: Range): { start: Point; end: Point } {
-    const [start, end] = range.map(position => this.transformOffset(position));
-    return { start, end };
-  }
-
   transformOffset(offset: number): Point {
     const { line, col } = this.#lineCounter.linePos(offset);
     return { line, column: col, offset };
   }
 
   transformRange(range: Range): Position {
-    const { start, end } = this.#getRangePosition(range);
+    const [start, end] = range.map(position => this.transformOffset(position));
     return createPosition(start, end);
   }
 
