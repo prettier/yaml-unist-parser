@@ -35,23 +35,23 @@ export function parse(text: string, options?: ParseOptions): Root {
   const context = new Context(cst, text);
   context.setOrigRanges();
 
-  const documents = cst.map(cstDocument =>
-    new YAML.Document({
+  const documents = cst.map(cstDocument => {
+    const document = new YAML.Document({
       merge: false,
       keepCstNodes: true,
-    }).parse(cstDocument),
-  );
+    }).parse(cstDocument);
 
-  for (const document of documents) {
     for (const error of document.errors) {
       if (shouldIgnoreError(error, allowDuplicateKeysInMap)) {
         continue;
       }
       throw transformError(error, context);
     }
-  }
 
-  documents.forEach(document => removeCstBlankLine(document.cstNode!));
+    removeCstBlankLine(document.cstNode!);
+
+    return document;
+  });
 
   const root = createRoot(
     context.transformRange({ origStart: 0, origEnd: text.length }),
