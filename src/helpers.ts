@@ -43,9 +43,6 @@ export function testCases(
 ) {
   cases.forEach(testCase => {
     const [text, selector, parseOptions] = testCase;
-    if (text.includes("<<")) {
-      console.log({ text, parseOptions });
-    }
     const root = parse(text, parseOptions);
 
     testCrLf(root, text, parseOptions);
@@ -62,7 +59,7 @@ export function testCases(
   });
 }
 
-function testCrLf(lfRoot: Root, lfText: string, parseOptions: ParseOptions) {
+function testCrLf(lfRoot: Root, lfText: string, parseOptions?: ParseOptions) {
   const crLfText = lfText.replace(/\n/g, "\r\n");
 
   test(getTestTitle(lfText), () => {
