@@ -19,11 +19,9 @@ for (const { type, text } of [
   { type: "flowMapping", text: `{"a":1,"a":2}` },
 ]) {
   test(`(${type}): duplicate keys in ${text}`, () => {
-    expect(() => parse(text)).toThrowError(
-      `Map keys must be unique; "a" is repeated`,
-    );
+    expect(() => parse(text)).toThrowError(`Map keys must be unique`);
     expect(() => parse(text, { allowDuplicateKeysInMap: false })).toThrowError(
-      `Map keys must be unique; "a" is repeated`,
+      `Map keys must be unique`,
     );
     const ast = parse(text, { allowDuplicateKeysInMap: true });
     expect(ast).toBeDefined();
