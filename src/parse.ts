@@ -22,18 +22,12 @@ export function parse(text: string, options?: ParseOptions): Root {
   for (const cst of parser.parse(text)) {
     cstTokens.push(cst);
     for (const doc of composer.next(cst)) {
-      documentNodes.push(doc);
+      documentNodes.push(throwParseError(doc, context));
     }
   }
 
   for (const doc of composer.end()) {
-    documentNodes.push(doc);
-  }
-
-  for (const doc of documentNodes) {
-    for (const error of doc.errors) {
-      throw transformError(error, context);
-    }
+    documentNodes.push(throwParseError(doc, context));
   }
 
   const root = createRoot(
@@ -47,4 +41,12 @@ export function parse(text: string, options?: ParseOptions): Root {
   removeFakeNodes(root);
 
   return root;
+}
+
+function throwParseError(document: YAML.Document.Parsed, context: Context) {
+  const { errors } = document;
+  if (errors.length > 0) {
+    throw transformError(errors[0], context);
+  }
+  return document;
 }
