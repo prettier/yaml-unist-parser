@@ -1,7 +1,8 @@
 import type * as YAML from "yaml";
 import { createPlain } from "../factories/plain.js";
-import type { Plain } from "../types.js";
+import type { Plain, Range } from "../types.js";
 import { extractComments } from "../utils/extract-comments.js";
+import { findLastCharIndex } from "../utils/find-last-char-index.js";
 import type Context from "./context.js";
 import type { TransformNodeProperties } from "./transform.js";
 
@@ -12,15 +13,18 @@ export function transformPlain(
 ): Plain {
   if (plain.range[0] === plain.range[1]) {
     // empty plain scalar
+    const index =
+      findLastCharIndex(context.text, plain.range[0] - 1, /\S/u) + 1;
     return createPlain(
       context.transformRange({
-        origStart: plain.range[0],
-        origEnd: plain.range[1],
+        origStart: index,
+        origEnd: index,
       }),
       context.transformContentProperties(plain, props.tokens),
       "",
     );
   }
+
   const srcToken = plain.srcToken;
 
   // istanbul ignore next
@@ -32,6 +36,7 @@ export function transformPlain(
     // istanbul ignore next
     throw new Error(`Unexpected token type in plain scalar end: ${token.type}`);
   }
+
   return createPlain(
     context.transformRange({
       origStart: plain.range[0],
