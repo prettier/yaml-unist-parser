@@ -50,12 +50,12 @@ export function parse(text: string, options?: ParseOptions): Root {
 
     removeCstBlankLine(document.cstNode!);
 
-    return document;
+    return context.transformNode(document);
   });
 
   const root = createRoot(
     context.transformRange({ origStart: 0, origEnd: text.length }),
-    documents.map(document => context.transformNode(document)),
+    documents,
     context.comments,
   );
 
