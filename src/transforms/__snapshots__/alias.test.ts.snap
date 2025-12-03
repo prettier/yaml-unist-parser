@@ -12,5 +12,5 @@ exports[`An alias node must not specify any properties 1`] = `
 "An alias node must not specify any properties
 1 | -·&123·hi¶
 2 | -·!!tag·&anchor·*123··¶
-  |   ^^^^^^^^^^^^^^^^^^^^"
+  |                 ^^^^"
 `;

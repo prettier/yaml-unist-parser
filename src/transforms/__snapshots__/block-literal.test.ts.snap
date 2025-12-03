@@ -159,7 +159,7 @@ blockLiteral (1:1 ~ 6:1)
   | ^
 6 | ¶
   | ^
-<blockLiteral chomping="keep" indent=1 value="  123\\n  456\\n\\n\\n" />
+<blockLiteral chomping="keep" indent=1 value=" 123\\n 456\\n\\n\\n" />
 `;
 
 exports[`"|1\\n  123\\n  456\\n\\n\\n" 1`] = `
@@ -174,7 +174,7 @@ blockLiteral (1:1 ~ 4:1)
   | ^
 5 | ¶
 6 | ¶
-<blockLiteral chomping="clip" indent=1 value="  123\\n  456\\n" />
+<blockLiteral chomping="clip" indent=1 value=" 123\\n 456\\n" />
 `;
 
 exports[`"|1-\\n  123\\n  456\\n\\n\\n" 1`] = `
@@ -189,5 +189,5 @@ blockLiteral (1:1 ~ 4:1)
   | ^
 5 | ¶
 6 | ¶
-<blockLiteral chomping="strip" indent=1 value="  123\\n  456" />
+<blockLiteral chomping="strip" indent=1 value=" 123\\n 456" />
 `;

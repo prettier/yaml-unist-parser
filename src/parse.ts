@@ -1,64 +1,48 @@
-import YAML from "yaml";
-import { YAMLSemanticError } from "yaml/util";
+import * as YAML from "yaml";
 import { attachComments } from "./attach.js";
 import { createRoot } from "./factories/root.js";
-import { removeCstBlankLine } from "./preprocess.js";
 import Context from "./transforms/context.js";
 import { transformError } from "./transforms/error.js";
-import type { Document } from "./types.js";
-import { type ParseOptions, type Root } from "./types.js";
+import type { ParseOptions, Root } from "./types.js";
 import { removeFakeNodes } from "./utils/remove-fake-nodes.js";
 import { updatePositions } from "./utils/update-positions.js";
 
-const MAP_KEY_DUPLICATE_ERROR_MESSAGE_PREFIX = 'Map keys must be unique; "';
-const MAP_KEY_DUPLICATE_ERROR_MESSAGE_SUFFIX = '" is repeated';
-const ERROR_MESSAGE_SHOULD_ALWAYS_IGNORE = `${MAP_KEY_DUPLICATE_ERROR_MESSAGE_PREFIX}<<${MAP_KEY_DUPLICATE_ERROR_MESSAGE_SUFFIX}`;
-function shouldIgnoreError(
-  error: unknown,
-  allowDuplicateKeysInMap: boolean | undefined,
-): boolean | undefined {
-  if (!(error instanceof YAMLSemanticError)) {
-    return false;
+export function parse(
+  text: string,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  _options?: ParseOptions,
+): Root {
+  // const allowDuplicateKeysInMap = options?.allowDuplicateKeysInMap;
+  const parser = new YAML.Parser();
+  const composer = new YAML.Composer({
+    keepSourceTokens: true,
+    uniqueKeys: true,
+  });
+  const documentNodes: YAML.Document.Parsed[] = [];
+  const cstTokens: YAML.CST.Token[] = [];
+  const context = new Context(text);
+
+  for (const cst of parser.parse(text)) {
+    cstTokens.push(cst);
+    for (const doc of composer.next(cst)) {
+      documentNodes.push(doc);
+    }
   }
-  // TODO: Use `code` not `message` to check after upgrade to yaml@2
-  const { message } = error;
-  return (
-    message === ERROR_MESSAGE_SHOULD_ALWAYS_IGNORE ||
-    (allowDuplicateKeysInMap &&
-      message.startsWith(MAP_KEY_DUPLICATE_ERROR_MESSAGE_PREFIX) &&
-      message.endsWith(MAP_KEY_DUPLICATE_ERROR_MESSAGE_SUFFIX))
-  );
-}
 
-export function parse(text: string, options?: ParseOptions): Root {
-  const allowDuplicateKeysInMap = options?.allowDuplicateKeysInMap;
-  const cst = YAML.parseCST(text);
-  const context = new Context(cst, text);
-  const documents: Document[] = [];
+  for (const doc of composer.end()) {
+    documentNodes.push(doc);
+  }
 
-  for (const cstDocument of cst) {
-    const yamlDocument = new YAML.Document({
-      merge: false,
-      keepCstNodes: true,
-    }).parse(cstDocument);
-
-    for (const error of yamlDocument.errors) {
-      if (shouldIgnoreError(error, allowDuplicateKeysInMap)) {
-        continue;
-      }
+  for (const doc of documentNodes) {
+    for (const error of doc.errors) {
       throw transformError(error, context);
     }
-
-    removeCstBlankLine(yamlDocument.cstNode!);
-
-    const document = context.transformNode(yamlDocument);
-    documents.push(document);
   }
 
   const root = createRoot(
     context.transformRange({ origStart: 0, origEnd: text.length }),
-    documents,
-    context.comments,
+    context.transformDocuments(documentNodes, cstTokens),
+    context.getOrderedComments(),
   );
 
   attachComments(root);

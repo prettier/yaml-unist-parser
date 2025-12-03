@@ -2,84 +2,54 @@ import type * as YAML from "yaml";
 import { createMapping } from "../factories/mapping.js";
 import { createMappingItem } from "../factories/mapping-item.js";
 import { createPosition } from "../factories/position.js";
-import { type Mapping } from "../types.js";
-import { createSlicer } from "../utils/create-slicer.js";
+import type { Mapping } from "../types.js";
 import { extractComments } from "../utils/extract-comments.js";
-import { extractPropComments } from "../utils/extract-prop-comments.js";
 import { getLast } from "../utils/get-last.js";
 import type Context from "./context.js";
-import { transformAstPair } from "./pair.js";
+import { transformPair } from "./pair.js";
+import type { TransformNodeProperties } from "./transform.js";
 
 export function transformMap(
-  map: YAML.AST.BlockMap,
+  map: YAML.YAMLMap.Parsed,
   context: Context,
+  props: TransformNodeProperties,
 ): Mapping {
-  const cstNode = map.cstNode!;
+  const srcToken = map.srcToken;
 
-  cstNode.items
-    .filter(item => item.type === "MAP_KEY" || item.type === "MAP_VALUE")
-    .forEach(item => extractPropComments(item, context));
-
-  const cstItemsWithoutComments = extractComments(cstNode.items, context);
-
-  const groupedCstItems = groupCstItems(cstItemsWithoutComments);
+  // istanbul ignore next
+  if (!srcToken || srcToken.type !== "block-map") {
+    throw new Error("Expected block mapping srcToken");
+  }
 
   const mappingItems = map.items.map((pair, index) => {
-    const cstNodes = groupedCstItems[index];
-    const [keyRange, valueRange] =
-      cstNodes[0].type === "MAP_VALUE"
-        ? [null, cstNodes[0].range!]
-        : [
-            cstNodes[0].range!,
-            cstNodes.length === 1 ? null : cstNodes[1].range!,
-          ];
+    const srcItem = srcToken.items[index];
 
-    return transformAstPair(
-      pair,
-      context,
-      createMappingItem,
-      keyRange,
-      valueRange,
-    );
+    return transformPair(pair, srcItem, context, createMappingItem);
   });
+
+  if (map.items.length < srcToken.items.length) {
+    // Handle extra comments
+    for (let i = map.items.length; i < srcToken.items.length; i++) {
+      const srcItem = srcToken.items[i];
+      for (const token of extractComments(srcItem.start, context)) {
+        if (token.type === "comma") {
+          // skip
+        } else {
+          // istanbul ignore next
+          throw new Error(
+            `Unexpected token type in collection item start: ${token.type}`,
+          );
+        }
+      }
+    }
+  }
 
   return createMapping(
     createPosition(
       mappingItems[0].position.start,
       getLast(mappingItems)!.position.end,
     ),
-    context.transformContent(map),
+    context.transformContentProperties(map, props.tokens),
     mappingItems,
   );
-}
-
-function groupCstItems(
-  cstItems: Array<Exclude<YAML.CST.Map["items"][number], YAML.CST.Comment>>,
-) {
-  const groups: Array<typeof cstItems> = [];
-  const sliceCstItems = createSlicer(cstItems, 0);
-
-  let hasKey = false;
-
-  for (let i = 0; i < cstItems.length; i++) {
-    const cstItem = cstItems[i];
-
-    if (cstItem.type === "MAP_VALUE") {
-      groups.push(sliceCstItems(i + 1));
-      hasKey = false;
-      continue;
-    }
-
-    if (hasKey) {
-      groups.push(sliceCstItems(i));
-    }
-
-    hasKey = true;
-  }
-
-  if (hasKey) {
-    groups.push(sliceCstItems(Infinity));
-  }
-
-  return groups;
 }

@@ -1,12 +1,9 @@
-import type * as YAML from "yaml";
-import type * as YAMLTypes from "yaml/types";
+import * as YAML from "yaml";
+import type * as YAML_CST from "../cst.js";
 import type {
   Alias,
   BlockFolded,
   BlockLiteral,
-  Comment,
-  Directive,
-  Document,
   FlowMapping,
   FlowSequence,
   Mapping,
@@ -19,10 +16,7 @@ import type {
 import { transformAlias } from "./alias.js";
 import { transformBlockFolded } from "./block-folded.js";
 import { transformBlockLiteral } from "./block-literal.js";
-import { transformComment } from "./comment.js";
 import type Context from "./context.js";
-import { transformDirective } from "./directive.js";
-import { transformDocument } from "./document.js";
 import { transformFlowMap } from "./flow-map.js";
 import { transformFlowSeq } from "./flow-seq.js";
 import { transformMap } from "./map.js";
@@ -31,83 +25,77 @@ import { transformQuoteDouble } from "./quote-double.js";
 import { transformQuoteSingle } from "./quote-single.js";
 import { transformSeq } from "./seq.js";
 
-export type YamlNode =
-  | null
-  | YAMLTypes.Alias
-  | YAML.CST.BlankLine
-  | YAML.AST.BlockFolded
-  | YAML.AST.BlockLiteral
-  | YAML.CST.Comment
-  | YAML.CST.Directive
-  | YAML.Document
-  | YAML.AST.FlowMap
-  | YAML.AST.FlowSeq
-  | YAML.AST.BlockMap
-  | YAML.AST.PlainValue
-  | YAML.AST.QuoteDouble
-  | YAML.AST.QuoteSingle
-  | YAMLTypes.Scalar
-  | YAML.AST.BlockSeq;
+export type YamlNode = null | YAML.ParsedNode;
 
 // prettier-ignore
 export type YamlToUnist<T extends YamlNode> =
   T extends null ? null :
-  T extends YAMLTypes.Alias ? Alias :
-  T extends YAML.AST.BlockFolded ? BlockFolded :
-  T extends YAML.AST.BlockLiteral ? BlockLiteral :
-  T extends YAML.CST.Comment ? Comment :
-  T extends YAML.CST.Directive ? Directive :
-  T extends YAML.Document ? Document :
-  T extends YAML.AST.FlowMap ? FlowMapping :
-  T extends YAML.AST.FlowSeq ? FlowSequence :
-  T extends YAML.AST.BlockMap ? Mapping :
-  T extends YAML.AST.PlainValue ? Plain :
-  T extends YAML.AST.QuoteDouble ? QuoteDouble :
-  T extends YAML.AST.QuoteSingle ? QuoteSingle :
-  T extends YAML.AST.BlockSeq ? Sequence :
+  T extends YAML.Alias.Parsed ? Alias :
+  T extends YAML.YAMLMap.Parsed ? (Mapping | FlowMapping) :
+  T extends YAML.YAMLSeq.Parsed ? (Sequence | FlowSequence) :
+  T extends YAML.Scalar.Parsed ? (BlockLiteral | BlockFolded | Plain | QuoteSingle | QuoteDouble) :
   never;
+
+export type TransformNodeProperties = {
+  tokens: YAML_CST.ContentPropertyToken[];
+};
 
 export function transformNode<T extends YamlNode>(
   node: T,
   context: Context,
+  props: TransformNodeProperties,
 ): YamlToUnist<T>;
 export function transformNode(
   node: YamlNode,
   context: Context,
+  props: TransformNodeProperties,
 ): YamlUnistNode | null {
-  if (node === null || (node.type === undefined && node.value === null)) {
+  if (node == null) {
     return null;
   }
-
-  switch (node.type) {
-    case "ALIAS":
-      return transformAlias(node, context);
-    case "BLOCK_FOLDED":
-      return transformBlockFolded(node as YAML.AST.BlockFolded, context);
-    case "BLOCK_LITERAL":
-      return transformBlockLiteral(node as YAML.AST.BlockLiteral, context);
-    case "COMMENT":
-      return transformComment(node, context);
-    case "DIRECTIVE":
-      return transformDirective(node, context);
-    case "DOCUMENT":
-      return transformDocument(node, context);
-    case "FLOW_MAP":
-      return transformFlowMap(node, context);
-    case "FLOW_SEQ":
-      return transformFlowSeq(node, context);
-    case "MAP":
-      return transformMap(node, context);
-    case "PLAIN":
-      return transformPlain(node as YAML.AST.PlainValue, context);
-    case "QUOTE_DOUBLE":
-      return transformQuoteDouble(node as YAML.AST.QuoteDouble, context);
-    case "QUOTE_SINGLE":
-      return transformQuoteSingle(node as YAML.AST.QuoteSingle, context);
-    case "SEQ":
-      return transformSeq(node, context);
-    // istanbul ignore next
-    default:
-      throw new Error(`Unexpected node type ${node.type}`);
+  if (YAML.isAlias(node)) {
+    return transformAlias(node, context, props);
   }
+  if (YAML.isMap(node)) {
+    if (node.flow) {
+      return transformFlowMap(node, context, props);
+    }
+    return transformMap(node, context, props);
+  }
+  if (YAML.isSeq(node)) {
+    if (node.flow) {
+      return transformFlowSeq(node, context, props);
+    }
+    return transformSeq(node, context, props);
+  }
+  if (YAML.isScalar(node)) {
+    switch (node.type!) {
+      case "BLOCK_FOLDED":
+        return transformBlockFolded(node, context, props);
+      case "BLOCK_LITERAL":
+        return transformBlockLiteral(node, context, props);
+      case "PLAIN":
+        return transformPlain(node, context, props);
+      case "QUOTE_DOUBLE":
+        return transformQuoteDouble(node, context, props);
+      case "QUOTE_SINGLE":
+        return transformQuoteSingle(node, context, props);
+    }
+    // istanbul ignore next
+    throw new Error(`Unexpected scalar type: ${node.type}`);
+  }
+
+  // istanbul ignore next
+  throw new Error(`Unexpected unknown node type`);
+}
+
+export function isEmptyNode(
+  node: YAML.ParsedNode | null,
+  props: TransformNodeProperties,
+) {
+  return (
+    !node ||
+    (node.range[0] === node.range[1] &&
+      props.tokens.every(t => t.type === "comment"))
+  );
 }

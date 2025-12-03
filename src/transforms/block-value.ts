@@ -1,63 +1,72 @@
 import type * as YAML from "yaml";
+import * as YAML_CST from "../cst.js";
 import { createBlockValue } from "../factories/block-value.js";
-import { type BlockValue, type Comment } from "../types.js";
-import { getPointText } from "../utils/get-point-text.js";
-import { transformContent } from "./content.js";
+import type { BlockValue, Comment } from "../types.js";
 import type Context from "./context.js";
-
-enum Chomping {
-  CLIP = "clip",
-  STRIP = "strip",
-  KEEP = "keep",
-}
+import type { TransformNodeProperties } from "./transform.js";
 
 export function transformAstBlockValue(
-  blockValue: YAML.AST.BlockFolded | YAML.AST.BlockLiteral,
+  blockValue: YAML.Scalar.Parsed,
+  srcToken: YAML.CST.BlockScalar,
   context: Context,
+  props: TransformNodeProperties,
 ): BlockValue {
-  const cstNode = blockValue.cstNode!;
-
-  const indicatorLength = 1;
-  const chompingLength = cstNode.chomping === "CLIP" ? 0 : 1;
-
-  const headerLength = cstNode.header.origEnd! - cstNode.header.origStart!;
-  const hasExplicitBlockIndent =
-    headerLength - indicatorLength - chompingLength !== 0;
-
-  const position = context.transformRange({
-    origStart: cstNode.header.origStart!,
-    origEnd: cstNode.valueRange!.origEnd!,
-  });
-
+  let blockScalarHeaderToken: YAML_CST.BlockScalarHeaderSourceToken | null =
+    null;
   let indicatorComment: Comment | null = null;
-  const content = transformContent(blockValue, context, comment => {
-    const isIndicatorComment =
-      position.start.offset < comment.position.start.offset &&
-      comment.position.end.offset < position.end.offset;
-
-    if (!isIndicatorComment) {
-      return false;
-    }
-
-    // istanbul ignore next
-    if (indicatorComment) {
+  for (const token of YAML_CST.tokens(srcToken.props)) {
+    if (token.type === "comment") {
+      indicatorComment = context.transformComment(token);
+    } else if (token.type === "block-scalar-header") {
+      blockScalarHeaderToken = token;
+    } else {
+      // istanbul ignore next
       throw new Error(
-        `Unexpected multiple indicator comments at ${getPointText(
-          comment.position.start,
-        )}`,
+        `Unexpected token type in block value end: ${token.type}`,
       );
     }
+  }
 
-    indicatorComment = comment;
-    return true;
+  if (!blockScalarHeaderToken) {
+    throw new Error("Expected block scalar header token");
+  }
+
+  const headerInfo = parseHeader(blockScalarHeaderToken.source);
+
+  const position = context.transformRange({
+    origStart: blockValue.range[0],
+    origEnd: blockValue.range[1],
   });
 
   return createBlockValue(
     position,
-    content,
-    Chomping[cstNode.chomping],
-    hasExplicitBlockIndent ? cstNode.blockIndent! : null,
-    cstNode.strValue!,
+    context.transformContentProperties(blockValue, props.tokens),
+    headerInfo.chomping,
+    headerInfo.indent,
+    blockValue.source,
     indicatorComment,
   );
+}
+
+/**
+ * Parse the block scalar header to extract indentation and chomping information.
+ */
+function parseHeader(header: string): {
+  indent: number | null;
+  chomping: "clip" | "keep" | "strip";
+} {
+  const parsed = /([+-]?)(\d*)([+-]?)$/u.exec(header);
+  let indent: number | null = null;
+  let chomping: "clip" | "keep" | "strip" = "clip";
+  if (parsed) {
+    indent = parsed[2] ? Number(parsed[2]) : null;
+    const chompingStr = parsed[3] || parsed[1];
+    chomping =
+      chompingStr === "+" ? "keep" : chompingStr === "-" ? "strip" : "clip";
+  }
+
+  return {
+    chomping,
+    indent,
+  };
 }

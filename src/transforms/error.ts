@@ -1,17 +1,20 @@
-import { type YAMLError } from "yaml/util";
+import type * as YAML from "yaml";
 import { createError } from "../factories/error.js";
-import type { Range, YAMLSyntaxError } from "../types.js";
+import type { YAMLSyntaxError } from "../types.js";
 import type Context from "./context.js";
 
 export function transformError(
-  error: Extract<YAMLError, SyntaxError>,
+  error: YAML.YAMLError,
   context: Context,
 ): YAMLSyntaxError {
   // istanbul ignore next
-  const range = (error.source!.range || error.source!.valueRange) as Range;
+  const range = error.pos;
   return createError(
     error.message,
     context.text,
-    context.transformRange(range),
+    context.transformRange({
+      origStart: range[0],
+      origEnd: range[1],
+    }),
   );
 }

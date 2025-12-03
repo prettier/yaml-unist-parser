@@ -1,40 +1,116 @@
-import type * as YAML from "yaml";
+import * as YAML from "yaml";
+import * as YAML_CST from "../cst.js";
+import { createMapping } from "../factories/mapping.js";
+import { createMappingItem } from "../factories/mapping-item.js";
 import { createPosition } from "../factories/position.js";
 import { createSequence } from "../factories/sequence.js";
 import { createSequenceItem } from "../factories/sequence-item.js";
-import { type Sequence } from "../types.js";
+import type { Sequence } from "../types.js";
 import { extractComments } from "../utils/extract-comments.js";
-import { extractPropComments } from "../utils/extract-prop-comments.js";
 import { getLast } from "../utils/get-last.js";
 import type Context from "./context.js";
+import { transformPair } from "./pair.js";
+import { isEmptyNode, type TransformNodeProperties } from "./transform.js";
 
+type ItemNode =
+  | YAML.ParsedNode
+  | YAML.Pair<YAML.ParsedNode, YAML.ParsedNode | null>;
 export function transformSeq(
-  seq: YAML.AST.BlockSeq,
+  seq: YAML.YAMLSeq.Parsed<ItemNode>,
   context: Context,
+  props: TransformNodeProperties,
 ): Sequence {
-  const cstItemsWithoutComments = extractComments(seq.cstNode!.items, context);
+  const srcToken = seq.srcToken;
 
-  const sequenceItems = cstItemsWithoutComments.map((cstItem, index) => {
-    extractPropComments(cstItem, context);
-    const item = context.transformNode(seq.items[index]);
+  // istanbul ignore next
+  if (!srcToken || srcToken.type !== "block-seq") {
+    throw new Error("Expected block sequence srcToken");
+  }
+
+  const sequenceItems = seq.items.map((itemNode, index) => {
+    const srcItem = srcToken.items[index];
+    const propTokens: YAML_CST.ContentPropertyToken[] = [];
+    let seqItemIndToken: YAML_CST.SeqItemIndSourceToken | null = null;
+    for (const token of YAML_CST.tokens(srcItem.start)) {
+      if (YAML_CST.maybeContentPropertyToken(token)) {
+        propTokens.push(token);
+      } else if (token.type === "seq-item-ind") {
+        seqItemIndToken = token;
+      } else {
+        // istanbul ignore next
+        throw new Error(
+          `Unexpected token type in sequence item start: ${token.type}`,
+        );
+      }
+    }
+
+    const item = transformItemValue(itemNode, context, { tokens: propTokens });
 
     return createSequenceItem(
       createPosition(
-        context.transformOffset(cstItem.valueRange!.origStart),
-        item === null
-          ? context.transformOffset(cstItem.valueRange!.origStart + 1)
-          : item.position.end,
+        seqItemIndToken
+          ? context.transformOffset(seqItemIndToken.offset)
+          : item!.position.start,
+        item?.position.end ??
+          context.transformOffset(
+            seqItemIndToken!.offset + seqItemIndToken!.source.length,
+          ),
       ),
       item,
     );
   });
+
+  if (seq.items.length < srcToken.items.length) {
+    // Handle extra comments
+    for (let i = seq.items.length; i < srcToken.items.length; i++) {
+      const srcItem = srcToken.items[i];
+      for (const token of extractComments(srcItem.start, context)) {
+        if (token.type === "comma") {
+          // skip
+        } else {
+          // istanbul ignore next
+          throw new Error(
+            `Unexpected token type in collection item start: ${token.type}`,
+          );
+        }
+      }
+    }
+  }
 
   return createSequence(
     createPosition(
       sequenceItems[0].position.start,
       getLast(sequenceItems)!.position.end,
     ),
-    context.transformContent(seq),
+    context.transformContentProperties(seq, props.tokens),
     sequenceItems,
+  );
+}
+
+function transformItemValue(
+  itemNode: ItemNode,
+  context: Context,
+  props: TransformNodeProperties,
+) {
+  if (!YAML.isPair(itemNode)) {
+    if (isEmptyNode(itemNode, props)) {
+      extractComments(props.tokens, context);
+      return null;
+    }
+    return context.transformNode(itemNode, props);
+  }
+
+  const srcItem = itemNode.srcToken!;
+  const mappingItem = transformPair(
+    itemNode,
+    srcItem,
+    context,
+    createMappingItem,
+  );
+
+  return createMapping(
+    mappingItem.position,
+    context.transformContentProperties(itemNode.key, props.tokens),
+    [mappingItem],
   );
 }
