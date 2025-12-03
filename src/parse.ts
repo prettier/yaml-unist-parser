@@ -25,7 +25,7 @@ export function parse(text: string): Root {
     for (const error of document.errors) {
       if (
         error instanceof YAMLSemanticError &&
-        error.message === 'Map keys must be unique; "<<" is repeated'
+        error.message.startsWith('Map keys must be unique;')
       ) {
         continue;
       }
