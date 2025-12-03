@@ -31,7 +31,7 @@ export function parse(text: string, options?: ParseOptions): Root {
   }
 
   const root = createRoot(
-    context.transformRange({ origStart: 0, origEnd: text.length }),
+    context.transformRange([0, text.length]),
     context.transformDocuments(documentNodes, cstTokens),
     context.comments,
   );

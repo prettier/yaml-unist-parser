@@ -34,10 +34,7 @@ export function transformAstBlockValue(
 
   const headerInfo = parseHeader(blockScalarHeaderToken.source);
 
-  const position = context.transformRange({
-    origStart: blockValue.range[0],
-    origEnd: blockValue.range[1],
-  });
+  const position = context.transformRange(blockValue.range);
 
   return createBlockValue(
     position,

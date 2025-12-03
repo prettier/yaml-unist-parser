@@ -11,9 +11,6 @@ export function transformError(
   return createError(
     error.message,
     context.text,
-    context.transformRange({
-      origStart: range[0],
-      origEnd: range[1],
-    }),
+    context.transformRange(range),
   );
 }

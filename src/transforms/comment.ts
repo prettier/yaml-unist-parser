@@ -8,10 +8,10 @@ export function transformComment(
   context: Context,
 ): Comment {
   return createComment(
-    context.transformRange({
-      origStart: comment.offset,
-      origEnd: comment.offset + comment.source.length,
-    }),
+    context.transformRange([
+      comment.offset,
+      comment.offset + comment.source.length,
+    ]),
     comment.source.slice(1),
   );
 }

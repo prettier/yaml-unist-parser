@@ -103,10 +103,10 @@ export function transformFlowSeq(
   }
 
   return createFlowSequence(
-    context.transformRange({
-      origStart: srcToken.start.offset,
-      origEnd: flowSeqEndToken.offset + flowSeqEndToken.source.length,
-    }),
+    context.transformRange([
+      srcToken.start.offset,
+      flowSeqEndToken.offset + flowSeqEndToken.source.length,
+    ]),
     context.transformContentProperties(flowSeq, props.tokens),
     flowSequenceItems,
   );
