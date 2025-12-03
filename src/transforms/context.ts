@@ -30,9 +30,7 @@ class Context {
   }
 
   #getRangePosition(range: Range): { start: Point; end: Point } {
-    const [start, end] = range.map(position =>
-      this.#linesAndColumns.getPoint(position),
-    );
+    const [start, end] = range.map(position => this.transformOffset(position));
     return { start, end };
   }
 
