@@ -1,10 +1,10 @@
 import type * as YAML from "yaml";
-import type * as YAML_CST from "../cst.js";
-import { createQuoteValue } from "../factories/quote-value.js";
-import type { QuoteValue } from "../types.js";
-import { extractComments } from "../utils/extract-comments.js";
-import type Context from "./context.js";
-import { type TransformNodeProperties } from "./transform.js";
+import type * as YAML_CST from "../cst.ts";
+import { createQuoteValue } from "../factories/quote-value.ts";
+import type { QuoteValue } from "../types.ts";
+import { extractComments } from "../utils/extract-comments.ts";
+import type Context from "./context.ts";
+import { type TransformNodeProperties } from "./transform.ts";
 
 export function transformAstQuoteValue(
   quoteValue: YAML.Scalar.Parsed,

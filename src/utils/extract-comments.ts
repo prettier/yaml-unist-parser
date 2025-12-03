@@ -1,6 +1,6 @@
 import type * as YAML from "yaml";
-import * as YAML_CST from "../cst.js";
-import type Context from "../transforms/context.js";
+import * as YAML_CST from "../cst.ts";
+import type Context from "../transforms/context.ts";
 
 export function extractComments<T extends YAML_CST.SourceToken>(
   tokens: T[] | undefined,

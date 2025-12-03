@@ -1,11 +1,11 @@
 import * as YAML from "yaml";
-import { attachComments } from "./attach.js";
-import { createRoot } from "./factories/root.js";
-import Context from "./transforms/context.js";
-import { transformError } from "./transforms/error.js";
-import type { ParseOptions, Root } from "./types.js";
-import { removeFakeNodes } from "./utils/remove-fake-nodes.js";
-import { updatePositions } from "./utils/update-positions.js";
+import { attachComments } from "./attach.ts";
+import { createRoot } from "./factories/root.ts";
+import Context from "./transforms/context.ts";
+import { transformError } from "./transforms/error.ts";
+import type { ParseOptions, Root } from "./types.ts";
+import { removeFakeNodes } from "./utils/remove-fake-nodes.ts";
+import { updatePositions } from "./utils/update-positions.ts";
 
 export function parse(text: string, options?: ParseOptions): Root {
   const parser = new YAML.Parser();

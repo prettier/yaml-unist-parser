@@ -1,12 +1,12 @@
 import type * as YAML from "yaml";
-import * as YAML_CST from "../cst.js";
-import { createDocumentBody } from "../factories/document-body.js";
-import type { Comment, ContentNode, Point } from "../types.js";
-import { extractComments } from "../utils/extract-comments.js";
-import { findCharIndex } from "../utils/find-char-index.js";
-import { getLast } from "../utils/get-last.js";
-import { getPointText } from "../utils/get-point-text.js";
-import type Context from "./context.js";
+import * as YAML_CST from "../cst.ts";
+import { createDocumentBody } from "../factories/document-body.ts";
+import type { Comment, ContentNode, Point } from "../types.ts";
+import { extractComments } from "../utils/extract-comments.ts";
+import { findCharIndex } from "../utils/find-char-index.ts";
+import { getLast } from "../utils/get-last.ts";
+import { getPointText } from "../utils/get-point-text.ts";
+import type Context from "./context.ts";
 
 export function transformDocumentBody(
   docStart: YAML_CST.DocStartSourceToken | null,

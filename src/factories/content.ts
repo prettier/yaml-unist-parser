@@ -1,4 +1,4 @@
-import { type Anchor, type Comment, type Content, type Tag } from "../types.js";
+import { type Anchor, type Comment, type Content, type Tag } from "../types.ts";
 
 export function createContent(
   tag: Tag | null,

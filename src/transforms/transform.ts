@@ -1,5 +1,5 @@
 import * as YAML from "yaml";
-import type * as YAML_CST from "../cst.js";
+import type * as YAML_CST from "../cst.ts";
 import type {
   Alias,
   BlockFolded,
@@ -12,18 +12,18 @@ import type {
   QuoteSingle,
   Sequence,
   YamlUnistNode,
-} from "../types.js";
-import { transformAlias } from "./alias.js";
-import { transformBlockFolded } from "./block-folded.js";
-import { transformBlockLiteral } from "./block-literal.js";
-import type Context from "./context.js";
-import { transformFlowMap } from "./flow-map.js";
-import { transformFlowSeq } from "./flow-seq.js";
-import { transformMap } from "./map.js";
-import { transformPlain } from "./plain.js";
-import { transformQuoteDouble } from "./quote-double.js";
-import { transformQuoteSingle } from "./quote-single.js";
-import { transformSeq } from "./seq.js";
+} from "../types.ts";
+import { transformAlias } from "./alias.ts";
+import { transformBlockFolded } from "./block-folded.ts";
+import { transformBlockLiteral } from "./block-literal.ts";
+import type Context from "./context.ts";
+import { transformFlowMap } from "./flow-map.ts";
+import { transformFlowSeq } from "./flow-seq.ts";
+import { transformMap } from "./map.ts";
+import { transformPlain } from "./plain.ts";
+import { transformQuoteDouble } from "./quote-double.ts";
+import { transformQuoteSingle } from "./quote-single.ts";
+import { transformSeq } from "./seq.ts";
 
 export type YamlNode = null | YAML.ParsedNode;
 

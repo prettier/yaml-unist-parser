@@ -1,15 +1,15 @@
 import * as YAML from "yaml";
-import * as YAML_CST from "../cst.js";
-import { createFlowMappingItem } from "../factories/flow-mapping-item.js";
-import { createFlowSequence } from "../factories/flow-sequence.js";
-import { createFlowSequenceItem } from "../factories/flow-sequence-item.js";
-import { createPosition } from "../factories/position.js";
-import type { FlowSequence } from "../types.js";
-import { extractComments } from "../utils/extract-comments.js";
-import { getLast } from "../utils/get-last.js";
-import type Context from "./context.js";
-import { transformPair } from "./pair.js";
-import type { TransformNodeProperties } from "./transform.js";
+import * as YAML_CST from "../cst.ts";
+import { createFlowMappingItem } from "../factories/flow-mapping-item.ts";
+import { createFlowSequence } from "../factories/flow-sequence.ts";
+import { createFlowSequenceItem } from "../factories/flow-sequence-item.ts";
+import { createPosition } from "../factories/position.ts";
+import type { FlowSequence } from "../types.ts";
+import { extractComments } from "../utils/extract-comments.ts";
+import { getLast } from "../utils/get-last.ts";
+import type Context from "./context.ts";
+import { transformPair } from "./pair.ts";
+import type { TransformNodeProperties } from "./transform.ts";
 
 export function transformFlowSeq(
   flowSeq: YAML.YAMLSeq.Parsed<

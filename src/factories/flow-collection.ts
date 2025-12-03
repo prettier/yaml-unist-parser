@@ -3,10 +3,10 @@ import {
   type FlowMappingItem,
   type FlowSequenceItem,
   type Position,
-} from "../types.js";
-import { createCommentAttachable } from "./comment-attachable.js";
-import { createEndCommentAttachable } from "./end-comment-attachable.js";
-import { createNode } from "./node.js";
+} from "../types.ts";
+import { createCommentAttachable } from "./comment-attachable.ts";
+import { createEndCommentAttachable } from "./end-comment-attachable.ts";
+import { createNode } from "./node.ts";
 
 export function createFlowCollection<
   T extends FlowMappingItem | FlowSequenceItem,

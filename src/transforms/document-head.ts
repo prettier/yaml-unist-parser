@@ -1,9 +1,9 @@
 import type * as YAML from "yaml";
-import * as YAML_CST from "../cst.js";
-import { createDocumentHead } from "../factories/document-head.js";
-import type { Comment, Directive, Range } from "../types.js";
-import type Context from "./context.js";
-import { transformDirective } from "./directive.js";
+import * as YAML_CST from "../cst.ts";
+import { createDocumentHead } from "../factories/document-head.ts";
+import type { Comment, Directive, Range } from "../types.ts";
+import type Context from "./context.ts";
+import { transformDirective } from "./directive.ts";
 
 export function transformDocumentHead(
   tokensBeforeBody: (YAML_CST.CommentSourceToken | YAML.CST.Directive)[],

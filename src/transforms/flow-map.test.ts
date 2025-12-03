@@ -1,5 +1,5 @@
-import { getFirstContent, testCases } from "../helpers.js";
-import { type FlowMapping, type Root } from "../types.js";
+import { getFirstContent, testCases } from "../helpers.ts";
+import { type FlowMapping, type Root } from "../types.ts";
 
 const selectors = [
   getFlowMapping(),

@@ -3,8 +3,8 @@ import {
   type FlowMapping,
   type FlowMappingItem,
   type Position,
-} from "../types.js";
-import { createFlowCollection } from "./flow-collection.js";
+} from "../types.ts";
+import { createFlowCollection } from "./flow-collection.ts";
 
 export function createFlowMapping(
   position: Position,

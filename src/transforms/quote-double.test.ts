@@ -1,5 +1,5 @@
-import { getFirstContent, testCases } from "../helpers.js";
-import { type QuoteDouble } from "../types.js";
+import { getFirstContent, testCases } from "../helpers.ts";
+import { type QuoteDouble } from "../types.ts";
 
 testCases([['   "123 "  ', getFirstContent()]]);
 testCases([

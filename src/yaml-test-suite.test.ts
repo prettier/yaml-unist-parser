@@ -1,5 +1,5 @@
 import yamlTestSuite from "yaml-test-suite";
-import { parse } from "./parse.js";
+import { parse } from "./parse.ts";
 
 const bugs = new Set([
   "2JQS.yaml",

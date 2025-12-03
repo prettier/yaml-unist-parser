@@ -1,12 +1,12 @@
 import type * as YAML from "yaml";
-import type * as YAML_CST from "../cst.js";
-import { createFlowMapping } from "../factories/flow-mapping.js";
-import { createFlowMappingItem } from "../factories/flow-mapping-item.js";
-import type { FlowMapping } from "../types.js";
-import { extractComments } from "../utils/extract-comments.js";
-import type Context from "./context.js";
-import { transformPair } from "./pair.js";
-import type { TransformNodeProperties } from "./transform.js";
+import type * as YAML_CST from "../cst.ts";
+import { createFlowMapping } from "../factories/flow-mapping.ts";
+import { createFlowMappingItem } from "../factories/flow-mapping-item.ts";
+import type { FlowMapping } from "../types.ts";
+import { extractComments } from "../utils/extract-comments.ts";
+import type Context from "./context.ts";
+import { transformPair } from "./pair.ts";
+import type { TransformNodeProperties } from "./transform.ts";
 
 export function transformFlowMap(
   flowMap: YAML.YAMLMap.Parsed,

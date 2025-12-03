@@ -3,8 +3,8 @@ import {
   type TestCase,
   testCases,
   testSyntaxError,
-} from "../helpers.js";
-import { type Mapping, type Root, type Sequence } from "../types.js";
+} from "../helpers.ts";
+import { type Mapping, type Root, type Sequence } from "../types.ts";
 
 testSyntaxError("asd: 123\nqwe\n");
 

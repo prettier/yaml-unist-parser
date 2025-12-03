@@ -1,6 +1,6 @@
-import { type Content, type Plain, type Position } from "../types.js";
-import { createCommentAttachable } from "./comment-attachable.js";
-import { createNode } from "./node.js";
+import { type Content, type Plain, type Position } from "../types.ts";
+import { createCommentAttachable } from "./comment-attachable.ts";
+import { createNode } from "./node.ts";
 
 export function createPlain(
   position: Position,

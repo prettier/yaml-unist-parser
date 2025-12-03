@@ -1,6 +1,6 @@
-import type { Point, Position, YamlUnistNode } from "../types.js";
-import { createUpdater } from "./create-updater.js";
-import { getLast } from "./get-last.js";
+import type { Point, Position, YamlUnistNode } from "../types.ts";
+import { createUpdater } from "./create-updater.ts";
+import { getLast } from "./get-last.ts";
 
 export function updatePositions(node: YamlUnistNode): void {
   if (node === null || !("children" in node)) {

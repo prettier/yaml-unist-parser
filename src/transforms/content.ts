@@ -1,10 +1,10 @@
 import type * as YAML from "yaml";
-import type * as YAML_CST from "../cst.js";
-import { createAnchor } from "../factories/anchor.js";
-import { createContent } from "../factories/content.js";
-import { createTag } from "../factories/tag.js";
-import type { Anchor, Comment, Content, Range, Tag } from "../types.js";
-import type Context from "./context.js";
+import type * as YAML_CST from "../cst.ts";
+import { createAnchor } from "../factories/anchor.ts";
+import { createContent } from "../factories/content.ts";
+import { createTag } from "../factories/tag.ts";
+import type { Anchor, Comment, Content, Range, Tag } from "../types.ts";
+import type Context from "./context.ts";
 
 export function transformContentProperties(
   node:
