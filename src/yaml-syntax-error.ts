@@ -4,15 +4,18 @@ import { type Position } from "./types";
 
 export class YAMLSyntaxError extends SyntaxError {
   name = "YAMLSyntaxError";
-  source: string;
+
   code: YAML.ErrorCode;
+
+  source: string;
   position: Position;
 
   constructor(context: Context, error: YAML.YAMLError) {
     super(error.message, { cause: error });
 
-    this.source = context.text;
     this.code = error.code;
+
+    this.source = context.text;
     this.position = context.transformRange(error.pos);
   }
 }
