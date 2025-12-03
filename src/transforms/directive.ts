@@ -10,10 +10,10 @@ export function transformDirective(
   const parts = directive.source.trim().split(/[\t ]+/);
   const name = parts.shift()!.replace(/^%/, "");
   return createDirective(
-    context.transformRange({
-      origStart: directive.offset,
-      origEnd: directive.offset + directive.source.length,
-    }),
+    context.transformRange([
+      directive.offset,
+      directive.offset + directive.source.length,
+    ]),
     name,
     parts,
   );

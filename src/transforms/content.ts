@@ -23,14 +23,14 @@ export function transformContentProperties(
   let anchor: Anchor | null = null;
 
   for (const token of tokens) {
-    const tokenRange: Range = {
-      origStart: token.offset,
-      origEnd: token.offset + token.source.length,
-    };
+    const tokenRange: Range = [
+      token.offset,
+      token.offset + token.source.length,
+    ];
     switch (token.type) {
       case "tag":
         {
-          firstTagOrAnchorRange = firstTagOrAnchorRange || tokenRange;
+          firstTagOrAnchorRange ??= tokenRange;
           let resolvedTag =
             node.tag ??
             token.source.slice(token.source.startsWith("!!") ? 2 : 1);
@@ -41,15 +41,15 @@ export function transformContentProperties(
         }
         break;
       case "anchor":
-        firstTagOrAnchorRange = firstTagOrAnchorRange || tokenRange;
+        firstTagOrAnchorRange ??= tokenRange;
         anchor = createAnchor(context.transformRange(tokenRange), node.anchor!);
         break;
       case "comment": {
         const comment = context.transformComment(token);
         if (
           firstTagOrAnchorRange &&
-          firstTagOrAnchorRange.origEnd <= tokenRange.origStart &&
-          tokenRange.origEnd <= node.range[0]
+          firstTagOrAnchorRange[0] <= tokenRange[0] &&
+          tokenRange[1] <= node.range[0]
         ) {
           middleComments.push(comment);
         }

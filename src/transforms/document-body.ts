@@ -147,10 +147,7 @@ function getPosition(
     }
   }
 
-  const position = context.transformRange({
-    origStart,
-    origEnd,
-  });
+  const position = context.transformRange([origStart, origEnd]);
 
   const documentEndPoint = docEnd
     ? context.transformOffset(docEnd.offset + docEnd.source.length)

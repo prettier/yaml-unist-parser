@@ -16,10 +16,7 @@ export function transformPlain(
     const index =
       findLastCharIndex(context.text, plain.range[0] - 1, /\S/u) + 1;
     return createPlain(
-      context.transformRange({
-        origStart: index,
-        origEnd: index,
-      }),
+      context.transformRange([index, index]),
       context.transformContentProperties(plain, props.tokens),
       "",
     );
@@ -38,10 +35,7 @@ export function transformPlain(
   }
 
   return createPlain(
-    context.transformRange({
-      origStart: plain.range[0],
-      origEnd: plain.range[1],
-    }),
+    context.transformRange(plain.range),
     context.transformContentProperties(plain, props.tokens),
     plain.source,
   );

@@ -17,10 +17,7 @@ export function transformAlias(
   }
 
   return createAlias(
-    context.transformRange({
-      origStart: alias.range[0],
-      origEnd: alias.range[1],
-    }),
+    context.transformRange(alias.range),
     context.transformContentProperties(alias, props.tokens),
     alias.source,
   );

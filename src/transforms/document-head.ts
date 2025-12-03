@@ -104,22 +104,13 @@ function getPosition(
   context: Context,
 ) {
   const range: Range = docStart
-    ? {
-        origStart: docStart.offset,
-        origEnd: docStart.offset + docStart.source.length,
-      }
+    ? [docStart.offset, docStart.offset + docStart.source.length]
     : document.contents
-      ? {
-          origStart: document.contents.range[0],
-          origEnd: document.contents.range[0],
-        }
-      : {
-          origStart: document.range[0],
-          origEnd: document.range[0],
-        };
+      ? [document.contents.range[0], document.contents.range[0]]
+      : [document.range[0], document.range[0]];
 
   if (directives.length !== 0) {
-    range.origStart = directives[0].position.start.offset;
+    range[0] = directives[0].position.start.offset;
   }
 
   return context.transformRange(range);

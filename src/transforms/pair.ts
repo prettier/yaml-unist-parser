@@ -94,10 +94,7 @@ export function transformPair(
         ? explicitKeyIndToken.offset + explicitKeyIndToken.source.length
         : // Fallback to start of key
           keyStartOffset;
-  const keyRange = {
-    origStart: keyStartOffset,
-    origEnd: keyEndOffset,
-  };
+  const keyRange: Range = [keyStartOffset, keyEndOffset];
 
   let valueRange: Range | null = null;
   if (pair.value) {
@@ -117,10 +114,7 @@ export function transformPair(
           ? mapValueIndToken.offset + mapValueIndToken.source.length
           : // Fallback to start of value
             valueStartOffset;
-    valueRange = {
-      origStart: valueStartOffset,
-      origEnd: valueEndOffset,
-    };
+    valueRange = [valueStartOffset, valueEndOffset];
   }
 
   return transformAstPair(
@@ -154,29 +148,27 @@ function transformAstPair(
   }
 
   const mappingKey = createMappingKey(
-    context.transformRange({
-      origStart: additionalKeyData.range
-        ? additionalKeyData.range.origStart
+    context.transformRange([
+      additionalKeyData.range
+        ? additionalKeyData.range[0]
         : keyContent!.position.start.offset,
-      origEnd: keyContent
-        ? keyContent.position.end.offset
-        : additionalKeyData.range!.origEnd,
-    }),
+      keyContent ? keyContent.position.end.offset : additionalKeyData.range![1],
+    ]),
     keyContent as Exclude<typeof keyContent, Comment | Directive | Document>,
   );
 
   const mappingValue =
     valueContent || additionalValueData.range
       ? createMappingValue(
-          context.transformRange({
-            origStart: additionalValueData.range
-              ? additionalValueData.range.origStart
+          context.transformRange([
+            additionalValueData.range
+              ? additionalValueData.range[0]
               : // istanbul ignore next -- @preserve
                 valueContent!.position.start.offset,
-            origEnd: valueContent
+            valueContent
               ? valueContent.position.end.offset
-              : additionalValueData.range!.origStart + 1,
-          }),
+              : additionalValueData.range![0] + 1,
+          ]),
           valueContent as Exclude<
             typeof valueContent,
             Comment | Directive | Document

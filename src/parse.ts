@@ -8,36 +8,32 @@ import { removeFakeNodes } from "./utils/remove-fake-nodes.js";
 import { updatePositions } from "./utils/update-positions.js";
 
 export function parse(text: string, options?: ParseOptions): Root {
-  const parser = new YAML.Parser();
+  const lineCounter = new YAML.LineCounter();
+  const parser = new YAML.Parser(lineCounter.addNewLine);
   const composer = new YAML.Composer({
     keepSourceTokens: true,
     // Intentionally to not cast to boolean, so user can pass a function (undocumented)
     // https://eemeli.org/yaml/#options
     uniqueKeys: options?.uniqueKeys,
+    lineCounter,
   });
   const documentNodes: YAML.Document.Parsed[] = [];
   const cstTokens: YAML.CST.Token[] = [];
-  const context = new Context(text);
+  const context = new Context(text, lineCounter);
 
   for (const cst of parser.parse(text)) {
     cstTokens.push(cst);
     for (const doc of composer.next(cst)) {
-      documentNodes.push(doc);
+      documentNodes.push(throwParseError(doc, context));
     }
   }
 
   for (const doc of composer.end()) {
-    documentNodes.push(doc);
-  }
-
-  for (const doc of documentNodes) {
-    for (const error of doc.errors) {
-      throw transformError(error, context);
-    }
+    documentNodes.push(throwParseError(doc, context));
   }
 
   const root = createRoot(
-    context.transformRange({ origStart: 0, origEnd: text.length }),
+    context.transformRange([0, text.length]),
     context.transformDocuments(documentNodes, cstTokens),
     context.comments,
   );
@@ -47,4 +43,12 @@ export function parse(text: string, options?: ParseOptions): Root {
   removeFakeNodes(root);
 
   return root;
+}
+
+function throwParseError(document: YAML.Document.Parsed, context: Context) {
+  const { errors } = document;
+  if (errors.length > 0) {
+    throw transformError(errors[0], context);
+  }
+  return document;
 }

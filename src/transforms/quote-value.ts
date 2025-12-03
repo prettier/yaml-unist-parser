@@ -17,10 +17,7 @@ export function transformAstQuoteValue(
     throw new Error(`Unexpected token type in quote value end: ${token.type}`);
   }
   return createQuoteValue(
-    context.transformRange({
-      origStart: quoteValue.range[0],
-      origEnd: quoteValue.range[1],
-    }),
+    context.transformRange(quoteValue.range),
     context.transformContentProperties(quoteValue, props.tokens),
     quoteValue.source,
   );

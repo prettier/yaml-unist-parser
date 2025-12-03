@@ -63,10 +63,10 @@ export function transformFlowMap(
   }
 
   return createFlowMapping(
-    context.transformRange({
-      origStart: srcToken.start.offset,
-      origEnd: flowMapEndToken.offset + flowMapEndToken.source.length,
-    }),
+    context.transformRange([
+      srcToken.start.offset,
+      flowMapEndToken.offset + flowMapEndToken.source.length,
+    ]),
     context.transformContentProperties(flowMap, props.tokens),
     flowMappingItems,
   );
