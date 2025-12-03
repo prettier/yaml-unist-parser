@@ -1,9 +1,9 @@
 import type * as YAML from "yaml";
-import { createAlias } from "../factories/alias.js";
-import { type Alias } from "../types.js";
-import { extractComments } from "../utils/extract-comments.js";
-import type Context from "./context.js";
-import { type TransformNodeProperties } from "./transform.js";
+import { createAlias } from "../factories/alias.ts";
+import { type Alias } from "../types.ts";
+import { extractComments } from "../utils/extract-comments.ts";
+import type Context from "./context.ts";
+import { type TransformNodeProperties } from "./transform.ts";
 
 export function transformAlias(
   alias: YAML.Alias.Parsed,
@@ -17,10 +17,7 @@ export function transformAlias(
   }
 
   return createAlias(
-    context.transformRange({
-      origStart: alias.range[0],
-      origEnd: alias.range[1],
-    }),
+    context.transformRange(alias.range),
     context.transformContentProperties(alias, props.tokens),
     alias.source,
   );

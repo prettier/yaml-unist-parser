@@ -3,9 +3,9 @@ import {
   type MappingKey,
   type MappingValue,
   type Position,
-} from "../types.js";
-import { createLeadingCommentAttachable } from "./leading-comment-attachable.js";
-import { createNode } from "./node.js";
+} from "../types.ts";
+import { createLeadingCommentAttachable } from "./leading-comment-attachable.ts";
+import { createNode } from "./node.ts";
 
 export function createFlowMappingItem(
   position: Position,

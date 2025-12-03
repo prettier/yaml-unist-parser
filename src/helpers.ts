@@ -1,5 +1,5 @@
 import { wrap } from "jest-snapshot-serializer-raw";
-import { parse } from "./parse.js";
+import { parse } from "./parse.ts";
 import {
   type Anchor,
   type Comment,
@@ -10,7 +10,7 @@ import {
   type Tag,
   type YAMLSyntaxError,
   type YamlUnistNode,
-} from "./types.js";
+} from "./types.ts";
 
 export type Arrayable<T> = T | T[];
 

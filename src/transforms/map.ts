@@ -1,13 +1,13 @@
 import type * as YAML from "yaml";
-import { createMapping } from "../factories/mapping.js";
-import { createMappingItem } from "../factories/mapping-item.js";
-import { createPosition } from "../factories/position.js";
-import type { Mapping } from "../types.js";
-import { extractComments } from "../utils/extract-comments.js";
-import { getLast } from "../utils/get-last.js";
-import type Context from "./context.js";
-import { transformPair } from "./pair.js";
-import type { TransformNodeProperties } from "./transform.js";
+import { createMapping } from "../factories/mapping.ts";
+import { createMappingItem } from "../factories/mapping-item.ts";
+import { createPosition } from "../factories/position.ts";
+import type { Mapping } from "../types.ts";
+import { extractComments } from "../utils/extract-comments.ts";
+import { getLast } from "../utils/get-last.ts";
+import type Context from "./context.ts";
+import { transformPair } from "./pair.ts";
+import type { TransformNodeProperties } from "./transform.ts";
 
 export function transformMap(
   map: YAML.YAMLMap.Parsed,

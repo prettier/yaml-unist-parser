@@ -4,9 +4,9 @@ import {
   type DocumentBody,
   type DocumentHead,
   type Position,
-} from "../types.js";
-import { createNode } from "./node.js";
-import { createTrailingCommentAttachable } from "./trailing-comment-attachable.js";
+} from "../types.ts";
+import { createNode } from "./node.ts";
+import { createTrailingCommentAttachable } from "./trailing-comment-attachable.ts";
 
 export function createDocument(
   position: Position,

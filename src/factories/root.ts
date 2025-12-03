@@ -3,8 +3,8 @@ import {
   type Document,
   type Position,
   type Root,
-} from "../types.js";
-import { createNode } from "./node.js";
+} from "../types.ts";
+import { createNode } from "./node.ts";
 
 export function createRoot(
   position: Position,

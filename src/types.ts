@@ -1,3 +1,5 @@
+import type * as YAML from "yaml";
+
 export interface ParseOptions {
   uniqueKeys?: boolean;
 }
@@ -14,10 +16,7 @@ export interface Position {
   end: Point;
 }
 
-export interface Range {
-  origStart: number;
-  origEnd: number;
-}
+export type Range = [number, number] | YAML.Range;
 
 export interface Point {
   /** 1-based */

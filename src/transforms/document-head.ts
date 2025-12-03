@@ -1,9 +1,9 @@
 import type * as YAML from "yaml";
-import * as YAML_CST from "../cst.js";
-import { createDocumentHead } from "../factories/document-head.js";
-import type { Comment, Directive, Range } from "../types.js";
-import type Context from "./context.js";
-import { transformDirective } from "./directive.js";
+import * as YAML_CST from "../cst.ts";
+import { createDocumentHead } from "../factories/document-head.ts";
+import type { Comment, Directive, Range } from "../types.ts";
+import type Context from "./context.ts";
+import { transformDirective } from "./directive.ts";
 
 export function transformDocumentHead(
   tokensBeforeBody: (YAML_CST.CommentSourceToken | YAML.CST.Directive)[],
@@ -104,22 +104,13 @@ function getPosition(
   context: Context,
 ) {
   const range: Range = docStart
-    ? {
-        origStart: docStart.offset,
-        origEnd: docStart.offset + docStart.source.length,
-      }
+    ? [docStart.offset, docStart.offset + docStart.source.length]
     : document.contents
-      ? {
-          origStart: document.contents.range[0],
-          origEnd: document.contents.range[0],
-        }
-      : {
-          origStart: document.range[0],
-          origEnd: document.range[0],
-        };
+      ? [document.contents.range[0], document.contents.range[0]]
+      : [document.range[0], document.range[0]];
 
   if (directives.length !== 0) {
-    range.origStart = directives[0].position.start.offset;
+    range[0] = directives[0].position.start.offset;
   }
 
   return context.transformRange(range);

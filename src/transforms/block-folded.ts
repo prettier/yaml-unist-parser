@@ -1,10 +1,10 @@
 import type * as YAML from "yaml";
-import type * as YAML_CST from "../cst.js";
-import { createBlockFolded } from "../factories/block-folded.js";
-import type { BlockFolded } from "../types.js";
-import { transformAstBlockValue } from "./block-value.js";
-import type Context from "./context.js";
-import type { TransformNodeProperties } from "./transform.js";
+import type * as YAML_CST from "../cst.ts";
+import { createBlockFolded } from "../factories/block-folded.ts";
+import type { BlockFolded } from "../types.ts";
+import { transformAstBlockValue } from "./block-value.ts";
+import type Context from "./context.ts";
+import type { TransformNodeProperties } from "./transform.ts";
 
 export function transformBlockFolded(
   blockFolded: YAML.Scalar.Parsed,

@@ -1,10 +1,10 @@
 import type * as YAML from "yaml";
-import type * as YAML_CST from "../cst.js";
-import { createAnchor } from "../factories/anchor.js";
-import { createContent } from "../factories/content.js";
-import { createTag } from "../factories/tag.js";
-import type { Anchor, Comment, Content, Range, Tag } from "../types.js";
-import type Context from "./context.js";
+import type * as YAML_CST from "../cst.ts";
+import { createAnchor } from "../factories/anchor.ts";
+import { createContent } from "../factories/content.ts";
+import { createTag } from "../factories/tag.ts";
+import type { Anchor, Comment, Content, Range, Tag } from "../types.ts";
+import type Context from "./context.ts";
 
 export function transformContentProperties(
   node:
@@ -23,14 +23,14 @@ export function transformContentProperties(
   let anchor: Anchor | null = null;
 
   for (const token of tokens) {
-    const tokenRange: Range = {
-      origStart: token.offset,
-      origEnd: token.offset + token.source.length,
-    };
+    const tokenRange: Range = [
+      token.offset,
+      token.offset + token.source.length,
+    ];
     switch (token.type) {
       case "tag":
         {
-          firstTagOrAnchorRange = firstTagOrAnchorRange || tokenRange;
+          firstTagOrAnchorRange ??= tokenRange;
           let resolvedTag =
             node.tag ??
             token.source.slice(token.source.startsWith("!!") ? 2 : 1);
@@ -41,15 +41,15 @@ export function transformContentProperties(
         }
         break;
       case "anchor":
-        firstTagOrAnchorRange = firstTagOrAnchorRange || tokenRange;
+        firstTagOrAnchorRange ??= tokenRange;
         anchor = createAnchor(context.transformRange(tokenRange), node.anchor!);
         break;
       case "comment": {
         const comment = context.transformComment(token);
         if (
           firstTagOrAnchorRange &&
-          firstTagOrAnchorRange.origEnd <= tokenRange.origStart &&
-          tokenRange.origEnd <= node.range[0]
+          firstTagOrAnchorRange[0] <= tokenRange[0] &&
+          tokenRange[1] <= node.range[0]
         ) {
           middleComments.push(comment);
         }

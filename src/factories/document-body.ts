@@ -3,9 +3,9 @@ import {
   type ContentNode,
   type DocumentBody,
   type Position,
-} from "../types.js";
-import { createEndCommentAttachable } from "./end-comment-attachable.js";
-import { createNode } from "./node.js";
+} from "../types.ts";
+import { createEndCommentAttachable } from "./end-comment-attachable.ts";
+import { createNode } from "./node.ts";
 
 export function createDocumentBody(
   position: Position,

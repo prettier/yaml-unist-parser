@@ -7,9 +7,11 @@
     "yaml"
   ],
   "type": "module",
-  "types": "lib/index.d.ts",
   "exports": {
-    ".": "./lib/index.js",
+    ".": {
+      "types": "./dist/index.d.mts",
+      "default": "./dist/index.mjs"
+    },
     "./*": "./*"
   },
   "repository": "prettier/yaml-unist-parser",
@@ -30,8 +32,7 @@
     "fix:eslint": "yarn lint:eslint --fix",
     "fix:prettier": "prettier . --write",
     "test": "vitest",
-    "prebuild": "rm -rf ./lib",
-    "build": "tsc -p ./tsconfig.build.json",
+    "build": "tsdown --unbundle",
     "release": "yarn build && standard-version"
   },
   "dependencies": {
@@ -50,6 +51,7 @@
     "patch-package": "8.0.1",
     "prettier": "3.7.4",
     "standard-version": "9.5.0",
+    "tsdown": "0.17.0-beta.6",
     "typescript": "5.9.3",
     "typescript-eslint": "8.48.1",
     "vitest": "4.0.15",
@@ -59,7 +61,7 @@
     "node": ">= 14"
   },
   "files": [
-    "/lib/**/*"
+    "/dist"
   ],
   "packageManager": "yarn@4.11.0"
 }

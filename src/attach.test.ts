@@ -1,5 +1,5 @@
-import { testCases, type TestCaseSingle } from "./helpers.js";
-import { type Comment, type Root } from "./types.js";
+import { testCases, type TestCaseSingle } from "./helpers.ts";
+import { type Comment, type Root } from "./types.ts";
 
 // example from http://nodeca.github.io/js-yaml/
 const jsYamlExample = `

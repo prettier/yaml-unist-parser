@@ -1,4 +1,4 @@
-import { parse } from "./parse.js";
+import { parse } from "./parse.ts";
 
 for (const { type, text } of [
   { type: "mapping", text: "a: 1\na: 2" },

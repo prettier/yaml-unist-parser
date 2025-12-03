@@ -1,9 +1,9 @@
 import type * as YAML from "yaml";
-import * as YAML_CST from "../cst.js";
-import { createBlockValue } from "../factories/block-value.js";
-import type { BlockValue, Comment } from "../types.js";
-import type Context from "./context.js";
-import type { TransformNodeProperties } from "./transform.js";
+import * as YAML_CST from "../cst.ts";
+import { createBlockValue } from "../factories/block-value.ts";
+import type { BlockValue, Comment } from "../types.ts";
+import type Context from "./context.ts";
+import type { TransformNodeProperties } from "./transform.ts";
 
 export function transformAstBlockValue(
   blockValue: YAML.Scalar.Parsed,
@@ -34,10 +34,7 @@ export function transformAstBlockValue(
 
   const headerInfo = parseHeader(blockScalarHeaderToken.source);
 
-  const position = context.transformRange({
-    origStart: blockValue.range[0],
-    origEnd: blockValue.range[1],
-  });
+  const position = context.transformRange(blockValue.range);
 
   return createBlockValue(
     position,

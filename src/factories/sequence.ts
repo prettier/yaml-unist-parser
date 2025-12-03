@@ -3,10 +3,10 @@ import {
   type Position,
   type Sequence,
   type SequenceItem,
-} from "../types.js";
-import { createEndCommentAttachable } from "./end-comment-attachable.js";
-import { createLeadingCommentAttachable } from "./leading-comment-attachable.js";
-import { createNode } from "./node.js";
+} from "../types.ts";
+import { createEndCommentAttachable } from "./end-comment-attachable.ts";
+import { createLeadingCommentAttachable } from "./leading-comment-attachable.ts";
+import { createNode } from "./node.ts";
 
 export function createSequence(
   position: Position,
