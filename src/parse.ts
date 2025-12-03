@@ -19,7 +19,7 @@ function shouldIgnoreError(
   if (!(error instanceof YAMLSemanticError)) {
     return false;
   }
-
+  // TODO: Use `code` not `message` to check after upgrade to yaml@2
   const { message } = error;
   return (
     message === ERROR_MESSAGE_SHOULD_ALWAYS_IGNORE ||
@@ -29,7 +29,7 @@ function shouldIgnoreError(
   );
 }
 
-export function parse(text: string, options: ParseOptions): Root {
+export function parse(text: string, options?: ParseOptions): Root {
   const allowDuplicateKeysInMap = options?.allowDuplicateKeysInMap;
   const cst = YAML.parseCST(text);
   const context = new Context(cst, text);
@@ -44,7 +44,6 @@ export function parse(text: string, options: ParseOptions): Root {
 
   for (const document of documents) {
     for (const error of document.errors) {
-      // TODO: Use `code` not `message` to check after upgrade to yaml@2
       if (shouldIgnoreError(error, allowDuplicateKeysInMap)) {
         continue;
       }
