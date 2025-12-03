@@ -27,13 +27,13 @@ export function transformPlain(
 
   const srcToken = plain.srcToken;
 
-  // istanbul ignore next
+  // istanbul ignore if -- @preserve
   if (!srcToken || srcToken.type !== "scalar") {
     throw new Error("Expected plain scalar srcToken");
   }
 
   for (const token of extractComments(srcToken.end, context)) {
-    // istanbul ignore next
+    // istanbul ignore next -- @preserve
     throw new Error(`Unexpected token type in plain scalar end: ${token.type}`);
   }
 

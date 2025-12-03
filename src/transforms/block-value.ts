@@ -20,13 +20,14 @@ export function transformAstBlockValue(
     } else if (token.type === "block-scalar-header") {
       blockScalarHeaderToken = token;
     } else {
-      // istanbul ignore next
+      // istanbul ignore next -- @preserve
       throw new Error(
         `Unexpected token type in block value end: ${token.type}`,
       );
     }
   }
 
+  // istanbul ignore if -- @preserve
   if (!blockScalarHeaderToken) {
     throw new Error("Expected block scalar header token");
   }

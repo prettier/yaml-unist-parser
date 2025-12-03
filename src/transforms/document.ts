@@ -34,7 +34,7 @@ export function transformDocuments(
       continue;
     }
     if (token.type === "doc-end") {
-      // istanbul ignore next
+      // istanbul ignore if -- @preserve
       if (!currentDoc || currentDoc.docEnd)
         throw new Error(
           `Unexpected doc-end token at ${getPointText(context.transformOffset(token.offset))}`,
@@ -56,7 +56,7 @@ export function transformDocuments(
       continue;
     }
     if (token.type === "document") {
-      // istanbul ignore next
+      // istanbul ignore if -- @preserve
       if (documentNodes.length <= documents.length) {
         throw new Error(
           `Unexpected document token at ${getPointText(context.transformOffset(token.offset))}`,
@@ -74,12 +74,12 @@ export function transformDocuments(
       bufferComments = [];
       continue;
     }
-    // istanbul ignore next
+    // istanbul ignore next -- @preserve
     throw new Error(
       `Unexpected token type: ${token.type} at ${getPointText(context.transformOffset(token.offset))}`,
     );
   }
-  // istanbul ignore next
+  // istanbul ignore if -- @preserve
   if (documents.length < documentNodes.length) {
     const errorIndex = documentNodes[documents.length].range[0];
     throw new Error(

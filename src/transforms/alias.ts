@@ -12,7 +12,7 @@ export function transformAlias(
 ): Alias {
   const srcToken = alias.srcToken!;
   for (const token of extractComments(srcToken.end, context)) {
-    // istanbul ignore next
+    // istanbul ignore next -- @preserve
     throw new Error(`Unexpected token type in alias end: ${token.type}`);
   }
 

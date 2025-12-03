@@ -14,7 +14,7 @@ export function transformQuoteDouble(
   const srcToken: YAML_CST.FlowScalar | YAML.CST.BlockScalar | undefined =
     quoteDouble.srcToken;
 
-  // istanbul ignore next
+  // istanbul ignore if -- @preserve
   if (!srcToken || srcToken.type !== "double-quoted-scalar") {
     throw new Error("Expected double-quoted scalar srcToken");
   }

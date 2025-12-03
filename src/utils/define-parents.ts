@@ -18,7 +18,7 @@ export function defineParents(
     defineParents(node.tag, node);
   }
 
-  // istanbul ignore next
+  // istanbul ignore if -- @preserve
   if ("leadingComments" in node) {
     node.leadingComments.forEach(comment => defineParents(comment, node));
   }

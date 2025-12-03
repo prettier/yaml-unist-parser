@@ -22,7 +22,7 @@ export function transformSeq(
 ): Sequence {
   const srcToken = seq.srcToken;
 
-  // istanbul ignore next
+  // istanbul ignore if -- @preserve
   if (!srcToken || srcToken.type !== "block-seq") {
     throw new Error("Expected block sequence srcToken");
   }
@@ -34,14 +34,18 @@ export function transformSeq(
     for (const token of YAML_CST.tokens(srcItem.start)) {
       if (YAML_CST.maybeContentPropertyToken(token)) {
         propTokens.push(token);
-      } else if (token.type === "seq-item-ind") {
-        seqItemIndToken = token;
-      } else {
-        // istanbul ignore next
-        throw new Error(
-          `Unexpected token type in sequence item start: ${token.type}`,
-        );
+        continue;
       }
+
+      // istanbul ignore else -- @preserve
+      if (token.type === "seq-item-ind") {
+        seqItemIndToken = token;
+        continue;
+      }
+      // istanbul ignore next -- @preserve
+      throw new Error(
+        `Unexpected token type in sequence item start: ${token.type}`,
+      );
     }
 
     const item = transformItemValue(itemNode, context, { tokens: propTokens });
@@ -65,14 +69,10 @@ export function transformSeq(
     for (let i = seq.items.length; i < srcToken.items.length; i++) {
       const srcItem = srcToken.items[i];
       for (const token of extractComments(srcItem.start, context)) {
-        if (token.type === "comma") {
-          // skip
-        } else {
-          // istanbul ignore next
-          throw new Error(
-            `Unexpected token type in collection item start: ${token.type}`,
-          );
-        }
+        // istanbul ignore next -- @preserve
+        throw new Error(
+          `Unexpected token type in collection item start: ${token.type}`,
+        );
       }
     }
   }

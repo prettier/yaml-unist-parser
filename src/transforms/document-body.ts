@@ -39,7 +39,7 @@ export function transformDocumentBody(
   if (!hasContent) {
     // Handle comments in empty document body
     for (const token of extractComments(propTokens, context)) {
-      // istanbul ignore next
+      // istanbul ignore next -- @preserve
       throw new Error(
         `Unexpected token type in empty document body: ${token.type}`,
       );
@@ -77,11 +77,11 @@ function categorizeNodes(
       propTokens.push(token);
       continue;
     }
-    // istanbul ignore next
+    // istanbul ignore next -- @preserve
     throw new Error(`Unexpected token type: ${token.type}`);
   }
   for (const token of extractComments(tokensAfterBody, context)) {
-    // istanbul ignore next
+    // istanbul ignore next -- @preserve
     throw new Error(`Unexpected token type: ${token.type}`);
   }
 
@@ -102,11 +102,11 @@ function categorizeNodes(
       }
       continue;
     }
-    // istanbul ignore next
+    // istanbul ignore next -- @preserve
     throw new Error(`Unexpected token type: ${token.type}`);
   }
 
-  // istanbul ignore next
+  // istanbul ignore if -- @preserve
   if (documentTrailingComments.length > 1) {
     throw new Error(
       `Unexpected multiple document trailing comments at ${getPointText(

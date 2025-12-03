@@ -41,16 +41,21 @@ export function transformPair(
   for (const token of YAML_CST.tokens(srcItem.start)) {
     if (YAML_CST.maybeContentPropertyToken(token)) {
       keyPropTokens.push(token);
-    } else if (token.type === "explicit-key-ind") {
-      explicitKeyIndToken = token;
-    } else if (token.type === "comma") {
-      // skip
-    } else {
-      // istanbul ignore next
-      throw new Error(
-        `Unexpected token type in collection item start: ${token.type}`,
-      );
+      continue;
     }
+    if (token.type === "explicit-key-ind") {
+      explicitKeyIndToken = token;
+      continue;
+    }
+    // istanbul ignore else -- @preserve
+    if (token.type === "comma") {
+      // skip
+      continue;
+    }
+    // istanbul ignore next -- @preserve
+    throw new Error(
+      `Unexpected token type in collection item start: ${token.type}`,
+    );
   }
 
   const valuePropTokens: YAML_CST.ContentPropertyToken[] = [];
@@ -58,14 +63,17 @@ export function transformPair(
   for (const token of YAML_CST.tokens(srcItem.sep)) {
     if (YAML_CST.maybeContentPropertyToken(token)) {
       valuePropTokens.push(token);
-    } else if (token.type === "map-value-ind") {
-      mapValueIndToken = token;
-    } else {
-      // istanbul ignore next
-      throw new Error(
-        `Unexpected token type in collection item sep: ${token.type}`,
-      );
+      continue;
     }
+    // istanbul ignore else -- @preserve
+    if (token.type === "map-value-ind") {
+      mapValueIndToken = token;
+      continue;
+    }
+    // istanbul ignore next -- @preserve
+    throw new Error(
+      `Unexpected token type in collection item sep: ${token.type}`,
+    );
   }
 
   const keyStartOffset =
@@ -128,7 +136,7 @@ function transformAstPair(
   pair: YAML.Pair<YAML.ParsedNode, YAML.ParsedNode | null>,
   context: Context,
   createNode: typeof createMappingItem | typeof createFlowMappingItem,
-  additionalKeyData: { range: null | Range; props: TransformNodeProperties },
+  additionalKeyData: { range: Range; props: TransformNodeProperties },
   additionalValueData: { range: null | Range; props: TransformNodeProperties },
 ): MappingItem | FlowMappingItem {
   let keyContent: ContentNode | null = null;
@@ -145,23 +153,17 @@ function transformAstPair(
     extractComments(additionalValueData.props.tokens, context);
   }
 
-  const mappingKey =
-    keyContent || additionalKeyData.range
-      ? createMappingKey(
-          context.transformRange({
-            origStart: additionalKeyData.range
-              ? additionalKeyData.range.origStart
-              : keyContent!.position.start.offset,
-            origEnd: keyContent
-              ? keyContent.position.end.offset
-              : additionalKeyData.range!.origEnd,
-          }),
-          keyContent as Exclude<
-            typeof keyContent,
-            Comment | Directive | Document
-          >,
-        )
-      : null;
+  const mappingKey = createMappingKey(
+    context.transformRange({
+      origStart: additionalKeyData.range
+        ? additionalKeyData.range.origStart
+        : keyContent!.position.start.offset,
+      origEnd: keyContent
+        ? keyContent.position.end.offset
+        : additionalKeyData.range!.origEnd,
+    }),
+    keyContent as Exclude<typeof keyContent, Comment | Directive | Document>,
+  );
 
   const mappingValue =
     valueContent || additionalValueData.range
@@ -169,7 +171,7 @@ function transformAstPair(
           context.transformRange({
             origStart: additionalValueData.range
               ? additionalValueData.range.origStart
-              : // istanbul ignore next
+              : // istanbul ignore next -- @preserve
                 valueContent!.position.start.offset,
             origEnd: valueContent
               ? valueContent.position.end.offset
@@ -184,12 +186,11 @@ function transformAstPair(
 
   return createNode(
     createPosition(
-      mappingKey ? mappingKey.position.start : mappingValue!.position.start,
-      mappingValue ? mappingValue.position.end : mappingKey!.position.end,
+      mappingKey.position.start,
+      mappingValue ? mappingValue.position.end : mappingKey.position.end,
     ),
-    mappingKey ||
-      createMappingKey(createEmptyPosition(mappingValue!.position.start), null),
+    mappingKey,
     mappingValue ||
-      createMappingValue(createEmptyPosition(mappingKey!.position.end), null),
+      createMappingValue(createEmptyPosition(mappingKey.position.end), null),
   );
 }

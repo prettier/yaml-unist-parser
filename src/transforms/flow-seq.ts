@@ -20,7 +20,7 @@ export function transformFlowSeq(
 ): FlowSequence {
   const srcToken = flowSeq.srcToken;
 
-  // istanbul ignore next
+  // istanbul ignore if -- @preserve
   if (!srcToken || srcToken.type !== "flow-collection") {
     throw new Error("Expected flow-collection CST node for flow sequence");
   }
@@ -38,16 +38,18 @@ export function transformFlowSeq(
       for (const token of YAML_CST.tokens(srcItem.start)) {
         if (YAML_CST.maybeContentPropertyToken(token)) {
           propTokens.push(token);
-        } else if (token.type === "comma") {
-          // skip
-        } else if (token.type === "explicit-key-ind") {
-          // skip e.g. CT4Q.yaml
-        } else {
-          // istanbul ignore next
-          throw new Error(
-            `Unexpected token type in sequence item start: ${token.type}`,
-          );
+          continue;
         }
+        // istanbul ignore else -- @preserve
+        if (token.type === "comma") {
+          // skip
+          continue;
+        }
+
+        // istanbul ignore next -- @preserve
+        throw new Error(
+          `Unexpected token type in sequence item start: ${token.type}`,
+        );
       }
       const node = context.transformNode(item, { tokens: propTokens });
       return createFlowSequenceItem(
@@ -64,14 +66,16 @@ export function transformFlowSeq(
     for (let i = flowSeq.items.length; i < srcToken.items.length; i++) {
       const srcItem = srcToken.items[i];
       for (const token of extractComments(srcItem.start, context)) {
+        // istanbul ignore else -- @preserve
         if (token.type === "comma") {
           // skip
-        } else {
-          // istanbul ignore next
-          throw new Error(
-            `Unexpected token type in collection item start: ${token.type}`,
-          );
+          continue;
         }
+
+        // istanbul ignore next -- @preserve
+        throw new Error(
+          `Unexpected token type in collection item start: ${token.type}`,
+        );
       }
     }
   }
@@ -80,13 +84,20 @@ export function transformFlowSeq(
   for (const token of YAML_CST.tokens(srcToken.end)) {
     if (token.type === "comment") {
       context.transformComment(token);
-    } else if (token.type === "flow-seq-end") {
-      flowSeqEndToken = token;
-    } else {
-      // istanbul ignore next
-      throw new Error(`Unexpected token type in flow seq end: ${token.type}`);
+      continue;
     }
+
+    // istanbul ignore else -- @preserve
+    if (token.type === "flow-seq-end") {
+      flowSeqEndToken = token;
+      continue;
+    }
+
+    // istanbul ignore next -- @preserve
+    throw new Error(`Unexpected token type in flow seq end: ${token.type}`);
   }
+
+  // istanbul ignore if -- @preserve
   if (!flowSeqEndToken) {
     throw new Error("Expected flow-seq-end token");
   }
@@ -122,8 +133,11 @@ function isBlockMappingOfImmediateChildOfFlowSequence(
     // because it is associated with a source token indicating it is not an immediate child.
     return false;
   }
+
+  // istanbul ignore if -- @preserve
   if (!YAML.isMap(item)) return false;
 
+  // istanbul ignore if -- @preserve
   if (item.items.length !== 1) {
     // If the block mapping does not contain exactly one item, it is not considered
     // an immediate child of a flow sequence.

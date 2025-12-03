@@ -7,7 +7,6 @@ export function transformError(
   error: YAML.YAMLError,
   context: Context,
 ): YAMLSyntaxError {
-  // istanbul ignore next
   const range = error.pos;
   return createError(
     error.message,

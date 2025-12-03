@@ -16,7 +16,7 @@ export function transformMap(
 ): Mapping {
   const srcToken = map.srcToken;
 
-  // istanbul ignore next
+  // istanbul ignore if -- @preserve
   if (!srcToken || srcToken.type !== "block-map") {
     throw new Error("Expected block mapping srcToken");
   }
@@ -32,14 +32,10 @@ export function transformMap(
     for (let i = map.items.length; i < srcToken.items.length; i++) {
       const srcItem = srcToken.items[i];
       for (const token of extractComments(srcItem.start, context)) {
-        if (token.type === "comma") {
-          // skip
-        } else {
-          // istanbul ignore next
-          throw new Error(
-            `Unexpected token type in collection item start: ${token.type}`,
-          );
-        }
+        // istanbul ignore next -- @preserve
+        throw new Error(
+          `Unexpected token type in collection item start: ${token.type}`,
+        );
       }
     }
   }

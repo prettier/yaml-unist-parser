@@ -15,7 +15,7 @@ export function transformFlowMap(
 ): FlowMapping {
   const srcToken = flowMap.srcToken;
 
-  // istanbul ignore next
+  // istanbul ignore if -- @preserve
   if (!srcToken || srcToken.type !== "flow-collection") {
     throw new Error("Expected flow-collection CST node for flow map");
   }
@@ -31,27 +31,33 @@ export function transformFlowMap(
     for (let i = flowMap.items.length; i < srcToken.items.length; i++) {
       const srcItem = srcToken.items[i];
       for (const token of extractComments(srcItem.start, context)) {
+        // istanbul ignore else -- @preserve
         if (token.type === "comma") {
           // skip
-        } else {
-          // istanbul ignore next
-          throw new Error(
-            `Unexpected token type in collection item start: ${token.type}`,
-          );
+          continue;
         }
+
+        // istanbul ignore next -- @preserve
+        throw new Error(
+          `Unexpected token type in collection item start: ${token.type}`,
+        );
       }
     }
   }
 
   let flowMapEndToken: YAML_CST.FlowMapEndSourceToken | null = null;
   for (const token of extractComments(srcToken.end, context)) {
+    // istanbul ignore else -- @preserve
     if (token.type === "flow-map-end") {
       flowMapEndToken = token;
-    } else {
-      // istanbul ignore next
-      throw new Error(`Unexpected token type in flow map end: ${token.type}`);
+      continue;
     }
+
+    // istanbul ignore next -- @preserve
+    throw new Error(`Unexpected token type in flow map end: ${token.type}`);
   }
+
+  // istanbul ignore if -- @preserve
   if (!flowMapEndToken) {
     throw new Error("Expected flow-map-end token");
   }

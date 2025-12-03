@@ -13,7 +13,7 @@ export function transformAstQuoteValue(
   props: TransformNodeProperties,
 ): QuoteValue {
   for (const token of extractComments(srcToken.end, context)) {
-    // istanbul ignore next
+    // istanbul ignore next -- @preserve
     throw new Error(`Unexpected token type in quote value end: ${token.type}`);
   }
   return createQuoteValue(

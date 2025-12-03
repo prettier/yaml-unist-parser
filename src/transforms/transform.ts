@@ -81,11 +81,11 @@ export function transformNode(
       case "QUOTE_SINGLE":
         return transformQuoteSingle(node, context, props);
     }
-    // istanbul ignore next
+    // istanbul ignore next -- @preserve
     throw new Error(`Unexpected scalar type: ${node.type}`);
   }
 
-  // istanbul ignore next
+  // istanbul ignore next -- @preserve
   throw new Error(`Unexpected unknown node type`);
 }
 

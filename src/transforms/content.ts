@@ -55,7 +55,7 @@ export function transformContentProperties(
         }
         break;
       }
-      // istanbul ignore next
+      // istanbul ignore next -- @preserve
       default:
         throw new Error(
           `Unexpected content property token type: ${(token as YAML.CST.Token).type}`,

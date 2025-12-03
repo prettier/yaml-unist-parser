@@ -14,7 +14,7 @@ export function transformBlockLiteral(
   const srcToken: YAML_CST.FlowScalar | YAML.CST.BlockScalar | undefined =
     blockLiteral.srcToken;
 
-  // istanbul ignore next
+  // istanbul ignore if -- @preserve
   if (!srcToken || srcToken.type !== "block-scalar") {
     throw new Error("Expected block scalar srcToken");
   }

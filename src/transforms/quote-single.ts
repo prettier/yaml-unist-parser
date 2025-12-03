@@ -14,7 +14,7 @@ export function transformQuoteSingle(
   const srcToken: YAML_CST.FlowScalar | YAML.CST.BlockScalar | undefined =
     quoteSingle.srcToken;
 
-  // istanbul ignore next
+  // istanbul ignore if -- @preserve
   if (!srcToken || srcToken.type !== "single-quoted-scalar") {
     throw new Error("Expected single-quoted scalar srcToken");
   }
