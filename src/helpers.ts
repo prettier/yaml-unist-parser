@@ -8,9 +8,9 @@ import {
   type Position,
   type Root,
   type Tag,
-  type YAMLSyntaxError,
   type YamlUnistNode,
 } from "./types.ts";
+import { type YAMLSyntaxError } from "./yaml-syntax-error.ts";
 
 export type Arrayable<T> = T | T[];
 

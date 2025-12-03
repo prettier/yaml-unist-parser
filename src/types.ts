@@ -62,11 +62,6 @@ export interface EndCommentAttachable {
   endComments: Comment[];
 }
 
-export interface YAMLSyntaxError extends SyntaxError {
-  source: string;
-  position: Position;
-}
-
 export type YamlUnistNode =
   | Comment
   | Tag
