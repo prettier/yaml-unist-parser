@@ -65,3 +65,24 @@ jobs:
 
       - name: Run Lint
         run: yarn lint
+
+  preview:
+    if: github.repository == 'prettier/yaml-unist-parser'
+    name: Preview release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+
+      - name: Install Dependencies
+        run: yarn --immutable
+
+      - name: Preview
+        run: yarn lint
+
+      - run: |
+          yarn build
+          npx pkg-pr-new publish --compact
