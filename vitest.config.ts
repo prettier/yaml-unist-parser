@@ -1,5 +1,9 @@
 import { defineConfig } from "vitest/config";
 
+console.log({
+  enabled: !!process.env.CI && !/^18\./.test(process.version),
+});
+
 export default defineConfig({
   test: {
     globals: true,
