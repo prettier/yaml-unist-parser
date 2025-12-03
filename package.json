@@ -33,7 +33,7 @@
     "fix:prettier": "prettier . --write",
     "test": "vitest",
     "build": "tsdown --unbundle",
-    "release": "yarn build"
+    "release": "release-it"
   },
   "dependencies": {
     "yaml": "^2.8.2"
