@@ -1,14 +1,7 @@
-import type * as YAML from "yaml";
+import YAML from "yaml";
 import type * as YAMLTypes from "yaml/types";
 import { createPosition } from "../factories/position.js";
-import type {
-  Comment,
-  Content,
-  ParsedCST,
-  Point,
-  Position,
-  Range,
-} from "../types.js";
+import type { Comment, Content, Point, Position, Range } from "../types.js";
 import { transformContent } from "./content.js";
 import { transformNode, type YamlNode, type YamlToUnist } from "./transform.js";
 
@@ -29,29 +22,30 @@ let rangeAsLinePosGetter: RangeAsLinePosGetter;
 class Context {
   text;
   comments: Comment[] = [];
-  #cst;
+  cst;
   #cstContext: CSTContext | undefined;
 
-  constructor(cst: ParsedCST, text: string) {
+  constructor(text: string) {
     this.text = text;
-    this.#cst = cst;
+    this.cst = YAML.parseCST(text);
+    this.setOrigRanges();
   }
 
   setOrigRanges() {
-    if (this.#cst.setOrigRanges()) {
+    if (this.cst.setOrigRanges()) {
       return;
     }
 
     // From `yaml/parse-cst`
     // https://github.com/eemeli/yaml/blob/4cdcde632ece71155f3108ec0120c1a0329a6914/src/cst/parse.js#L22
-    for (const document of this.#cst) {
+    for (const document of this.cst) {
       document.setOrigRanges([], 0);
     }
   }
 
   #getRangePosition(range: Range): { start: Point; end: Point } {
     if (!rangeAsLinePosGetter) {
-      const [document] = this.#cst;
+      const [document] = this.cst;
       const Node = Object.getPrototypeOf(
         Object.getPrototypeOf(document),
       ) as YAML.CST.Node;

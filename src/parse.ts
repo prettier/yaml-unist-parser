@@ -32,13 +32,17 @@ function shouldIgnoreError(
 
 export function parse(text: string, options?: ParseOptions): Root {
   const allowDuplicateKeysInMap = options?.allowDuplicateKeysInMap;
-  const cst = YAML.parseCST(text);
-  const context = new Context(cst, text);
-  context.setOrigRanges();
+  const context = new Context(text);
 
   const documents: Document[] = [];
 
-  for (const cstDocument of cst) {
+  const root = createRoot(
+    context.transformRange({ origStart: 0, origEnd: text.length }),
+    documents,
+    context.comments,
+  );
+
+  for (const cstDocument of context.cst) {
     const yamlDocument = new YAML.Document({
       merge: false,
       keepCstNodes: true,
@@ -56,12 +60,6 @@ export function parse(text: string, options?: ParseOptions): Root {
     const document = context.transformNode(yamlDocument);
     documents.push(document);
   }
-
-  const root = createRoot(
-    context.transformRange({ origStart: 0, origEnd: text.length }),
-    documents,
-    context.comments,
-  );
 
   attachComments(root);
   updatePositions(root);
