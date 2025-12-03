@@ -1,6 +1,6 @@
 import type * as YAML from "yaml";
 import { createPlain } from "../factories/plain.js";
-import type { Plain, Range } from "../types.js";
+import type { Plain } from "../types.js";
 import { extractComments } from "../utils/extract-comments.js";
 import { findLastCharIndex } from "../utils/find-last-char-index.js";
 import type Context from "./context.js";
