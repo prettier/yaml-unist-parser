@@ -1,10 +1,10 @@
 import type * as YAML from "yaml";
-import * as YAML_CST from "../cst.js";
-import type { createFlowMappingItem } from "../factories/flow-mapping-item.js";
-import type { createMappingItem } from "../factories/mapping-item.js";
-import { createMappingKey } from "../factories/mapping-key.js";
-import { createMappingValue } from "../factories/mapping-value.js";
-import { createEmptyPosition, createPosition } from "../factories/position.js";
+import * as YAML_CST from "../cst.ts";
+import type { createFlowMappingItem } from "../factories/flow-mapping-item.ts";
+import type { createMappingItem } from "../factories/mapping-item.ts";
+import { createMappingKey } from "../factories/mapping-key.ts";
+import { createMappingValue } from "../factories/mapping-value.ts";
+import { createEmptyPosition, createPosition } from "../factories/position.ts";
 import type {
   Comment,
   ContentNode,
@@ -13,10 +13,10 @@ import type {
   FlowMappingItem,
   MappingItem,
   Range,
-} from "../types.js";
-import { extractComments } from "../utils/extract-comments.js";
-import type Context from "./context.js";
-import { isEmptyNode, type TransformNodeProperties } from "./transform.js";
+} from "../types.ts";
+import { extractComments } from "../utils/extract-comments.ts";
+import type Context from "./context.ts";
+import { isEmptyNode, type TransformNodeProperties } from "./transform.ts";
 
 export function transformPair(
   pair: YAML.Pair<YAML.ParsedNode, YAML.ParsedNode | null>,

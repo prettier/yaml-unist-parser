@@ -1,7 +1,7 @@
 import type * as YAML from "yaml";
-import { createError } from "../factories/error.js";
-import type { YAMLSyntaxError } from "../types.js";
-import type Context from "./context.js";
+import { createError } from "../factories/error.ts";
+import type { YAMLSyntaxError } from "../types.ts";
+import type Context from "./context.ts";
 
 export function transformError(
   error: YAML.YAMLError,

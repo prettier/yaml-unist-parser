@@ -1,5 +1,5 @@
-import { type Position, type Tag } from "../types.js";
-import { createNode } from "./node.js";
+import { type Position, type Tag } from "../types.ts";
+import { createNode } from "./node.ts";
 
 export function createTag(position: Position, value: string): Tag {
   return {

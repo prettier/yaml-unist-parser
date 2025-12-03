@@ -1,14 +1,14 @@
 import type * as YAML from "yaml";
-import * as YAML_CST from "../cst.js";
-import { createDocument } from "../factories/document.js";
-import { createDocumentBody } from "../factories/document-body.js";
-import { createDocumentHead } from "../factories/document-head.js";
-import { createPosition } from "../factories/position.js";
-import type { Document } from "../types.js";
-import { getPointText } from "../utils/get-point-text.js";
-import type Context from "./context.js";
-import { transformDocumentBody } from "./document-body.js";
-import { transformDocumentHead } from "./document-head.js";
+import * as YAML_CST from "../cst.ts";
+import { createDocument } from "../factories/document.ts";
+import { createDocumentBody } from "../factories/document-body.ts";
+import { createDocumentHead } from "../factories/document-head.ts";
+import { createPosition } from "../factories/position.ts";
+import type { Document } from "../types.ts";
+import { getPointText } from "../utils/get-point-text.ts";
+import type Context from "./context.ts";
+import { transformDocumentBody } from "./document-body.ts";
+import { transformDocumentHead } from "./document-head.ts";
 
 type DocumentData = {
   tokensBeforeBody: (YAML_CST.CommentSourceToken | YAML.CST.Directive)[];

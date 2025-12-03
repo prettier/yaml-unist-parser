@@ -1,6 +1,6 @@
 import type * as YAML from "yaml";
-import type * as YAML_CST from "../cst.js";
-import { createPosition } from "../factories/position.js";
+import type * as YAML_CST from "../cst.ts";
+import { createPosition } from "../factories/position.ts";
 import type {
   Comment,
   Content,
@@ -8,16 +8,16 @@ import type {
   Point,
   Position,
   Range,
-} from "../types.js";
-import { transformComment } from "./comment.js";
-import { transformContentProperties } from "./content.js";
-import { transformDocuments } from "./document.js";
+} from "../types.ts";
+import { transformComment } from "./comment.ts";
+import { transformContentProperties } from "./content.ts";
+import { transformDocuments } from "./document.ts";
 import {
   transformNode,
   type TransformNodeProperties,
   type YamlNode,
   type YamlToUnist,
-} from "./transform.js";
+} from "./transform.ts";
 
 class Context {
   text;

@@ -3,10 +3,10 @@ import {
   type Directive,
   type DocumentHead,
   type Position,
-} from "../types.js";
-import { createEndCommentAttachable } from "./end-comment-attachable.js";
-import { createNode } from "./node.js";
-import { createTrailingCommentAttachable } from "./trailing-comment-attachable.js";
+} from "../types.ts";
+import { createEndCommentAttachable } from "./end-comment-attachable.ts";
+import { createNode } from "./node.ts";
+import { createTrailingCommentAttachable } from "./trailing-comment-attachable.ts";
 
 export function createDocumentHead(
   position: Position,

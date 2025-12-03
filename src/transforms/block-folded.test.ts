@@ -1,5 +1,5 @@
-import { getFirstContent, testCases } from "../helpers.js";
-import { type BlockFolded } from "../types.js";
+import { getFirstContent, testCases } from "../helpers.ts";
+import { type BlockFolded } from "../types.ts";
 
 testCases([
   [">\n  123\n  456\n\n\n", getFirstContent()],

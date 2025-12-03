@@ -1,4 +1,4 @@
-import { type YamlUnistNode } from "../types.js";
+import { type YamlUnistNode } from "../types.ts";
 
 export function defineParents(
   node: YamlUnistNode,

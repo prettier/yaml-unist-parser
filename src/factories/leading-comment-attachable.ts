@@ -1,4 +1,4 @@
-import { type LeadingCommentAttachable } from "../types.js";
+import { type LeadingCommentAttachable } from "../types.ts";
 
 export function createLeadingCommentAttachable(): LeadingCommentAttachable {
   return {

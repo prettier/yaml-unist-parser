@@ -53,5 +53,5 @@ export default tseslint.config(
       "simple-import-sort/exports": "error",
     },
   },
-  { ignores: ["lib/", ".yarn/"] },
+  { ignores: ["dist/", ".yarn/"] },
 );

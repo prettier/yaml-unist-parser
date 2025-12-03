@@ -1,6 +1,6 @@
-import { type CommentAttachable } from "../types.js";
-import { createLeadingCommentAttachable } from "./leading-comment-attachable.js";
-import { createTrailingCommentAttachable } from "./trailing-comment-attachable.js";
+import { type CommentAttachable } from "../types.ts";
+import { createLeadingCommentAttachable } from "./leading-comment-attachable.ts";
+import { createTrailingCommentAttachable } from "./trailing-comment-attachable.ts";
 
 export function createCommentAttachable(): CommentAttachable {
   return {

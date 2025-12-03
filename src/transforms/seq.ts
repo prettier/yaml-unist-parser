@@ -1,16 +1,16 @@
 import * as YAML from "yaml";
-import * as YAML_CST from "../cst.js";
-import { createMapping } from "../factories/mapping.js";
-import { createMappingItem } from "../factories/mapping-item.js";
-import { createPosition } from "../factories/position.js";
-import { createSequence } from "../factories/sequence.js";
-import { createSequenceItem } from "../factories/sequence-item.js";
-import type { Sequence } from "../types.js";
-import { extractComments } from "../utils/extract-comments.js";
-import { getLast } from "../utils/get-last.js";
-import type Context from "./context.js";
-import { transformPair } from "./pair.js";
-import { isEmptyNode, type TransformNodeProperties } from "./transform.js";
+import * as YAML_CST from "../cst.ts";
+import { createMapping } from "../factories/mapping.ts";
+import { createMappingItem } from "../factories/mapping-item.ts";
+import { createPosition } from "../factories/position.ts";
+import { createSequence } from "../factories/sequence.ts";
+import { createSequenceItem } from "../factories/sequence-item.ts";
+import type { Sequence } from "../types.ts";
+import { extractComments } from "../utils/extract-comments.ts";
+import { getLast } from "../utils/get-last.ts";
+import type Context from "./context.ts";
+import { transformPair } from "./pair.ts";
+import { isEmptyNode, type TransformNodeProperties } from "./transform.ts";
 
 type ItemNode =
   | YAML.ParsedNode

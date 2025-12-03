@@ -4,8 +4,8 @@ import {
   type FlowSequence,
   type FlowSequenceItem,
   type Position,
-} from "../types.js";
-import { createFlowCollection } from "./flow-collection.js";
+} from "../types.ts";
+import { createFlowCollection } from "./flow-collection.ts";
 
 export function createFlowSequence(
   position: Position,

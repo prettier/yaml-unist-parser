@@ -1,10 +1,10 @@
 import type * as YAML from "yaml";
-import { createPlain } from "../factories/plain.js";
-import type { Plain } from "../types.js";
-import { extractComments } from "../utils/extract-comments.js";
-import { findLastCharIndex } from "../utils/find-last-char-index.js";
-import type Context from "./context.js";
-import type { TransformNodeProperties } from "./transform.js";
+import { createPlain } from "../factories/plain.ts";
+import type { Plain } from "../types.ts";
+import { extractComments } from "../utils/extract-comments.ts";
+import { findLastCharIndex } from "../utils/find-last-char-index.ts";
+import type Context from "./context.ts";
+import type { TransformNodeProperties } from "./transform.ts";
 
 export function transformPlain(
   plain: YAML.Scalar.Parsed,
