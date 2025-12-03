@@ -6,7 +6,7 @@ export default defineConfig({
     include: ["**/tests/**/*.ts", "**/*.test.ts"],
     snapshotSerializers: ["jest-snapshot-serializer-raw"],
     coverage: {
-      enabled: !!process.env.CI,
+      enabled: !!process.env.CI && !/^18\./.test(process.version),
       reporter: ["lcov", "text"],
       include: ["src/**/*.ts"],
       exclude: ["src/index.ts", "src/helpers.ts", "src/types.ts"],
