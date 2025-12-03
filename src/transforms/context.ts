@@ -21,18 +21,12 @@ import {
 
 class Context {
   text;
-  #comments: Comment[] = [];
+  comments: Comment[] = [];
   #linesAndColumns: LinesAndColumns;
 
   constructor(text: string) {
     this.text = text;
     this.#linesAndColumns = new LinesAndColumns(text);
-  }
-
-  getOrderedComments(): Comment[] {
-    return this.#comments.sort(
-      (a, b) => a.position.start.offset - b.position.start.offset,
-    );
   }
 
   #getRangePosition(range: Range): { start: Point; end: Point } {
@@ -74,7 +68,7 @@ class Context {
 
   transformComment(node: YAML_CST.CommentSourceToken): Comment {
     const comment = transformComment(node, this);
-    this.#comments.push(comment);
+    this.comments.push(comment);
     return comment;
   }
 

@@ -42,7 +42,7 @@ export function parse(text: string, options?: ParseOptions): Root {
   const root = createRoot(
     context.transformRange({ origStart: 0, origEnd: text.length }),
     context.transformDocuments(documentNodes, cstTokens),
-    context.getOrderedComments(),
+    context.comments,
   );
 
   attachComments(root);
