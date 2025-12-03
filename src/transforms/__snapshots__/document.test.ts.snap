@@ -1245,11 +1245,10 @@ root (1:1 ~ 3:4)
 </root>
 `;
 
-exports[`Document contains trailing content not separated by a ... or --- line 1`] = `
-"Document contains trailing content not separated by a ... or --- line
+exports[`Unexpected scalar at node end 1`] = `
+"Unexpected scalar at node end
 1 | -·123¶
 2 | a:¶
-  | ^^^
-3 | ¶
-  | ^"
+  | ^
+3 | ¶"
 `;

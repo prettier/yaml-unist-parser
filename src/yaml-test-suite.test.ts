@@ -20,6 +20,12 @@ const bugs = new Set([
   "Y79Y-9.yaml",
   "Y79Y-10.yaml",
   "YJV2.yaml",
+
+  // The test suite expects a parsing error,
+  // but the yaml package does not give a parsing error.
+  // https://github.com/eemeli/yaml/blob/086fa6b5bae325da18734750cddee231ce578930/tests/yaml-test-suite.ts#L19
+  "9MMA.yaml",
+  "SF5V.yaml",
 ]);
 
 for (const { id, cases, name } of yamlTestSuite) {

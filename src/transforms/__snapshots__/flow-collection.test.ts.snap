@@ -1,31 +1,31 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Expected flow map to end with } 1`] = `
-"Expected flow map to end with }
+exports[`Flow map must end with a } 1`] = `
+"Flow map must end with a }
 1 | {¶
-  | ^"
+  |  ^"
 `;
 
-exports[`Flow map contains an unexpected : 1`] = `
-"Flow map contains an unexpected :
-1 | {·:·:·}¶
-  | ^^^^^^^"
-`;
-
-exports[`Flow map contains an unexpected ? 1`] = `
-"Flow map contains an unexpected ?
-1 | {·:·?·}¶
-  | ^^^^^^^"
-`;
-
-exports[`Flow map contains an unexpected ? 2`] = `
-"Flow map contains an unexpected ?
-1 | {·?·?·}¶
-  | ^^^^^^^"
-`;
-
-exports[`Flow map contains an unexpected ] 1`] = `
-"Flow map contains an unexpected ]
+exports[`Flow map must end with a } 2`] = `
+"Flow map must end with a }
 1 | {]¶
-  | ^^"
+  |  ^"
+`;
+
+exports[`Missing , between flow map items 1`] = `
+"Missing , between flow map items
+1 | {·:·?·}¶
+  |       ^"
+`;
+
+exports[`Unexpected : in flow map 1`] = `
+"Unexpected : in flow map
+1 | {·:·:·}¶
+  |     ^"
+`;
+
+exports[`Unexpected ? in flow map 1`] = `
+"Unexpected ? in flow map
+1 | {·?·?·}¶
+  |     ^"
 `;

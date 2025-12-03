@@ -1,69 +1,35 @@
 import type * as YAML from "yaml";
-import type * as YAMLTypes from "yaml/types";
+import type * as YAML_CST from "../cst.js";
 import { createPosition } from "../factories/position.js";
 import type {
   Comment,
   Content,
-  ParsedCST,
+  Document,
   Point,
   Position,
   Range,
 } from "../types.js";
-import { transformContent } from "./content.js";
-import { transformNode, type YamlNode, type YamlToUnist } from "./transform.js";
-
-type RangeAsLinePosGetter = (this: {
-  range: { start: number; end: number };
-  context: any;
-}) => {
-  start: { line: number; col: number };
-  end: { line: number; col: number };
-};
-
-type CSTContext = {
-  root: { context: { src: string } };
-};
-
-let rangeAsLinePosGetter: RangeAsLinePosGetter;
+import { transformComment } from "./comment.js";
+import { transformContentProperties } from "./content.js";
+import { transformDocuments } from "./document.js";
+import {
+  transformNode,
+  type TransformNodeProperties,
+  type YamlNode,
+  type YamlToUnist,
+} from "./transform.js";
 
 class Context {
   text;
   comments: Comment[] = [];
-  #cst;
-  #cstContext: CSTContext | undefined;
+  #linesAndColumns: LinesAndColumns;
 
-  constructor(cst: ParsedCST, text: string) {
+  constructor(text: string) {
     this.text = text;
-    this.#cst = cst;
-    this.setOrigRanges();
-  }
-
-  setOrigRanges() {
-    if (this.#cst.setOrigRanges()) {
-      return;
-    }
-
-    // From `yaml/parse-cst`
-    // https://github.com/eemeli/yaml/blob/4cdcde632ece71155f3108ec0120c1a0329a6914/src/cst/parse.js#L22
-    for (const document of this.#cst) {
-      document.setOrigRanges([], 0);
-    }
+    this.#linesAndColumns = new LinesAndColumns(text);
   }
 
   #getRangePosition(range: Range): { start: Point; end: Point } {
-    if (!rangeAsLinePosGetter) {
-      const [document] = this.#cst;
-      const Node = Object.getPrototypeOf(
-        Object.getPrototypeOf(document),
-      ) as YAML.CST.Node;
-      rangeAsLinePosGetter = Object.getOwnPropertyDescriptor(
-        Node,
-        "rangeAsLinePos",
-      )!.get as RangeAsLinePosGetter;
-    }
-
-    this.#cstContext ??= { root: { context: { src: this.text } } };
-
     if (this.text === "" && range.origStart === 0 && range.origEnd === 0) {
       return {
         start: { offset: 0, line: 1, column: 1 },
@@ -71,40 +37,14 @@ class Context {
       };
     }
 
-    const {
-      start: { line: startLine, col: startColumn },
-      end: { line: endLine, col: endColumn },
-    } = rangeAsLinePosGetter.call({
-      range: {
-        start: this.#ensureOffsetInRange(range.origStart),
-        end: this.#ensureOffsetInRange(range.origEnd),
-      },
-      context: this.#cstContext,
-    });
-
     return {
-      start: { offset: range.origStart, line: startLine, column: startColumn },
-      end: { offset: range.origEnd, line: endLine, column: endColumn },
+      start: this.#linesAndColumns.getPoint(range.origStart),
+      end: this.#linesAndColumns.getPoint(range.origEnd),
     };
   }
 
-  #ensureOffsetInRange(offset: number) {
-    if (offset < 0) {
-      return 0;
-    }
-
-    if (offset > this.text.length) {
-      return this.text.length;
-    }
-
-    return offset;
-  }
-
   transformOffset(offset: number): Point {
-    return this.#getRangePosition({
-      origStart: offset,
-      origEnd: offset,
-    }).start;
+    return this.#linesAndColumns.getPoint(offset);
   }
 
   transformRange(range: Range): Position {
@@ -112,13 +52,91 @@ class Context {
     return createPosition(start, end);
   }
 
-  transformNode<T extends YamlNode>(node: T): YamlToUnist<T> {
-    return transformNode(node, this);
+  transformDocuments(
+    documentNodes: YAML.Document.Parsed[],
+    cstTokens: YAML.CST.Token[],
+  ): Document[] {
+    return transformDocuments(documentNodes, cstTokens, this);
   }
 
-  transformContent(node: YAMLTypes.Node): Content {
-    return transformContent(node, this);
+  transformNode<T extends YamlNode>(
+    node: T,
+    props: TransformNodeProperties,
+  ): YamlToUnist<T> {
+    return transformNode(node, this, props);
+  }
+
+  transformComment(node: YAML_CST.CommentSourceToken): Comment {
+    const comment = transformComment(node, this);
+    this.comments.push(comment);
+    return comment;
+  }
+
+  transformContentProperties(
+    node:
+      | YAML.ParsedNode
+      | YAML.YAMLSeq.Parsed<
+          YAML.ParsedNode | YAML.Pair<YAML.ParsedNode, YAML.ParsedNode | null>
+        >,
+    tokens: YAML_CST.ContentPropertyToken[],
+  ): Content {
+    return transformContentProperties(node, tokens, this);
   }
 }
 
 export default Context;
+
+class LinesAndColumns {
+  private lineBreakIndices: number[];
+
+  constructor(text: string) {
+    this.lineBreakIndices = [];
+    for (let i = 0; i < text.length; i++) {
+      const ch = text[i];
+      if (ch === "\n") {
+        this.lineBreakIndices.push(i);
+      } else if (ch === "\r") {
+        if (i + 1 < text.length && text[i + 1] === "\n") {
+          this.lineBreakIndices.push(i + 1);
+          i++;
+        } else {
+          this.lineBreakIndices.push(i);
+        }
+      }
+    }
+  }
+
+  /**
+   * Get line and column for the given offset.
+   * @param offset 0-based offset
+   * @returns 1-based line and 1-based column
+   */
+  getPoint(offset: number): Point {
+    let low = 0;
+    let high = this.lineBreakIndices.length - 1;
+
+    while (low <= high) {
+      const mid = Math.floor((low + high) / 2);
+      const lineBreakIndex = this.lineBreakIndices[mid];
+
+      if (lineBreakIndex < offset) {
+        low = mid + 1;
+      } else if (lineBreakIndex > offset) {
+        high = mid - 1;
+      } else {
+        return {
+          line: mid + 1,
+          column:
+            mid === 0 ? offset + 1 : offset - this.lineBreakIndices[mid - 1],
+          offset,
+        };
+      }
+    }
+
+    const line = low + 1;
+    const lineStartIndex = low === 0 ? 0 : this.lineBreakIndices[low - 1] + 1;
+    const column = offset - lineStartIndex + 1;
+
+    return { line, column, offset };
+  }
+}

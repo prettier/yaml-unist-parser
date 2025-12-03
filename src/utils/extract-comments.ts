@@ -1,23 +1,29 @@
 import type * as YAML from "yaml";
+import * as YAML_CST from "../cst.js";
 import type Context from "../transforms/context.js";
 
-export function extractComments<T extends null | object>(
-  nodes: Array<T | YAML.CST.Comment>,
+export function extractComments<T extends YAML_CST.SourceToken>(
+  tokens: T[] | undefined,
   context: Context,
-): T[];
+): Exclude<T, YAML_CST.CommentSourceToken>[];
 export function extractComments(
-  nodes: Array<null | object | YAML.CST.Comment>,
+  tokens: YAML.CST.SourceToken[] | undefined,
   context: Context,
-): Array<null | object> {
-  const restNodes: Array<null | object> = [];
-
-  for (const node of nodes) {
-    if (node && "type" in node && node.type === "COMMENT") {
-      context.comments.push(context.transformNode(node));
+): YAML_CST.SourceToken[];
+export function extractComments<T extends YAML_CST.SourceToken>(
+  tokens: T[] | undefined,
+  context: Context,
+): Exclude<T, YAML_CST.CommentSourceToken>[] {
+  const restNodes: Exclude<
+    YAML_CST.SourceToken,
+    YAML_CST.CommentSourceToken
+  >[] = [];
+  for (const token of YAML_CST.tokens(tokens)) {
+    if (token.type === "comment") {
+      context.transformComment(token);
     } else {
-      restNodes.push(node);
+      restNodes.push(token);
     }
   }
-
-  return restNodes;
+  return restNodes as Exclude<T, YAML_CST.CommentSourceToken>[];
 }

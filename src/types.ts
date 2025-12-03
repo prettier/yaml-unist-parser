@@ -1,10 +1,6 @@
-import type * as YAML from "yaml";
-
 export interface ParseOptions {
   allowDuplicateKeysInMap?: boolean;
 }
-
-export type ParsedCST = ReturnType<typeof YAML.parseCST>;
 
 export interface Node {
   type: string;

@@ -123,7 +123,7 @@ function attachComment(
 
   const { trailingAttachableNode } = nodeTable[commentLine - 1];
   if (trailingAttachableNode) {
-    // istanbul ignore next
+    // istanbul ignore if -- @preserve
     if (trailingAttachableNode.trailingComment) {
       throw new Error(
         `Unexpected multiple trailing comment at ${getPointText(

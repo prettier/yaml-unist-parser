@@ -1,108 +1,126 @@
 import type * as YAML from "yaml";
+import * as YAML_CST from "../cst.js";
 import { createDocumentHead } from "../factories/document-head.js";
 import type { Comment, Directive, Range } from "../types.js";
-import { getMatchIndex } from "../utils/get-match-index.js";
 import type Context from "./context.js";
+import { transformDirective } from "./directive.js";
 
 export function transformDocumentHead(
-  document: YAML.Document,
+  tokensBeforeBody: (YAML_CST.CommentSourceToken | YAML.CST.Directive)[],
+  cstNode: YAML.CST.Document,
+  document: YAML.Document.Parsed,
   context: Context,
 ) {
-  const cstNode = document.cstNode!;
-
-  const { directives, comments, endComments } = categorizeNodes(
-    cstNode,
+  const { directives, endCommentCandidates } = categorizeNodes(
+    tokensBeforeBody,
     context,
   );
 
-  const { position, documentEndMarkererPoint } = getPosition(
-    cstNode,
-    directives,
-    context,
-  );
-
-  context.comments.push(...comments, ...endComments);
-
-  const createDocumentHeadWithTrailingComment = (
-    trailingComment: null | Comment,
-  ) => {
-    if (trailingComment) {
-      context.comments.push(trailingComment);
-    }
-    return createDocumentHead(
-      position,
-      directives,
-      endComments,
-      trailingComment,
-    );
-  };
-
-  return {
-    createDocumentHeadWithTrailingComment,
-    documentHeadEndMarkerPoint: documentEndMarkererPoint,
-  };
-}
-
-function categorizeNodes(document: YAML.CST.Document, context: Context) {
-  const directives: Directive[] = [];
-  const comments: Comment[] = [];
-  const endComments: Comment[] = [];
-
-  let hasDirective = false;
-  for (let i = document.directives.length - 1; i >= 0; i--) {
-    const node = context.transformNode(document.directives[i]);
-    if (node.type === "comment") {
-      if (hasDirective) {
-        comments.unshift(node);
-      } else {
-        endComments.unshift(node);
+  let betweenTokens: YAML_CST.SourceToken[] = [];
+  let docStart: YAML_CST.DocStartSourceToken | null = null;
+  for (const token of YAML_CST.tokens(cstNode.start)) {
+    betweenTokens.push(token);
+    if (!docStart && token.type === "doc-start") {
+      // Collect comments between directives and doc-start
+      for (const t of betweenTokens) {
+        if (t.type === "comment") {
+          const comment = context.transformComment(t);
+          endCommentCandidates.push(comment);
+        }
       }
-    } else {
-      hasDirective = true;
-      directives.unshift(node);
+
+      // Reset betweenTokens to collect tokens after doc-start
+      betweenTokens = [];
+
+      docStart = token;
     }
   }
 
-  return { directives, comments, endComments };
+  const position = getPosition(directives, document, docStart, context);
+
+  let trailingComment: null | Comment = null;
+  if (docStart && betweenTokens.length > 0) {
+    const lastToken = betweenTokens[0];
+    if (lastToken.type === "comment") {
+      const loc = context.transformOffset(lastToken.offset);
+      if (loc.line === position.end.line) {
+        trailingComment = context.transformComment(lastToken);
+        // Remove from betweenTokens as it's trailing comment of document head
+        betweenTokens.shift();
+      }
+    }
+  }
+
+  const endComments = docStart ? endCommentCandidates : [];
+
+  const documentHead = createDocumentHead(
+    position,
+    directives,
+    endComments,
+    trailingComment,
+  );
+
+  return {
+    documentHead: documentHead,
+    docStart,
+    tokensBeforeBody: betweenTokens,
+  };
+}
+function categorizeNodes(
+  tokensBeforeBody: (YAML_CST.CommentSourceToken | YAML.CST.Directive)[],
+  context: Context,
+) {
+  const directives: Directive[] = [];
+  let endCommentCandidates: Comment[] = [];
+
+  let lastDirective: Directive | null = null;
+  for (const token of tokensBeforeBody) {
+    if (token.type === "comment") {
+      const node = context.transformComment(token);
+      if (
+        lastDirective &&
+        lastDirective.position.end.line === node.position.start.line &&
+        !lastDirective.trailingComment
+      ) {
+        lastDirective.trailingComment = node;
+        lastDirective.position.end = node.position.end;
+      } else {
+        endCommentCandidates.push(node);
+      }
+    } else {
+      const node = transformDirective(token, context);
+      directives.push(node);
+      lastDirective = node;
+      endCommentCandidates = [];
+    }
+  }
+  return { directives, endCommentCandidates };
 }
 
 function getPosition(
-  document: YAML.CST.Document,
   directives: Directive[],
+  document: YAML.Document.Parsed,
+  docStart: YAML.CST.SourceToken | null,
   context: Context,
 ) {
-  let documentEndMarkererIndex = getMatchIndex(
-    context.text.slice(0, document.valueRange!.origStart),
-    /---\s*$/,
-  );
-  // end marker should start with the first character on the line
-  if (
-    documentEndMarkererIndex > 0 &&
-    !/[\r\n]/.test(context.text[documentEndMarkererIndex - 1])
-  ) {
-    documentEndMarkererIndex = -1;
-  }
-
-  const range: Range =
-    documentEndMarkererIndex === -1
+  const range: Range = docStart
+    ? {
+        origStart: docStart.offset,
+        origEnd: docStart.offset + docStart.source.length,
+      }
+    : document.contents
       ? {
-          origStart: document.valueRange!.origStart!,
-          origEnd: document.valueRange!.origStart!,
+          origStart: document.contents.range[0],
+          origEnd: document.contents.range[0],
         }
       : {
-          origStart: documentEndMarkererIndex!,
-          origEnd: documentEndMarkererIndex + 3,
+          origStart: document.range[0],
+          origEnd: document.range[0],
         };
 
   if (directives.length !== 0) {
     range.origStart = directives[0].position.start.offset;
   }
 
-  return {
-    position: context.transformRange(range),
-    documentEndMarkererPoint:
-      documentEndMarkererIndex === -1
-        ? null
-        : context.transformOffset(documentEndMarkererIndex),
-  };
+  return context.transformRange(range);
 }

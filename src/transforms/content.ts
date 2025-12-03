@@ -1,61 +1,64 @@
 import type * as YAML from "yaml";
-import type * as YAMLTypes from "yaml/types";
-import { PropLeadingCharacter } from "../constants.js";
+import type * as YAML_CST from "../cst.js";
 import { createAnchor } from "../factories/anchor.js";
-import { createComment } from "../factories/comment.js";
 import { createContent } from "../factories/content.js";
 import { createTag } from "../factories/tag.js";
-import { type Anchor, type Comment, type Content, type Tag } from "../types.js";
+import type { Anchor, Comment, Content, Range, Tag } from "../types.js";
 import type Context from "./context.js";
 
-export function transformContent(
-  node: YAMLTypes.Node,
+export function transformContentProperties(
+  node:
+    | YAML.ParsedNode
+    | YAML.YAMLSeq.Parsed<
+        YAML.ParsedNode | YAML.Pair<YAML.ParsedNode, YAML.ParsedNode | null>
+      >,
+  tokens: YAML_CST.ContentPropertyToken[],
   context: Context,
-  isNotMiddleComment: (comment: Comment) => boolean = () => false,
 ): Content {
-  const cstNode = node.cstNode!;
-
   const middleComments: Comment[] = [];
 
-  let firstTagOrAnchorRange: YAML.CST.Range | null = null;
+  let firstTagOrAnchorRange: Range | null = null;
 
   let tag: Tag | null = null;
   let anchor: Anchor | null = null;
 
-  for (const propRange of cstNode.props) {
-    const leadingChar = context.text[propRange.origStart];
-    switch (leadingChar) {
-      case PropLeadingCharacter.Tag:
-        firstTagOrAnchorRange = firstTagOrAnchorRange || propRange;
-        tag = createTag(context.transformRange(propRange), node.tag!);
+  for (const token of tokens) {
+    const tokenRange: Range = {
+      origStart: token.offset,
+      origEnd: token.offset + token.source.length,
+    };
+    switch (token.type) {
+      case "tag":
+        {
+          firstTagOrAnchorRange = firstTagOrAnchorRange || tokenRange;
+          let resolvedTag =
+            node.tag ??
+            token.source.slice(token.source.startsWith("!!") ? 2 : 1);
+          if (resolvedTag === "!") {
+            resolvedTag = "tag:yaml.org,2002:str";
+          }
+          tag = createTag(context.transformRange(tokenRange), resolvedTag);
+        }
         break;
-      case PropLeadingCharacter.Anchor:
-        firstTagOrAnchorRange = firstTagOrAnchorRange || propRange;
-        anchor = createAnchor(
-          context.transformRange(propRange),
-          cstNode.anchor!,
-        );
+      case "anchor":
+        firstTagOrAnchorRange = firstTagOrAnchorRange || tokenRange;
+        anchor = createAnchor(context.transformRange(tokenRange), node.anchor!);
         break;
-      case PropLeadingCharacter.Comment: {
-        const comment = createComment(
-          context.transformRange(propRange),
-          context.text.slice(propRange.origStart + 1, propRange.origEnd),
-        );
-        context.comments.push(comment);
+      case "comment": {
+        const comment = context.transformComment(token);
         if (
-          !isNotMiddleComment(comment) &&
           firstTagOrAnchorRange &&
-          firstTagOrAnchorRange.origEnd <= propRange.origStart &&
-          propRange.origEnd <= cstNode.valueRange!.origStart
+          firstTagOrAnchorRange.origEnd <= tokenRange.origStart &&
+          tokenRange.origEnd <= node.range[0]
         ) {
           middleComments.push(comment);
         }
         break;
       }
-      // istanbul ignore next
+      // istanbul ignore next -- @preserve
       default:
         throw new Error(
-          `Unexpected leading character ${JSON.stringify(leadingChar)}`,
+          `Unexpected content property token type: ${(token as YAML.CST.Token).type}`,
         );
     }
   }

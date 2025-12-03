@@ -4,6 +4,6 @@ export function findLastCharIndex(text: string, from: number, regex: RegExp) {
       return i;
     }
   }
-  // istanbul ignore next
+  // istanbul ignore next -- @preserve
   return -1;
 }

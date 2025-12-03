@@ -1,19 +1,27 @@
-import type * as YAMLTypes from "yaml/types";
+import type * as YAML from "yaml";
 import { createAlias } from "../factories/alias.js";
 import { type Alias } from "../types.js";
+import { extractComments } from "../utils/extract-comments.js";
 import type Context from "./context.js";
+import { type TransformNodeProperties } from "./transform.js";
 
 export function transformAlias(
-  alias: YAMLTypes.Alias,
+  alias: YAML.Alias.Parsed,
   context: Context,
+  props: TransformNodeProperties,
 ): Alias {
-  const cstNode = alias.cstNode!;
+  const srcToken = alias.srcToken!;
+  for (const token of extractComments(srcToken.end, context)) {
+    // istanbul ignore next -- @preserve
+    throw new Error(`Unexpected token type in alias end: ${token.type}`);
+  }
+
   return createAlias(
     context.transformRange({
-      origStart: cstNode.valueRange!.origStart! - 1, // include the `*`
-      origEnd: cstNode.valueRange!.origEnd!,
+      origStart: alias.range[0],
+      origEnd: alias.range[1],
     }),
-    context.transformContent(alias),
-    cstNode.rawValue,
+    context.transformContentProperties(alias, props.tokens),
+    alias.source,
   );
 }

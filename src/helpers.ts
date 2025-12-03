@@ -1,5 +1,4 @@
 import { wrap } from "jest-snapshot-serializer-raw";
-import { type YAMLSemanticError, type YAMLSyntaxError } from "yaml/util";
 import { parse } from "./parse.js";
 import {
   type Anchor,
@@ -8,6 +7,7 @@ import {
   type Position,
   type Root,
   type Tag,
+  type YAMLSyntaxError,
   type YamlUnistNode,
 } from "./types.js";
 
@@ -334,14 +334,13 @@ export function testSyntaxError(text: string, message?: string) {
     }
     test(message || error.message, () => {
       expect(
-        // @ts-expect-error -- FIXME
         error.message + "\n" + codeFrameColumns(error.source, error.position),
       ).toMatchSnapshot();
     });
   }
 }
 
-function isYAMLError(e: any): e is YAMLSyntaxError | YAMLSemanticError {
+function isYAMLError(e: any): e is YAMLSyntaxError {
   return (
     e instanceof Error &&
     (e.name === "YAMLSyntaxError" || e.name === "YAMLSemanticError")
