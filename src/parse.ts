@@ -26,7 +26,7 @@ function shouldIgnoreError(
     message === ERROR_MESSAGE_SHOULD_ALWAYS_IGNORE ||
     (allowDuplicateKeysInMap &&
       message.startsWith(MAP_KEY_DUPLICATE_ERROR_MESSAGE_PREFIX) &&
-      error.message.endsWith(MAP_KEY_DUPLICATE_ERROR_MESSAGE_SUFFIX))
+      message.endsWith(MAP_KEY_DUPLICATE_ERROR_MESSAGE_SUFFIX))
   );
 }
 
