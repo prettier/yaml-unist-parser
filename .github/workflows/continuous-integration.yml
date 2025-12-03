@@ -81,8 +81,6 @@ jobs:
         run: yarn --immutable
 
       - name: Preview
-        run: yarn lint
-
-      - run: |
+        run: |
           yarn build
           npx pkg-pr-new publish --compact
