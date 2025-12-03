@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [2.2.0](https://github.com/prettier/yaml-unist-parser/compare/v2.1.1...v2.2.0) (2025-12-03)
+
+### Features
+
+- allow duplicated keys behind an option ([#300](https://github.com/prettier/yaml-unist-parser/issues/300)) ([255b89f](https://github.com/prettier/yaml-unist-parser/commit/255b89f9587df875a75e3f495af71e00b711033b))
+
 ## [2.1.1](https://github.com/prettier/yaml-unist-parser/compare/v2.1.0...v2.1.1) (2025-11-21)
 
 ### Bug Fixes
