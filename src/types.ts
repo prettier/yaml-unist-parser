@@ -45,8 +45,7 @@ export interface Content {
 }
 
 export interface CommentAttachable
-  extends LeadingCommentAttachable,
-    TrailingCommentAttachable {}
+  extends LeadingCommentAttachable, TrailingCommentAttachable {}
 
 export interface LeadingCommentAttachable {
   /** comments in front of the node */
@@ -124,9 +123,7 @@ export interface Document extends Parent, TrailingCommentAttachable {
 }
 
 export interface DocumentHead
-  extends Parent,
-    EndCommentAttachable,
-    TrailingCommentAttachable {
+  extends Parent, EndCommentAttachable, TrailingCommentAttachable {
   type: "documentHead";
   children: Directive[];
 }
@@ -190,26 +187,19 @@ export interface MappingItem extends MappingItemBase {
 }
 
 export interface MappingKey
-  extends Parent,
-    TrailingCommentAttachable,
-    EndCommentAttachable {
+  extends Parent, TrailingCommentAttachable, EndCommentAttachable {
   type: "mappingKey";
   children: [] | [ContentNode];
 }
 
 export interface MappingValue
-  extends Parent,
-    CommentAttachable,
-    EndCommentAttachable {
+  extends Parent, CommentAttachable, EndCommentAttachable {
   type: "mappingValue";
   children: [] | [ContentNode];
 }
 
 export interface Sequence
-  extends Parent,
-    Content,
-    LeadingCommentAttachable,
-    EndCommentAttachable {
+  extends Parent, Content, LeadingCommentAttachable, EndCommentAttachable {
   type: "sequence";
   children: SequenceItem[];
 }
@@ -219,17 +209,12 @@ export interface SequenceItemBase extends Parent {
 }
 
 export interface SequenceItem
-  extends SequenceItemBase,
-    CommentAttachable,
-    EndCommentAttachable {
+  extends SequenceItemBase, CommentAttachable, EndCommentAttachable {
   type: "sequenceItem";
 }
 
 export interface FlowCollection
-  extends Parent,
-    Content,
-    CommentAttachable,
-    EndCommentAttachable {
+  extends Parent, Content, CommentAttachable, EndCommentAttachable {
   children: Array<FlowMappingItem | FlowSequenceItem>;
 }
 
