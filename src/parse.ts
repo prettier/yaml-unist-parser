@@ -19,21 +19,21 @@ export function parse(text: string, options?: ParseOptions): Root {
     uniqueKeys: options?.uniqueKeys,
     lineCounter,
   });
-  const documentNodes: YAML.Document.Parsed[] = [];
-  const tokens = [...parser.parse(text)];
+  const yamlDocuments: YAML.Document.Parsed[] = [];
+  const yamlTokens = [...parser.parse(text)];
 
-  for (const document of composer.compose(tokens)) {
+  for (const document of composer.compose(yamlTokens, true, text.length)) {
     const { errors } = document;
     if (errors.length > 0) {
       throw new YAMLSyntaxError(context, errors[0]);
     }
 
-    documentNodes.push(document);
+    yamlDocuments.push(document);
   }
 
   const root = createRoot(
     context.transformRange([0, text.length]),
-    transformDocuments(documentNodes, tokens, context),
+    transformDocuments(yamlDocuments, yamlTokens, context),
     context.comments,
   );
 

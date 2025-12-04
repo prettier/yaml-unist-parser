@@ -79,13 +79,7 @@ export function transformDocuments(
       `Unexpected token type: ${token.type} at ${getPointText(context.transformOffset(token.offset))}`,
     );
   }
-  // istanbul ignore if -- @preserve
-  if (documents.length < yamlDocuments.length) {
-    const errorIndex = yamlDocuments[documents.length].range[0];
-    throw new Error(
-      `Unexpected document token at ${getPointText(context.transformOffset(errorIndex))}`,
-    );
-  }
+
   if (documents.length > 0 && !documents[documents.length - 1].docEnd) {
     // Append buffered comments to the last document
     const lastDoc = documents[documents.length - 1];
@@ -96,36 +90,6 @@ export function transformDocuments(
   const nodes = documents.map(document => transformDocument(document, context));
 
   if (bufferComments.length === 0) {
-    if (nodes.length === 0) {
-      // Create an empty document if there is no document but comments
-      const emptyDoc: Document = createDocument(
-        createPosition(
-          context.transformOffset(0),
-          context.transformOffset(context.text.length),
-        ),
-        false,
-        false,
-        createDocumentHead(
-          createPosition(
-            context.transformOffset(0),
-            context.transformOffset(context.text.length),
-          ),
-          [],
-          [],
-          null,
-        ),
-        createDocumentBody(
-          createPosition(
-            context.transformOffset(0),
-            context.transformOffset(context.text.length),
-          ),
-          null,
-          [],
-        ),
-        null,
-      );
-      return [emptyDoc];
-    }
     return nodes;
   }
 
