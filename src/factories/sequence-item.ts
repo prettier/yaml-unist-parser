@@ -12,7 +12,7 @@ export function createSequenceItem(
 ): SequenceItem {
   return {
     type: "sequenceItem",
-    position: position,
+    position,
     ...createCommentAttachable(),
     ...createEndCommentAttachable(),
     children: !content ? [] : [content],

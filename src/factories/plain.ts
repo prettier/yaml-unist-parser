@@ -8,7 +8,7 @@ export function createPlain(
 ): Plain {
   return {
     type: "plain",
-    position: position,
+    position,
     ...createCommentAttachable(),
     ...content,
     value,

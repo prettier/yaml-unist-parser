@@ -12,7 +12,7 @@ export function createFlowCollection<
 >(position: Position, content: Content, children: T[]) {
   return {
     type: "flowCollection",
-    position: position,
+    position,
     ...createCommentAttachable(),
     ...createEndCommentAttachable(),
     ...content,

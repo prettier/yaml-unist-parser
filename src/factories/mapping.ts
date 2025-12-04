@@ -13,7 +13,7 @@ export function createMapping(
 ): Mapping {
   return {
     type: "mapping",
-    position: position,
+    position,
     ...createLeadingCommentAttachable(),
     ...content,
     children,

@@ -10,7 +10,7 @@ export function createFlowSequenceItem(
 ): FlowSequenceItem {
   return {
     type: "flowSequenceItem",
-    position: position,
+    position,
     children: [content],
   };
 }

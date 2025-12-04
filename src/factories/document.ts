@@ -5,7 +5,6 @@ import {
   type DocumentHead,
   type Position,
 } from "../types.ts";
-
 import { createTrailingCommentAttachable } from "./trailing-comment-attachable.ts";
 
 export function createDocument(
@@ -18,7 +17,7 @@ export function createDocument(
 ): Document {
   return {
     type: "document",
-    position: position,
+    position,
     ...createTrailingCommentAttachable(trailingComment),
     directivesEndMarker,
     documentEndMarker,

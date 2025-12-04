@@ -12,7 +12,7 @@ export function createMappingValue(
 ): MappingValue {
   return {
     type: "mappingValue",
-    position: position,
+    position,
     ...createCommentAttachable(),
     ...createEndCommentAttachable(),
     children: !content ? [] : [content],

@@ -14,7 +14,7 @@ export function createSequence(
 ): Sequence {
   return {
     type: "sequence",
-    position: position,
+    position,
     ...createLeadingCommentAttachable(),
     ...createEndCommentAttachable(),
     ...content,

@@ -13,7 +13,7 @@ export function createDocumentBody(
 ): DocumentBody {
   return {
     type: "documentBody",
-    position: position,
+    position,
     ...createEndCommentAttachable(endComments),
     children: !content ? [] : [content],
   };

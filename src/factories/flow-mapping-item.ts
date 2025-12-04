@@ -13,7 +13,7 @@ export function createFlowMappingItem(
 ): FlowMappingItem {
   return {
     type: "flowMappingItem",
-    position: position,
+    position,
     ...createLeadingCommentAttachable(),
     children: [key, value],
   };

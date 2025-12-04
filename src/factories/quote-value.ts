@@ -8,7 +8,7 @@ export function createQuoteValue(
 ): QuoteValue {
   return {
     type: "quoteValue",
-    position: position,
+    position,
     ...content,
     ...createCommentAttachable(),
     value,

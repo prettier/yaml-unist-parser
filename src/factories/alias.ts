@@ -8,7 +8,7 @@ export function createAlias(
 ): Alias {
   return {
     type: "alias",
-    position: position,
+    position,
     ...createCommentAttachable(),
     ...content,
     value,

@@ -8,7 +8,7 @@ export function createDirective(
 ): Directive {
   return {
     type: "directive",
-    position: position,
+    position,
     ...createCommentAttachable(),
     name,
     parameters,

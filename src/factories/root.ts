@@ -12,7 +12,7 @@ export function createRoot(
 ): Root {
   return {
     type: "root",
-    position: position,
+    position,
     children,
     comments,
   };
