@@ -4,7 +4,6 @@ import {
   type DocumentBody,
   type Position,
 } from "../types.ts";
-import { createEndCommentAttachable } from "./end-comment-attachable.ts";
 
 export function createDocumentBody(
   position: Position,
@@ -14,7 +13,7 @@ export function createDocumentBody(
   return {
     type: "documentBody",
     position,
-    ...createEndCommentAttachable(endComments),
+    endComments,
     children: !content ? [] : [content],
   };
 }
