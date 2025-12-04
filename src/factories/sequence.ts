@@ -6,7 +6,6 @@ import {
 } from "../types.ts";
 import { createEndCommentAttachable } from "./end-comment-attachable.ts";
 import { createLeadingCommentAttachable } from "./leading-comment-attachable.ts";
-import { createNode } from "./node.ts";
 
 export function createSequence(
   position: Position,
@@ -14,7 +13,8 @@ export function createSequence(
   children: SequenceItem[],
 ): Sequence {
   return {
-    ...createNode("sequence", position),
+    type: "sequence",
+    position: position,
     ...createLeadingCommentAttachable(),
     ...createEndCommentAttachable(),
     ...content,

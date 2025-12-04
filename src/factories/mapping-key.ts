@@ -1,6 +1,6 @@
 import { type ContentNode, type MappingKey, type Position } from "../types.ts";
 import { createEndCommentAttachable } from "./end-comment-attachable.ts";
-import { createNode } from "./node.ts";
+
 import { createTrailingCommentAttachable } from "./trailing-comment-attachable.ts";
 
 export function createMappingKey(
@@ -8,7 +8,8 @@ export function createMappingKey(
   content: null | ContentNode,
 ): MappingKey {
   return {
-    ...createNode("mappingKey", position),
+    type: "mappingKey",
+    position: position,
     ...createTrailingCommentAttachable(),
     ...createEndCommentAttachable(),
     children: !content ? [] : [content],

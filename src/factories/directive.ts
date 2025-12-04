@@ -1,6 +1,5 @@
 import { type Directive, type Position } from "../types.ts";
 import { createCommentAttachable } from "./comment-attachable.ts";
-import { createNode } from "./node.ts";
 
 export function createDirective(
   position: Position,
@@ -8,7 +7,8 @@ export function createDirective(
   parameters: string[],
 ): Directive {
   return {
-    ...createNode("directive", position),
+    type: "directive",
+    position: position,
     ...createCommentAttachable(),
     name,
     parameters,

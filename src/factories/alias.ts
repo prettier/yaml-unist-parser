@@ -1,6 +1,5 @@
 import { type Alias, type Content, type Position } from "../types.js";
 import { createCommentAttachable } from "./comment-attachable.js";
-import { createNode } from "./node.js";
 
 export function createAlias(
   position: Position,
@@ -8,7 +7,8 @@ export function createAlias(
   value: string,
 ): Alias {
   return {
-    ...createNode("alias", position),
+    type: "alias",
+    position: position,
     ...createCommentAttachable(),
     ...content,
     value,

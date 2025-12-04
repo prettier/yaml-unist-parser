@@ -1,6 +1,5 @@
 import { type Content, type Position, type QuoteValue } from "../types.ts";
 import { createCommentAttachable } from "./comment-attachable.ts";
-import { createNode } from "./node.ts";
 
 export function createQuoteValue(
   position: Position,
@@ -8,7 +7,8 @@ export function createQuoteValue(
   value: string,
 ): QuoteValue {
   return {
-    ...createNode("quoteValue", position),
+    type: "quoteValue",
+    position: position,
     ...content,
     ...createCommentAttachable(),
     value,

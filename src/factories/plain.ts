@@ -1,6 +1,5 @@
 import { type Content, type Plain, type Position } from "../types.ts";
 import { createCommentAttachable } from "./comment-attachable.ts";
-import { createNode } from "./node.ts";
 
 export function createPlain(
   position: Position,
@@ -8,7 +7,8 @@ export function createPlain(
   value: string,
 ): Plain {
   return {
-    ...createNode("plain", position),
+    type: "plain",
+    position: position,
     ...createCommentAttachable(),
     ...content,
     value,

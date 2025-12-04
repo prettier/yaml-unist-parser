@@ -5,14 +5,14 @@ import {
 } from "../types.ts";
 import { createCommentAttachable } from "./comment-attachable.ts";
 import { createEndCommentAttachable } from "./end-comment-attachable.ts";
-import { createNode } from "./node.ts";
 
 export function createSequenceItem(
   position: Position,
   content: null | ContentNode,
 ): SequenceItem {
   return {
-    ...createNode("sequenceItem", position),
+    type: "sequenceItem",
+    position: position,
     ...createCommentAttachable(),
     ...createEndCommentAttachable(),
     children: !content ? [] : [content],
