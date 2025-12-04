@@ -1,5 +1,4 @@
 import { type Content, type Plain, type Position } from "../types.ts";
-import { createCommentAttachable } from "./comment-attachable.ts";
 
 export function createPlain(
   position: Position,
@@ -9,7 +8,9 @@ export function createPlain(
   return {
     type: "plain",
     position,
-    ...createCommentAttachable(),
+
+    leadingComments: [],
+    trailingComment: null,
     ...content,
     value,
   };

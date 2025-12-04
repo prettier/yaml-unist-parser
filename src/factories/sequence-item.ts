@@ -3,7 +3,6 @@ import {
   type Position,
   type SequenceItem,
 } from "../types.ts";
-import { createCommentAttachable } from "./comment-attachable.ts";
 
 export function createSequenceItem(
   position: Position,
@@ -12,7 +11,8 @@ export function createSequenceItem(
   return {
     type: "sequenceItem",
     position,
-    ...createCommentAttachable(),
+    leadingComments: [],
+    trailingComment: null,
     endComments: [],
     children: !content ? [] : [content],
   };

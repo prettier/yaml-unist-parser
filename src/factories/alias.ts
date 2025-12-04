@@ -1,5 +1,4 @@
 import { type Alias, type Content, type Position } from "../types.js";
-import { createCommentAttachable } from "./comment-attachable.js";
 
 export function createAlias(
   position: Position,
@@ -9,7 +8,8 @@ export function createAlias(
   return {
     type: "alias",
     position,
-    ...createCommentAttachable(),
+    leadingComments: [],
+    trailingComment: null,
     ...content,
     value,
   };

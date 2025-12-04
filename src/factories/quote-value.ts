@@ -1,5 +1,4 @@
 import { type Content, type Position, type QuoteValue } from "../types.ts";
-import { createCommentAttachable } from "./comment-attachable.ts";
 
 export function createQuoteValue(
   position: Position,
@@ -10,7 +9,9 @@ export function createQuoteValue(
     type: "quoteValue",
     position,
     ...content,
-    ...createCommentAttachable(),
+
+    leadingComments: [],
+    trailingComment: null,
     value,
   };
 }

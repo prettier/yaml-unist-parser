@@ -4,7 +4,6 @@ import {
   type FlowSequenceItem,
   type Position,
 } from "../types.ts";
-import { createCommentAttachable } from "./comment-attachable.ts";
 
 export function createFlowCollection<
   T extends FlowMappingItem | FlowSequenceItem,
@@ -12,7 +11,9 @@ export function createFlowCollection<
   return {
     type: "flowCollection",
     position,
-    ...createCommentAttachable(),
+
+    leadingComments: [],
+    trailingComment: null,
     endComments: [],
     ...content,
     children,

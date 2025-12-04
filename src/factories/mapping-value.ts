@@ -3,7 +3,6 @@ import {
   type MappingValue,
   type Position,
 } from "../types.ts";
-import { createCommentAttachable } from "./comment-attachable.ts";
 
 export function createMappingValue(
   position: Position,
@@ -12,7 +11,9 @@ export function createMappingValue(
   return {
     type: "mappingValue",
     position,
-    ...createCommentAttachable(),
+
+    leadingComments: [],
+    trailingComment: null,
     endComments: [],
     children: !content ? [] : [content],
   };

@@ -1,5 +1,4 @@
 import { type Directive, type Position } from "../types.ts";
-import { createCommentAttachable } from "./comment-attachable.ts";
 
 export function createDirective(
   position: Position,
@@ -9,7 +8,8 @@ export function createDirective(
   return {
     type: "directive",
     position,
-    ...createCommentAttachable(),
+    leadingComments: [],
+    trailingComment: null,
     name,
     parameters,
   };
