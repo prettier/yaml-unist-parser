@@ -2,6 +2,7 @@ import * as YAML from "yaml";
 import { attachComments } from "./attach.ts";
 import { createRoot } from "./factories/root.ts";
 import Context from "./transforms/context.ts";
+import { transformDocuments } from "./transforms/document.ts";
 import type { ParseOptions, Root } from "./types.ts";
 import { removeFakeNodes } from "./utils/remove-fake-nodes.ts";
 import { updatePositions } from "./utils/update-positions.ts";
@@ -32,7 +33,7 @@ export function parse(text: string, options?: ParseOptions): Root {
 
   const root = createRoot(
     context.transformRange([0, text.length]),
-    context.transformDocuments(documentNodes, tokens),
+    transformDocuments(documentNodes, tokens, context),
     context.comments,
   );
 
@@ -42,5 +43,3 @@ export function parse(text: string, options?: ParseOptions): Root {
 
   return root;
 }
-
-function throwParseError(document: YAML.Document.Parsed, context: Context) {}
