@@ -19,8 +19,8 @@ type DocumentData = {
 };
 
 export function transformDocuments(
-  documentNodes: YAML.Document.Parsed[],
-  cstTokens: YAML.CST.Token[],
+  yamlDocuments: YAML.Document.Parsed[],
+  tokens: YAML.CST.Token[],
   context: Context,
 ): Document[] {
   let bufferComments: YAML_CST.CommentSourceToken[] = [];
@@ -28,7 +28,7 @@ export function transformDocuments(
     [];
   let currentDoc: DocumentData | null = null;
   const documents: DocumentData[] = [];
-  for (const token of YAML_CST.tokens(cstTokens)) {
+  for (const token of YAML_CST.tokens(tokens)) {
     if (token.type === "comment") {
       bufferComments.push(token);
       continue;
@@ -57,7 +57,7 @@ export function transformDocuments(
     }
     if (token.type === "document") {
       // istanbul ignore if -- @preserve
-      if (documentNodes.length <= documents.length) {
+      if (yamlDocuments.length <= documents.length) {
         throw new Error(
           `Unexpected document token at ${getPointText(context.transformOffset(token.offset))}`,
         );
@@ -65,7 +65,7 @@ export function transformDocuments(
       currentDoc = {
         tokensBeforeBody: [...tokensBeforeBody, ...bufferComments],
         cstNode: token,
-        node: documentNodes[documents.length],
+        node: yamlDocuments[documents.length],
         tokensAfterBody: [],
         docEnd: null,
       };
@@ -80,8 +80,8 @@ export function transformDocuments(
     );
   }
   // istanbul ignore if -- @preserve
-  if (documents.length < documentNodes.length) {
-    const errorIndex = documentNodes[documents.length].range[0];
+  if (documents.length < yamlDocuments.length) {
+    const errorIndex = yamlDocuments[documents.length].range[0];
     throw new Error(
       `Unexpected document token at ${getPointText(context.transformOffset(errorIndex))}`,
     );
