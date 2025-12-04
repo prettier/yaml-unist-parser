@@ -17,7 +17,7 @@ export function createBlockValue(
   return {
     type: "blockValue",
     position,
-    ...createLeadingCommentAttachable(),
+    leadingComments: [],
     ...content,
     chomping,
     indent,

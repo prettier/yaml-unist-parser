@@ -14,7 +14,7 @@ export function createMappingItem(
   return {
     type: "mappingItem",
     position,
-    ...createLeadingCommentAttachable(),
+    leadingComments: [],
     children: [key, value],
   };
 }

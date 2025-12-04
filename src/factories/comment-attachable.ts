@@ -4,7 +4,7 @@ import { createTrailingCommentAttachable } from "./trailing-comment-attachable.t
 
 export function createCommentAttachable(): CommentAttachable {
   return {
-    ...createLeadingCommentAttachable(),
+    leadingComments: [],
     ...createTrailingCommentAttachable(),
   };
 }

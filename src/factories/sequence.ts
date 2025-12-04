@@ -15,7 +15,7 @@ export function createSequence(
   return {
     type: "sequence",
     position,
-    ...createLeadingCommentAttachable(),
+    leadingComments: [],
     ...createEndCommentAttachable(),
     ...content,
     children,

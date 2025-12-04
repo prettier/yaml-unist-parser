@@ -14,7 +14,7 @@ export function createMapping(
   return {
     type: "mapping",
     position,
-    ...createLeadingCommentAttachable(),
+    leadingComments: [],
     ...content,
     children,
   };
