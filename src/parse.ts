@@ -9,6 +9,7 @@ import { YAMLSyntaxError } from "./yaml-syntax-error.ts";
 
 export function parse(text: string, options?: ParseOptions): Root {
   const lineCounter = new YAML.LineCounter();
+  const context = new Context(text, lineCounter);
   const parser = new YAML.Parser(lineCounter.addNewLine);
   const composer = new YAML.Composer({
     keepSourceTokens: true,
@@ -18,23 +19,20 @@ export function parse(text: string, options?: ParseOptions): Root {
     lineCounter,
   });
   const documentNodes: YAML.Document.Parsed[] = [];
-  const cstTokens: YAML.CST.Token[] = [];
-  const context = new Context(text, lineCounter);
+  const tokens = [...parser.parse(text)];
 
-  for (const cst of parser.parse(text)) {
-    cstTokens.push(cst);
-    for (const doc of composer.next(cst)) {
-      documentNodes.push(throwParseError(doc, context));
+  for (const document of composer.compose(tokens)) {
+    const { errors } = document;
+    if (errors.length > 0) {
+      throw new YAMLSyntaxError(context, errors[0]);
     }
-  }
 
-  for (const doc of composer.end()) {
-    documentNodes.push(throwParseError(doc, context));
+    documentNodes.push(document);
   }
 
   const root = createRoot(
     context.transformRange([0, text.length]),
-    context.transformDocuments(documentNodes, cstTokens),
+    context.transformDocuments(documentNodes, tokens),
     context.comments,
   );
 
@@ -45,10 +43,4 @@ export function parse(text: string, options?: ParseOptions): Root {
   return root;
 }
 
-function throwParseError(document: YAML.Document.Parsed, context: Context) {
-  const { errors } = document;
-  if (errors.length > 0) {
-    throw new YAMLSyntaxError(context, errors[0]);
-  }
-  return document;
-}
+function throwParseError(document: YAML.Document.Parsed, context: Context) {}
