@@ -4,8 +4,6 @@ import {
   type DocumentBody,
   type Position,
 } from "../types.ts";
-import { createEndCommentAttachable } from "./end-comment-attachable.ts";
-import { createNode } from "./node.ts";
 
 export function createDocumentBody(
   position: Position,
@@ -13,8 +11,9 @@ export function createDocumentBody(
   endComments: Comment[],
 ): DocumentBody {
   return {
-    ...createNode("documentBody", position),
-    ...createEndCommentAttachable(endComments),
+    type: "documentBody",
+    position,
+    endComments,
     children: !content ? [] : [content],
   };
 }

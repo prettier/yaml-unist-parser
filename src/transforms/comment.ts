@@ -1,5 +1,4 @@
 import type * as YAML_CST from "../cst.ts";
-import { createComment } from "../factories/comment.ts";
 import type { Comment } from "../types.ts";
 import type Context from "./context.ts";
 
@@ -7,11 +6,12 @@ export function transformComment(
   comment: YAML_CST.CommentSourceToken,
   context: Context,
 ): Comment {
-  return createComment(
-    context.transformRange([
+  return {
+    type: "comment",
+    position: context.transformRange([
       comment.offset,
       comment.offset + comment.source.length,
     ]),
-    comment.source.slice(1),
-  );
+    value: comment.source.slice(1),
+  };
 }

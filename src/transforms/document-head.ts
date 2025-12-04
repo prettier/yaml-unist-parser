@@ -61,7 +61,7 @@ export function transformDocumentHead(
   );
 
   return {
-    documentHead: documentHead,
+    documentHead,
     docStart,
     tokensBeforeBody: betweenTokens,
   };

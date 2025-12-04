@@ -4,8 +4,6 @@ import {
   type Content,
   type Position,
 } from "../types.ts";
-import { createLeadingCommentAttachable } from "./leading-comment-attachable.ts";
-import { createNode } from "./node.ts";
 
 export function createBlockValue(
   position: Position,
@@ -16,8 +14,9 @@ export function createBlockValue(
   indicatorComment: null | Comment,
 ): BlockValue {
   return {
-    ...createNode("blockValue", position),
-    ...createLeadingCommentAttachable(),
+    type: "blockValue",
+    position,
+    leadingComments: [],
     ...content,
     chomping,
     indent,

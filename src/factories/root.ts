@@ -4,7 +4,6 @@ import {
   type Position,
   type Root,
 } from "../types.ts";
-import { createNode } from "./node.ts";
 
 export function createRoot(
   position: Position,
@@ -12,7 +11,8 @@ export function createRoot(
   comments: Comment[],
 ): Root {
   return {
-    ...createNode("root", position),
+    type: "root",
+    position,
     children,
     comments,
   };

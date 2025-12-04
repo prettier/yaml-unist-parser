@@ -4,8 +4,6 @@ import {
   type MappingValue,
   type Position,
 } from "../types.ts";
-import { createLeadingCommentAttachable } from "./leading-comment-attachable.ts";
-import { createNode } from "./node.ts";
 
 export function createMappingItem(
   position: Position,
@@ -13,8 +11,9 @@ export function createMappingItem(
   value: MappingValue,
 ): MappingItem {
   return {
-    ...createNode("mappingItem", position),
-    ...createLeadingCommentAttachable(),
+    type: "mappingItem",
+    position,
+    leadingComments: [],
     children: [key, value],
   };
 }
