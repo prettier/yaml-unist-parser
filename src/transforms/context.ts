@@ -1,14 +1,7 @@
 import type * as YAML from "yaml";
 import type * as YAML_CST from "../cst.ts";
 import { createPosition } from "../factories/position.ts";
-import type {
-  Comment,
-  Content,
-  Document,
-  Point,
-  Position,
-  Range,
-} from "../types.ts";
+import type { Comment, Content, Point, Position, Range } from "../types.ts";
 import { transformComment } from "./comment.ts";
 import { transformContentProperties } from "./content.ts";
 import {
