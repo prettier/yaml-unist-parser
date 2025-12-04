@@ -19,7 +19,7 @@ type DocumentData = {
 };
 
 export function transformDocuments(
-  yamlDocuments: YAML.Document.Parsed[],
+  parsedDocuments: YAML.Document.Parsed[],
   cstTokens: YAML.CST.Token[],
   context: Context,
 ): Document[] {
@@ -57,7 +57,7 @@ export function transformDocuments(
     }
     if (token.type === "document") {
       // istanbul ignore if -- @preserve
-      if (yamlDocuments.length <= documents.length) {
+      if (parsedDocuments.length <= documents.length) {
         throw new Error(
           `Unexpected document token at ${getPointText(context.transformOffset(token.offset))}`,
         );
@@ -65,7 +65,7 @@ export function transformDocuments(
       currentDoc = {
         tokensBeforeBody: [...tokensBeforeBody, ...bufferComments],
         cstNode: token,
-        node: yamlDocuments[documents.length],
+        node: parsedDocuments[documents.length],
         tokensAfterBody: [],
         docEnd: null,
       };
