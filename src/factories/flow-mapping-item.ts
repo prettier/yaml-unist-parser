@@ -4,7 +4,6 @@ import {
   type MappingValue,
   type Position,
 } from "../types.ts";
-import { createLeadingCommentAttachable } from "./leading-comment-attachable.ts";
 
 export function createFlowMappingItem(
   position: Position,
