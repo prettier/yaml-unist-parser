@@ -15,7 +15,7 @@ type DocumentData = {
   cstNode: YAML.CST.Document;
   node: YAML.Document.Parsed;
   tokensAfterBody: YAML_CST.CommentSourceToken[];
-  docEnd: YAML.CST.DocumentEnd | null;
+  documentEnd: YAML.CST.DocumentEnd | null;
 };
 
 export function transformDocuments(
@@ -23,68 +23,69 @@ export function transformDocuments(
   cstTokens: YAML.CST.Token[],
   context: Context,
 ): Document[] {
-  let bufferComments: YAML_CST.CommentSourceToken[] = [];
-  let tokensBeforeBody: (YAML_CST.CommentSourceToken | YAML.CST.Directive)[] =
-    [];
-  let currentDoc: DocumentData | null = null;
+  if (parsedDocuments.length === 0) {
+    return [];
+  }
+
   const documents: DocumentData[] = [];
+
+  const bufferComments: YAML_CST.CommentSourceToken[] = [];
+  const tokensBeforeBody: (YAML_CST.CommentSourceToken | YAML.CST.Directive)[] =
+    [];
+  let currentDocumentData: DocumentData | null = null;
   for (const token of YAML_CST.tokens(cstTokens)) {
-    if (token.type === "comment") {
-      bufferComments.push(token);
-      continue;
-    }
-    if (token.type === "doc-end") {
-      // istanbul ignore if -- @preserve
-      if (!currentDoc || currentDoc.docEnd)
-        throw new Error(
-          `Unexpected doc-end token at ${getPointText(context.transformOffset(token.offset))}`,
-        );
-
-      currentDoc.tokensAfterBody = [...bufferComments];
-      bufferComments = [];
-
-      currentDoc.docEnd = token;
-      currentDoc = null;
-      continue;
-    }
-    if (currentDoc) {
-      currentDoc = null;
-    }
-    if (token.type === "directive") {
-      tokensBeforeBody.push(...bufferComments, token);
-      bufferComments = [];
-      continue;
-    }
     if (token.type === "document") {
       // istanbul ignore if -- @preserve
       if (parsedDocuments.length <= documents.length) {
         throw new Error(
-          `Unexpected document token at ${getPointText(context.transformOffset(token.offset))}`,
+          `Unexpected 'document' token at ${getPointText(context.transformOffset(token.offset))}`,
         );
       }
-      currentDoc = {
+
+      currentDocumentData = {
         tokensBeforeBody: [...tokensBeforeBody, ...bufferComments],
         cstNode: token,
         node: parsedDocuments[documents.length],
         tokensAfterBody: [],
-        docEnd: null,
+        documentEnd: null,
       };
-      documents.push(currentDoc);
-      tokensBeforeBody = [];
-      bufferComments = [];
+
+      documents.push(currentDocumentData);
+      tokensBeforeBody.length = 0;
+      bufferComments.length = 0;
       continue;
     }
-    // istanbul ignore next -- @preserve
-    throw new Error(
-      `Unexpected token type: ${token.type} at ${getPointText(context.transformOffset(token.offset))}`,
-    );
+
+    if (token.type === "comment") {
+      bufferComments.push(token);
+      continue;
+    }
+
+    if (token.type === "directive") {
+      tokensBeforeBody.push(...bufferComments, token);
+      bufferComments.length = 0;
+      continue;
+    }
+
+    if (token.type === "doc-end") {
+      // istanbul ignore if -- @preserve
+      if (!currentDocumentData || currentDocumentData.documentEnd) {
+        throw new Error(
+          `Unexpected 'doc-end' token at ${getPointText(context.transformOffset(token.offset))}`,
+        );
+      }
+
+      currentDocumentData!.tokensAfterBody = [...bufferComments];
+      bufferComments.length = 0;
+      currentDocumentData!.documentEnd = token;
+      continue;
+    }
   }
 
-  if (documents.length > 0 && !documents[documents.length - 1].docEnd) {
-    // Append buffered comments to the last document
-    const lastDoc = documents[documents.length - 1];
-    lastDoc.tokensAfterBody.push(...bufferComments);
-    bufferComments = [];
+  // Append buffered comments to the last document
+  if (currentDocumentData && !currentDocumentData.documentEnd) {
+    currentDocumentData.tokensAfterBody.push(...bufferComments);
+    bufferComments.length = 0;
   }
 
   const nodes = documents.map(document => transformDocument(document, context));
@@ -139,14 +140,14 @@ function transformDocument(document: DocumentData, context: Context): Document {
       document.cstNode,
       document.node,
       document.tokensAfterBody,
-      document.docEnd,
+      document.documentEnd,
       context,
     );
 
   return createDocument(
     createPosition(documentHead.position.start, documentEndPoint),
     Boolean(docStart),
-    Boolean(document.docEnd),
+    Boolean(document.documentEnd),
     documentHead,
     documentBody,
     documentTrailingComment,
