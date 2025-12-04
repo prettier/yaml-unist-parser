@@ -4,7 +4,6 @@ import {
   type DocumentHead,
   type Position,
 } from "../types.ts";
-import { createTrailingCommentAttachable } from "./trailing-comment-attachable.ts";
 
 export function createDocumentHead(
   position: Position,
@@ -16,7 +15,7 @@ export function createDocumentHead(
     type: "documentHead",
     position,
     endComments,
-    ...createTrailingCommentAttachable(trailingComment),
+    trailingComment,
     children,
   };
 }
