@@ -20,9 +20,9 @@ export function parse(text: string, options?: ParseOptions): Root {
     lineCounter,
   });
   const yamlDocuments: YAML.Document.Parsed[] = [];
-  const yamlTokens = [...parser.parse(text)];
+  const cstTokens = [...parser.parse(text)];
 
-  for (const document of composer.compose(yamlTokens, true, text.length)) {
+  for (const document of composer.compose(cstTokens, true, text.length)) {
     const { errors } = document;
     if (errors.length > 0) {
       throw new YAMLSyntaxError(context, errors[0]);
@@ -33,7 +33,7 @@ export function parse(text: string, options?: ParseOptions): Root {
 
   const root = createRoot(
     context.transformRange([0, text.length]),
-    transformDocuments(yamlDocuments, yamlTokens, context),
+    transformDocuments(yamlDocuments, cstTokens, context),
     context.comments,
   );
 

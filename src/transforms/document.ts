@@ -20,7 +20,7 @@ type DocumentData = {
 
 export function transformDocuments(
   yamlDocuments: YAML.Document.Parsed[],
-  tokens: YAML.CST.Token[],
+  cstTokens: YAML.CST.Token[],
   context: Context,
 ): Document[] {
   let bufferComments: YAML_CST.CommentSourceToken[] = [];
@@ -28,7 +28,7 @@ export function transformDocuments(
     [];
   let currentDoc: DocumentData | null = null;
   const documents: DocumentData[] = [];
-  for (const token of YAML_CST.tokens(tokens)) {
+  for (const token of YAML_CST.tokens(cstTokens)) {
     if (token.type === "comment") {
       bufferComments.push(token);
       continue;
