@@ -2,6 +2,9 @@ import { parse } from "./parse.ts";
 
 for (const { type, text } of [
   { type: "mapping", text: "a: 1\na: 2" },
+  // `<<` is a special key in YAML 1.1
+  // https://github.com/eemeli/yaml/blob/main/src/schema/yaml-1.1/merge.ts
+  // { type: "mapping", text: "<<: 1\n<<: 2" },
   { type: "flowMapping", text: `{"a":1,"a":2}` },
   { type: "flowMapping", text: `{"a":1,'a':2}` },
 ]) {

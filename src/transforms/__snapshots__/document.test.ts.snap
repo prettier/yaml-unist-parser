@@ -5,14 +5,7 @@ root (1:1 ~ 1:2)
 1 | ·¶
   | ^
 <root>
-  <document>
-    <documentHead>
 
-    </documentHead>
-    <documentBody>
-
-    </documentBody>
-  </document>
 </root>
 `;
 
@@ -21,14 +14,7 @@ root (1:1 ~ 1:1)
 1 | ¶
   | ~
 <root>
-  <document>
-    <documentHead>
 
-    </documentHead>
-    <documentBody>
-
-    </documentBody>
-  </document>
 </root>
 `;
 
@@ -279,14 +265,7 @@ root (1:1 ~ 2:1)
 2 | ¶
   | ^
 <root>
-  <document>
-    <documentHead>
 
-    </documentHead>
-    <documentBody>
-
-    </documentBody>
-  </document>
 </root>
 `;
 

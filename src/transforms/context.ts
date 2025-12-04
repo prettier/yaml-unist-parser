@@ -1,17 +1,9 @@
 import type * as YAML from "yaml";
 import type * as YAML_CST from "../cst.ts";
 import { createPosition } from "../factories/position.ts";
-import type {
-  Comment,
-  Content,
-  Document,
-  Point,
-  Position,
-  Range,
-} from "../types.ts";
+import type { Comment, Content, Point, Position, Range } from "../types.ts";
 import { transformComment } from "./comment.ts";
 import { transformContentProperties } from "./content.ts";
-import { transformDocuments } from "./document.ts";
 import {
   transformNode,
   type TransformNodeProperties,
@@ -37,13 +29,6 @@ class Context {
   transformRange(range: Range): Position {
     const [start, end] = range.map(position => this.transformOffset(position));
     return createPosition(start, end);
-  }
-
-  transformDocuments(
-    documentNodes: YAML.Document.Parsed[],
-    cstTokens: YAML.CST.Token[],
-  ): Document[] {
-    return transformDocuments(documentNodes, cstTokens, this);
   }
 
   transformNode<T extends YamlNode>(
