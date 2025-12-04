@@ -8,7 +8,6 @@ export function createPlain(
   return {
     type: "plain",
     position,
-
     leadingComments: [],
     trailingComment: null,
     ...content,

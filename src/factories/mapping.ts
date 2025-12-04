@@ -4,7 +4,6 @@ import {
   type MappingItem,
   type Position,
 } from "../types.ts";
-import { createLeadingCommentAttachable } from "./leading-comment-attachable.ts";
 
 export function createMapping(
   position: Position,

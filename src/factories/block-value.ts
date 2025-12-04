@@ -4,7 +4,6 @@ import {
   type Content,
   type Position,
 } from "../types.ts";
-import { createLeadingCommentAttachable } from "./leading-comment-attachable.ts";
 
 export function createBlockValue(
   position: Position,

@@ -9,7 +9,6 @@ export function createQuoteValue(
     type: "quoteValue",
     position,
     ...content,
-
     leadingComments: [],
     trailingComment: null,
     value,
