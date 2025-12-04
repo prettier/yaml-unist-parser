@@ -22,13 +22,13 @@ export function parse(text: string, options?: ParseOptions): Root {
   const parsedDocuments: YAML.Document.Parsed[] = [];
   const cstTokens = [...parser.parse(text)];
 
-  for (const document of composer.compose(cstTokens, true, text.length)) {
-    const { errors } = document;
+  for (const parsedDocument of composer.compose(cstTokens, true, text.length)) {
+    const { errors } = parsedDocument;
     if (errors.length > 0) {
       throw new YAMLSyntaxError(context, errors[0]);
     }
 
-    parsedDocuments.push(document);
+    parsedDocuments.push(parsedDocument);
   }
 
   const root = createRoot(
