@@ -1,0 +1,1950 @@
+{
+  "ast": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [],
+            "endComments": [],
+            "position": {
+              "end": {
+                "column": 4,
+                "line": 1,
+                "offset": 3,
+              },
+              "start": {
+                "column": 1,
+                "line": 1,
+                "offset": 0,
+              },
+            },
+            "trailingComment": null,
+            "type": "documentHead",
+          },
+          {
+            "children": [
+              {
+                "anchor": null,
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "anchor": null,
+                            "leadingComments": [],
+                            "middleComments": [],
+                            "position": {
+                              "end": {
+                                "column": 5,
+                                "line": 2,
+                                "offset": 8,
+                              },
+                              "start": {
+                                "column": 1,
+                                "line": 2,
+                                "offset": 4,
+                              },
+                            },
+                            "tag": null,
+                            "trailingComment": null,
+                            "type": "plain",
+                            "value": "Time",
+                          },
+                        ],
+                        "endComments": [],
+                        "position": {
+                          "end": {
+                            "column": 5,
+                            "line": 2,
+                            "offset": 8,
+                          },
+                          "start": {
+                            "column": 1,
+                            "line": 2,
+                            "offset": 4,
+                          },
+                        },
+                        "trailingComment": null,
+                        "type": "mappingKey",
+                      },
+                      {
+                        "children": [
+                          {
+                            "anchor": null,
+                            "leadingComments": [],
+                            "middleComments": [],
+                            "position": {
+                              "end": {
+                                "column": 29,
+                                "line": 2,
+                                "offset": 32,
+                              },
+                              "start": {
+                                "column": 7,
+                                "line": 2,
+                                "offset": 10,
+                              },
+                            },
+                            "tag": null,
+                            "trailingComment": null,
+                            "type": "plain",
+                            "value": "2001-11-23 15:01:42 -5",
+                          },
+                        ],
+                        "endComments": [],
+                        "leadingComments": [],
+                        "position": {
+                          "end": {
+                            "column": 29,
+                            "line": 2,
+                            "offset": 32,
+                          },
+                          "start": {
+                            "column": 5,
+                            "line": 2,
+                            "offset": 8,
+                          },
+                        },
+                        "trailingComment": null,
+                        "type": "mappingValue",
+                      },
+                    ],
+                    "leadingComments": [],
+                    "position": {
+                      "end": {
+                        "column": 29,
+                        "line": 2,
+                        "offset": 32,
+                      },
+                      "start": {
+                        "column": 1,
+                        "line": 2,
+                        "offset": 4,
+                      },
+                    },
+                    "type": "mappingItem",
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "anchor": null,
+                            "leadingComments": [],
+                            "middleComments": [],
+                            "position": {
+                              "end": {
+                                "column": 5,
+                                "line": 3,
+                                "offset": 37,
+                              },
+                              "start": {
+                                "column": 1,
+                                "line": 3,
+                                "offset": 33,
+                              },
+                            },
+                            "tag": null,
+                            "trailingComment": null,
+                            "type": "plain",
+                            "value": "User",
+                          },
+                        ],
+                        "endComments": [],
+                        "position": {
+                          "end": {
+                            "column": 5,
+                            "line": 3,
+                            "offset": 37,
+                          },
+                          "start": {
+                            "column": 1,
+                            "line": 3,
+                            "offset": 33,
+                          },
+                        },
+                        "trailingComment": null,
+                        "type": "mappingKey",
+                      },
+                      {
+                        "children": [
+                          {
+                            "anchor": null,
+                            "leadingComments": [],
+                            "middleComments": [],
+                            "position": {
+                              "end": {
+                                "column": 9,
+                                "line": 3,
+                                "offset": 41,
+                              },
+                              "start": {
+                                "column": 7,
+                                "line": 3,
+                                "offset": 39,
+                              },
+                            },
+                            "tag": null,
+                            "trailingComment": null,
+                            "type": "plain",
+                            "value": "ed",
+                          },
+                        ],
+                        "endComments": [],
+                        "leadingComments": [],
+                        "position": {
+                          "end": {
+                            "column": 9,
+                            "line": 3,
+                            "offset": 41,
+                          },
+                          "start": {
+                            "column": 5,
+                            "line": 3,
+                            "offset": 37,
+                          },
+                        },
+                        "trailingComment": null,
+                        "type": "mappingValue",
+                      },
+                    ],
+                    "leadingComments": [],
+                    "position": {
+                      "end": {
+                        "column": 9,
+                        "line": 3,
+                        "offset": 41,
+                      },
+                      "start": {
+                        "column": 1,
+                        "line": 3,
+                        "offset": 33,
+                      },
+                    },
+                    "type": "mappingItem",
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "anchor": null,
+                            "leadingComments": [],
+                            "middleComments": [],
+                            "position": {
+                              "end": {
+                                "column": 8,
+                                "line": 4,
+                                "offset": 49,
+                              },
+                              "start": {
+                                "column": 1,
+                                "line": 4,
+                                "offset": 42,
+                              },
+                            },
+                            "tag": null,
+                            "trailingComment": null,
+                            "type": "plain",
+                            "value": "Warning",
+                          },
+                        ],
+                        "endComments": [],
+                        "position": {
+                          "end": {
+                            "column": 8,
+                            "line": 4,
+                            "offset": 49,
+                          },
+                          "start": {
+                            "column": 1,
+                            "line": 4,
+                            "offset": 42,
+                          },
+                        },
+                        "trailingComment": null,
+                        "type": "mappingKey",
+                      },
+                      {
+                        "children": [
+                          {
+                            "anchor": null,
+                            "leadingComments": [],
+                            "middleComments": [],
+                            "position": {
+                              "end": {
+                                "column": 19,
+                                "line": 6,
+                                "offset": 96,
+                              },
+                              "start": {
+                                "column": 3,
+                                "line": 5,
+                                "offset": 53,
+                              },
+                            },
+                            "tag": null,
+                            "trailingComment": null,
+                            "type": "plain",
+                            "value": "This is an error message for the log file",
+                          },
+                        ],
+                        "endComments": [],
+                        "leadingComments": [],
+                        "position": {
+                          "end": {
+                            "column": 19,
+                            "line": 6,
+                            "offset": 96,
+                          },
+                          "start": {
+                            "column": 8,
+                            "line": 4,
+                            "offset": 49,
+                          },
+                        },
+                        "trailingComment": null,
+                        "type": "mappingValue",
+                      },
+                    ],
+                    "leadingComments": [],
+                    "position": {
+                      "end": {
+                        "column": 19,
+                        "line": 6,
+                        "offset": 96,
+                      },
+                      "start": {
+                        "column": 1,
+                        "line": 4,
+                        "offset": 42,
+                      },
+                    },
+                    "type": "mappingItem",
+                  },
+                ],
+                "leadingComments": [],
+                "middleComments": [],
+                "position": {
+                  "end": {
+                    "column": 19,
+                    "line": 6,
+                    "offset": 96,
+                  },
+                  "start": {
+                    "column": 1,
+                    "line": 2,
+                    "offset": 4,
+                  },
+                },
+                "tag": null,
+                "type": "mapping",
+              },
+            ],
+            "endComments": [],
+            "position": {
+              "end": {
+                "column": 1,
+                "line": 7,
+                "offset": 97,
+              },
+              "start": {
+                "column": 1,
+                "line": 2,
+                "offset": 4,
+              },
+            },
+            "type": "documentBody",
+          },
+        ],
+        "directivesEndMarker": true,
+        "documentEndMarker": false,
+        "position": {
+          "end": {
+            "column": 1,
+            "line": 7,
+            "offset": 97,
+          },
+          "start": {
+            "column": 1,
+            "line": 1,
+            "offset": 0,
+          },
+        },
+        "trailingComment": null,
+        "type": "document",
+      },
+      {
+        "children": [
+          {
+            "children": [],
+            "endComments": [],
+            "position": {
+              "end": {
+                "column": 4,
+                "line": 7,
+                "offset": 100,
+              },
+              "start": {
+                "column": 1,
+                "line": 7,
+                "offset": 97,
+              },
+            },
+            "trailingComment": null,
+            "type": "documentHead",
+          },
+          {
+            "children": [
+              {
+                "anchor": null,
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "anchor": null,
+                            "leadingComments": [],
+                            "middleComments": [],
+                            "position": {
+                              "end": {
+                                "column": 5,
+                                "line": 8,
+                                "offset": 105,
+                              },
+                              "start": {
+                                "column": 1,
+                                "line": 8,
+                                "offset": 101,
+                              },
+                            },
+                            "tag": null,
+                            "trailingComment": null,
+                            "type": "plain",
+                            "value": "Time",
+                          },
+                        ],
+                        "endComments": [],
+                        "position": {
+                          "end": {
+                            "column": 5,
+                            "line": 8,
+                            "offset": 105,
+                          },
+                          "start": {
+                            "column": 1,
+                            "line": 8,
+                            "offset": 101,
+                          },
+                        },
+                        "trailingComment": null,
+                        "type": "mappingKey",
+                      },
+                      {
+                        "children": [
+                          {
+                            "anchor": null,
+                            "leadingComments": [],
+                            "middleComments": [],
+                            "position": {
+                              "end": {
+                                "column": 29,
+                                "line": 8,
+                                "offset": 129,
+                              },
+                              "start": {
+                                "column": 7,
+                                "line": 8,
+                                "offset": 107,
+                              },
+                            },
+                            "tag": null,
+                            "trailingComment": null,
+                            "type": "plain",
+                            "value": "2001-11-23 15:02:31 -5",
+                          },
+                        ],
+                        "endComments": [],
+                        "leadingComments": [],
+                        "position": {
+                          "end": {
+                            "column": 29,
+                            "line": 8,
+                            "offset": 129,
+                          },
+                          "start": {
+                            "column": 5,
+                            "line": 8,
+                            "offset": 105,
+                          },
+                        },
+                        "trailingComment": null,
+                        "type": "mappingValue",
+                      },
+                    ],
+                    "leadingComments": [],
+                    "position": {
+                      "end": {
+                        "column": 29,
+                        "line": 8,
+                        "offset": 129,
+                      },
+                      "start": {
+                        "column": 1,
+                        "line": 8,
+                        "offset": 101,
+                      },
+                    },
+                    "type": "mappingItem",
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "anchor": null,
+                            "leadingComments": [],
+                            "middleComments": [],
+                            "position": {
+                              "end": {
+                                "column": 5,
+                                "line": 9,
+                                "offset": 134,
+                              },
+                              "start": {
+                                "column": 1,
+                                "line": 9,
+                                "offset": 130,
+                              },
+                            },
+                            "tag": null,
+                            "trailingComment": null,
+                            "type": "plain",
+                            "value": "User",
+                          },
+                        ],
+                        "endComments": [],
+                        "position": {
+                          "end": {
+                            "column": 5,
+                            "line": 9,
+                            "offset": 134,
+                          },
+                          "start": {
+                            "column": 1,
+                            "line": 9,
+                            "offset": 130,
+                          },
+                        },
+                        "trailingComment": null,
+                        "type": "mappingKey",
+                      },
+                      {
+                        "children": [
+                          {
+                            "anchor": null,
+                            "leadingComments": [],
+                            "middleComments": [],
+                            "position": {
+                              "end": {
+                                "column": 9,
+                                "line": 9,
+                                "offset": 138,
+                              },
+                              "start": {
+                                "column": 7,
+                                "line": 9,
+                                "offset": 136,
+                              },
+                            },
+                            "tag": null,
+                            "trailingComment": null,
+                            "type": "plain",
+                            "value": "ed",
+                          },
+                        ],
+                        "endComments": [],
+                        "leadingComments": [],
+                        "position": {
+                          "end": {
+                            "column": 9,
+                            "line": 9,
+                            "offset": 138,
+                          },
+                          "start": {
+                            "column": 5,
+                            "line": 9,
+                            "offset": 134,
+                          },
+                        },
+                        "trailingComment": null,
+                        "type": "mappingValue",
+                      },
+                    ],
+                    "leadingComments": [],
+                    "position": {
+                      "end": {
+                        "column": 9,
+                        "line": 9,
+                        "offset": 138,
+                      },
+                      "start": {
+                        "column": 1,
+                        "line": 9,
+                        "offset": 130,
+                      },
+                    },
+                    "type": "mappingItem",
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "anchor": null,
+                            "leadingComments": [],
+                            "middleComments": [],
+                            "position": {
+                              "end": {
+                                "column": 8,
+                                "line": 10,
+                                "offset": 146,
+                              },
+                              "start": {
+                                "column": 1,
+                                "line": 10,
+                                "offset": 139,
+                              },
+                            },
+                            "tag": null,
+                            "trailingComment": null,
+                            "type": "plain",
+                            "value": "Warning",
+                          },
+                        ],
+                        "endComments": [],
+                        "position": {
+                          "end": {
+                            "column": 8,
+                            "line": 10,
+                            "offset": 146,
+                          },
+                          "start": {
+                            "column": 1,
+                            "line": 10,
+                            "offset": 139,
+                          },
+                        },
+                        "trailingComment": null,
+                        "type": "mappingKey",
+                      },
+                      {
+                        "children": [
+                          {
+                            "anchor": null,
+                            "leadingComments": [],
+                            "middleComments": [],
+                            "position": {
+                              "end": {
+                                "column": 11,
+                                "line": 12,
+                                "offset": 187,
+                              },
+                              "start": {
+                                "column": 3,
+                                "line": 11,
+                                "offset": 150,
+                              },
+                            },
+                            "tag": null,
+                            "trailingComment": null,
+                            "type": "plain",
+                            "value": "A slightly different error message.",
+                          },
+                        ],
+                        "endComments": [],
+                        "leadingComments": [],
+                        "position": {
+                          "end": {
+                            "column": 11,
+                            "line": 12,
+                            "offset": 187,
+                          },
+                          "start": {
+                            "column": 8,
+                            "line": 10,
+                            "offset": 146,
+                          },
+                        },
+                        "trailingComment": null,
+                        "type": "mappingValue",
+                      },
+                    ],
+                    "leadingComments": [],
+                    "position": {
+                      "end": {
+                        "column": 11,
+                        "line": 12,
+                        "offset": 187,
+                      },
+                      "start": {
+                        "column": 1,
+                        "line": 10,
+                        "offset": 139,
+                      },
+                    },
+                    "type": "mappingItem",
+                  },
+                ],
+                "leadingComments": [],
+                "middleComments": [],
+                "position": {
+                  "end": {
+                    "column": 11,
+                    "line": 12,
+                    "offset": 187,
+                  },
+                  "start": {
+                    "column": 1,
+                    "line": 8,
+                    "offset": 101,
+                  },
+                },
+                "tag": null,
+                "type": "mapping",
+              },
+            ],
+            "endComments": [],
+            "position": {
+              "end": {
+                "column": 1,
+                "line": 13,
+                "offset": 188,
+              },
+              "start": {
+                "column": 1,
+                "line": 8,
+                "offset": 101,
+              },
+            },
+            "type": "documentBody",
+          },
+        ],
+        "directivesEndMarker": true,
+        "documentEndMarker": false,
+        "position": {
+          "end": {
+            "column": 1,
+            "line": 13,
+            "offset": 188,
+          },
+          "start": {
+            "column": 1,
+            "line": 7,
+            "offset": 97,
+          },
+        },
+        "trailingComment": null,
+        "type": "document",
+      },
+      {
+        "children": [
+          {
+            "children": [],
+            "endComments": [],
+            "position": {
+              "end": {
+                "column": 4,
+                "line": 13,
+                "offset": 191,
+              },
+              "start": {
+                "column": 1,
+                "line": 13,
+                "offset": 188,
+              },
+            },
+            "trailingComment": null,
+            "type": "documentHead",
+          },
+          {
+            "children": [
+              {
+                "anchor": null,
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "anchor": null,
+                            "leadingComments": [],
+                            "middleComments": [],
+                            "position": {
+                              "end": {
+                                "column": 5,
+                                "line": 14,
+                                "offset": 196,
+                              },
+                              "start": {
+                                "column": 1,
+                                "line": 14,
+                                "offset": 192,
+                              },
+                            },
+                            "tag": null,
+                            "trailingComment": null,
+                            "type": "plain",
+                            "value": "Date",
+                          },
+                        ],
+                        "endComments": [],
+                        "position": {
+                          "end": {
+                            "column": 5,
+                            "line": 14,
+                            "offset": 196,
+                          },
+                          "start": {
+                            "column": 1,
+                            "line": 14,
+                            "offset": 192,
+                          },
+                        },
+                        "trailingComment": null,
+                        "type": "mappingKey",
+                      },
+                      {
+                        "children": [
+                          {
+                            "anchor": null,
+                            "leadingComments": [],
+                            "middleComments": [],
+                            "position": {
+                              "end": {
+                                "column": 29,
+                                "line": 14,
+                                "offset": 220,
+                              },
+                              "start": {
+                                "column": 7,
+                                "line": 14,
+                                "offset": 198,
+                              },
+                            },
+                            "tag": null,
+                            "trailingComment": null,
+                            "type": "plain",
+                            "value": "2001-11-23 15:03:17 -5",
+                          },
+                        ],
+                        "endComments": [],
+                        "leadingComments": [],
+                        "position": {
+                          "end": {
+                            "column": 29,
+                            "line": 14,
+                            "offset": 220,
+                          },
+                          "start": {
+                            "column": 5,
+                            "line": 14,
+                            "offset": 196,
+                          },
+                        },
+                        "trailingComment": null,
+                        "type": "mappingValue",
+                      },
+                    ],
+                    "leadingComments": [],
+                    "position": {
+                      "end": {
+                        "column": 29,
+                        "line": 14,
+                        "offset": 220,
+                      },
+                      "start": {
+                        "column": 1,
+                        "line": 14,
+                        "offset": 192,
+                      },
+                    },
+                    "type": "mappingItem",
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "anchor": null,
+                            "leadingComments": [],
+                            "middleComments": [],
+                            "position": {
+                              "end": {
+                                "column": 5,
+                                "line": 15,
+                                "offset": 225,
+                              },
+                              "start": {
+                                "column": 1,
+                                "line": 15,
+                                "offset": 221,
+                              },
+                            },
+                            "tag": null,
+                            "trailingComment": null,
+                            "type": "plain",
+                            "value": "User",
+                          },
+                        ],
+                        "endComments": [],
+                        "position": {
+                          "end": {
+                            "column": 5,
+                            "line": 15,
+                            "offset": 225,
+                          },
+                          "start": {
+                            "column": 1,
+                            "line": 15,
+                            "offset": 221,
+                          },
+                        },
+                        "trailingComment": null,
+                        "type": "mappingKey",
+                      },
+                      {
+                        "children": [
+                          {
+                            "anchor": null,
+                            "leadingComments": [],
+                            "middleComments": [],
+                            "position": {
+                              "end": {
+                                "column": 9,
+                                "line": 15,
+                                "offset": 229,
+                              },
+                              "start": {
+                                "column": 7,
+                                "line": 15,
+                                "offset": 227,
+                              },
+                            },
+                            "tag": null,
+                            "trailingComment": null,
+                            "type": "plain",
+                            "value": "ed",
+                          },
+                        ],
+                        "endComments": [],
+                        "leadingComments": [],
+                        "position": {
+                          "end": {
+                            "column": 9,
+                            "line": 15,
+                            "offset": 229,
+                          },
+                          "start": {
+                            "column": 5,
+                            "line": 15,
+                            "offset": 225,
+                          },
+                        },
+                        "trailingComment": null,
+                        "type": "mappingValue",
+                      },
+                    ],
+                    "leadingComments": [],
+                    "position": {
+                      "end": {
+                        "column": 9,
+                        "line": 15,
+                        "offset": 229,
+                      },
+                      "start": {
+                        "column": 1,
+                        "line": 15,
+                        "offset": 221,
+                      },
+                    },
+                    "type": "mappingItem",
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "anchor": null,
+                            "leadingComments": [],
+                            "middleComments": [],
+                            "position": {
+                              "end": {
+                                "column": 6,
+                                "line": 16,
+                                "offset": 235,
+                              },
+                              "start": {
+                                "column": 1,
+                                "line": 16,
+                                "offset": 230,
+                              },
+                            },
+                            "tag": null,
+                            "trailingComment": null,
+                            "type": "plain",
+                            "value": "Fatal",
+                          },
+                        ],
+                        "endComments": [],
+                        "position": {
+                          "end": {
+                            "column": 6,
+                            "line": 16,
+                            "offset": 235,
+                          },
+                          "start": {
+                            "column": 1,
+                            "line": 16,
+                            "offset": 230,
+                          },
+                        },
+                        "trailingComment": null,
+                        "type": "mappingKey",
+                      },
+                      {
+                        "children": [
+                          {
+                            "anchor": null,
+                            "leadingComments": [],
+                            "middleComments": [],
+                            "position": {
+                              "end": {
+                                "column": 25,
+                                "line": 17,
+                                "offset": 261,
+                              },
+                              "start": {
+                                "column": 3,
+                                "line": 17,
+                                "offset": 239,
+                              },
+                            },
+                            "tag": null,
+                            "trailingComment": null,
+                            "type": "plain",
+                            "value": "Unknown variable "bar"",
+                          },
+                        ],
+                        "endComments": [],
+                        "leadingComments": [],
+                        "position": {
+                          "end": {
+                            "column": 25,
+                            "line": 17,
+                            "offset": 261,
+                          },
+                          "start": {
+                            "column": 6,
+                            "line": 16,
+                            "offset": 235,
+                          },
+                        },
+                        "trailingComment": null,
+                        "type": "mappingValue",
+                      },
+                    ],
+                    "leadingComments": [],
+                    "position": {
+                      "end": {
+                        "column": 25,
+                        "line": 17,
+                        "offset": 261,
+                      },
+                      "start": {
+                        "column": 1,
+                        "line": 16,
+                        "offset": 230,
+                      },
+                    },
+                    "type": "mappingItem",
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "anchor": null,
+                            "leadingComments": [],
+                            "middleComments": [],
+                            "position": {
+                              "end": {
+                                "column": 6,
+                                "line": 18,
+                                "offset": 267,
+                              },
+                              "start": {
+                                "column": 1,
+                                "line": 18,
+                                "offset": 262,
+                              },
+                            },
+                            "tag": null,
+                            "trailingComment": null,
+                            "type": "plain",
+                            "value": "Stack",
+                          },
+                        ],
+                        "endComments": [],
+                        "position": {
+                          "end": {
+                            "column": 6,
+                            "line": 18,
+                            "offset": 267,
+                          },
+                          "start": {
+                            "column": 1,
+                            "line": 18,
+                            "offset": 262,
+                          },
+                        },
+                        "trailingComment": null,
+                        "type": "mappingKey",
+                      },
+                      {
+                        "children": [
+                          {
+                            "anchor": null,
+                            "children": [
+                              {
+                                "children": [
+                                  {
+                                    "anchor": null,
+                                    "children": [
+                                      {
+                                        "children": [
+                                          {
+                                            "children": [
+                                              {
+                                                "anchor": null,
+                                                "leadingComments": [],
+                                                "middleComments": [],
+                                                "position": {
+                                                  "end": {
+                                                    "column": 9,
+                                                    "line": 19,
+                                                    "offset": 277,
+                                                  },
+                                                  "start": {
+                                                    "column": 5,
+                                                    "line": 19,
+                                                    "offset": 273,
+                                                  },
+                                                },
+                                                "tag": null,
+                                                "trailingComment": null,
+                                                "type": "plain",
+                                                "value": "file",
+                                              },
+                                            ],
+                                            "endComments": [],
+                                            "position": {
+                                              "end": {
+                                                "column": 9,
+                                                "line": 19,
+                                                "offset": 277,
+                                              },
+                                              "start": {
+                                                "column": 5,
+                                                "line": 19,
+                                                "offset": 273,
+                                              },
+                                            },
+                                            "trailingComment": null,
+                                            "type": "mappingKey",
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "anchor": null,
+                                                "leadingComments": [],
+                                                "middleComments": [],
+                                                "position": {
+                                                  "end": {
+                                                    "column": 22,
+                                                    "line": 19,
+                                                    "offset": 290,
+                                                  },
+                                                  "start": {
+                                                    "column": 11,
+                                                    "line": 19,
+                                                    "offset": 279,
+                                                  },
+                                                },
+                                                "tag": null,
+                                                "trailingComment": null,
+                                                "type": "plain",
+                                                "value": "TopClass.py",
+                                              },
+                                            ],
+                                            "endComments": [],
+                                            "leadingComments": [],
+                                            "position": {
+                                              "end": {
+                                                "column": 22,
+                                                "line": 19,
+                                                "offset": 290,
+                                              },
+                                              "start": {
+                                                "column": 9,
+                                                "line": 19,
+                                                "offset": 277,
+                                              },
+                                            },
+                                            "trailingComment": null,
+                                            "type": "mappingValue",
+                                          },
+                                        ],
+                                        "leadingComments": [],
+                                        "position": {
+                                          "end": {
+                                            "column": 22,
+                                            "line": 19,
+                                            "offset": 290,
+                                          },
+                                          "start": {
+                                            "column": 5,
+                                            "line": 19,
+                                            "offset": 273,
+                                          },
+                                        },
+                                        "type": "mappingItem",
+                                      },
+                                      {
+                                        "children": [
+                                          {
+                                            "children": [
+                                              {
+                                                "anchor": null,
+                                                "leadingComments": [],
+                                                "middleComments": [],
+                                                "position": {
+                                                  "end": {
+                                                    "column": 9,
+                                                    "line": 20,
+                                                    "offset": 299,
+                                                  },
+                                                  "start": {
+                                                    "column": 5,
+                                                    "line": 20,
+                                                    "offset": 295,
+                                                  },
+                                                },
+                                                "tag": null,
+                                                "trailingComment": null,
+                                                "type": "plain",
+                                                "value": "line",
+                                              },
+                                            ],
+                                            "endComments": [],
+                                            "position": {
+                                              "end": {
+                                                "column": 9,
+                                                "line": 20,
+                                                "offset": 299,
+                                              },
+                                              "start": {
+                                                "column": 5,
+                                                "line": 20,
+                                                "offset": 295,
+                                              },
+                                            },
+                                            "trailingComment": null,
+                                            "type": "mappingKey",
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "anchor": null,
+                                                "leadingComments": [],
+                                                "middleComments": [],
+                                                "position": {
+                                                  "end": {
+                                                    "column": 13,
+                                                    "line": 20,
+                                                    "offset": 303,
+                                                  },
+                                                  "start": {
+                                                    "column": 11,
+                                                    "line": 20,
+                                                    "offset": 301,
+                                                  },
+                                                },
+                                                "tag": null,
+                                                "trailingComment": null,
+                                                "type": "plain",
+                                                "value": "23",
+                                              },
+                                            ],
+                                            "endComments": [],
+                                            "leadingComments": [],
+                                            "position": {
+                                              "end": {
+                                                "column": 13,
+                                                "line": 20,
+                                                "offset": 303,
+                                              },
+                                              "start": {
+                                                "column": 9,
+                                                "line": 20,
+                                                "offset": 299,
+                                              },
+                                            },
+                                            "trailingComment": null,
+                                            "type": "mappingValue",
+                                          },
+                                        ],
+                                        "leadingComments": [],
+                                        "position": {
+                                          "end": {
+                                            "column": 13,
+                                            "line": 20,
+                                            "offset": 303,
+                                          },
+                                          "start": {
+                                            "column": 5,
+                                            "line": 20,
+                                            "offset": 295,
+                                          },
+                                        },
+                                        "type": "mappingItem",
+                                      },
+                                      {
+                                        "children": [
+                                          {
+                                            "children": [
+                                              {
+                                                "anchor": null,
+                                                "leadingComments": [],
+                                                "middleComments": [],
+                                                "position": {
+                                                  "end": {
+                                                    "column": 9,
+                                                    "line": 21,
+                                                    "offset": 312,
+                                                  },
+                                                  "start": {
+                                                    "column": 5,
+                                                    "line": 21,
+                                                    "offset": 308,
+                                                  },
+                                                },
+                                                "tag": null,
+                                                "trailingComment": null,
+                                                "type": "plain",
+                                                "value": "code",
+                                              },
+                                            ],
+                                            "endComments": [],
+                                            "position": {
+                                              "end": {
+                                                "column": 9,
+                                                "line": 21,
+                                                "offset": 312,
+                                              },
+                                              "start": {
+                                                "column": 5,
+                                                "line": 21,
+                                                "offset": 308,
+                                              },
+                                            },
+                                            "trailingComment": null,
+                                            "type": "mappingKey",
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "anchor": null,
+                                                "chomping": "clip",
+                                                "indent": null,
+                                                "indicatorComment": null,
+                                                "leadingComments": [],
+                                                "middleComments": [],
+                                                "position": {
+                                                  "end": {
+                                                    "column": 1,
+                                                    "line": 23,
+                                                    "offset": 346,
+                                                  },
+                                                  "start": {
+                                                    "column": 11,
+                                                    "line": 21,
+                                                    "offset": 314,
+                                                  },
+                                                },
+                                                "tag": null,
+                                                "type": "blockLiteral",
+                                                "value": "x = MoreObject("345\n")
+",
+                                              },
+                                            ],
+                                            "endComments": [],
+                                            "leadingComments": [],
+                                            "position": {
+                                              "end": {
+                                                "column": 1,
+                                                "line": 23,
+                                                "offset": 346,
+                                              },
+                                              "start": {
+                                                "column": 9,
+                                                "line": 21,
+                                                "offset": 312,
+                                              },
+                                            },
+                                            "trailingComment": null,
+                                            "type": "mappingValue",
+                                          },
+                                        ],
+                                        "leadingComments": [],
+                                        "position": {
+                                          "end": {
+                                            "column": 1,
+                                            "line": 23,
+                                            "offset": 346,
+                                          },
+                                          "start": {
+                                            "column": 5,
+                                            "line": 21,
+                                            "offset": 308,
+                                          },
+                                        },
+                                        "type": "mappingItem",
+                                      },
+                                    ],
+                                    "leadingComments": [],
+                                    "middleComments": [],
+                                    "position": {
+                                      "end": {
+                                        "column": 1,
+                                        "line": 23,
+                                        "offset": 346,
+                                      },
+                                      "start": {
+                                        "column": 5,
+                                        "line": 19,
+                                        "offset": 273,
+                                      },
+                                    },
+                                    "tag": null,
+                                    "type": "mapping",
+                                  },
+                                ],
+                                "endComments": [],
+                                "leadingComments": [],
+                                "position": {
+                                  "end": {
+                                    "column": 1,
+                                    "line": 23,
+                                    "offset": 346,
+                                  },
+                                  "start": {
+                                    "column": 3,
+                                    "line": 19,
+                                    "offset": 271,
+                                  },
+                                },
+                                "trailingComment": null,
+                                "type": "sequenceItem",
+                              },
+                              {
+                                "children": [
+                                  {
+                                    "anchor": null,
+                                    "children": [
+                                      {
+                                        "children": [
+                                          {
+                                            "children": [
+                                              {
+                                                "anchor": null,
+                                                "leadingComments": [],
+                                                "middleComments": [],
+                                                "position": {
+                                                  "end": {
+                                                    "column": 9,
+                                                    "line": 23,
+                                                    "offset": 354,
+                                                  },
+                                                  "start": {
+                                                    "column": 5,
+                                                    "line": 23,
+                                                    "offset": 350,
+                                                  },
+                                                },
+                                                "tag": null,
+                                                "trailingComment": null,
+                                                "type": "plain",
+                                                "value": "file",
+                                              },
+                                            ],
+                                            "endComments": [],
+                                            "position": {
+                                              "end": {
+                                                "column": 9,
+                                                "line": 23,
+                                                "offset": 354,
+                                              },
+                                              "start": {
+                                                "column": 5,
+                                                "line": 23,
+                                                "offset": 350,
+                                              },
+                                            },
+                                            "trailingComment": null,
+                                            "type": "mappingKey",
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "anchor": null,
+                                                "leadingComments": [],
+                                                "middleComments": [],
+                                                "position": {
+                                                  "end": {
+                                                    "column": 23,
+                                                    "line": 23,
+                                                    "offset": 368,
+                                                  },
+                                                  "start": {
+                                                    "column": 11,
+                                                    "line": 23,
+                                                    "offset": 356,
+                                                  },
+                                                },
+                                                "tag": null,
+                                                "trailingComment": null,
+                                                "type": "plain",
+                                                "value": "MoreClass.py",
+                                              },
+                                            ],
+                                            "endComments": [],
+                                            "leadingComments": [],
+                                            "position": {
+                                              "end": {
+                                                "column": 23,
+                                                "line": 23,
+                                                "offset": 368,
+                                              },
+                                              "start": {
+                                                "column": 9,
+                                                "line": 23,
+                                                "offset": 354,
+                                              },
+                                            },
+                                            "trailingComment": null,
+                                            "type": "mappingValue",
+                                          },
+                                        ],
+                                        "leadingComments": [],
+                                        "position": {
+                                          "end": {
+                                            "column": 23,
+                                            "line": 23,
+                                            "offset": 368,
+                                          },
+                                          "start": {
+                                            "column": 5,
+                                            "line": 23,
+                                            "offset": 350,
+                                          },
+                                        },
+                                        "type": "mappingItem",
+                                      },
+                                      {
+                                        "children": [
+                                          {
+                                            "children": [
+                                              {
+                                                "anchor": null,
+                                                "leadingComments": [],
+                                                "middleComments": [],
+                                                "position": {
+                                                  "end": {
+                                                    "column": 9,
+                                                    "line": 24,
+                                                    "offset": 377,
+                                                  },
+                                                  "start": {
+                                                    "column": 5,
+                                                    "line": 24,
+                                                    "offset": 373,
+                                                  },
+                                                },
+                                                "tag": null,
+                                                "trailingComment": null,
+                                                "type": "plain",
+                                                "value": "line",
+                                              },
+                                            ],
+                                            "endComments": [],
+                                            "position": {
+                                              "end": {
+                                                "column": 9,
+                                                "line": 24,
+                                                "offset": 377,
+                                              },
+                                              "start": {
+                                                "column": 5,
+                                                "line": 24,
+                                                "offset": 373,
+                                              },
+                                            },
+                                            "trailingComment": null,
+                                            "type": "mappingKey",
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "anchor": null,
+                                                "leadingComments": [],
+                                                "middleComments": [],
+                                                "position": {
+                                                  "end": {
+                                                    "column": 13,
+                                                    "line": 24,
+                                                    "offset": 381,
+                                                  },
+                                                  "start": {
+                                                    "column": 11,
+                                                    "line": 24,
+                                                    "offset": 379,
+                                                  },
+                                                },
+                                                "tag": null,
+                                                "trailingComment": null,
+                                                "type": "plain",
+                                                "value": "58",
+                                              },
+                                            ],
+                                            "endComments": [],
+                                            "leadingComments": [],
+                                            "position": {
+                                              "end": {
+                                                "column": 13,
+                                                "line": 24,
+                                                "offset": 381,
+                                              },
+                                              "start": {
+                                                "column": 9,
+                                                "line": 24,
+                                                "offset": 377,
+                                              },
+                                            },
+                                            "trailingComment": null,
+                                            "type": "mappingValue",
+                                          },
+                                        ],
+                                        "leadingComments": [],
+                                        "position": {
+                                          "end": {
+                                            "column": 13,
+                                            "line": 24,
+                                            "offset": 381,
+                                          },
+                                          "start": {
+                                            "column": 5,
+                                            "line": 24,
+                                            "offset": 373,
+                                          },
+                                        },
+                                        "type": "mappingItem",
+                                      },
+                                      {
+                                        "children": [
+                                          {
+                                            "children": [
+                                              {
+                                                "anchor": null,
+                                                "leadingComments": [],
+                                                "middleComments": [],
+                                                "position": {
+                                                  "end": {
+                                                    "column": 9,
+                                                    "line": 25,
+                                                    "offset": 390,
+                                                  },
+                                                  "start": {
+                                                    "column": 5,
+                                                    "line": 25,
+                                                    "offset": 386,
+                                                  },
+                                                },
+                                                "tag": null,
+                                                "trailingComment": null,
+                                                "type": "plain",
+                                                "value": "code",
+                                              },
+                                            ],
+                                            "endComments": [],
+                                            "position": {
+                                              "end": {
+                                                "column": 9,
+                                                "line": 25,
+                                                "offset": 390,
+                                              },
+                                              "start": {
+                                                "column": 5,
+                                                "line": 25,
+                                                "offset": 386,
+                                              },
+                                            },
+                                            "trailingComment": null,
+                                            "type": "mappingKey",
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "anchor": null,
+                                                "chomping": "strip",
+                                                "indent": null,
+                                                "indicatorComment": null,
+                                                "leadingComments": [],
+                                                "middleComments": [],
+                                                "position": {
+                                                  "end": {
+                                                    "column": 1,
+                                                    "line": 27,
+                                                    "offset": 411,
+                                                  },
+                                                  "start": {
+                                                    "column": 11,
+                                                    "line": 25,
+                                                    "offset": 392,
+                                                  },
+                                                },
+                                                "tag": null,
+                                                "type": "blockLiteral",
+                                                "value": "foo = bar",
+                                              },
+                                            ],
+                                            "endComments": [],
+                                            "leadingComments": [],
+                                            "position": {
+                                              "end": {
+                                                "column": 1,
+                                                "line": 27,
+                                                "offset": 411,
+                                              },
+                                              "start": {
+                                                "column": 9,
+                                                "line": 25,
+                                                "offset": 390,
+                                              },
+                                            },
+                                            "trailingComment": null,
+                                            "type": "mappingValue",
+                                          },
+                                        ],
+                                        "leadingComments": [],
+                                        "position": {
+                                          "end": {
+                                            "column": 1,
+                                            "line": 27,
+                                            "offset": 411,
+                                          },
+                                          "start": {
+                                            "column": 5,
+                                            "line": 25,
+                                            "offset": 386,
+                                          },
+                                        },
+                                        "type": "mappingItem",
+                                      },
+                                    ],
+                                    "leadingComments": [],
+                                    "middleComments": [],
+                                    "position": {
+                                      "end": {
+                                        "column": 1,
+                                        "line": 27,
+                                        "offset": 411,
+                                      },
+                                      "start": {
+                                        "column": 5,
+                                        "line": 23,
+                                        "offset": 350,
+                                      },
+                                    },
+                                    "tag": null,
+                                    "type": "mapping",
+                                  },
+                                ],
+                                "endComments": [],
+                                "leadingComments": [],
+                                "position": {
+                                  "end": {
+                                    "column": 1,
+                                    "line": 27,
+                                    "offset": 411,
+                                  },
+                                  "start": {
+                                    "column": 3,
+                                    "line": 23,
+                                    "offset": 348,
+                                  },
+                                },
+                                "trailingComment": null,
+                                "type": "sequenceItem",
+                              },
+                            ],
+                            "endComments": [],
+                            "leadingComments": [],
+                            "middleComments": [],
+                            "position": {
+                              "end": {
+                                "column": 1,
+                                "line": 27,
+                                "offset": 411,
+                              },
+                              "start": {
+                                "column": 3,
+                                "line": 19,
+                                "offset": 271,
+                              },
+                            },
+                            "tag": null,
+                            "type": "sequence",
+                          },
+                        ],
+                        "endComments": [],
+                        "leadingComments": [],
+                        "position": {
+                          "end": {
+                            "column": 1,
+                            "line": 27,
+                            "offset": 411,
+                          },
+                          "start": {
+                            "column": 6,
+                            "line": 18,
+                            "offset": 267,
+                          },
+                        },
+                        "trailingComment": null,
+                        "type": "mappingValue",
+                      },
+                    ],
+                    "leadingComments": [],
+                    "position": {
+                      "end": {
+                        "column": 1,
+                        "line": 27,
+                        "offset": 411,
+                      },
+                      "start": {
+                        "column": 1,
+                        "line": 18,
+                        "offset": 262,
+                      },
+                    },
+                    "type": "mappingItem",
+                  },
+                ],
+                "leadingComments": [],
+                "middleComments": [],
+                "position": {
+                  "end": {
+                    "column": 1,
+                    "line": 27,
+                    "offset": 411,
+                  },
+                  "start": {
+                    "column": 1,
+                    "line": 14,
+                    "offset": 192,
+                  },
+                },
+                "tag": null,
+                "type": "mapping",
+              },
+            ],
+            "endComments": [],
+            "position": {
+              "end": {
+                "column": 1,
+                "line": 27,
+                "offset": 411,
+              },
+              "start": {
+                "column": 1,
+                "line": 14,
+                "offset": 192,
+              },
+            },
+            "type": "documentBody",
+          },
+        ],
+        "directivesEndMarker": true,
+        "documentEndMarker": false,
+        "position": {
+          "end": {
+            "column": 1,
+            "line": 27,
+            "offset": 411,
+          },
+          "start": {
+            "column": 1,
+            "line": 13,
+            "offset": 188,
+          },
+        },
+        "trailingComment": null,
+        "type": "document",
+      },
+    ],
+    "comments": [],
+    "position": {
+      "end": {
+        "column": 1,
+        "line": 27,
+        "offset": 411,
+      },
+      "start": {
+        "column": 1,
+        "line": 1,
+        "offset": 0,
+      },
+    },
+    "type": "root",
+  },
+  "input": "---
+Time: 2001-11-23 15:01:42 -5
+User: ed
+Warning:
+  This is an error message
+  for the log file
+---
+Time: 2001-11-23 15:02:31 -5
+User: ed
+Warning:
+  A slightly different error
+  message.
+---
+Date: 2001-11-23 15:03:17 -5
+User: ed
+Fatal:
+  Unknown variable "bar"
+Stack:
+  - file: TopClass.py
+    line: 23
+    code: |
+      x = MoreObject("345\n")
+  - file: MoreClass.py
+    line: 58
+    code: |-
+      foo = bar
+",
+}

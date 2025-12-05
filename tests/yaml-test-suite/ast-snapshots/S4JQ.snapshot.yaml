@@ -1,0 +1,275 @@
+{
+  "ast": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [],
+            "endComments": [],
+            "position": {
+              "end": {
+                "column": 1,
+                "line": 1,
+                "offset": 0,
+              },
+              "start": {
+                "column": 1,
+                "line": 1,
+                "offset": 0,
+              },
+            },
+            "trailingComment": null,
+            "type": "documentHead",
+          },
+          {
+            "children": [
+              {
+                "anchor": null,
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "anchor": null,
+                        "leadingComments": [],
+                        "middleComments": [],
+                        "position": {
+                          "end": {
+                            "column": 7,
+                            "line": 2,
+                            "offset": 42,
+                          },
+                          "start": {
+                            "column": 3,
+                            "line": 2,
+                            "offset": 38,
+                          },
+                        },
+                        "tag": null,
+                        "trailingComment": null,
+                        "type": "quoteDouble",
+                        "value": "12",
+                      },
+                    ],
+                    "endComments": [],
+                    "leadingComments": [],
+                    "position": {
+                      "end": {
+                        "column": 7,
+                        "line": 2,
+                        "offset": 42,
+                      },
+                      "start": {
+                        "column": 1,
+                        "line": 2,
+                        "offset": 36,
+                      },
+                    },
+                    "trailingComment": null,
+                    "type": "sequenceItem",
+                  },
+                  {
+                    "children": [
+                      {
+                        "anchor": null,
+                        "leadingComments": [],
+                        "middleComments": [],
+                        "position": {
+                          "end": {
+                            "column": 5,
+                            "line": 3,
+                            "offset": 47,
+                          },
+                          "start": {
+                            "column": 3,
+                            "line": 3,
+                            "offset": 45,
+                          },
+                        },
+                        "tag": null,
+                        "trailingComment": null,
+                        "type": "plain",
+                        "value": "12",
+                      },
+                    ],
+                    "endComments": [],
+                    "leadingComments": [],
+                    "position": {
+                      "end": {
+                        "column": 5,
+                        "line": 3,
+                        "offset": 47,
+                      },
+                      "start": {
+                        "column": 1,
+                        "line": 3,
+                        "offset": 43,
+                      },
+                    },
+                    "trailingComment": null,
+                    "type": "sequenceItem",
+                  },
+                  {
+                    "children": [
+                      {
+                        "anchor": null,
+                        "leadingComments": [],
+                        "middleComments": [],
+                        "position": {
+                          "end": {
+                            "column": 7,
+                            "line": 4,
+                            "offset": 54,
+                          },
+                          "start": {
+                            "column": 5,
+                            "line": 4,
+                            "offset": 52,
+                          },
+                        },
+                        "tag": {
+                          "position": {
+                            "end": {
+                              "column": 4,
+                              "line": 4,
+                              "offset": 51,
+                            },
+                            "start": {
+                              "column": 3,
+                              "line": 4,
+                              "offset": 50,
+                            },
+                          },
+                          "type": "tag",
+                          "value": "tag:yaml.org,2002:str",
+                        },
+                        "trailingComment": null,
+                        "type": "plain",
+                        "value": "12",
+                      },
+                    ],
+                    "endComments": [],
+                    "leadingComments": [],
+                    "position": {
+                      "end": {
+                        "column": 7,
+                        "line": 4,
+                        "offset": 54,
+                      },
+                      "start": {
+                        "column": 1,
+                        "line": 4,
+                        "offset": 48,
+                      },
+                    },
+                    "trailingComment": null,
+                    "type": "sequenceItem",
+                  },
+                ],
+                "endComments": [],
+                "leadingComments": [
+                  {
+                    "position": {
+                      "end": {
+                        "column": 36,
+                        "line": 1,
+                        "offset": 35,
+                      },
+                      "start": {
+                        "column": 1,
+                        "line": 1,
+                        "offset": 0,
+                      },
+                    },
+                    "type": "comment",
+                    "value": " Assuming conventional resolution:",
+                  },
+                ],
+                "middleComments": [],
+                "position": {
+                  "end": {
+                    "column": 7,
+                    "line": 4,
+                    "offset": 54,
+                  },
+                  "start": {
+                    "column": 1,
+                    "line": 2,
+                    "offset": 36,
+                  },
+                },
+                "tag": null,
+                "type": "sequence",
+              },
+            ],
+            "endComments": [],
+            "position": {
+              "end": {
+                "column": 1,
+                "line": 5,
+                "offset": 55,
+              },
+              "start": {
+                "column": 1,
+                "line": 1,
+                "offset": 0,
+              },
+            },
+            "type": "documentBody",
+          },
+        ],
+        "directivesEndMarker": false,
+        "documentEndMarker": false,
+        "position": {
+          "end": {
+            "column": 1,
+            "line": 5,
+            "offset": 55,
+          },
+          "start": {
+            "column": 1,
+            "line": 1,
+            "offset": 0,
+          },
+        },
+        "trailingComment": null,
+        "type": "document",
+      },
+    ],
+    "comments": [
+      {
+        "position": {
+          "end": {
+            "column": 36,
+            "line": 1,
+            "offset": 35,
+          },
+          "start": {
+            "column": 1,
+            "line": 1,
+            "offset": 0,
+          },
+        },
+        "type": "comment",
+        "value": " Assuming conventional resolution:",
+      },
+    ],
+    "position": {
+      "end": {
+        "column": 1,
+        "line": 5,
+        "offset": 55,
+      },
+      "start": {
+        "column": 1,
+        "line": 1,
+        "offset": 0,
+      },
+    },
+    "type": "root",
+  },
+  "input": "# Assuming conventional resolution:
+- "12"
+- 12
+- ! 12
+",
+}

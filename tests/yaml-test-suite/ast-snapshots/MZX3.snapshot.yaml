@@ -1,0 +1,313 @@
+{
+  "ast": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [],
+            "endComments": [],
+            "position": {
+              "end": {
+                "column": 1,
+                "line": 1,
+                "offset": 0,
+              },
+              "start": {
+                "column": 1,
+                "line": 1,
+                "offset": 0,
+              },
+            },
+            "trailingComment": null,
+            "type": "documentHead",
+          },
+          {
+            "children": [
+              {
+                "anchor": null,
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "anchor": null,
+                        "leadingComments": [],
+                        "middleComments": [],
+                        "position": {
+                          "end": {
+                            "column": 8,
+                            "line": 1,
+                            "offset": 7,
+                          },
+                          "start": {
+                            "column": 3,
+                            "line": 1,
+                            "offset": 2,
+                          },
+                        },
+                        "tag": null,
+                        "trailingComment": null,
+                        "type": "plain",
+                        "value": "plain",
+                      },
+                    ],
+                    "endComments": [],
+                    "leadingComments": [],
+                    "position": {
+                      "end": {
+                        "column": 8,
+                        "line": 1,
+                        "offset": 7,
+                      },
+                      "start": {
+                        "column": 1,
+                        "line": 1,
+                        "offset": 0,
+                      },
+                    },
+                    "trailingComment": null,
+                    "type": "sequenceItem",
+                  },
+                  {
+                    "children": [
+                      {
+                        "anchor": null,
+                        "leadingComments": [],
+                        "middleComments": [],
+                        "position": {
+                          "end": {
+                            "column": 18,
+                            "line": 2,
+                            "offset": 25,
+                          },
+                          "start": {
+                            "column": 3,
+                            "line": 2,
+                            "offset": 10,
+                          },
+                        },
+                        "tag": null,
+                        "trailingComment": null,
+                        "type": "quoteDouble",
+                        "value": "double quoted",
+                      },
+                    ],
+                    "endComments": [],
+                    "leadingComments": [],
+                    "position": {
+                      "end": {
+                        "column": 18,
+                        "line": 2,
+                        "offset": 25,
+                      },
+                      "start": {
+                        "column": 1,
+                        "line": 2,
+                        "offset": 8,
+                      },
+                    },
+                    "trailingComment": null,
+                    "type": "sequenceItem",
+                  },
+                  {
+                    "children": [
+                      {
+                        "anchor": null,
+                        "leadingComments": [],
+                        "middleComments": [],
+                        "position": {
+                          "end": {
+                            "column": 18,
+                            "line": 3,
+                            "offset": 43,
+                          },
+                          "start": {
+                            "column": 3,
+                            "line": 3,
+                            "offset": 28,
+                          },
+                        },
+                        "tag": null,
+                        "trailingComment": null,
+                        "type": "quoteSingle",
+                        "value": "single quoted",
+                      },
+                    ],
+                    "endComments": [],
+                    "leadingComments": [],
+                    "position": {
+                      "end": {
+                        "column": 18,
+                        "line": 3,
+                        "offset": 43,
+                      },
+                      "start": {
+                        "column": 1,
+                        "line": 3,
+                        "offset": 26,
+                      },
+                    },
+                    "trailingComment": null,
+                    "type": "sequenceItem",
+                  },
+                  {
+                    "children": [
+                      {
+                        "anchor": null,
+                        "chomping": "clip",
+                        "indent": null,
+                        "indicatorComment": null,
+                        "leadingComments": [],
+                        "middleComments": [],
+                        "position": {
+                          "end": {
+                            "column": 1,
+                            "line": 6,
+                            "offset": 56,
+                          },
+                          "start": {
+                            "column": 3,
+                            "line": 4,
+                            "offset": 46,
+                          },
+                        },
+                        "tag": null,
+                        "type": "blockFolded",
+                        "value": "block
+",
+                      },
+                    ],
+                    "endComments": [],
+                    "leadingComments": [],
+                    "position": {
+                      "end": {
+                        "column": 1,
+                        "line": 6,
+                        "offset": 56,
+                      },
+                      "start": {
+                        "column": 1,
+                        "line": 4,
+                        "offset": 44,
+                      },
+                    },
+                    "trailingComment": null,
+                    "type": "sequenceItem",
+                  },
+                  {
+                    "children": [
+                      {
+                        "anchor": null,
+                        "leadingComments": [],
+                        "middleComments": [],
+                        "position": {
+                          "end": {
+                            "column": 14,
+                            "line": 6,
+                            "offset": 69,
+                          },
+                          "start": {
+                            "column": 3,
+                            "line": 6,
+                            "offset": 58,
+                          },
+                        },
+                        "tag": null,
+                        "trailingComment": null,
+                        "type": "plain",
+                        "value": "plain again",
+                      },
+                    ],
+                    "endComments": [],
+                    "leadingComments": [],
+                    "position": {
+                      "end": {
+                        "column": 14,
+                        "line": 6,
+                        "offset": 69,
+                      },
+                      "start": {
+                        "column": 1,
+                        "line": 6,
+                        "offset": 56,
+                      },
+                    },
+                    "trailingComment": null,
+                    "type": "sequenceItem",
+                  },
+                ],
+                "endComments": [],
+                "leadingComments": [],
+                "middleComments": [],
+                "position": {
+                  "end": {
+                    "column": 14,
+                    "line": 6,
+                    "offset": 69,
+                  },
+                  "start": {
+                    "column": 1,
+                    "line": 1,
+                    "offset": 0,
+                  },
+                },
+                "tag": null,
+                "type": "sequence",
+              },
+            ],
+            "endComments": [],
+            "position": {
+              "end": {
+                "column": 1,
+                "line": 7,
+                "offset": 70,
+              },
+              "start": {
+                "column": 1,
+                "line": 1,
+                "offset": 0,
+              },
+            },
+            "type": "documentBody",
+          },
+        ],
+        "directivesEndMarker": false,
+        "documentEndMarker": false,
+        "position": {
+          "end": {
+            "column": 1,
+            "line": 7,
+            "offset": 70,
+          },
+          "start": {
+            "column": 1,
+            "line": 1,
+            "offset": 0,
+          },
+        },
+        "trailingComment": null,
+        "type": "document",
+      },
+    ],
+    "comments": [],
+    "position": {
+      "end": {
+        "column": 1,
+        "line": 7,
+        "offset": 70,
+      },
+      "start": {
+        "column": 1,
+        "line": 1,
+        "offset": 0,
+      },
+    },
+    "type": "root",
+  },
+  "input": "- plain
+- "double quoted"
+- 'single quoted'
+- >
+  block
+- plain again
+",
+}

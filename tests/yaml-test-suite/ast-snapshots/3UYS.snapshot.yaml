@@ -1,0 +1,198 @@
+{
+  "ast": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [],
+            "endComments": [],
+            "position": {
+              "end": {
+                "column": 1,
+                "line": 1,
+                "offset": 0,
+              },
+              "start": {
+                "column": 1,
+                "line": 1,
+                "offset": 0,
+              },
+            },
+            "trailingComment": null,
+            "type": "documentHead",
+          },
+          {
+            "children": [
+              {
+                "anchor": null,
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "anchor": null,
+                            "leadingComments": [],
+                            "middleComments": [],
+                            "position": {
+                              "end": {
+                                "column": 14,
+                                "line": 1,
+                                "offset": 13,
+                              },
+                              "start": {
+                                "column": 1,
+                                "line": 1,
+                                "offset": 0,
+                              },
+                            },
+                            "tag": null,
+                            "trailingComment": null,
+                            "type": "plain",
+                            "value": "escaped slash",
+                          },
+                        ],
+                        "endComments": [],
+                        "position": {
+                          "end": {
+                            "column": 14,
+                            "line": 1,
+                            "offset": 13,
+                          },
+                          "start": {
+                            "column": 1,
+                            "line": 1,
+                            "offset": 0,
+                          },
+                        },
+                        "trailingComment": null,
+                        "type": "mappingKey",
+                      },
+                      {
+                        "children": [
+                          {
+                            "anchor": null,
+                            "leadingComments": [],
+                            "middleComments": [],
+                            "position": {
+                              "end": {
+                                "column": 22,
+                                "line": 1,
+                                "offset": 21,
+                              },
+                              "start": {
+                                "column": 16,
+                                "line": 1,
+                                "offset": 15,
+                              },
+                            },
+                            "tag": null,
+                            "trailingComment": null,
+                            "type": "quoteDouble",
+                            "value": "a/b",
+                          },
+                        ],
+                        "endComments": [],
+                        "leadingComments": [],
+                        "position": {
+                          "end": {
+                            "column": 22,
+                            "line": 1,
+                            "offset": 21,
+                          },
+                          "start": {
+                            "column": 14,
+                            "line": 1,
+                            "offset": 13,
+                          },
+                        },
+                        "trailingComment": null,
+                        "type": "mappingValue",
+                      },
+                    ],
+                    "leadingComments": [],
+                    "position": {
+                      "end": {
+                        "column": 22,
+                        "line": 1,
+                        "offset": 21,
+                      },
+                      "start": {
+                        "column": 1,
+                        "line": 1,
+                        "offset": 0,
+                      },
+                    },
+                    "type": "mappingItem",
+                  },
+                ],
+                "leadingComments": [],
+                "middleComments": [],
+                "position": {
+                  "end": {
+                    "column": 22,
+                    "line": 1,
+                    "offset": 21,
+                  },
+                  "start": {
+                    "column": 1,
+                    "line": 1,
+                    "offset": 0,
+                  },
+                },
+                "tag": null,
+                "type": "mapping",
+              },
+            ],
+            "endComments": [],
+            "position": {
+              "end": {
+                "column": 1,
+                "line": 2,
+                "offset": 22,
+              },
+              "start": {
+                "column": 1,
+                "line": 1,
+                "offset": 0,
+              },
+            },
+            "type": "documentBody",
+          },
+        ],
+        "directivesEndMarker": false,
+        "documentEndMarker": false,
+        "position": {
+          "end": {
+            "column": 1,
+            "line": 2,
+            "offset": 22,
+          },
+          "start": {
+            "column": 1,
+            "line": 1,
+            "offset": 0,
+          },
+        },
+        "trailingComment": null,
+        "type": "document",
+      },
+    ],
+    "comments": [],
+    "position": {
+      "end": {
+        "column": 1,
+        "line": 2,
+        "offset": 22,
+      },
+      "start": {
+        "column": 1,
+        "line": 1,
+        "offset": 0,
+      },
+    },
+    "type": "root",
+  },
+  "input": "escaped slash: "a\/b"
+",
+}

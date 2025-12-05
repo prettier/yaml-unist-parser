@@ -1,0 +1,157 @@
+{
+  "ast": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [],
+            "endComments": [],
+            "position": {
+              "end": {
+                "column": 4,
+                "line": 1,
+                "offset": 3,
+              },
+              "start": {
+                "column": 1,
+                "line": 1,
+                "offset": 0,
+              },
+            },
+            "trailingComment": null,
+            "type": "documentHead",
+          },
+          {
+            "children": [
+              {
+                "anchor": null,
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "anchor": {
+                          "position": {
+                            "end": {
+                              "column": 6,
+                              "line": 2,
+                              "offset": 9,
+                            },
+                            "start": {
+                              "column": 3,
+                              "line": 2,
+                              "offset": 6,
+                            },
+                          },
+                          "type": "anchor",
+                          "value": "😁",
+                        },
+                        "leadingComments": [],
+                        "middleComments": [],
+                        "position": {
+                          "end": {
+                            "column": 21,
+                            "line": 2,
+                            "offset": 24,
+                          },
+                          "start": {
+                            "column": 7,
+                            "line": 2,
+                            "offset": 10,
+                          },
+                        },
+                        "tag": null,
+                        "trailingComment": null,
+                        "type": "plain",
+                        "value": "unicode anchor",
+                      },
+                    ],
+                    "endComments": [],
+                    "leadingComments": [],
+                    "position": {
+                      "end": {
+                        "column": 21,
+                        "line": 2,
+                        "offset": 24,
+                      },
+                      "start": {
+                        "column": 1,
+                        "line": 2,
+                        "offset": 4,
+                      },
+                    },
+                    "trailingComment": null,
+                    "type": "sequenceItem",
+                  },
+                ],
+                "endComments": [],
+                "leadingComments": [],
+                "middleComments": [],
+                "position": {
+                  "end": {
+                    "column": 21,
+                    "line": 2,
+                    "offset": 24,
+                  },
+                  "start": {
+                    "column": 1,
+                    "line": 2,
+                    "offset": 4,
+                  },
+                },
+                "tag": null,
+                "type": "sequence",
+              },
+            ],
+            "endComments": [],
+            "position": {
+              "end": {
+                "column": 1,
+                "line": 3,
+                "offset": 25,
+              },
+              "start": {
+                "column": 1,
+                "line": 2,
+                "offset": 4,
+              },
+            },
+            "type": "documentBody",
+          },
+        ],
+        "directivesEndMarker": true,
+        "documentEndMarker": false,
+        "position": {
+          "end": {
+            "column": 1,
+            "line": 3,
+            "offset": 25,
+          },
+          "start": {
+            "column": 1,
+            "line": 1,
+            "offset": 0,
+          },
+        },
+        "trailingComment": null,
+        "type": "document",
+      },
+    ],
+    "comments": [],
+    "position": {
+      "end": {
+        "column": 1,
+        "line": 3,
+        "offset": 25,
+      },
+      "start": {
+        "column": 1,
+        "line": 1,
+        "offset": 0,
+      },
+    },
+    "type": "root",
+  },
+  "input": "---
+- &😁 unicode anchor
+",
+}

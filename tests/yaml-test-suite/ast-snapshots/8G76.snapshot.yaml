@@ -1,0 +1,114 @@
+{
+  "ast": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [],
+            "endComments": [],
+            "position": {
+              "end": {
+                "column": 3,
+                "line": 1,
+                "offset": 2,
+              },
+              "start": {
+                "column": 3,
+                "line": 1,
+                "offset": 2,
+              },
+            },
+            "trailingComment": null,
+            "type": "documentHead",
+          },
+          {
+            "children": [],
+            "endComments": [
+              {
+                "position": {
+                  "end": {
+                    "column": 12,
+                    "line": 1,
+                    "offset": 11,
+                  },
+                  "start": {
+                    "column": 3,
+                    "line": 1,
+                    "offset": 2,
+                  },
+                },
+                "type": "comment",
+                "value": " Comment",
+              },
+            ],
+            "position": {
+              "end": {
+                "column": 1,
+                "line": 5,
+                "offset": 18,
+              },
+              "start": {
+                "column": 3,
+                "line": 1,
+                "offset": 2,
+              },
+            },
+            "type": "documentBody",
+          },
+        ],
+        "directivesEndMarker": false,
+        "documentEndMarker": false,
+        "position": {
+          "end": {
+            "column": 1,
+            "line": 5,
+            "offset": 18,
+          },
+          "start": {
+            "column": 3,
+            "line": 1,
+            "offset": 2,
+          },
+        },
+        "trailingComment": null,
+        "type": "document",
+      },
+    ],
+    "comments": [
+      {
+        "position": {
+          "end": {
+            "column": 12,
+            "line": 1,
+            "offset": 11,
+          },
+          "start": {
+            "column": 3,
+            "line": 1,
+            "offset": 2,
+          },
+        },
+        "type": "comment",
+        "value": " Comment",
+      },
+    ],
+    "position": {
+      "end": {
+        "column": 1,
+        "line": 5,
+        "offset": 18,
+      },
+      "start": {
+        "column": 1,
+        "line": 1,
+        "offset": 0,
+      },
+    },
+    "type": "root",
+  },
+  "input": "  # Comment
+   
+
+
+",
+}

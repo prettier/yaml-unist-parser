@@ -1,0 +1,100 @@
+{
+  "ast": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "leadingComments": [],
+                "name": "YAML",
+                "parameters": [
+                  "1.1",
+                ],
+                "position": {
+                  "end": {
+                    "column": 12,
+                    "line": 1,
+                    "offset": 11,
+                  },
+                  "start": {
+                    "column": 1,
+                    "line": 1,
+                    "offset": 0,
+                  },
+                },
+                "trailingComment": null,
+                "type": "directive",
+              },
+            ],
+            "endComments": [],
+            "position": {
+              "end": {
+                "column": 4,
+                "line": 2,
+                "offset": 15,
+              },
+              "start": {
+                "column": 1,
+                "line": 1,
+                "offset": 0,
+              },
+            },
+            "trailingComment": null,
+            "type": "documentHead",
+          },
+          {
+            "children": [],
+            "endComments": [],
+            "position": {
+              "end": {
+                "column": 4,
+                "line": 2,
+                "offset": 15,
+              },
+              "start": {
+                "column": 4,
+                "line": 2,
+                "offset": 15,
+              },
+            },
+            "type": "documentBody",
+          },
+        ],
+        "directivesEndMarker": true,
+        "documentEndMarker": false,
+        "position": {
+          "end": {
+            "column": 1,
+            "line": 3,
+            "offset": 16,
+          },
+          "start": {
+            "column": 1,
+            "line": 1,
+            "offset": 0,
+          },
+        },
+        "trailingComment": null,
+        "type": "document",
+      },
+    ],
+    "comments": [],
+    "position": {
+      "end": {
+        "column": 1,
+        "line": 3,
+        "offset": 16,
+      },
+      "start": {
+        "column": 1,
+        "line": 1,
+        "offset": 0,
+      },
+    },
+    "type": "root",
+  },
+  "input": "%YAML 	 1.1
+---
+",
+}

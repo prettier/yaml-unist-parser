@@ -1,0 +1,189 @@
+{
+  "ast": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "leadingComments": [],
+                "name": "YAML",
+                "parameters": [
+                  "1.3",
+                ],
+                "position": {
+                  "end": {
+                    "column": 28,
+                    "line": 1,
+                    "offset": 27,
+                  },
+                  "start": {
+                    "column": 1,
+                    "line": 1,
+                    "offset": 0,
+                  },
+                },
+                "trailingComment": {
+                  "position": {
+                    "end": {
+                      "column": 28,
+                      "line": 1,
+                      "offset": 27,
+                    },
+                    "start": {
+                      "column": 11,
+                      "line": 1,
+                      "offset": 10,
+                    },
+                  },
+                  "type": "comment",
+                  "value": " Attempt parsing",
+                },
+                "type": "directive",
+              },
+            ],
+            "endComments": [
+              {
+                "position": {
+                  "end": {
+                    "column": 27,
+                    "line": 2,
+                    "offset": 54,
+                  },
+                  "start": {
+                    "column": 11,
+                    "line": 2,
+                    "offset": 38,
+                  },
+                },
+                "type": "comment",
+                "value": " with a warning",
+              },
+            ],
+            "position": {
+              "end": {
+                "column": 4,
+                "line": 3,
+                "offset": 58,
+              },
+              "start": {
+                "column": 1,
+                "line": 1,
+                "offset": 0,
+              },
+            },
+            "trailingComment": null,
+            "type": "documentHead",
+          },
+          {
+            "children": [
+              {
+                "anchor": null,
+                "leadingComments": [],
+                "middleComments": [],
+                "position": {
+                  "end": {
+                    "column": 6,
+                    "line": 4,
+                    "offset": 64,
+                  },
+                  "start": {
+                    "column": 1,
+                    "line": 4,
+                    "offset": 59,
+                  },
+                },
+                "tag": null,
+                "trailingComment": null,
+                "type": "quoteDouble",
+                "value": "foo",
+              },
+            ],
+            "endComments": [],
+            "position": {
+              "end": {
+                "column": 1,
+                "line": 5,
+                "offset": 65,
+              },
+              "start": {
+                "column": 1,
+                "line": 4,
+                "offset": 59,
+              },
+            },
+            "type": "documentBody",
+          },
+        ],
+        "directivesEndMarker": true,
+        "documentEndMarker": false,
+        "position": {
+          "end": {
+            "column": 1,
+            "line": 5,
+            "offset": 65,
+          },
+          "start": {
+            "column": 1,
+            "line": 1,
+            "offset": 0,
+          },
+        },
+        "trailingComment": null,
+        "type": "document",
+      },
+    ],
+    "comments": [
+      {
+        "position": {
+          "end": {
+            "column": 28,
+            "line": 1,
+            "offset": 27,
+          },
+          "start": {
+            "column": 11,
+            "line": 1,
+            "offset": 10,
+          },
+        },
+        "type": "comment",
+        "value": " Attempt parsing",
+      },
+      {
+        "position": {
+          "end": {
+            "column": 27,
+            "line": 2,
+            "offset": 54,
+          },
+          "start": {
+            "column": 11,
+            "line": 2,
+            "offset": 38,
+          },
+        },
+        "type": "comment",
+        "value": " with a warning",
+      },
+    ],
+    "position": {
+      "end": {
+        "column": 1,
+        "line": 5,
+        "offset": 65,
+      },
+      "start": {
+        "column": 1,
+        "line": 1,
+        "offset": 0,
+      },
+    },
+    "type": "root",
+  },
+  "input": "%YAML 1.3 # Attempt parsing
+          # with a warning
+---
+"foo"
+",
+}

@@ -1,0 +1,225 @@
+{
+  "ast": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [],
+            "endComments": [],
+            "position": {
+              "end": {
+                "column": 1,
+                "line": 1,
+                "offset": 0,
+              },
+              "start": {
+                "column": 1,
+                "line": 1,
+                "offset": 0,
+              },
+            },
+            "trailingComment": null,
+            "type": "documentHead",
+          },
+          {
+            "children": [
+              {
+                "anchor": null,
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "anchor": null,
+                        "leadingComments": [],
+                        "middleComments": [],
+                        "position": {
+                          "end": {
+                            "column": 15,
+                            "line": 1,
+                            "offset": 14,
+                          },
+                          "start": {
+                            "column": 3,
+                            "line": 1,
+                            "offset": 2,
+                          },
+                        },
+                        "tag": null,
+                        "trailingComment": null,
+                        "type": "plain",
+                        "value": "Mark McGwire",
+                      },
+                    ],
+                    "endComments": [],
+                    "leadingComments": [],
+                    "position": {
+                      "end": {
+                        "column": 15,
+                        "line": 1,
+                        "offset": 14,
+                      },
+                      "start": {
+                        "column": 1,
+                        "line": 1,
+                        "offset": 0,
+                      },
+                    },
+                    "trailingComment": null,
+                    "type": "sequenceItem",
+                  },
+                  {
+                    "children": [
+                      {
+                        "anchor": null,
+                        "leadingComments": [],
+                        "middleComments": [],
+                        "position": {
+                          "end": {
+                            "column": 13,
+                            "line": 2,
+                            "offset": 27,
+                          },
+                          "start": {
+                            "column": 3,
+                            "line": 2,
+                            "offset": 17,
+                          },
+                        },
+                        "tag": null,
+                        "trailingComment": null,
+                        "type": "plain",
+                        "value": "Sammy Sosa",
+                      },
+                    ],
+                    "endComments": [],
+                    "leadingComments": [],
+                    "position": {
+                      "end": {
+                        "column": 13,
+                        "line": 2,
+                        "offset": 27,
+                      },
+                      "start": {
+                        "column": 1,
+                        "line": 2,
+                        "offset": 15,
+                      },
+                    },
+                    "trailingComment": null,
+                    "type": "sequenceItem",
+                  },
+                  {
+                    "children": [
+                      {
+                        "anchor": null,
+                        "leadingComments": [],
+                        "middleComments": [],
+                        "position": {
+                          "end": {
+                            "column": 14,
+                            "line": 3,
+                            "offset": 41,
+                          },
+                          "start": {
+                            "column": 3,
+                            "line": 3,
+                            "offset": 30,
+                          },
+                        },
+                        "tag": null,
+                        "trailingComment": null,
+                        "type": "plain",
+                        "value": "Ken Griffey",
+                      },
+                    ],
+                    "endComments": [],
+                    "leadingComments": [],
+                    "position": {
+                      "end": {
+                        "column": 14,
+                        "line": 3,
+                        "offset": 41,
+                      },
+                      "start": {
+                        "column": 1,
+                        "line": 3,
+                        "offset": 28,
+                      },
+                    },
+                    "trailingComment": null,
+                    "type": "sequenceItem",
+                  },
+                ],
+                "endComments": [],
+                "leadingComments": [],
+                "middleComments": [],
+                "position": {
+                  "end": {
+                    "column": 14,
+                    "line": 3,
+                    "offset": 41,
+                  },
+                  "start": {
+                    "column": 1,
+                    "line": 1,
+                    "offset": 0,
+                  },
+                },
+                "tag": null,
+                "type": "sequence",
+              },
+            ],
+            "endComments": [],
+            "position": {
+              "end": {
+                "column": 1,
+                "line": 4,
+                "offset": 42,
+              },
+              "start": {
+                "column": 1,
+                "line": 1,
+                "offset": 0,
+              },
+            },
+            "type": "documentBody",
+          },
+        ],
+        "directivesEndMarker": false,
+        "documentEndMarker": false,
+        "position": {
+          "end": {
+            "column": 1,
+            "line": 4,
+            "offset": 42,
+          },
+          "start": {
+            "column": 1,
+            "line": 1,
+            "offset": 0,
+          },
+        },
+        "trailingComment": null,
+        "type": "document",
+      },
+    ],
+    "comments": [],
+    "position": {
+      "end": {
+        "column": 1,
+        "line": 4,
+        "offset": 42,
+      },
+      "start": {
+        "column": 1,
+        "line": 1,
+        "offset": 0,
+      },
+    },
+    "type": "root",
+  },
+  "input": "- Mark McGwire
+- Sammy Sosa
+- Ken Griffey
+",
+}

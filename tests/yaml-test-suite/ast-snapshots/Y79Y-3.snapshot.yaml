@@ -1,0 +1,184 @@
+{
+  "ast": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [],
+            "endComments": [],
+            "position": {
+              "end": {
+                "column": 1,
+                "line": 1,
+                "offset": 0,
+              },
+              "start": {
+                "column": 1,
+                "line": 1,
+                "offset": 0,
+              },
+            },
+            "trailingComment": null,
+            "type": "documentHead",
+          },
+          {
+            "children": [
+              {
+                "anchor": null,
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "anchor": null,
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "anchor": null,
+                                "leadingComments": [],
+                                "middleComments": [],
+                                "position": {
+                                  "end": {
+                                    "column": 5,
+                                    "line": 3,
+                                    "offset": 10,
+                                  },
+                                  "start": {
+                                    "column": 2,
+                                    "line": 3,
+                                    "offset": 7,
+                                  },
+                                },
+                                "tag": null,
+                                "trailingComment": null,
+                                "type": "plain",
+                                "value": "foo",
+                              },
+                            ],
+                            "position": {
+                              "end": {
+                                "column": 5,
+                                "line": 3,
+                                "offset": 10,
+                              },
+                              "start": {
+                                "column": 2,
+                                "line": 3,
+                                "offset": 7,
+                              },
+                            },
+                            "type": "flowSequenceItem",
+                          },
+                        ],
+                        "endComments": [],
+                        "leadingComments": [],
+                        "middleComments": [],
+                        "position": {
+                          "end": {
+                            "column": 3,
+                            "line": 4,
+                            "offset": 13,
+                          },
+                          "start": {
+                            "column": 3,
+                            "line": 1,
+                            "offset": 2,
+                          },
+                        },
+                        "tag": null,
+                        "trailingComment": null,
+                        "type": "flowSequence",
+                      },
+                    ],
+                    "endComments": [],
+                    "leadingComments": [],
+                    "position": {
+                      "end": {
+                        "column": 3,
+                        "line": 4,
+                        "offset": 13,
+                      },
+                      "start": {
+                        "column": 1,
+                        "line": 1,
+                        "offset": 0,
+                      },
+                    },
+                    "trailingComment": null,
+                    "type": "sequenceItem",
+                  },
+                ],
+                "endComments": [],
+                "leadingComments": [],
+                "middleComments": [],
+                "position": {
+                  "end": {
+                    "column": 3,
+                    "line": 4,
+                    "offset": 13,
+                  },
+                  "start": {
+                    "column": 1,
+                    "line": 1,
+                    "offset": 0,
+                  },
+                },
+                "tag": null,
+                "type": "sequence",
+              },
+            ],
+            "endComments": [],
+            "position": {
+              "end": {
+                "column": 1,
+                "line": 5,
+                "offset": 14,
+              },
+              "start": {
+                "column": 1,
+                "line": 1,
+                "offset": 0,
+              },
+            },
+            "type": "documentBody",
+          },
+        ],
+        "directivesEndMarker": false,
+        "documentEndMarker": false,
+        "position": {
+          "end": {
+            "column": 1,
+            "line": 5,
+            "offset": 14,
+          },
+          "start": {
+            "column": 1,
+            "line": 1,
+            "offset": 0,
+          },
+        },
+        "trailingComment": null,
+        "type": "document",
+      },
+    ],
+    "comments": [],
+    "position": {
+      "end": {
+        "column": 1,
+        "line": 5,
+        "offset": 14,
+      },
+      "start": {
+        "column": 1,
+        "line": 1,
+        "offset": 0,
+      },
+    },
+    "type": "root",
+  },
+  "input": "- [
+	
+ foo
+ ]
+",
+}

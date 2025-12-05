@@ -1,0 +1,314 @@
+{
+  "ast": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [],
+            "endComments": [],
+            "position": {
+              "end": {
+                "column": 4,
+                "line": 1,
+                "offset": 3,
+              },
+              "start": {
+                "column": 1,
+                "line": 1,
+                "offset": 0,
+              },
+            },
+            "trailingComment": null,
+            "type": "documentHead",
+          },
+          {
+            "children": [
+              {
+                "anchor": null,
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "anchor": null,
+                            "leadingComments": [],
+                            "middleComments": [],
+                            "position": {
+                              "end": {
+                                "column": 2,
+                                "line": 2,
+                                "offset": 5,
+                              },
+                              "start": {
+                                "column": 1,
+                                "line": 2,
+                                "offset": 4,
+                              },
+                            },
+                            "tag": null,
+                            "trailingComment": null,
+                            "type": "plain",
+                            "value": "a",
+                          },
+                        ],
+                        "endComments": [],
+                        "position": {
+                          "end": {
+                            "column": 2,
+                            "line": 2,
+                            "offset": 5,
+                          },
+                          "start": {
+                            "column": 1,
+                            "line": 2,
+                            "offset": 4,
+                          },
+                        },
+                        "trailingComment": null,
+                        "type": "mappingKey",
+                      },
+                      {
+                        "children": [
+                          {
+                            "anchor": {
+                              "position": {
+                                "end": {
+                                  "column": 11,
+                                  "line": 2,
+                                  "offset": 14,
+                                },
+                                "start": {
+                                  "column": 4,
+                                  "line": 2,
+                                  "offset": 7,
+                                },
+                              },
+                              "type": "anchor",
+                              "value": "anchor",
+                            },
+                            "leadingComments": [],
+                            "middleComments": [],
+                            "position": {
+                              "end": {
+                                "column": 11,
+                                "line": 2,
+                                "offset": 14,
+                              },
+                              "start": {
+                                "column": 11,
+                                "line": 2,
+                                "offset": 14,
+                              },
+                            },
+                            "tag": null,
+                            "trailingComment": null,
+                            "type": "plain",
+                            "value": "",
+                          },
+                        ],
+                        "endComments": [],
+                        "leadingComments": [],
+                        "position": {
+                          "end": {
+                            "column": 11,
+                            "line": 2,
+                            "offset": 14,
+                          },
+                          "start": {
+                            "column": 2,
+                            "line": 2,
+                            "offset": 5,
+                          },
+                        },
+                        "trailingComment": null,
+                        "type": "mappingValue",
+                      },
+                    ],
+                    "leadingComments": [],
+                    "position": {
+                      "end": {
+                        "column": 11,
+                        "line": 2,
+                        "offset": 14,
+                      },
+                      "start": {
+                        "column": 1,
+                        "line": 2,
+                        "offset": 4,
+                      },
+                    },
+                    "type": "mappingItem",
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "anchor": null,
+                            "leadingComments": [],
+                            "middleComments": [],
+                            "position": {
+                              "end": {
+                                "column": 2,
+                                "line": 3,
+                                "offset": 16,
+                              },
+                              "start": {
+                                "column": 1,
+                                "line": 3,
+                                "offset": 15,
+                              },
+                            },
+                            "tag": null,
+                            "trailingComment": null,
+                            "type": "plain",
+                            "value": "b",
+                          },
+                        ],
+                        "endComments": [],
+                        "position": {
+                          "end": {
+                            "column": 2,
+                            "line": 3,
+                            "offset": 16,
+                          },
+                          "start": {
+                            "column": 1,
+                            "line": 3,
+                            "offset": 15,
+                          },
+                        },
+                        "trailingComment": null,
+                        "type": "mappingKey",
+                      },
+                      {
+                        "children": [
+                          {
+                            "anchor": null,
+                            "leadingComments": [],
+                            "middleComments": [],
+                            "position": {
+                              "end": {
+                                "column": 11,
+                                "line": 3,
+                                "offset": 25,
+                              },
+                              "start": {
+                                "column": 4,
+                                "line": 3,
+                                "offset": 18,
+                              },
+                            },
+                            "tag": null,
+                            "trailingComment": null,
+                            "type": "alias",
+                            "value": "anchor",
+                          },
+                        ],
+                        "endComments": [],
+                        "leadingComments": [],
+                        "position": {
+                          "end": {
+                            "column": 11,
+                            "line": 3,
+                            "offset": 25,
+                          },
+                          "start": {
+                            "column": 2,
+                            "line": 3,
+                            "offset": 16,
+                          },
+                        },
+                        "trailingComment": null,
+                        "type": "mappingValue",
+                      },
+                    ],
+                    "leadingComments": [],
+                    "position": {
+                      "end": {
+                        "column": 11,
+                        "line": 3,
+                        "offset": 25,
+                      },
+                      "start": {
+                        "column": 1,
+                        "line": 3,
+                        "offset": 15,
+                      },
+                    },
+                    "type": "mappingItem",
+                  },
+                ],
+                "leadingComments": [],
+                "middleComments": [],
+                "position": {
+                  "end": {
+                    "column": 11,
+                    "line": 3,
+                    "offset": 25,
+                  },
+                  "start": {
+                    "column": 1,
+                    "line": 2,
+                    "offset": 4,
+                  },
+                },
+                "tag": null,
+                "type": "mapping",
+              },
+            ],
+            "endComments": [],
+            "position": {
+              "end": {
+                "column": 1,
+                "line": 4,
+                "offset": 26,
+              },
+              "start": {
+                "column": 1,
+                "line": 2,
+                "offset": 4,
+              },
+            },
+            "type": "documentBody",
+          },
+        ],
+        "directivesEndMarker": true,
+        "documentEndMarker": false,
+        "position": {
+          "end": {
+            "column": 1,
+            "line": 4,
+            "offset": 26,
+          },
+          "start": {
+            "column": 1,
+            "line": 1,
+            "offset": 0,
+          },
+        },
+        "trailingComment": null,
+        "type": "document",
+      },
+    ],
+    "comments": [],
+    "position": {
+      "end": {
+        "column": 1,
+        "line": 4,
+        "offset": 26,
+      },
+      "start": {
+        "column": 1,
+        "line": 1,
+        "offset": 0,
+      },
+    },
+    "type": "root",
+  },
+  "input": "---
+a: &anchor
+b: *anchor
+",
+}

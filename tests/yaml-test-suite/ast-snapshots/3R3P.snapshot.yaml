@@ -1,0 +1,157 @@
+{
+  "ast": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [],
+            "endComments": [],
+            "position": {
+              "end": {
+                "column": 1,
+                "line": 1,
+                "offset": 0,
+              },
+              "start": {
+                "column": 1,
+                "line": 1,
+                "offset": 0,
+              },
+            },
+            "trailingComment": null,
+            "type": "documentHead",
+          },
+          {
+            "children": [
+              {
+                "anchor": {
+                  "position": {
+                    "end": {
+                      "column": 10,
+                      "line": 1,
+                      "offset": 9,
+                    },
+                    "start": {
+                      "column": 1,
+                      "line": 1,
+                      "offset": 0,
+                    },
+                  },
+                  "type": "anchor",
+                  "value": "sequence",
+                },
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "anchor": null,
+                        "leadingComments": [],
+                        "middleComments": [],
+                        "position": {
+                          "end": {
+                            "column": 4,
+                            "line": 2,
+                            "offset": 13,
+                          },
+                          "start": {
+                            "column": 3,
+                            "line": 2,
+                            "offset": 12,
+                          },
+                        },
+                        "tag": null,
+                        "trailingComment": null,
+                        "type": "plain",
+                        "value": "a",
+                      },
+                    ],
+                    "endComments": [],
+                    "leadingComments": [],
+                    "position": {
+                      "end": {
+                        "column": 4,
+                        "line": 2,
+                        "offset": 13,
+                      },
+                      "start": {
+                        "column": 1,
+                        "line": 2,
+                        "offset": 10,
+                      },
+                    },
+                    "trailingComment": null,
+                    "type": "sequenceItem",
+                  },
+                ],
+                "endComments": [],
+                "leadingComments": [],
+                "middleComments": [],
+                "position": {
+                  "end": {
+                    "column": 4,
+                    "line": 2,
+                    "offset": 13,
+                  },
+                  "start": {
+                    "column": 1,
+                    "line": 2,
+                    "offset": 10,
+                  },
+                },
+                "tag": null,
+                "type": "sequence",
+              },
+            ],
+            "endComments": [],
+            "position": {
+              "end": {
+                "column": 1,
+                "line": 3,
+                "offset": 14,
+              },
+              "start": {
+                "column": 1,
+                "line": 1,
+                "offset": 0,
+              },
+            },
+            "type": "documentBody",
+          },
+        ],
+        "directivesEndMarker": false,
+        "documentEndMarker": false,
+        "position": {
+          "end": {
+            "column": 1,
+            "line": 3,
+            "offset": 14,
+          },
+          "start": {
+            "column": 1,
+            "line": 1,
+            "offset": 0,
+          },
+        },
+        "trailingComment": null,
+        "type": "document",
+      },
+    ],
+    "comments": [],
+    "position": {
+      "end": {
+        "column": 1,
+        "line": 3,
+        "offset": 14,
+      },
+      "start": {
+        "column": 1,
+        "line": 1,
+        "offset": 0,
+      },
+    },
+    "type": "root",
+  },
+  "input": "&sequence
+- a
+",
+}

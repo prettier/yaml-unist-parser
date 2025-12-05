@@ -1,0 +1,361 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`2CMS.yaml.yaml: Invalid mapping in plain multiline 1`] = `[YAMLSyntaxError: Implicit keys need to be on a single line]`;
+
+exports[`2CMS.yaml: Invalid mapping in plain multiline 1`] = `[YAMLSyntaxError: Implicit keys need to be on a single line]`;
+
+exports[`2G84.yaml: Literal modifers 1`] = `[YAMLSyntaxError: Block scalar header includes extra characters: |0]`;
+
+exports[`2G84-2.yaml: Literal modifers 1`] = `[YAMLSyntaxError: Block scalar header includes extra characters: |10]`;
+
+exports[`3HFZ.yaml.yaml: Invalid content after document end marker 1`] = `[YAMLSyntaxError: Unexpected scalar at node end]`;
+
+exports[`3HFZ.yaml: Invalid content after document end marker 1`] = `[YAMLSyntaxError: Unexpected scalar at node end]`;
+
+exports[`4EJS.yaml.yaml: Invalid tabs as indendation in a mapping 1`] = `[YAMLSyntaxError: Tabs are not allowed as indentation]`;
+
+exports[`4EJS.yaml: Invalid tabs as indendation in a mapping 1`] = `[YAMLSyntaxError: Tabs are not allowed as indentation]`;
+
+exports[`4H7K.yaml.yaml: Flow sequence with invalid extra closing bracket 1`] = `[YAMLSyntaxError: Unexpected flow-seq-end token in YAML stream: "]"]`;
+
+exports[`4H7K.yaml: Flow sequence with invalid extra closing bracket 1`] = `[YAMLSyntaxError: Unexpected flow-seq-end token in YAML stream: "]"]`;
+
+exports[`4HVU.yaml.yaml: Wrong indendation in Sequence 1`] = `[YAMLSyntaxError: A block sequence may not be used as an implicit map key]`;
+
+exports[`4HVU.yaml: Wrong indendation in Sequence 1`] = `[YAMLSyntaxError: A block sequence may not be used as an implicit map key]`;
+
+exports[`4JVG.yaml.yaml: Scalar value with two anchors 1`] = `[YAMLSyntaxError: A node can have at most one anchor]`;
+
+exports[`4JVG.yaml: Scalar value with two anchors 1`] = `[YAMLSyntaxError: A node can have at most one anchor]`;
+
+exports[`5LLU.yaml.yaml: Block scalar with wrong indented line after spaces only 1`] = `[YAMLSyntaxError: Block scalars with more-indented leading empty lines must use an explicit indentation indicator]`;
+
+exports[`5LLU.yaml: Block scalar with wrong indented line after spaces only 1`] = `[YAMLSyntaxError: Block scalars with more-indented leading empty lines must use an explicit indentation indicator]`;
+
+exports[`5TRB.yaml.yaml: Invalid document-start marker in doublequoted tring 1`] = `[YAMLSyntaxError: Missing closing "quote]`;
+
+exports[`5TRB.yaml: Invalid document-start marker in doublequoted tring 1`] = `[YAMLSyntaxError: Missing closing "quote]`;
+
+exports[`5U3A.yaml.yaml: Sequence on same Line as Mapping Key 1`] = `[YAMLSyntaxError: Unexpected block-seq-ind on same line with key]`;
+
+exports[`5U3A.yaml: Sequence on same Line as Mapping Key 1`] = `[YAMLSyntaxError: Unexpected block-seq-ind on same line with key]`;
+
+exports[`6JTT.yaml.yaml: Flow sequence without closing bracket 1`] = `[YAMLSyntaxError: Flow sequence must end with a ]]`;
+
+exports[`6JTT.yaml: Flow sequence without closing bracket 1`] = `[YAMLSyntaxError: Flow sequence must end with a ]]`;
+
+exports[`6S55.yaml.yaml: Invalid scalar at the end of sequence 1`] = `[YAMLSyntaxError: All mapping items must start at the same column]`;
+
+exports[`6S55.yaml: Invalid scalar at the end of sequence 1`] = `[YAMLSyntaxError: All mapping items must start at the same column]`;
+
+exports[`7LBH.yaml.yaml: Multiline double quoted implicit keys 1`] = `[YAMLSyntaxError: Implicit keys need to be on a single line]`;
+
+exports[`7LBH.yaml: Multiline double quoted implicit keys 1`] = `[YAMLSyntaxError: Implicit keys need to be on a single line]`;
+
+exports[`7MNF.yaml: Missing colon 1`] = `[YAMLSyntaxError: Implicit map keys need to be followed by map values]`;
+
+exports[`8XDJ.yaml.yaml: Comment in plain multiline value 1`] = `[YAMLSyntaxError: All mapping items must start at the same column]`;
+
+exports[`8XDJ.yaml: Comment in plain multiline value 1`] = `[YAMLSyntaxError: All mapping items must start at the same column]`;
+
+exports[`9C9N.yaml.yaml: Wrong indented flow sequence 1`] = `[YAMLSyntaxError: Flow sequence in block collection must be sufficiently indented and end with a ]]`;
+
+exports[`9C9N.yaml: Wrong indented flow sequence 1`] = `[YAMLSyntaxError: Flow sequence in block collection must be sufficiently indented and end with a ]]`;
+
+exports[`9CWY.yaml.yaml: Invalid scalar at the end of mapping 1`] = `[YAMLSyntaxError: Implicit map keys need to be followed by map values]`;
+
+exports[`9CWY.yaml: Invalid scalar at the end of mapping 1`] = `[YAMLSyntaxError: Implicit map keys need to be followed by map values]`;
+
+exports[`9HCY.yaml.yaml: Need document footer before directives 1`] = `[YAMLSyntaxError: Unexpected scalar at node end]`;
+
+exports[`9HCY.yaml: Need document footer before directives 1`] = `[YAMLSyntaxError: Unexpected scalar at node end]`;
+
+exports[`9JBA.yaml.yaml: Invalid comment after end of flow sequence 1`] = `[YAMLSyntaxError: Comments must be separated from other tokens by white space characters]`;
+
+exports[`9JBA.yaml: Invalid comment after end of flow sequence 1`] = `[YAMLSyntaxError: Comments must be separated from other tokens by white space characters]`;
+
+exports[`9KBC.yaml.yaml: Mapping starting at --- line 1`] = `[YAMLSyntaxError: Block collection cannot start on same line with directives-end marker]`;
+
+exports[`9KBC.yaml: Mapping starting at --- line 1`] = `[YAMLSyntaxError: Block collection cannot start on same line with directives-end marker]`;
+
+exports[`9MAG.yaml.yaml: Flow sequence with invalid comma at the beginning 1`] = `[YAMLSyntaxError: Unexpected , in flow sequence]`;
+
+exports[`9MAG.yaml: Flow sequence with invalid comma at the beginning 1`] = `[YAMLSyntaxError: Unexpected , in flow sequence]`;
+
+exports[`9MMA.yaml.yaml: Directive by itself with no document 1`] = `[YAMLSyntaxError: Missing directives-end indicator line]`;
+
+exports[`9MMA.yaml: Directive by itself with no document 1`] = `[YAMLSyntaxError: Missing directives-end indicator line]`;
+
+exports[`9MQT-2.yaml.yaml: Scalar doc with '...' in content 1`] = `[YAMLSyntaxError: Missing closing "quote]`;
+
+exports[`9MQT-2.yaml: Scalar doc with '...' in content 1`] = `[YAMLSyntaxError: Missing closing "quote]`;
+
+exports[`55WF.yaml.yaml: Invalid escape in double quoted string 1`] = `[YAMLSyntaxError: Invalid escape sequence \\.]`;
+
+exports[`55WF.yaml: Invalid escape in double quoted string 1`] = `[YAMLSyntaxError: Invalid escape sequence \\.]`;
+
+exports[`62EZ.yaml.yaml: Invalid block mapping key on same line as previous key 1`] = `[YAMLSyntaxError: Unexpected scalar at node end]`;
+
+exports[`62EZ.yaml: Invalid block mapping key on same line as previous key 1`] = `[YAMLSyntaxError: Unexpected scalar at node end]`;
+
+exports[`236B.yaml.yaml: Invalid value after mapping 1`] = `[YAMLSyntaxError: Implicit map keys need to be followed by map values]`;
+
+exports[`236B.yaml: Invalid value after mapping 1`] = `[YAMLSyntaxError: Implicit map keys need to be followed by map values]`;
+
+exports[`B63P.yaml.yaml: Directive without document 1`] = `[YAMLSyntaxError: Missing directives-end/doc-start indicator line]`;
+
+exports[`B63P.yaml: Directive without document 1`] = `[YAMLSyntaxError: Missing directives-end/doc-start indicator line]`;
+
+exports[`BD7L.yaml.yaml: Invalid mapping after sequence 1`] = `[YAMLSyntaxError: Unexpected scalar at node end]`;
+
+exports[`BD7L.yaml: Invalid mapping after sequence 1`] = `[YAMLSyntaxError: Unexpected scalar at node end]`;
+
+exports[`BF9H.yaml.yaml: Trailing comment in multiline plain scalar 1`] = `[YAMLSyntaxError: All mapping items must start at the same column]`;
+
+exports[`BF9H.yaml: Trailing comment in multiline plain scalar 1`] = `[YAMLSyntaxError: All mapping items must start at the same column]`;
+
+exports[`BS4K.yaml.yaml: Comment between plain scalar lines 1`] = `[YAMLSyntaxError: Unexpected scalar at node end]`;
+
+exports[`BS4K.yaml: Comment between plain scalar lines 1`] = `[YAMLSyntaxError: Unexpected scalar at node end]`;
+
+exports[`C2SP.yaml.yaml: Flow Mapping Key on two lines 1`] = `[YAMLSyntaxError: Implicit keys need to be on a single line]`;
+
+exports[`C2SP.yaml: Flow Mapping Key on two lines 1`] = `[YAMLSyntaxError: Implicit keys need to be on a single line]`;
+
+exports[`CML9.yaml.yaml: Missing comma in flow 1`] = `[YAMLSyntaxError: Missing , or : between flow sequence items]`;
+
+exports[`CML9.yaml: Missing comma in flow 1`] = `[YAMLSyntaxError: Missing , or : between flow sequence items]`;
+
+exports[`CQ3W.yaml.yaml: Double quoted string without closing quote 1`] = `[YAMLSyntaxError: Missing closing "quote]`;
+
+exports[`CQ3W.yaml: Double quoted string without closing quote 1`] = `[YAMLSyntaxError: Missing closing "quote]`;
+
+exports[`CTN5.yaml.yaml: Flow sequence with invalid extra comma 1`] = `[YAMLSyntaxError: Unexpected , in flow sequence]`;
+
+exports[`CTN5.yaml: Flow sequence with invalid extra comma 1`] = `[YAMLSyntaxError: Unexpected , in flow sequence]`;
+
+exports[`CVW2.yaml.yaml: Invalid comment after comma 1`] = `[YAMLSyntaxError: Comments must be separated from other tokens by white space characters]`;
+
+exports[`CVW2.yaml: Invalid comment after comma 1`] = `[YAMLSyntaxError: Comments must be separated from other tokens by white space characters]`;
+
+exports[`CXX2.yaml.yaml: Mapping with anchor on document start line 1`] = `[YAMLSyntaxError: Block collection cannot start on same line with directives-end marker]`;
+
+exports[`CXX2.yaml: Mapping with anchor on document start line 1`] = `[YAMLSyntaxError: Block collection cannot start on same line with directives-end marker]`;
+
+exports[`D49Q.yaml.yaml: Multiline single quoted implicit keys 1`] = `[YAMLSyntaxError: Implicit keys need to be on a single line]`;
+
+exports[`D49Q.yaml: Multiline single quoted implicit keys 1`] = `[YAMLSyntaxError: Implicit keys need to be on a single line]`;
+
+exports[`DK4H.yaml.yaml: Implicit key followed by newline 1`] = `[YAMLSyntaxError: Implicit keys of flow sequence pairs need to be on a single line]`;
+
+exports[`DK4H.yaml: Implicit key followed by newline 1`] = `[YAMLSyntaxError: Implicit keys of flow sequence pairs need to be on a single line]`;
+
+exports[`DK95-2.yaml.yaml: Tabs that look like indentation 1`] = `[YAMLSyntaxError: Missing closing "quote]`;
+
+exports[`DK95-2.yaml: Tabs that look like indentation 1`] = `[YAMLSyntaxError: Missing closing "quote]`;
+
+exports[`DK95-7.yaml.yaml: Tabs that look like indentation 1`] = `[YAMLSyntaxError: Tabs are not allowed as indentation]`;
+
+exports[`DK95-7.yaml: Tabs that look like indentation 1`] = `[YAMLSyntaxError: Tabs are not allowed as indentation]`;
+
+exports[`DMG6.yaml.yaml: Wrong indendation in Map 1`] = `[YAMLSyntaxError: All mapping items must start at the same column]`;
+
+exports[`DMG6.yaml: Wrong indendation in Map 1`] = `[YAMLSyntaxError: All mapping items must start at the same column]`;
+
+exports[`EB22.yaml.yaml: Missing document-end marker before directive 1`] = `[YAMLSyntaxError: Unexpected scalar at node end]`;
+
+exports[`EB22.yaml: Missing document-end marker before directive 1`] = `[YAMLSyntaxError: Unexpected scalar at node end]`;
+
+exports[`EW3V.yaml.yaml: Wrong indendation in mapping 1`] = `[YAMLSyntaxError: Nested mappings are not allowed in compact mappings]`;
+
+exports[`EW3V.yaml: Wrong indendation in mapping 1`] = `[YAMLSyntaxError: Nested mappings are not allowed in compact mappings]`;
+
+exports[`G5U8.yaml.yaml: Plain dashes in flow sequence 1`] = `[YAMLSyntaxError: Implicit keys of flow sequence pairs need to be on a single line]`;
+
+exports[`G5U8.yaml: Plain dashes in flow sequence 1`] = `[YAMLSyntaxError: Implicit keys of flow sequence pairs need to be on a single line]`;
+
+exports[`G7JE.yaml.yaml: Multiline implicit keys 1`] = `[YAMLSyntaxError: Implicit keys need to be on a single line]`;
+
+exports[`G7JE.yaml: Multiline implicit keys 1`] = `[YAMLSyntaxError: Implicit keys need to be on a single line]`;
+
+exports[`G9HC.yaml.yaml: Invalid anchor in zero indented sequence 1`] = `[YAMLSyntaxError: A block sequence may not be used as an implicit map key]`;
+
+exports[`G9HC.yaml: Invalid anchor in zero indented sequence 1`] = `[YAMLSyntaxError: A block sequence may not be used as an implicit map key]`;
+
+exports[`GDY7.yaml.yaml: Comment that looks like a mapping key 1`] = `[YAMLSyntaxError: Implicit map keys need to be followed by map values]`;
+
+exports[`GDY7.yaml: Comment that looks like a mapping key 1`] = `[YAMLSyntaxError: Implicit map keys need to be followed by map values]`;
+
+exports[`GT5M.yaml.yaml: Node anchor in sequence 1`] = `[YAMLSyntaxError: Unexpected anchor at node end]`;
+
+exports[`GT5M.yaml: Node anchor in sequence 1`] = `[YAMLSyntaxError: Unexpected anchor at node end]`;
+
+exports[`H7J7.yaml.yaml: Node anchor not indented 1`] = `[YAMLSyntaxError: All mapping items must start at the same column]`;
+
+exports[`H7J7.yaml: Node anchor not indented 1`] = `[YAMLSyntaxError: All mapping items must start at the same column]`;
+
+exports[`H7TQ.yaml.yaml: Extra words on %YAML directive 1`] = `[YAMLSyntaxError: %YAML directive should contain exactly one part]`;
+
+exports[`H7TQ.yaml: Extra words on %YAML directive 1`] = `[YAMLSyntaxError: %YAML directive should contain exactly one part]`;
+
+exports[`HRE5.yaml.yaml: Double quoted scalar with escaped single quote 1`] = `[YAMLSyntaxError: Invalid escape sequence \\']`;
+
+exports[`HRE5.yaml: Double quoted scalar with escaped single quote 1`] = `[YAMLSyntaxError: Invalid escape sequence \\']`;
+
+exports[`HU3P.yaml.yaml: Invalid Mapping in plain scalar 1`] = `[YAMLSyntaxError: Implicit keys need to be on a single line]`;
+
+exports[`HU3P.yaml: Invalid Mapping in plain scalar 1`] = `[YAMLSyntaxError: Implicit keys need to be on a single line]`;
+
+exports[`JKF3.yaml.yaml: Multiline unidented double quoted block key 1`] = `[YAMLSyntaxError: Missing closing "quote]`;
+
+exports[`JKF3.yaml: Multiline unidented double quoted block key 1`] = `[YAMLSyntaxError: Missing closing "quote]`;
+
+exports[`JY7Z.yaml.yaml: Trailing content that looks like a mapping 1`] = `[YAMLSyntaxError: Nested mappings are not allowed in compact mappings]`;
+
+exports[`JY7Z.yaml: Trailing content that looks like a mapping 1`] = `[YAMLSyntaxError: Nested mappings are not allowed in compact mappings]`;
+
+exports[`KS4U.yaml.yaml: Invalid item after end of flow sequence 1`] = `[YAMLSyntaxError: Unexpected scalar at node end]`;
+
+exports[`KS4U.yaml: Invalid item after end of flow sequence 1`] = `[YAMLSyntaxError: Unexpected scalar at node end]`;
+
+exports[`LHL4.yaml: Invalid tag 1`] = `[YAMLSyntaxError: Tags and anchors must be separated from the next token by white space]`;
+
+exports[`MUS6.yaml: Directive variants 1`] = `[YAMLSyntaxError: Unsupported YAML version 1.1#...]`;
+
+exports[`MUS6-2.yaml.yaml: Directive variants 1`] = `[YAMLSyntaxError: Plain value cannot start with directive indicator character %]`;
+
+exports[`MUS6-2.yaml: Directive variants 1`] = `[YAMLSyntaxError: Plain value cannot start with directive indicator character %]`;
+
+exports[`N4JP.yaml.yaml: Bad indentation in mapping 1`] = `[YAMLSyntaxError: All mapping items must start at the same column]`;
+
+exports[`N4JP.yaml: Bad indentation in mapping 1`] = `[YAMLSyntaxError: All mapping items must start at the same column]`;
+
+exports[`N782.yaml.yaml: Invalid document markers in flow style 1`] = `[YAMLSyntaxError: Flow sequence must end with a ]]`;
+
+exports[`N782.yaml: Invalid document markers in flow style 1`] = `[YAMLSyntaxError: Flow sequence must end with a ]]`;
+
+exports[`P2EQ.yaml.yaml: Invalid sequene item on same line as previous item 1`] = `[YAMLSyntaxError: Unexpected seq-item-ind at node end]`;
+
+exports[`P2EQ.yaml: Invalid sequene item on same line as previous item 1`] = `[YAMLSyntaxError: Unexpected seq-item-ind at node end]`;
+
+exports[`Q4CL.yaml.yaml: Trailing content after quoted value 1`] = `[YAMLSyntaxError: Unexpected scalar at node end]`;
+
+exports[`Q4CL.yaml: Trailing content after quoted value 1`] = `[YAMLSyntaxError: Unexpected scalar at node end]`;
+
+exports[`QB6E.yaml.yaml: Wrong indented multiline quoted scalar 1`] = `[YAMLSyntaxError: Missing closing "quote]`;
+
+exports[`QB6E.yaml: Wrong indented multiline quoted scalar 1`] = `[YAMLSyntaxError: Missing closing "quote]`;
+
+exports[`QLJ7.yaml.yaml: Tag shorthand used in documents but only defined in the first 1`] = `[YAMLSyntaxError: Could not resolve tag: !prefix!B]`;
+
+exports[`QLJ7.yaml: Tag shorthand used in documents but only defined in the first 1`] = `[YAMLSyntaxError: Could not resolve tag: !prefix!B]`;
+
+exports[`RHX7.yaml.yaml: YAML directive without document end marker 1`] = `[YAMLSyntaxError: Plain value cannot start with directive indicator character %]`;
+
+exports[`RHX7.yaml: YAML directive without document end marker 1`] = `[YAMLSyntaxError: Plain value cannot start with directive indicator character %]`;
+
+exports[`RXY3.yaml.yaml: Invalid document-end marker in single quoted string 1`] = `[YAMLSyntaxError: Missing closing 'quote]`;
+
+exports[`RXY3.yaml: Invalid document-end marker in single quoted string 1`] = `[YAMLSyntaxError: Missing closing 'quote]`;
+
+exports[`S4GJ.yaml.yaml: Invalid text after block scalar indicator 1`] = `[YAMLSyntaxError: Not a YAML token: first line]`;
+
+exports[`S4GJ.yaml: Invalid text after block scalar indicator 1`] = `[YAMLSyntaxError: Not a YAML token: first line]`;
+
+exports[`S98Z.yaml.yaml: Block scalar with more spaces than first content line 1`] = `[YAMLSyntaxError: Block scalars with more-indented leading empty lines must use an explicit indentation indicator]`;
+
+exports[`S98Z.yaml: Block scalar with more spaces than first content line 1`] = `[YAMLSyntaxError: Block scalars with more-indented leading empty lines must use an explicit indentation indicator]`;
+
+exports[`SR86.yaml: Anchor plus Alias 1`] = `[YAMLSyntaxError: An alias node must not specify any properties]`;
+
+exports[`SU5Z.yaml.yaml: Comment without whitespace after doublequoted scalar 1`] = `[YAMLSyntaxError: Comments must be separated from other tokens by white space characters]`;
+
+exports[`SU5Z.yaml: Comment without whitespace after doublequoted scalar 1`] = `[YAMLSyntaxError: Comments must be separated from other tokens by white space characters]`;
+
+exports[`SU74.yaml.yaml: Anchor and alias as mapping key 1`] = `[YAMLSyntaxError: An alias node must not specify any properties]`;
+
+exports[`SU74.yaml: Anchor and alias as mapping key 1`] = `[YAMLSyntaxError: An alias node must not specify any properties]`;
+
+exports[`SY6V.yaml.yaml: Anchor before sequence entry on same line 1`] = `[YAMLSyntaxError: Missing newline after block sequence props]`;
+
+exports[`SY6V.yaml: Anchor before sequence entry on same line 1`] = `[YAMLSyntaxError: Missing newline after block sequence props]`;
+
+exports[`T833.yaml.yaml: Flow mapping missing a separating comma 1`] = `[YAMLSyntaxError: Implicit keys need to be on a single line]`;
+
+exports[`T833.yaml: Flow mapping missing a separating comma 1`] = `[YAMLSyntaxError: Implicit keys need to be on a single line]`;
+
+exports[`TD5N.yaml.yaml: Invalid scalar after sequence 1`] = `[YAMLSyntaxError: Unexpected scalar at node end]`;
+
+exports[`TD5N.yaml: Invalid scalar after sequence 1`] = `[YAMLSyntaxError: Unexpected scalar at node end]`;
+
+exports[`U44R.yaml.yaml: Bad indentation in mapping (2) 1`] = `[YAMLSyntaxError: All mapping items must start at the same column]`;
+
+exports[`U44R.yaml: Bad indentation in mapping (2) 1`] = `[YAMLSyntaxError: All mapping items must start at the same column]`;
+
+exports[`U99R.yaml.yaml: Invalid comma in tag 1`] = `[YAMLSyntaxError: Tags and anchors must be separated from the next token by white space]`;
+
+exports[`U99R.yaml: Invalid comma in tag 1`] = `[YAMLSyntaxError: Tags and anchors must be separated from the next token by white space]`;
+
+exports[`VJP3.yaml.yaml: Flow collections over many lines 1`] = `[YAMLSyntaxError: Flow map in block collection must be sufficiently indented and end with a }]`;
+
+exports[`VJP3.yaml: Flow collections over many lines 1`] = `[YAMLSyntaxError: Flow map in block collection must be sufficiently indented and end with a }]`;
+
+exports[`W9L4.yaml.yaml: Literal block scalar with more spaces in first line 1`] = `[YAMLSyntaxError: Block scalars with more-indented leading empty lines must use an explicit indentation indicator]`;
+
+exports[`W9L4.yaml: Literal block scalar with more spaces in first line 1`] = `[YAMLSyntaxError: Block scalars with more-indented leading empty lines must use an explicit indentation indicator]`;
+
+exports[`X4QW.yaml.yaml: Comment without whitespace after block scalar indicator 1`] = `[YAMLSyntaxError: Comments must be separated from other tokens by white space characters]`;
+
+exports[`X4QW.yaml: Comment without whitespace after block scalar indicator 1`] = `[YAMLSyntaxError: Comments must be separated from other tokens by white space characters]`;
+
+exports[`Y79Y.yaml.yaml: Tabs in various contexts 1`] = `[YAMLSyntaxError: Block scalar values in collections must be indented]`;
+
+exports[`Y79Y.yaml: Tabs in various contexts 1`] = `[YAMLSyntaxError: Block scalar values in collections must be indented]`;
+
+exports[`Y79Y-4.yaml.yaml: Tabs in various contexts 1`] = `[YAMLSyntaxError: Flow sequence in block collection must be sufficiently indented and end with a ]]`;
+
+exports[`Y79Y-4.yaml: Tabs in various contexts 1`] = `[YAMLSyntaxError: Flow sequence in block collection must be sufficiently indented and end with a ]]`;
+
+exports[`Y79Y-5.yaml.yaml: Tabs in various contexts 1`] = `[YAMLSyntaxError: Tabs are not allowed as indentation]`;
+
+exports[`Y79Y-5.yaml: Tabs in various contexts 1`] = `[YAMLSyntaxError: Tabs are not allowed as indentation]`;
+
+exports[`Y79Y-6.yaml.yaml: Tabs in various contexts 1`] = `[YAMLSyntaxError: Tabs are not allowed as indentation]`;
+
+exports[`Y79Y-6.yaml: Tabs in various contexts 1`] = `[YAMLSyntaxError: Tabs are not allowed as indentation]`;
+
+exports[`Y79Y-7.yaml.yaml: Tabs in various contexts 1`] = `[YAMLSyntaxError: Tabs are not allowed as indentation]`;
+
+exports[`Y79Y-7.yaml: Tabs in various contexts 1`] = `[YAMLSyntaxError: Tabs are not allowed as indentation]`;
+
+exports[`Y79Y-8.yaml.yaml: Tabs in various contexts 1`] = `[YAMLSyntaxError: Tabs are not allowed as indentation]`;
+
+exports[`Y79Y-8.yaml: Tabs in various contexts 1`] = `[YAMLSyntaxError: Tabs are not allowed as indentation]`;
+
+exports[`Y79Y-9.yaml.yaml: Tabs in various contexts 1`] = `[YAMLSyntaxError: Tabs are not allowed as indentation]`;
+
+exports[`Y79Y-9.yaml: Tabs in various contexts 1`] = `[YAMLSyntaxError: Tabs are not allowed as indentation]`;
+
+exports[`Y79Y-10.yaml.yaml: Tabs in various contexts 1`] = `[YAMLSyntaxError: Tabs are not allowed as indentation]`;
+
+exports[`Y79Y-10.yaml: Tabs in various contexts 1`] = `[YAMLSyntaxError: Tabs are not allowed as indentation]`;
+
+exports[`YJV2.yaml.yaml: Dash in flow sequence 1`] = `[YAMLSyntaxError: Block collections are not allowed within flow collections]`;
+
+exports[`YJV2.yaml: Dash in flow sequence 1`] = `[YAMLSyntaxError: Block collections are not allowed within flow collections]`;
+
+exports[`ZCZ6.yaml.yaml: Invalid mapping in plain single line value 1`] = `[YAMLSyntaxError: Nested mappings are not allowed in compact mappings]`;
+
+exports[`ZCZ6.yaml: Invalid mapping in plain single line value 1`] = `[YAMLSyntaxError: Nested mappings are not allowed in compact mappings]`;
+
+exports[`ZL4Z.yaml.yaml: Invalid nested mapping 1`] = `[YAMLSyntaxError: Nested mappings are not allowed in compact mappings]`;
+
+exports[`ZL4Z.yaml: Invalid nested mapping 1`] = `[YAMLSyntaxError: Nested mappings are not allowed in compact mappings]`;
+
+exports[`ZVH3.yaml.yaml: Wrong indented sequence item 1`] = `[YAMLSyntaxError: All sequence items must start at the same column]`;
+
+exports[`ZVH3.yaml: Wrong indented sequence item 1`] = `[YAMLSyntaxError: All sequence items must start at the same column]`;
+
+exports[`ZXT5.yaml.yaml: Implicit key followed by newline and adjacent value 1`] = `[YAMLSyntaxError: Implicit keys of flow sequence pairs need to be on a single line]`;
+
+exports[`ZXT5.yaml: Implicit key followed by newline and adjacent value 1`] = `[YAMLSyntaxError: Implicit keys of flow sequence pairs need to be on a single line]`;

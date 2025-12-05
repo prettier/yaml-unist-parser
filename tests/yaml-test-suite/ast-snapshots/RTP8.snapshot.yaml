@@ -1,0 +1,156 @@
+{
+  "ast": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "leadingComments": [],
+                "name": "YAML",
+                "parameters": [
+                  "1.2",
+                ],
+                "position": {
+                  "end": {
+                    "column": 10,
+                    "line": 1,
+                    "offset": 9,
+                  },
+                  "start": {
+                    "column": 1,
+                    "line": 1,
+                    "offset": 0,
+                  },
+                },
+                "trailingComment": null,
+                "type": "directive",
+              },
+            ],
+            "endComments": [],
+            "position": {
+              "end": {
+                "column": 4,
+                "line": 2,
+                "offset": 13,
+              },
+              "start": {
+                "column": 1,
+                "line": 1,
+                "offset": 0,
+              },
+            },
+            "trailingComment": null,
+            "type": "documentHead",
+          },
+          {
+            "children": [
+              {
+                "anchor": null,
+                "leadingComments": [],
+                "middleComments": [],
+                "position": {
+                  "end": {
+                    "column": 9,
+                    "line": 3,
+                    "offset": 22,
+                  },
+                  "start": {
+                    "column": 1,
+                    "line": 3,
+                    "offset": 14,
+                  },
+                },
+                "tag": null,
+                "trailingComment": null,
+                "type": "plain",
+                "value": "Document",
+              },
+            ],
+            "endComments": [],
+            "position": {
+              "end": {
+                "column": 9,
+                "line": 3,
+                "offset": 22,
+              },
+              "start": {
+                "column": 1,
+                "line": 3,
+                "offset": 14,
+              },
+            },
+            "type": "documentBody",
+          },
+        ],
+        "directivesEndMarker": true,
+        "documentEndMarker": true,
+        "position": {
+          "end": {
+            "column": 4,
+            "line": 4,
+            "offset": 26,
+          },
+          "start": {
+            "column": 1,
+            "line": 1,
+            "offset": 0,
+          },
+        },
+        "trailingComment": {
+          "position": {
+            "end": {
+              "column": 13,
+              "line": 4,
+              "offset": 35,
+            },
+            "start": {
+              "column": 5,
+              "line": 4,
+              "offset": 27,
+            },
+          },
+          "type": "comment",
+          "value": " Suffix",
+        },
+        "type": "document",
+      },
+    ],
+    "comments": [
+      {
+        "position": {
+          "end": {
+            "column": 13,
+            "line": 4,
+            "offset": 35,
+          },
+          "start": {
+            "column": 5,
+            "line": 4,
+            "offset": 27,
+          },
+        },
+        "type": "comment",
+        "value": " Suffix",
+      },
+    ],
+    "position": {
+      "end": {
+        "column": 1,
+        "line": 5,
+        "offset": 36,
+      },
+      "start": {
+        "column": 1,
+        "line": 1,
+        "offset": 0,
+      },
+    },
+    "type": "root",
+  },
+  "input": "%YAML 1.2
+---
+Document
+... # Suffix
+",
+}

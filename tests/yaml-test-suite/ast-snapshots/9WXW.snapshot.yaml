@@ -1,0 +1,302 @@
+{
+  "ast": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [],
+            "endComments": [],
+            "position": {
+              "end": {
+                "column": 1,
+                "line": 1,
+                "offset": 0,
+              },
+              "start": {
+                "column": 1,
+                "line": 1,
+                "offset": 0,
+              },
+            },
+            "trailingComment": null,
+            "type": "documentHead",
+          },
+          {
+            "children": [
+              {
+                "anchor": null,
+                "leadingComments": [
+                  {
+                    "position": {
+                      "end": {
+                        "column": 10,
+                        "line": 1,
+                        "offset": 9,
+                      },
+                      "start": {
+                        "column": 1,
+                        "line": 1,
+                        "offset": 0,
+                      },
+                    },
+                    "type": "comment",
+                    "value": " Private",
+                  },
+                ],
+                "middleComments": [],
+                "position": {
+                  "end": {
+                    "column": 11,
+                    "line": 2,
+                    "offset": 20,
+                  },
+                  "start": {
+                    "column": 6,
+                    "line": 2,
+                    "offset": 15,
+                  },
+                },
+                "tag": {
+                  "position": {
+                    "end": {
+                      "column": 5,
+                      "line": 2,
+                      "offset": 14,
+                    },
+                    "start": {
+                      "column": 1,
+                      "line": 2,
+                      "offset": 10,
+                    },
+                  },
+                  "type": "tag",
+                  "value": "!foo",
+                },
+                "trailingComment": null,
+                "type": "quoteDouble",
+                "value": "bar",
+              },
+            ],
+            "endComments": [],
+            "position": {
+              "end": {
+                "column": 11,
+                "line": 2,
+                "offset": 20,
+              },
+              "start": {
+                "column": 1,
+                "line": 1,
+                "offset": 0,
+              },
+            },
+            "type": "documentBody",
+          },
+        ],
+        "directivesEndMarker": false,
+        "documentEndMarker": true,
+        "position": {
+          "end": {
+            "column": 4,
+            "line": 3,
+            "offset": 24,
+          },
+          "start": {
+            "column": 1,
+            "line": 1,
+            "offset": 0,
+          },
+        },
+        "trailingComment": null,
+        "type": "document",
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "leadingComments": [
+                  {
+                    "position": {
+                      "end": {
+                        "column": 9,
+                        "line": 4,
+                        "offset": 33,
+                      },
+                      "start": {
+                        "column": 1,
+                        "line": 4,
+                        "offset": 25,
+                      },
+                    },
+                    "type": "comment",
+                    "value": " Global",
+                  },
+                ],
+                "name": "TAG",
+                "parameters": [
+                  "!",
+                  "tag:example.com,2000:app/",
+                ],
+                "position": {
+                  "end": {
+                    "column": 33,
+                    "line": 5,
+                    "offset": 66,
+                  },
+                  "start": {
+                    "column": 1,
+                    "line": 5,
+                    "offset": 34,
+                  },
+                },
+                "trailingComment": null,
+                "type": "directive",
+              },
+            ],
+            "endComments": [],
+            "position": {
+              "end": {
+                "column": 4,
+                "line": 6,
+                "offset": 70,
+              },
+              "start": {
+                "column": 1,
+                "line": 4,
+                "offset": 25,
+              },
+            },
+            "trailingComment": null,
+            "type": "documentHead",
+          },
+          {
+            "children": [
+              {
+                "anchor": null,
+                "leadingComments": [],
+                "middleComments": [],
+                "position": {
+                  "end": {
+                    "column": 11,
+                    "line": 7,
+                    "offset": 81,
+                  },
+                  "start": {
+                    "column": 6,
+                    "line": 7,
+                    "offset": 76,
+                  },
+                },
+                "tag": {
+                  "position": {
+                    "end": {
+                      "column": 5,
+                      "line": 7,
+                      "offset": 75,
+                    },
+                    "start": {
+                      "column": 1,
+                      "line": 7,
+                      "offset": 71,
+                    },
+                  },
+                  "type": "tag",
+                  "value": "tag:example.com,2000:app/foo",
+                },
+                "trailingComment": null,
+                "type": "quoteDouble",
+                "value": "bar",
+              },
+            ],
+            "endComments": [],
+            "position": {
+              "end": {
+                "column": 1,
+                "line": 8,
+                "offset": 82,
+              },
+              "start": {
+                "column": 1,
+                "line": 7,
+                "offset": 71,
+              },
+            },
+            "type": "documentBody",
+          },
+        ],
+        "directivesEndMarker": true,
+        "documentEndMarker": false,
+        "position": {
+          "end": {
+            "column": 1,
+            "line": 8,
+            "offset": 82,
+          },
+          "start": {
+            "column": 1,
+            "line": 4,
+            "offset": 25,
+          },
+        },
+        "trailingComment": null,
+        "type": "document",
+      },
+    ],
+    "comments": [
+      {
+        "position": {
+          "end": {
+            "column": 10,
+            "line": 1,
+            "offset": 9,
+          },
+          "start": {
+            "column": 1,
+            "line": 1,
+            "offset": 0,
+          },
+        },
+        "type": "comment",
+        "value": " Private",
+      },
+      {
+        "position": {
+          "end": {
+            "column": 9,
+            "line": 4,
+            "offset": 33,
+          },
+          "start": {
+            "column": 1,
+            "line": 4,
+            "offset": 25,
+          },
+        },
+        "type": "comment",
+        "value": " Global",
+      },
+    ],
+    "position": {
+      "end": {
+        "column": 1,
+        "line": 8,
+        "offset": 82,
+      },
+      "start": {
+        "column": 1,
+        "line": 1,
+        "offset": 0,
+      },
+    },
+    "type": "root",
+  },
+  "input": "# Private
+!foo "bar"
+...
+# Global
+%TAG ! tag:example.com,2000:app/
+---
+!foo "bar"
+",
+}

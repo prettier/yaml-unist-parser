@@ -1,0 +1,449 @@
+{
+  "ast": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [],
+            "endComments": [
+              {
+                "position": {
+                  "end": {
+                    "column": 28,
+                    "line": 1,
+                    "offset": 27,
+                  },
+                  "start": {
+                    "column": 1,
+                    "line": 1,
+                    "offset": 0,
+                  },
+                },
+                "type": "comment",
+                "value": " Sets are represented as a",
+              },
+              {
+                "position": {
+                  "end": {
+                    "column": 28,
+                    "line": 2,
+                    "offset": 55,
+                  },
+                  "start": {
+                    "column": 1,
+                    "line": 2,
+                    "offset": 28,
+                  },
+                },
+                "type": "comment",
+                "value": " Mapping where each key is",
+              },
+              {
+                "position": {
+                  "end": {
+                    "column": 31,
+                    "line": 3,
+                    "offset": 86,
+                  },
+                  "start": {
+                    "column": 1,
+                    "line": 3,
+                    "offset": 56,
+                  },
+                },
+                "type": "comment",
+                "value": " associated with a null value",
+              },
+            ],
+            "position": {
+              "end": {
+                "column": 4,
+                "line": 4,
+                "offset": 90,
+              },
+              "start": {
+                "column": 1,
+                "line": 1,
+                "offset": 0,
+              },
+            },
+            "trailingComment": null,
+            "type": "documentHead",
+          },
+          {
+            "children": [
+              {
+                "anchor": null,
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "anchor": null,
+                            "leadingComments": [],
+                            "middleComments": [],
+                            "position": {
+                              "end": {
+                                "column": 15,
+                                "line": 5,
+                                "offset": 111,
+                              },
+                              "start": {
+                                "column": 3,
+                                "line": 5,
+                                "offset": 99,
+                              },
+                            },
+                            "tag": null,
+                            "trailingComment": null,
+                            "type": "plain",
+                            "value": "Mark McGwire",
+                          },
+                        ],
+                        "endComments": [],
+                        "position": {
+                          "end": {
+                            "column": 15,
+                            "line": 5,
+                            "offset": 111,
+                          },
+                          "start": {
+                            "column": 1,
+                            "line": 5,
+                            "offset": 97,
+                          },
+                        },
+                        "trailingComment": null,
+                        "type": "mappingKey",
+                      },
+                      {
+                        "children": [],
+                        "endComments": [],
+                        "leadingComments": [],
+                        "position": {
+                          "end": {
+                            "column": 15,
+                            "line": 5,
+                            "offset": 111,
+                          },
+                          "start": {
+                            "column": 15,
+                            "line": 5,
+                            "offset": 111,
+                          },
+                        },
+                        "trailingComment": null,
+                        "type": "mappingValue",
+                      },
+                    ],
+                    "leadingComments": [],
+                    "position": {
+                      "end": {
+                        "column": 15,
+                        "line": 5,
+                        "offset": 111,
+                      },
+                      "start": {
+                        "column": 1,
+                        "line": 5,
+                        "offset": 97,
+                      },
+                    },
+                    "type": "mappingItem",
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "anchor": null,
+                            "leadingComments": [],
+                            "middleComments": [],
+                            "position": {
+                              "end": {
+                                "column": 13,
+                                "line": 6,
+                                "offset": 124,
+                              },
+                              "start": {
+                                "column": 3,
+                                "line": 6,
+                                "offset": 114,
+                              },
+                            },
+                            "tag": null,
+                            "trailingComment": null,
+                            "type": "plain",
+                            "value": "Sammy Sosa",
+                          },
+                        ],
+                        "endComments": [],
+                        "position": {
+                          "end": {
+                            "column": 13,
+                            "line": 6,
+                            "offset": 124,
+                          },
+                          "start": {
+                            "column": 1,
+                            "line": 6,
+                            "offset": 112,
+                          },
+                        },
+                        "trailingComment": null,
+                        "type": "mappingKey",
+                      },
+                      {
+                        "children": [],
+                        "endComments": [],
+                        "leadingComments": [],
+                        "position": {
+                          "end": {
+                            "column": 13,
+                            "line": 6,
+                            "offset": 124,
+                          },
+                          "start": {
+                            "column": 13,
+                            "line": 6,
+                            "offset": 124,
+                          },
+                        },
+                        "trailingComment": null,
+                        "type": "mappingValue",
+                      },
+                    ],
+                    "leadingComments": [],
+                    "position": {
+                      "end": {
+                        "column": 13,
+                        "line": 6,
+                        "offset": 124,
+                      },
+                      "start": {
+                        "column": 1,
+                        "line": 6,
+                        "offset": 112,
+                      },
+                    },
+                    "type": "mappingItem",
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "anchor": null,
+                            "leadingComments": [],
+                            "middleComments": [],
+                            "position": {
+                              "end": {
+                                "column": 12,
+                                "line": 7,
+                                "offset": 136,
+                              },
+                              "start": {
+                                "column": 3,
+                                "line": 7,
+                                "offset": 127,
+                              },
+                            },
+                            "tag": null,
+                            "trailingComment": null,
+                            "type": "plain",
+                            "value": "Ken Griff",
+                          },
+                        ],
+                        "endComments": [],
+                        "position": {
+                          "end": {
+                            "column": 12,
+                            "line": 7,
+                            "offset": 136,
+                          },
+                          "start": {
+                            "column": 1,
+                            "line": 7,
+                            "offset": 125,
+                          },
+                        },
+                        "trailingComment": null,
+                        "type": "mappingKey",
+                      },
+                      {
+                        "children": [],
+                        "endComments": [],
+                        "leadingComments": [],
+                        "position": {
+                          "end": {
+                            "column": 12,
+                            "line": 7,
+                            "offset": 136,
+                          },
+                          "start": {
+                            "column": 12,
+                            "line": 7,
+                            "offset": 136,
+                          },
+                        },
+                        "trailingComment": null,
+                        "type": "mappingValue",
+                      },
+                    ],
+                    "leadingComments": [],
+                    "position": {
+                      "end": {
+                        "column": 12,
+                        "line": 7,
+                        "offset": 136,
+                      },
+                      "start": {
+                        "column": 1,
+                        "line": 7,
+                        "offset": 125,
+                      },
+                    },
+                    "type": "mappingItem",
+                  },
+                ],
+                "leadingComments": [],
+                "middleComments": [],
+                "position": {
+                  "end": {
+                    "column": 12,
+                    "line": 7,
+                    "offset": 136,
+                  },
+                  "start": {
+                    "column": 1,
+                    "line": 5,
+                    "offset": 97,
+                  },
+                },
+                "tag": {
+                  "position": {
+                    "end": {
+                      "column": 10,
+                      "line": 4,
+                      "offset": 96,
+                    },
+                    "start": {
+                      "column": 5,
+                      "line": 4,
+                      "offset": 91,
+                    },
+                  },
+                  "type": "tag",
+                  "value": "tag:yaml.org,2002:set",
+                },
+                "type": "mapping",
+              },
+            ],
+            "endComments": [],
+            "position": {
+              "end": {
+                "column": 1,
+                "line": 8,
+                "offset": 137,
+              },
+              "start": {
+                "column": 5,
+                "line": 4,
+                "offset": 91,
+              },
+            },
+            "type": "documentBody",
+          },
+        ],
+        "directivesEndMarker": true,
+        "documentEndMarker": false,
+        "position": {
+          "end": {
+            "column": 1,
+            "line": 8,
+            "offset": 137,
+          },
+          "start": {
+            "column": 1,
+            "line": 1,
+            "offset": 0,
+          },
+        },
+        "trailingComment": null,
+        "type": "document",
+      },
+    ],
+    "comments": [
+      {
+        "position": {
+          "end": {
+            "column": 28,
+            "line": 1,
+            "offset": 27,
+          },
+          "start": {
+            "column": 1,
+            "line": 1,
+            "offset": 0,
+          },
+        },
+        "type": "comment",
+        "value": " Sets are represented as a",
+      },
+      {
+        "position": {
+          "end": {
+            "column": 28,
+            "line": 2,
+            "offset": 55,
+          },
+          "start": {
+            "column": 1,
+            "line": 2,
+            "offset": 28,
+          },
+        },
+        "type": "comment",
+        "value": " Mapping where each key is",
+      },
+      {
+        "position": {
+          "end": {
+            "column": 31,
+            "line": 3,
+            "offset": 86,
+          },
+          "start": {
+            "column": 1,
+            "line": 3,
+            "offset": 56,
+          },
+        },
+        "type": "comment",
+        "value": " associated with a null value",
+      },
+    ],
+    "position": {
+      "end": {
+        "column": 1,
+        "line": 8,
+        "offset": 137,
+      },
+      "start": {
+        "column": 1,
+        "line": 1,
+        "offset": 0,
+      },
+    },
+    "type": "root",
+  },
+  "input": "# Sets are represented as a
+# Mapping where each key is
+# associated with a null value
+--- !!set
+? Mark McGwire
+? Sammy Sosa
+? Ken Griff
+",
+}

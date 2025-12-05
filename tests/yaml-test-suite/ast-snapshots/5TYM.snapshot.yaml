@@ -1,0 +1,321 @@
+{
+  "ast": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "leadingComments": [],
+                "name": "TAG",
+                "parameters": [
+                  "!m!",
+                  "!my-",
+                ],
+                "position": {
+                  "end": {
+                    "column": 14,
+                    "line": 1,
+                    "offset": 13,
+                  },
+                  "start": {
+                    "column": 1,
+                    "line": 1,
+                    "offset": 0,
+                  },
+                },
+                "trailingComment": null,
+                "type": "directive",
+              },
+            ],
+            "endComments": [],
+            "position": {
+              "end": {
+                "column": 4,
+                "line": 2,
+                "offset": 17,
+              },
+              "start": {
+                "column": 1,
+                "line": 1,
+                "offset": 0,
+              },
+            },
+            "trailingComment": {
+              "position": {
+                "end": {
+                  "column": 16,
+                  "line": 2,
+                  "offset": 29,
+                },
+                "start": {
+                  "column": 5,
+                  "line": 2,
+                  "offset": 18,
+                },
+              },
+              "type": "comment",
+              "value": " Bulb here",
+            },
+            "type": "documentHead",
+          },
+          {
+            "children": [
+              {
+                "anchor": null,
+                "leadingComments": [],
+                "middleComments": [],
+                "position": {
+                  "end": {
+                    "column": 21,
+                    "line": 3,
+                    "offset": 50,
+                  },
+                  "start": {
+                    "column": 10,
+                    "line": 3,
+                    "offset": 39,
+                  },
+                },
+                "tag": {
+                  "position": {
+                    "end": {
+                      "column": 9,
+                      "line": 3,
+                      "offset": 38,
+                    },
+                    "start": {
+                      "column": 1,
+                      "line": 3,
+                      "offset": 30,
+                    },
+                  },
+                  "type": "tag",
+                  "value": "!my-light",
+                },
+                "trailingComment": null,
+                "type": "plain",
+                "value": "fluorescent",
+              },
+            ],
+            "endComments": [],
+            "position": {
+              "end": {
+                "column": 21,
+                "line": 3,
+                "offset": 50,
+              },
+              "start": {
+                "column": 1,
+                "line": 3,
+                "offset": 30,
+              },
+            },
+            "type": "documentBody",
+          },
+        ],
+        "directivesEndMarker": true,
+        "documentEndMarker": true,
+        "position": {
+          "end": {
+            "column": 4,
+            "line": 4,
+            "offset": 54,
+          },
+          "start": {
+            "column": 1,
+            "line": 1,
+            "offset": 0,
+          },
+        },
+        "trailingComment": null,
+        "type": "document",
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "leadingComments": [],
+                "name": "TAG",
+                "parameters": [
+                  "!m!",
+                  "!my-",
+                ],
+                "position": {
+                  "end": {
+                    "column": 14,
+                    "line": 5,
+                    "offset": 68,
+                  },
+                  "start": {
+                    "column": 1,
+                    "line": 5,
+                    "offset": 55,
+                  },
+                },
+                "trailingComment": null,
+                "type": "directive",
+              },
+            ],
+            "endComments": [],
+            "position": {
+              "end": {
+                "column": 4,
+                "line": 6,
+                "offset": 72,
+              },
+              "start": {
+                "column": 1,
+                "line": 5,
+                "offset": 55,
+              },
+            },
+            "trailingComment": {
+              "position": {
+                "end": {
+                  "column": 17,
+                  "line": 6,
+                  "offset": 85,
+                },
+                "start": {
+                  "column": 5,
+                  "line": 6,
+                  "offset": 73,
+                },
+              },
+              "type": "comment",
+              "value": " Color here",
+            },
+            "type": "documentHead",
+          },
+          {
+            "children": [
+              {
+                "anchor": null,
+                "leadingComments": [],
+                "middleComments": [],
+                "position": {
+                  "end": {
+                    "column": 15,
+                    "line": 7,
+                    "offset": 100,
+                  },
+                  "start": {
+                    "column": 10,
+                    "line": 7,
+                    "offset": 95,
+                  },
+                },
+                "tag": {
+                  "position": {
+                    "end": {
+                      "column": 9,
+                      "line": 7,
+                      "offset": 94,
+                    },
+                    "start": {
+                      "column": 1,
+                      "line": 7,
+                      "offset": 86,
+                    },
+                  },
+                  "type": "tag",
+                  "value": "!my-light",
+                },
+                "trailingComment": null,
+                "type": "plain",
+                "value": "green",
+              },
+            ],
+            "endComments": [],
+            "position": {
+              "end": {
+                "column": 1,
+                "line": 8,
+                "offset": 101,
+              },
+              "start": {
+                "column": 1,
+                "line": 7,
+                "offset": 86,
+              },
+            },
+            "type": "documentBody",
+          },
+        ],
+        "directivesEndMarker": true,
+        "documentEndMarker": false,
+        "position": {
+          "end": {
+            "column": 1,
+            "line": 8,
+            "offset": 101,
+          },
+          "start": {
+            "column": 1,
+            "line": 5,
+            "offset": 55,
+          },
+        },
+        "trailingComment": null,
+        "type": "document",
+      },
+    ],
+    "comments": [
+      {
+        "position": {
+          "end": {
+            "column": 16,
+            "line": 2,
+            "offset": 29,
+          },
+          "start": {
+            "column": 5,
+            "line": 2,
+            "offset": 18,
+          },
+        },
+        "type": "comment",
+        "value": " Bulb here",
+      },
+      {
+        "position": {
+          "end": {
+            "column": 17,
+            "line": 6,
+            "offset": 85,
+          },
+          "start": {
+            "column": 5,
+            "line": 6,
+            "offset": 73,
+          },
+        },
+        "type": "comment",
+        "value": " Color here",
+      },
+    ],
+    "position": {
+      "end": {
+        "column": 1,
+        "line": 8,
+        "offset": 101,
+      },
+      "start": {
+        "column": 1,
+        "line": 1,
+        "offset": 0,
+      },
+    },
+    "type": "root",
+  },
+  "input": "%TAG !m! !my-
+--- # Bulb here
+!m!light fluorescent
+...
+%TAG !m! !my-
+--- # Color here
+!m!light green
+",
+}

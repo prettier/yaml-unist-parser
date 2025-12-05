@@ -1,0 +1,105 @@
+{
+  "ast": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [],
+            "endComments": [],
+            "position": {
+              "end": {
+                "column": 4,
+                "line": 1,
+                "offset": 3,
+              },
+              "start": {
+                "column": 1,
+                "line": 1,
+                "offset": 0,
+              },
+            },
+            "trailingComment": null,
+            "type": "documentHead",
+          },
+          {
+            "children": [
+              {
+                "anchor": null,
+                "chomping": "strip",
+                "indent": null,
+                "indicatorComment": null,
+                "leadingComments": [],
+                "middleComments": [],
+                "position": {
+                  "end": {
+                    "column": 1,
+                    "line": 3,
+                    "offset": 11,
+                  },
+                  "start": {
+                    "column": 5,
+                    "line": 1,
+                    "offset": 4,
+                  },
+                },
+                "tag": null,
+                "type": "blockLiteral",
+                "value": "ab",
+              },
+            ],
+            "endComments": [],
+            "position": {
+              "end": {
+                "column": 2,
+                "line": 4,
+                "offset": 14,
+              },
+              "start": {
+                "column": 5,
+                "line": 1,
+                "offset": 4,
+              },
+            },
+            "type": "documentBody",
+          },
+        ],
+        "directivesEndMarker": true,
+        "documentEndMarker": true,
+        "position": {
+          "end": {
+            "column": 4,
+            "line": 5,
+            "offset": 18,
+          },
+          "start": {
+            "column": 1,
+            "line": 1,
+            "offset": 0,
+          },
+        },
+        "trailingComment": null,
+        "type": "document",
+      },
+    ],
+    "comments": [],
+    "position": {
+      "end": {
+        "column": 1,
+        "line": 6,
+        "offset": 19,
+      },
+      "start": {
+        "column": 1,
+        "line": 1,
+        "offset": 0,
+      },
+    },
+    "type": "root",
+  },
+  "input": "--- |-
+ ab
+ 
+ 
+...
+",
+}

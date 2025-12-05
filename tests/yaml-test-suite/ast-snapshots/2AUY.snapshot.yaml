@@ -1,0 +1,297 @@
+{
+  "ast": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [],
+            "endComments": [],
+            "position": {
+              "end": {
+                "column": 2,
+                "line": 1,
+                "offset": 1,
+              },
+              "start": {
+                "column": 2,
+                "line": 1,
+                "offset": 1,
+              },
+            },
+            "trailingComment": null,
+            "type": "documentHead",
+          },
+          {
+            "children": [
+              {
+                "anchor": null,
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "anchor": null,
+                        "leadingComments": [],
+                        "middleComments": [],
+                        "position": {
+                          "end": {
+                            "column": 11,
+                            "line": 1,
+                            "offset": 10,
+                          },
+                          "start": {
+                            "column": 10,
+                            "line": 1,
+                            "offset": 9,
+                          },
+                        },
+                        "tag": {
+                          "position": {
+                            "end": {
+                              "column": 9,
+                              "line": 1,
+                              "offset": 8,
+                            },
+                            "start": {
+                              "column": 4,
+                              "line": 1,
+                              "offset": 3,
+                            },
+                          },
+                          "type": "tag",
+                          "value": "tag:yaml.org,2002:str",
+                        },
+                        "trailingComment": null,
+                        "type": "plain",
+                        "value": "a",
+                      },
+                    ],
+                    "endComments": [],
+                    "leadingComments": [],
+                    "position": {
+                      "end": {
+                        "column": 11,
+                        "line": 1,
+                        "offset": 10,
+                      },
+                      "start": {
+                        "column": 2,
+                        "line": 1,
+                        "offset": 1,
+                      },
+                    },
+                    "trailingComment": null,
+                    "type": "sequenceItem",
+                  },
+                  {
+                    "children": [
+                      {
+                        "anchor": null,
+                        "leadingComments": [],
+                        "middleComments": [],
+                        "position": {
+                          "end": {
+                            "column": 5,
+                            "line": 2,
+                            "offset": 15,
+                          },
+                          "start": {
+                            "column": 4,
+                            "line": 2,
+                            "offset": 14,
+                          },
+                        },
+                        "tag": null,
+                        "trailingComment": null,
+                        "type": "plain",
+                        "value": "b",
+                      },
+                    ],
+                    "endComments": [],
+                    "leadingComments": [],
+                    "position": {
+                      "end": {
+                        "column": 5,
+                        "line": 2,
+                        "offset": 15,
+                      },
+                      "start": {
+                        "column": 2,
+                        "line": 2,
+                        "offset": 12,
+                      },
+                    },
+                    "trailingComment": null,
+                    "type": "sequenceItem",
+                  },
+                  {
+                    "children": [
+                      {
+                        "anchor": null,
+                        "leadingComments": [],
+                        "middleComments": [],
+                        "position": {
+                          "end": {
+                            "column": 12,
+                            "line": 3,
+                            "offset": 27,
+                          },
+                          "start": {
+                            "column": 10,
+                            "line": 3,
+                            "offset": 25,
+                          },
+                        },
+                        "tag": {
+                          "position": {
+                            "end": {
+                              "column": 9,
+                              "line": 3,
+                              "offset": 24,
+                            },
+                            "start": {
+                              "column": 4,
+                              "line": 3,
+                              "offset": 19,
+                            },
+                          },
+                          "type": "tag",
+                          "value": "tag:yaml.org,2002:int",
+                        },
+                        "trailingComment": null,
+                        "type": "plain",
+                        "value": "42",
+                      },
+                    ],
+                    "endComments": [],
+                    "leadingComments": [],
+                    "position": {
+                      "end": {
+                        "column": 12,
+                        "line": 3,
+                        "offset": 27,
+                      },
+                      "start": {
+                        "column": 2,
+                        "line": 3,
+                        "offset": 17,
+                      },
+                    },
+                    "trailingComment": null,
+                    "type": "sequenceItem",
+                  },
+                  {
+                    "children": [
+                      {
+                        "anchor": null,
+                        "leadingComments": [],
+                        "middleComments": [],
+                        "position": {
+                          "end": {
+                            "column": 5,
+                            "line": 4,
+                            "offset": 32,
+                          },
+                          "start": {
+                            "column": 4,
+                            "line": 4,
+                            "offset": 31,
+                          },
+                        },
+                        "tag": null,
+                        "trailingComment": null,
+                        "type": "plain",
+                        "value": "d",
+                      },
+                    ],
+                    "endComments": [],
+                    "leadingComments": [],
+                    "position": {
+                      "end": {
+                        "column": 5,
+                        "line": 4,
+                        "offset": 32,
+                      },
+                      "start": {
+                        "column": 2,
+                        "line": 4,
+                        "offset": 29,
+                      },
+                    },
+                    "trailingComment": null,
+                    "type": "sequenceItem",
+                  },
+                ],
+                "endComments": [],
+                "leadingComments": [],
+                "middleComments": [],
+                "position": {
+                  "end": {
+                    "column": 5,
+                    "line": 4,
+                    "offset": 32,
+                  },
+                  "start": {
+                    "column": 2,
+                    "line": 1,
+                    "offset": 1,
+                  },
+                },
+                "tag": null,
+                "type": "sequence",
+              },
+            ],
+            "endComments": [],
+            "position": {
+              "end": {
+                "column": 1,
+                "line": 5,
+                "offset": 33,
+              },
+              "start": {
+                "column": 2,
+                "line": 1,
+                "offset": 1,
+              },
+            },
+            "type": "documentBody",
+          },
+        ],
+        "directivesEndMarker": false,
+        "documentEndMarker": false,
+        "position": {
+          "end": {
+            "column": 1,
+            "line": 5,
+            "offset": 33,
+          },
+          "start": {
+            "column": 2,
+            "line": 1,
+            "offset": 1,
+          },
+        },
+        "trailingComment": null,
+        "type": "document",
+      },
+    ],
+    "comments": [],
+    "position": {
+      "end": {
+        "column": 1,
+        "line": 5,
+        "offset": 33,
+      },
+      "start": {
+        "column": 1,
+        "line": 1,
+        "offset": 0,
+      },
+    },
+    "type": "root",
+  },
+  "input": " - !!str a
+ - b
+ - !!int 42
+ - d
+",
+}

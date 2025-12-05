@@ -1,0 +1,115 @@
+{
+  "ast": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [],
+            "endComments": [],
+            "position": {
+              "end": {
+                "column": 4,
+                "line": 1,
+                "offset": 3,
+              },
+              "start": {
+                "column": 1,
+                "line": 1,
+                "offset": 0,
+              },
+            },
+            "trailingComment": null,
+            "type": "documentHead",
+          },
+          {
+            "children": [
+              {
+                "anchor": null,
+                "leadingComments": [],
+                "middleComments": [],
+                "position": {
+                  "end": {
+                    "column": 4,
+                    "line": 2,
+                    "offset": 7,
+                  },
+                  "start": {
+                    "column": 3,
+                    "line": 2,
+                    "offset": 6,
+                  },
+                },
+                "tag": {
+                  "position": {
+                    "end": {
+                      "column": 2,
+                      "line": 2,
+                      "offset": 5,
+                    },
+                    "start": {
+                      "column": 1,
+                      "line": 2,
+                      "offset": 4,
+                    },
+                  },
+                  "type": "tag",
+                  "value": "tag:yaml.org,2002:str",
+                },
+                "trailingComment": null,
+                "type": "plain",
+                "value": "a",
+              },
+            ],
+            "endComments": [],
+            "position": {
+              "end": {
+                "column": 1,
+                "line": 3,
+                "offset": 8,
+              },
+              "start": {
+                "column": 1,
+                "line": 2,
+                "offset": 4,
+              },
+            },
+            "type": "documentBody",
+          },
+        ],
+        "directivesEndMarker": true,
+        "documentEndMarker": false,
+        "position": {
+          "end": {
+            "column": 1,
+            "line": 3,
+            "offset": 8,
+          },
+          "start": {
+            "column": 1,
+            "line": 1,
+            "offset": 0,
+          },
+        },
+        "trailingComment": null,
+        "type": "document",
+      },
+    ],
+    "comments": [],
+    "position": {
+      "end": {
+        "column": 1,
+        "line": 3,
+        "offset": 8,
+      },
+      "start": {
+        "column": 1,
+        "line": 1,
+        "offset": 0,
+      },
+    },
+    "type": "root",
+  },
+  "input": "---
+! a
+",
+}

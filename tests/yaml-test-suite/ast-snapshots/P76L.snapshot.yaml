@@ -1,0 +1,171 @@
+{
+  "ast": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "leadingComments": [],
+                "name": "TAG",
+                "parameters": [
+                  "!!",
+                  "tag:example.com,2000:app/",
+                ],
+                "position": {
+                  "end": {
+                    "column": 34,
+                    "line": 1,
+                    "offset": 33,
+                  },
+                  "start": {
+                    "column": 1,
+                    "line": 1,
+                    "offset": 0,
+                  },
+                },
+                "trailingComment": null,
+                "type": "directive",
+              },
+            ],
+            "endComments": [],
+            "position": {
+              "end": {
+                "column": 4,
+                "line": 2,
+                "offset": 37,
+              },
+              "start": {
+                "column": 1,
+                "line": 1,
+                "offset": 0,
+              },
+            },
+            "trailingComment": null,
+            "type": "documentHead",
+          },
+          {
+            "children": [
+              {
+                "anchor": null,
+                "leadingComments": [],
+                "middleComments": [],
+                "position": {
+                  "end": {
+                    "column": 12,
+                    "line": 3,
+                    "offset": 49,
+                  },
+                  "start": {
+                    "column": 7,
+                    "line": 3,
+                    "offset": 44,
+                  },
+                },
+                "tag": {
+                  "position": {
+                    "end": {
+                      "column": 6,
+                      "line": 3,
+                      "offset": 43,
+                    },
+                    "start": {
+                      "column": 1,
+                      "line": 3,
+                      "offset": 38,
+                    },
+                  },
+                  "type": "tag",
+                  "value": "tag:example.com,2000:app/int",
+                },
+                "trailingComment": {
+                  "position": {
+                    "end": {
+                      "column": 36,
+                      "line": 3,
+                      "offset": 73,
+                    },
+                    "start": {
+                      "column": 13,
+                      "line": 3,
+                      "offset": 50,
+                    },
+                  },
+                  "type": "comment",
+                  "value": " Interval, not integer",
+                },
+                "type": "plain",
+                "value": "1 - 3",
+              },
+            ],
+            "endComments": [],
+            "position": {
+              "end": {
+                "column": 1,
+                "line": 4,
+                "offset": 74,
+              },
+              "start": {
+                "column": 1,
+                "line": 3,
+                "offset": 38,
+              },
+            },
+            "type": "documentBody",
+          },
+        ],
+        "directivesEndMarker": true,
+        "documentEndMarker": false,
+        "position": {
+          "end": {
+            "column": 1,
+            "line": 4,
+            "offset": 74,
+          },
+          "start": {
+            "column": 1,
+            "line": 1,
+            "offset": 0,
+          },
+        },
+        "trailingComment": null,
+        "type": "document",
+      },
+    ],
+    "comments": [
+      {
+        "position": {
+          "end": {
+            "column": 36,
+            "line": 3,
+            "offset": 73,
+          },
+          "start": {
+            "column": 13,
+            "line": 3,
+            "offset": 50,
+          },
+        },
+        "type": "comment",
+        "value": " Interval, not integer",
+      },
+    ],
+    "position": {
+      "end": {
+        "column": 1,
+        "line": 4,
+        "offset": 74,
+      },
+      "start": {
+        "column": 1,
+        "line": 1,
+        "offset": 0,
+      },
+    },
+    "type": "root",
+  },
+  "input": "%TAG !! tag:example.com,2000:app/
+---
+!!int 1 - 3 # Interval, not integer
+",
+}

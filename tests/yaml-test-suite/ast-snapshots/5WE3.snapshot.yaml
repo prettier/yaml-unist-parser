@@ -1,0 +1,459 @@
+{
+  "ast": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [],
+            "endComments": [],
+            "position": {
+              "end": {
+                "column": 1,
+                "line": 1,
+                "offset": 0,
+              },
+              "start": {
+                "column": 1,
+                "line": 1,
+                "offset": 0,
+              },
+            },
+            "trailingComment": null,
+            "type": "documentHead",
+          },
+          {
+            "children": [
+              {
+                "anchor": null,
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "anchor": null,
+                            "leadingComments": [],
+                            "middleComments": [],
+                            "position": {
+                              "end": {
+                                "column": 15,
+                                "line": 1,
+                                "offset": 14,
+                              },
+                              "start": {
+                                "column": 3,
+                                "line": 1,
+                                "offset": 2,
+                              },
+                            },
+                            "tag": null,
+                            "trailingComment": {
+                              "position": {
+                                "end": {
+                                  "column": 29,
+                                  "line": 1,
+                                  "offset": 28,
+                                },
+                                "start": {
+                                  "column": 16,
+                                  "line": 1,
+                                  "offset": 15,
+                                },
+                              },
+                              "type": "comment",
+                              "value": " Empty value",
+                            },
+                            "type": "plain",
+                            "value": "explicit key",
+                          },
+                        ],
+                        "endComments": [],
+                        "position": {
+                          "end": {
+                            "column": 29,
+                            "line": 1,
+                            "offset": 28,
+                          },
+                          "start": {
+                            "column": 1,
+                            "line": 1,
+                            "offset": 0,
+                          },
+                        },
+                        "trailingComment": null,
+                        "type": "mappingKey",
+                      },
+                      {
+                        "children": [],
+                        "endComments": [],
+                        "leadingComments": [],
+                        "position": {
+                          "end": {
+                            "column": 15,
+                            "line": 1,
+                            "offset": 14,
+                          },
+                          "start": {
+                            "column": 15,
+                            "line": 1,
+                            "offset": 14,
+                          },
+                        },
+                        "trailingComment": null,
+                        "type": "mappingValue",
+                      },
+                    ],
+                    "leadingComments": [],
+                    "position": {
+                      "end": {
+                        "column": 15,
+                        "line": 1,
+                        "offset": 14,
+                      },
+                      "start": {
+                        "column": 1,
+                        "line": 1,
+                        "offset": 0,
+                      },
+                    },
+                    "type": "mappingItem",
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "anchor": null,
+                            "chomping": "clip",
+                            "indent": null,
+                            "indicatorComment": null,
+                            "leadingComments": [],
+                            "middleComments": [],
+                            "position": {
+                              "end": {
+                                "column": 1,
+                                "line": 4,
+                                "offset": 45,
+                              },
+                              "start": {
+                                "column": 3,
+                                "line": 2,
+                                "offset": 31,
+                              },
+                            },
+                            "tag": null,
+                            "type": "blockLiteral",
+                            "value": "block key
+",
+                          },
+                        ],
+                        "endComments": [],
+                        "position": {
+                          "end": {
+                            "column": 1,
+                            "line": 4,
+                            "offset": 45,
+                          },
+                          "start": {
+                            "column": 1,
+                            "line": 2,
+                            "offset": 29,
+                          },
+                        },
+                        "trailingComment": null,
+                        "type": "mappingKey",
+                      },
+                      {
+                        "children": [
+                          {
+                            "anchor": null,
+                            "children": [
+                              {
+                                "children": [
+                                  {
+                                    "anchor": null,
+                                    "leadingComments": [],
+                                    "middleComments": [],
+                                    "position": {
+                                      "end": {
+                                        "column": 8,
+                                        "line": 4,
+                                        "offset": 52,
+                                      },
+                                      "start": {
+                                        "column": 5,
+                                        "line": 4,
+                                        "offset": 49,
+                                      },
+                                    },
+                                    "tag": null,
+                                    "trailingComment": {
+                                      "position": {
+                                        "end": {
+                                          "column": 27,
+                                          "line": 4,
+                                          "offset": 71,
+                                        },
+                                        "start": {
+                                          "column": 9,
+                                          "line": 4,
+                                          "offset": 53,
+                                        },
+                                      },
+                                      "type": "comment",
+                                      "value": " Explicit compact",
+                                    },
+                                    "type": "plain",
+                                    "value": "one",
+                                  },
+                                ],
+                                "endComments": [],
+                                "leadingComments": [],
+                                "position": {
+                                  "end": {
+                                    "column": 27,
+                                    "line": 4,
+                                    "offset": 71,
+                                  },
+                                  "start": {
+                                    "column": 3,
+                                    "line": 4,
+                                    "offset": 47,
+                                  },
+                                },
+                                "trailingComment": null,
+                                "type": "sequenceItem",
+                              },
+                              {
+                                "children": [
+                                  {
+                                    "anchor": null,
+                                    "leadingComments": [],
+                                    "middleComments": [],
+                                    "position": {
+                                      "end": {
+                                        "column": 8,
+                                        "line": 5,
+                                        "offset": 79,
+                                      },
+                                      "start": {
+                                        "column": 5,
+                                        "line": 5,
+                                        "offset": 76,
+                                      },
+                                    },
+                                    "tag": null,
+                                    "trailingComment": {
+                                      "position": {
+                                        "end": {
+                                          "column": 22,
+                                          "line": 5,
+                                          "offset": 93,
+                                        },
+                                        "start": {
+                                          "column": 9,
+                                          "line": 5,
+                                          "offset": 80,
+                                        },
+                                      },
+                                      "type": "comment",
+                                      "value": " block value",
+                                    },
+                                    "type": "plain",
+                                    "value": "two",
+                                  },
+                                ],
+                                "endComments": [],
+                                "leadingComments": [],
+                                "position": {
+                                  "end": {
+                                    "column": 22,
+                                    "line": 5,
+                                    "offset": 93,
+                                  },
+                                  "start": {
+                                    "column": 3,
+                                    "line": 5,
+                                    "offset": 74,
+                                  },
+                                },
+                                "trailingComment": null,
+                                "type": "sequenceItem",
+                              },
+                            ],
+                            "endComments": [],
+                            "leadingComments": [],
+                            "middleComments": [],
+                            "position": {
+                              "end": {
+                                "column": 22,
+                                "line": 5,
+                                "offset": 93,
+                              },
+                              "start": {
+                                "column": 3,
+                                "line": 4,
+                                "offset": 47,
+                              },
+                            },
+                            "tag": null,
+                            "type": "sequence",
+                          },
+                        ],
+                        "endComments": [],
+                        "leadingComments": [],
+                        "position": {
+                          "end": {
+                            "column": 22,
+                            "line": 5,
+                            "offset": 93,
+                          },
+                          "start": {
+                            "column": 1,
+                            "line": 4,
+                            "offset": 45,
+                          },
+                        },
+                        "trailingComment": null,
+                        "type": "mappingValue",
+                      },
+                    ],
+                    "leadingComments": [],
+                    "position": {
+                      "end": {
+                        "column": 22,
+                        "line": 5,
+                        "offset": 93,
+                      },
+                      "start": {
+                        "column": 1,
+                        "line": 2,
+                        "offset": 29,
+                      },
+                    },
+                    "type": "mappingItem",
+                  },
+                ],
+                "leadingComments": [],
+                "middleComments": [],
+                "position": {
+                  "end": {
+                    "column": 22,
+                    "line": 5,
+                    "offset": 93,
+                  },
+                  "start": {
+                    "column": 1,
+                    "line": 1,
+                    "offset": 0,
+                  },
+                },
+                "tag": null,
+                "type": "mapping",
+              },
+            ],
+            "endComments": [],
+            "position": {
+              "end": {
+                "column": 1,
+                "line": 6,
+                "offset": 94,
+              },
+              "start": {
+                "column": 1,
+                "line": 1,
+                "offset": 0,
+              },
+            },
+            "type": "documentBody",
+          },
+        ],
+        "directivesEndMarker": false,
+        "documentEndMarker": false,
+        "position": {
+          "end": {
+            "column": 1,
+            "line": 6,
+            "offset": 94,
+          },
+          "start": {
+            "column": 1,
+            "line": 1,
+            "offset": 0,
+          },
+        },
+        "trailingComment": null,
+        "type": "document",
+      },
+    ],
+    "comments": [
+      {
+        "position": {
+          "end": {
+            "column": 29,
+            "line": 1,
+            "offset": 28,
+          },
+          "start": {
+            "column": 16,
+            "line": 1,
+            "offset": 15,
+          },
+        },
+        "type": "comment",
+        "value": " Empty value",
+      },
+      {
+        "position": {
+          "end": {
+            "column": 27,
+            "line": 4,
+            "offset": 71,
+          },
+          "start": {
+            "column": 9,
+            "line": 4,
+            "offset": 53,
+          },
+        },
+        "type": "comment",
+        "value": " Explicit compact",
+      },
+      {
+        "position": {
+          "end": {
+            "column": 22,
+            "line": 5,
+            "offset": 93,
+          },
+          "start": {
+            "column": 9,
+            "line": 5,
+            "offset": 80,
+          },
+        },
+        "type": "comment",
+        "value": " block value",
+      },
+    ],
+    "position": {
+      "end": {
+        "column": 1,
+        "line": 6,
+        "offset": 94,
+      },
+      "start": {
+        "column": 1,
+        "line": 1,
+        "offset": 0,
+      },
+    },
+    "type": "root",
+  },
+  "input": "? explicit key # Empty value
+? |
+  block key
+: - one # Explicit compact
+  - two # block value
+",
+}

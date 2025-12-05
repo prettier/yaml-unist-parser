@@ -1,0 +1,140 @@
+{
+  "ast": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [],
+            "endComments": [
+              {
+                "position": {
+                  "end": {
+                    "column": 12,
+                    "line": 1,
+                    "offset": 11,
+                  },
+                  "start": {
+                    "column": 1,
+                    "line": 1,
+                    "offset": 0,
+                  },
+                },
+                "type": "comment",
+                "value": " ASCII Art",
+              },
+            ],
+            "position": {
+              "end": {
+                "column": 4,
+                "line": 2,
+                "offset": 15,
+              },
+              "start": {
+                "column": 1,
+                "line": 1,
+                "offset": 0,
+              },
+            },
+            "trailingComment": null,
+            "type": "documentHead",
+          },
+          {
+            "children": [
+              {
+                "anchor": null,
+                "chomping": "clip",
+                "indent": null,
+                "indicatorComment": null,
+                "leadingComments": [],
+                "middleComments": [],
+                "position": {
+                  "end": {
+                    "column": 1,
+                    "line": 5,
+                    "offset": 44,
+                  },
+                  "start": {
+                    "column": 5,
+                    "line": 2,
+                    "offset": 16,
+                  },
+                },
+                "tag": null,
+                "type": "blockLiteral",
+                "value": "\//||\/||
+// ||  ||__
+",
+              },
+            ],
+            "endComments": [],
+            "position": {
+              "end": {
+                "column": 1,
+                "line": 5,
+                "offset": 44,
+              },
+              "start": {
+                "column": 5,
+                "line": 2,
+                "offset": 16,
+              },
+            },
+            "type": "documentBody",
+          },
+        ],
+        "directivesEndMarker": true,
+        "documentEndMarker": false,
+        "position": {
+          "end": {
+            "column": 1,
+            "line": 5,
+            "offset": 44,
+          },
+          "start": {
+            "column": 1,
+            "line": 1,
+            "offset": 0,
+          },
+        },
+        "trailingComment": null,
+        "type": "document",
+      },
+    ],
+    "comments": [
+      {
+        "position": {
+          "end": {
+            "column": 12,
+            "line": 1,
+            "offset": 11,
+          },
+          "start": {
+            "column": 1,
+            "line": 1,
+            "offset": 0,
+          },
+        },
+        "type": "comment",
+        "value": " ASCII Art",
+      },
+    ],
+    "position": {
+      "end": {
+        "column": 1,
+        "line": 5,
+        "offset": 44,
+      },
+      "start": {
+        "column": 1,
+        "line": 1,
+        "offset": 0,
+      },
+    },
+    "type": "root",
+  },
+  "input": "# ASCII Art
+--- |
+  \//||\/||
+  // ||  ||__
+",
+}

@@ -1,0 +1,341 @@
+{
+  "ast": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [],
+            "endComments": [],
+            "position": {
+              "end": {
+                "column": 1,
+                "line": 1,
+                "offset": 0,
+              },
+              "start": {
+                "column": 1,
+                "line": 1,
+                "offset": 0,
+              },
+            },
+            "trailingComment": null,
+            "type": "documentHead",
+          },
+          {
+            "children": [
+              {
+                "anchor": null,
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "anchor": null,
+                            "leadingComments": [],
+                            "middleComments": [],
+                            "position": {
+                              "end": {
+                                "column": 7,
+                                "line": 2,
+                                "offset": 24,
+                              },
+                              "start": {
+                                "column": 1,
+                                "line": 2,
+                                "offset": 18,
+                              },
+                            },
+                            "tag": null,
+                            "trailingComment": null,
+                            "type": "plain",
+                            "value": "quoted",
+                          },
+                        ],
+                        "endComments": [],
+                        "position": {
+                          "end": {
+                            "column": 7,
+                            "line": 2,
+                            "offset": 24,
+                          },
+                          "start": {
+                            "column": 1,
+                            "line": 2,
+                            "offset": 18,
+                          },
+                        },
+                        "trailingComment": null,
+                        "type": "mappingKey",
+                      },
+                      {
+                        "children": [
+                          {
+                            "anchor": null,
+                            "leadingComments": [],
+                            "middleComments": [],
+                            "position": {
+                              "end": {
+                                "column": 19,
+                                "line": 2,
+                                "offset": 36,
+                              },
+                              "start": {
+                                "column": 9,
+                                "line": 2,
+                                "offset": 26,
+                              },
+                            },
+                            "tag": null,
+                            "trailingComment": null,
+                            "type": "quoteDouble",
+                            "value": "Quoted 	",
+                          },
+                        ],
+                        "endComments": [],
+                        "leadingComments": [],
+                        "position": {
+                          "end": {
+                            "column": 19,
+                            "line": 2,
+                            "offset": 36,
+                          },
+                          "start": {
+                            "column": 7,
+                            "line": 2,
+                            "offset": 24,
+                          },
+                        },
+                        "trailingComment": null,
+                        "type": "mappingValue",
+                      },
+                    ],
+                    "leadingComments": [],
+                    "position": {
+                      "end": {
+                        "column": 19,
+                        "line": 2,
+                        "offset": 36,
+                      },
+                      "start": {
+                        "column": 1,
+                        "line": 2,
+                        "offset": 18,
+                      },
+                    },
+                    "type": "mappingItem",
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "anchor": null,
+                            "leadingComments": [],
+                            "middleComments": [],
+                            "position": {
+                              "end": {
+                                "column": 6,
+                                "line": 3,
+                                "offset": 42,
+                              },
+                              "start": {
+                                "column": 1,
+                                "line": 3,
+                                "offset": 37,
+                              },
+                            },
+                            "tag": null,
+                            "trailingComment": null,
+                            "type": "plain",
+                            "value": "block",
+                          },
+                        ],
+                        "endComments": [],
+                        "position": {
+                          "end": {
+                            "column": 6,
+                            "line": 3,
+                            "offset": 42,
+                          },
+                          "start": {
+                            "column": 1,
+                            "line": 3,
+                            "offset": 37,
+                          },
+                        },
+                        "trailingComment": null,
+                        "type": "mappingKey",
+                      },
+                      {
+                        "children": [
+                          {
+                            "anchor": null,
+                            "chomping": "clip",
+                            "indent": null,
+                            "indicatorComment": null,
+                            "leadingComments": [],
+                            "middleComments": [],
+                            "position": {
+                              "end": {
+                                "column": 1,
+                                "line": 7,
+                                "offset": 96,
+                              },
+                              "start": {
+                                "column": 8,
+                                "line": 3,
+                                "offset": 44,
+                              },
+                            },
+                            "tag": null,
+                            "type": "blockLiteral",
+                            "value": "void main() {
+	printf("Hello, world!\n");
+}
+",
+                          },
+                        ],
+                        "endComments": [],
+                        "leadingComments": [],
+                        "position": {
+                          "end": {
+                            "column": 1,
+                            "line": 7,
+                            "offset": 96,
+                          },
+                          "start": {
+                            "column": 6,
+                            "line": 3,
+                            "offset": 42,
+                          },
+                        },
+                        "trailingComment": null,
+                        "type": "mappingValue",
+                      },
+                    ],
+                    "leadingComments": [],
+                    "position": {
+                      "end": {
+                        "column": 1,
+                        "line": 7,
+                        "offset": 96,
+                      },
+                      "start": {
+                        "column": 1,
+                        "line": 3,
+                        "offset": 37,
+                      },
+                    },
+                    "type": "mappingItem",
+                  },
+                ],
+                "leadingComments": [
+                  {
+                    "position": {
+                      "end": {
+                        "column": 18,
+                        "line": 1,
+                        "offset": 17,
+                      },
+                      "start": {
+                        "column": 1,
+                        "line": 1,
+                        "offset": 0,
+                      },
+                    },
+                    "type": "comment",
+                    "value": " Tabs and spaces",
+                  },
+                ],
+                "middleComments": [],
+                "position": {
+                  "end": {
+                    "column": 1,
+                    "line": 7,
+                    "offset": 96,
+                  },
+                  "start": {
+                    "column": 1,
+                    "line": 2,
+                    "offset": 18,
+                  },
+                },
+                "tag": null,
+                "type": "mapping",
+              },
+            ],
+            "endComments": [],
+            "position": {
+              "end": {
+                "column": 1,
+                "line": 7,
+                "offset": 96,
+              },
+              "start": {
+                "column": 1,
+                "line": 1,
+                "offset": 0,
+              },
+            },
+            "type": "documentBody",
+          },
+        ],
+        "directivesEndMarker": false,
+        "documentEndMarker": false,
+        "position": {
+          "end": {
+            "column": 1,
+            "line": 7,
+            "offset": 96,
+          },
+          "start": {
+            "column": 1,
+            "line": 1,
+            "offset": 0,
+          },
+        },
+        "trailingComment": null,
+        "type": "document",
+      },
+    ],
+    "comments": [
+      {
+        "position": {
+          "end": {
+            "column": 18,
+            "line": 1,
+            "offset": 17,
+          },
+          "start": {
+            "column": 1,
+            "line": 1,
+            "offset": 0,
+          },
+        },
+        "type": "comment",
+        "value": " Tabs and spaces",
+      },
+    ],
+    "position": {
+      "end": {
+        "column": 1,
+        "line": 7,
+        "offset": 96,
+      },
+      "start": {
+        "column": 1,
+        "line": 1,
+        "offset": 0,
+      },
+    },
+    "type": "root",
+  },
+  "input": "# Tabs and spaces
+quoted: "Quoted 	"
+block:	|
+  void main() {
+  	printf("Hello, world!\n");
+  }
+",
+}

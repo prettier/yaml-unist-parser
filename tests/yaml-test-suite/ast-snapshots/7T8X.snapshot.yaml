@@ -1,0 +1,159 @@
+{
+  "ast": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [],
+            "endComments": [],
+            "position": {
+              "end": {
+                "column": 1,
+                "line": 1,
+                "offset": 0,
+              },
+              "start": {
+                "column": 1,
+                "line": 1,
+                "offset": 0,
+              },
+            },
+            "trailingComment": null,
+            "type": "documentHead",
+          },
+          {
+            "children": [
+              {
+                "anchor": null,
+                "chomping": "clip",
+                "indent": null,
+                "indicatorComment": null,
+                "leadingComments": [],
+                "middleComments": [],
+                "position": {
+                  "end": {
+                    "column": 1,
+                    "line": 15,
+                    "offset": 77,
+                  },
+                  "start": {
+                    "column": 1,
+                    "line": 1,
+                    "offset": 0,
+                  },
+                },
+                "tag": null,
+                "type": "blockFolded",
+                "value": "
+folded line
+next line
+  * bullet
+
+  * list
+  * lines
+
+last line
+",
+              },
+            ],
+            "endComments": [
+              {
+                "position": {
+                  "end": {
+                    "column": 10,
+                    "line": 16,
+                    "offset": 87,
+                  },
+                  "start": {
+                    "column": 1,
+                    "line": 16,
+                    "offset": 78,
+                  },
+                },
+                "type": "comment",
+                "value": " Comment",
+              },
+            ],
+            "position": {
+              "end": {
+                "column": 10,
+                "line": 16,
+                "offset": 87,
+              },
+              "start": {
+                "column": 1,
+                "line": 1,
+                "offset": 0,
+              },
+            },
+            "type": "documentBody",
+          },
+        ],
+        "directivesEndMarker": false,
+        "documentEndMarker": false,
+        "position": {
+          "end": {
+            "column": 10,
+            "line": 16,
+            "offset": 87,
+          },
+          "start": {
+            "column": 1,
+            "line": 1,
+            "offset": 0,
+          },
+        },
+        "trailingComment": null,
+        "type": "document",
+      },
+    ],
+    "comments": [
+      {
+        "position": {
+          "end": {
+            "column": 10,
+            "line": 16,
+            "offset": 87,
+          },
+          "start": {
+            "column": 1,
+            "line": 16,
+            "offset": 78,
+          },
+        },
+        "type": "comment",
+        "value": " Comment",
+      },
+    ],
+    "position": {
+      "end": {
+        "column": 1,
+        "line": 17,
+        "offset": 88,
+      },
+      "start": {
+        "column": 1,
+        "line": 1,
+        "offset": 0,
+      },
+    },
+    "type": "root",
+  },
+  "input": ">
+
+ folded
+ line
+
+ next
+ line
+   * bullet
+
+   * list
+   * lines
+
+ last
+ line
+
+# Comment
+",
+}
