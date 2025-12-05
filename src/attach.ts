@@ -27,7 +27,6 @@ export function attachComments(root: Root): void {
 
   const restDocuments = root.children.slice();
   root.comments
-    .sort((a, b) => a.position.start.offset - b.position.end.offset)
     .filter(comment => !comment._parent)
     .forEach(comment => {
       while (

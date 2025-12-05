@@ -32,10 +32,16 @@ export function parse(text: string, options?: ParseOptions): Root {
     parsedDocuments.push(parsedDocument);
   }
 
+  const documents = transformDocuments(parsedDocuments, cstTokens, context);
+  const comments = context.comments.sort(
+    (commentA, commentB) =>
+      commentA.position.start.offset - commentB.position.end.offset,
+  );
+
   const root = createRoot(
     context.transformRange([0, text.length]),
-    transformDocuments(parsedDocuments, cstTokens, context),
-    context.comments,
+    documents,
+    comments,
   );
 
   attachComments(root);
