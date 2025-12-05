@@ -1,9 +1,5 @@
 import type * as YAML from "yaml";
 import * as YAML_CST from "../cst.ts";
-import { createDocument } from "../factories/document.ts";
-import { createDocumentBody } from "../factories/document-body.ts";
-import { createDocumentHead } from "../factories/document-head.ts";
-import { createPosition } from "../factories/position.ts";
 import type { Document } from "../types.ts";
 import { getPointText } from "../utils/get-point-text.ts";
 import type Context from "./context.ts";
