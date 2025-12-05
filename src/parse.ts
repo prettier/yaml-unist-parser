@@ -4,7 +4,6 @@ import { createRoot } from "./factories/root.ts";
 import Context from "./transforms/context.ts";
 import { transformDocuments } from "./transforms/document.ts";
 import type { ParseOptions, Root } from "./types.ts";
-import { removeFakeNodes } from "./utils/remove-fake-nodes.ts";
 import { updatePositions } from "./utils/update-positions.ts";
 import { YAMLSyntaxError } from "./yaml-syntax-error.ts";
 
@@ -46,7 +45,6 @@ export function parse(text: string, options?: ParseOptions): Root {
 
   attachComments(root);
   updatePositions(root);
-  removeFakeNodes(root);
 
   return root;
 }
