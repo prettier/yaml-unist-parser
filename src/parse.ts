@@ -18,6 +18,7 @@ export function parse(text: string, options?: ParseOptions): Root {
     // https://eemeli.org/yaml/#options
     uniqueKeys: options?.uniqueKeys,
     lineCounter,
+    merge: true,
   });
   const parsedDocuments: YAML.Document.Parsed[] = [];
   const cstTokens = [...parser.parse(text)];
