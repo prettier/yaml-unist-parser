@@ -1,3 +1,4 @@
+import * as YAML from "yaml";
 import yamlTestSuite from "yaml-test-suite";
 import { parse } from "../../src/parse.ts";
 
@@ -21,11 +22,29 @@ for (const { id, cases, name } of yamlTestSuite) {
 
         if ("fail" in testCase && testCase.fail) {
           expect(() => parse(input)).toThrowErrorMatchingSnapshot();
-        } else {
-          await expect({ input, ast: parse(input) }).toMatchFileSnapshot(
-            `ast-snapshots/${fileBasename}.snapshot.yaml`,
-          );
+          return;
         }
+
+        const ast = parse(input);
+        expect(ast.type).toBe("root");
+        expect(ast.position.start).toStrictEqual({
+          line: 1,
+          column: 1,
+          offset: 0,
+        });
+        expect(ast.position.end.offset).toBe(input.length);
+
+        const yamlDocuments = YAML.parseAllDocuments(input);
+        // Fixing
+        if (filename !== "8G76.yaml" && filename !== "98YD.yaml") {
+          expect(ast.children.length).toBe(yamlDocuments.length);
+        } else {
+          expect(ast.children.length).not.toBe(yamlDocuments.length);
+        }
+
+        await expect({ input, ast: parse(input) }).toMatchFileSnapshot(
+          `ast-snapshots/${fileBasename}.snapshot.yaml`,
+        );
       },
     );
   }
