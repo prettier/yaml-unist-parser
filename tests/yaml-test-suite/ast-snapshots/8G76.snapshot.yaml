@@ -65,9 +65,9 @@
             "offset": 18,
           },
           "start": {
-            "column": 3,
+            "column": 1,
             "line": 1,
-            "offset": 2,
+            "offset": 0,
           },
         },
         "trailingComment": null,
