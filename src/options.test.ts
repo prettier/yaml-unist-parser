@@ -4,12 +4,13 @@ import { parse } from "./parse.ts";
 // https://github.com/eemeli/yaml/blob/main/src/schema/yaml-1.1/merge.ts
 test(`duplicate '<<' keys should always be allowed`, () => {
   const text = "<<: 1\n<<: 2";
-  expect(parse(text)).toBeDefined();
-  expect(parse(text, { uniqueKeys: false })).toBeDefined();
-  const ast = parse(text, { uniqueKeys: true });
+  const ast = parse(text);
   expect(ast).toBeDefined();
   const node = ast.children[0].children[1].children[0];
   expect(node?.type).toBe("mapping");
+
+  expect(parse(text, { uniqueKeys: true })).toStrictEqual(ast);
+  expect(parse(text, { uniqueKeys: false })).toStrictEqual(ast);
 });
 
 for (const { type, text } of [
