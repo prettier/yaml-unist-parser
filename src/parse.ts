@@ -2,7 +2,7 @@ import * as YAML from "yaml";
 import { attachComments } from "./attach.ts";
 import { createRoot } from "./factories/root.ts";
 import Context from "./transforms/context.ts";
-import { transformDocuments } from "./transforms/document.ts";
+import { transformDocuments } from "./transforms/documents.ts";
 import type { ParseOptions, Root } from "./types.ts";
 import { updatePositions } from "./utils/update-positions.ts";
 import { YAMLSyntaxError } from "./yaml-syntax-error.ts";
