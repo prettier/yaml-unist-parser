@@ -11,7 +11,7 @@ import type Context from "./context.ts";
 export function transformDocumentBody(
   docStart: YAML_CST.DocStartSourceToken | null,
   tokensBeforeBody: YAML_CST.SourceToken[],
-  cstNode: YAML.CST.Document,
+  cstNode: YAML.CST.Document | null,
   document: YAML.Document.Parsed,
   tokensAfterBody: YAML_CST.SourceToken[],
   docEnd: YAML.CST.DocumentEnd | null,
@@ -63,7 +63,7 @@ export function transformDocumentBody(
 
 function categorizeNodes(
   tokensBeforeBody: YAML_CST.SourceToken[],
-  document: YAML.CST.Document,
+  cstNode: YAML.CST.Document | null,
   tokensAfterBody: YAML_CST.SourceToken[],
   docEnd: YAML.CST.DocumentEnd | null,
   context: Context,
@@ -88,22 +88,24 @@ function categorizeNodes(
   const docEndPoint: null | Point = docEnd
     ? context.transformOffset(docEnd.offset)
     : null;
-  for (const token of YAML_CST.tokens(document.end, docEnd?.end)) {
-    if (token.type === "comment") {
-      const comment = context.transformComment(token);
-      if (docEndPoint) {
-        if (docEndPoint.line === comment.position.start.line) {
-          documentTrailingComments.push(comment);
-        } else if (comment.position.start.line < docEndPoint.line) {
+  if (cstNode) {
+    for (const token of YAML_CST.tokens(cstNode.end, docEnd?.end)) {
+      if (token.type === "comment") {
+        const comment = context.transformComment(token);
+        if (docEndPoint) {
+          if (docEndPoint.line === comment.position.start.line) {
+            documentTrailingComments.push(comment);
+          } else if (comment.position.start.line < docEndPoint.line) {
+            endComments.push(comment);
+          }
+        } else {
           endComments.push(comment);
         }
-      } else {
-        endComments.push(comment);
+        continue;
       }
-      continue;
+      // istanbul ignore next -- @preserve
+      throw new Error(`Unexpected token type: ${token.type}`);
     }
-    // istanbul ignore next -- @preserve
-    throw new Error(`Unexpected token type: ${token.type}`);
   }
 
   // istanbul ignore if -- @preserve
