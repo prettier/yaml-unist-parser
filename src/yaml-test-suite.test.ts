@@ -6,7 +6,6 @@ const bugs = new Set([
   // but the yaml package does not give a parsing error.
   // https://github.com/eemeli/yaml/blob/086fa6b5bae325da18734750cddee231ce578930/tests/yaml-test-suite.ts#L19
   "2JQS.yaml",
-  "9MMA.yaml",
   "SF5V.yaml",
 ]);
 
