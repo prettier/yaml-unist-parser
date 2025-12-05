@@ -28,26 +28,31 @@ export function transformDocuments(
   const tokensBeforeBody: (YAML_CST.CommentSourceToken | YAML.CST.Directive)[] =
     [];
   let currentDocumentData: DocumentData | null = null;
+  const createDocumentData = (cstNode: YAML.CST.Document | null) => {
+    const documentData = {
+      tokensBeforeBody: [...tokensBeforeBody, ...bufferComments],
+      cstNode,
+      node: parsedDocuments[documents.length],
+      tokensAfterBody: [],
+      documentEnd: null,
+    };
+
+    documents.push(documentData);
+    tokensBeforeBody.length = 0;
+    bufferComments.length = 0;
+    return documentData;
+  };
   for (const token of YAML_CST.tokens(cstTokens)) {
     if (token.type === "document") {
       // istanbul ignore if -- @preserve
-      if (parsedDocuments.length <= documents.length) {
+      if (documents.length >= parsedDocuments.length) {
         throw new Error(
           `Unexpected 'document' token at ${getPointText(context.transformOffset(token.offset))}`,
         );
       }
 
-      currentDocumentData = {
-        tokensBeforeBody: [...tokensBeforeBody, ...bufferComments],
-        cstNode: token,
-        node: parsedDocuments[documents.length],
-        tokensAfterBody: [],
-        documentEnd: null,
-      };
+      currentDocumentData = createDocumentData(token);
 
-      documents.push(currentDocumentData);
-      tokensBeforeBody.length = 0;
-      bufferComments.length = 0;
       continue;
     }
 
@@ -88,16 +93,7 @@ export function transformDocuments(
   if (bufferComments.length > 0) {
     // If there is no document seen
     if (!currentDocumentData) {
-      currentDocumentData = {
-        tokensBeforeBody: [...bufferComments],
-        cstNode: null,
-        node: parsedDocuments[documents.length],
-        tokensAfterBody: [],
-        documentEnd: null,
-      };
-
-      documents.push(currentDocumentData);
-      bufferComments.length = 0;
+      currentDocumentData = createDocumentData(null);
     }
 
     // Append buffered comments to the last document
