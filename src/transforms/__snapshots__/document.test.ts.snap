@@ -166,12 +166,36 @@ documentBody (4:2 ~ 9:2)
 </documentBody>
 `;
 
-exports[`"...\\n\\n#\\n\\n" 1`] = `
-document (1:1 ~ 1:4)
+exports[`"...\\n\\n# comment 1\\n# comment 2\\n" 1`] = `
+document (1:1 ~ 4:12)
 1 | ...¶
-  | ^^^
+  | ^^^^
 2 | ¶
+  | ^
+3 | #·comment·1¶
+  | ^^^^^^^^^^^^
+4 | #·comment·2¶
+  | ^^^^^^^^^^^
+5 | ¶
+<document documentEndMarker>
+  <documentHead>
+
+  </documentHead>
+  <documentBody>
+    <endComment value=" comment 1">
+    <endComment value=" comment 2">
+  </documentBody>
+</document>
+`;
+
+exports[`"...\\n\\n#\\n\\n" 1`] = `
+document (1:1 ~ 3:2)
+1 | ...¶
+  | ^^^^
+2 | ¶
+  | ^
 3 | #¶
+  | ^
 4 | ¶
 5 | ¶
 <document documentEndMarker>
@@ -179,83 +203,9 @@ document (1:1 ~ 1:4)
 
   </documentHead>
   <documentBody>
-
-  </documentBody>
-</document>
-`;
-
-exports[`"...\\n\\n#\\n\\n" 2`] = `
-documentHead (1:1 ~ 1:1)
-1 | ...¶
-  | ~
-2 | ¶
-3 | #¶
-4 | ¶
-5 | ¶
-<documentHead>
-
-</documentHead>
-`;
-
-exports[`"...\\n\\n#\\n\\n" 3`] = `
-documentBody (1:1 ~ 1:1)
-1 | ...¶
-  | ~
-2 | ¶
-3 | #¶
-4 | ¶
-5 | ¶
-<documentBody>
-
-</documentBody>
-`;
-
-exports[`"...\\n\\n#\\n\\n" 4`] = `
-document (3:1 ~ 5:1)
-1 | ...¶
-2 | ¶
-3 | #¶
-  | ^^
-4 | ¶
-  | ^
-5 | ¶
-  | ^
-<document>
-  <documentHead>
-
-  </documentHead>
-  <documentBody>
     <endComment value="">
   </documentBody>
 </document>
-`;
-
-exports[`"...\\n\\n#\\n\\n" 5`] = `
-documentHead (3:1 ~ 3:1)
-1 | ...¶
-2 | ¶
-3 | #¶
-  | ~
-4 | ¶
-5 | ¶
-<documentHead>
-
-</documentHead>
-`;
-
-exports[`"...\\n\\n#\\n\\n" 6`] = `
-documentBody (3:1 ~ 5:1)
-1 | ...¶
-2 | ¶
-3 | #¶
-  | ^^
-4 | ¶
-  | ^
-5 | ¶
-  | ^
-<documentBody>
-  <endComment value="">
-</documentBody>
 `;
 
 exports[`"\\n" 1`] = `

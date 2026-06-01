@@ -14,4 +14,4 @@ jobs:
     name: Run automated fix
     uses: prettier/shared-workflows/.github/workflows/automated-fix.yml@main
     with:
-      repository: prettier/angular-estree-parser
+      repository: prettier/yaml-unist-parser

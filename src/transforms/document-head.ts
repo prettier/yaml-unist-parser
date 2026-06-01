@@ -7,7 +7,7 @@ import { transformDirective } from "./directive.ts";
 
 export function transformDocumentHead(
   tokensBeforeBody: (YAML_CST.CommentSourceToken | YAML.CST.Directive)[],
-  cstNode: YAML.CST.Document,
+  cstNode: YAML.CST.Document | null,
   document: YAML.Document.Parsed,
   context: Context,
 ) {
@@ -18,21 +18,23 @@ export function transformDocumentHead(
 
   let betweenTokens: YAML_CST.SourceToken[] = [];
   let docStart: YAML_CST.DocStartSourceToken | null = null;
-  for (const token of YAML_CST.tokens(cstNode.start)) {
-    betweenTokens.push(token);
-    if (!docStart && token.type === "doc-start") {
-      // Collect comments between directives and doc-start
-      for (const t of betweenTokens) {
-        if (t.type === "comment") {
-          const comment = context.transformComment(t);
-          endCommentCandidates.push(comment);
+  if (cstNode) {
+    for (const token of YAML_CST.tokens(cstNode.start)) {
+      betweenTokens.push(token);
+      if (!docStart && token.type === "doc-start") {
+        // Collect comments between directives and doc-start
+        for (const t of betweenTokens) {
+          if (t.type === "comment") {
+            const comment = context.transformComment(t);
+            endCommentCandidates.push(comment);
+          }
         }
+
+        // Reset betweenTokens to collect tokens after doc-start
+        betweenTokens = [];
+
+        docStart = token;
       }
-
-      // Reset betweenTokens to collect tokens after doc-start
-      betweenTokens = [];
-
-      docStart = token;
     }
   }
 
