@@ -27,7 +27,6 @@ jobs:
           - "24"
           - "22"
           - "20"
-          - "18"
     name: Node.js ${{ matrix.node }} on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     steps:
