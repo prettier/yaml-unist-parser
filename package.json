@@ -51,7 +51,7 @@
     "patch-package": "8.0.1",
     "prettier": "3.7.4",
     "release-it": "19.0.6",
-    "tsdown": "0.17.0-beta.6",
+    "tsdown": "0.22.2",
     "typescript": "5.9.3",
     "typescript-eslint": "8.48.1",
     "vitest": "4.0.15",
