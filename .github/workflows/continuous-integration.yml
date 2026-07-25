@@ -23,7 +23,7 @@ jobs:
           - "macos-latest"
           - "windows-latest"
         node:
-          - "25"
+          - "26"
           - "24"
           - "22"
           - "20"
