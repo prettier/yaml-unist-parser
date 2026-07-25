@@ -18,11 +18,9 @@ export type TestCase = TestCaseSingle | TestCaseMulti;
 export type TestCaseSelector = (root: Root) => Arrayable<YamlUnistNode>;
 
 export type TestCaseSingle =
-  | [string, TestCaseSelector]
-  | [string, TestCaseSelector, ParseOptions];
+  [string, TestCaseSelector] | [string, TestCaseSelector, ParseOptions];
 export type TestCaseMulti =
-  | [string, TestCaseSelector[]]
-  | [string, TestCaseSelector[], ParseOptions];
+  [string, TestCaseSelector[]] | [string, TestCaseSelector[], ParseOptions];
 
 export function getFirstContent<T extends YamlUnistNode>(): (root: Root) => T;
 export function getFirstContent<T extends YamlUnistNode>(root: Root): T;
