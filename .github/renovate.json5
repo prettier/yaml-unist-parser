@@ -15,5 +15,10 @@
       groupName: "GitHub Actions",
       matchManagers: ["github-actions"],
     },
+    {
+      groupName: "Prettier",
+      matchPackageNames: ["prettier"],
+    },
   ],
+  ignoreDeps: ["node"]
 }
