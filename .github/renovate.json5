@@ -20,5 +20,5 @@
       matchPackageNames: ["prettier"],
     },
   ],
-  ignoreDeps: ["node"]
+  ignoreDeps: ["node"],
 }
