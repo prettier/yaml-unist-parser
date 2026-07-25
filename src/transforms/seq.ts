@@ -13,8 +13,7 @@ import { transformPair } from "./pair.ts";
 import { isEmptyNode, type TransformNodeProperties } from "./transform.ts";
 
 type ItemNode =
-  | YAML.ParsedNode
-  | YAML.Pair<YAML.ParsedNode, YAML.ParsedNode | null>;
+  YAML.ParsedNode | YAML.Pair<YAML.ParsedNode, YAML.ParsedNode | null>;
 export function transformSeq(
   seq: YAML.YAMLSeq.Parsed<ItemNode>,
   context: Context,

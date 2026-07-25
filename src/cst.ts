@@ -74,9 +74,7 @@ export type OtherFlowScalar = YAML.CST.FlowScalar & {
   >;
 };
 export type FlowScalar =
-  | DoubleQuotedFlowScalar
-  | SingleQuotedFlowScalar
-  | OtherFlowScalar;
+  DoubleQuotedFlowScalar | SingleQuotedFlowScalar | OtherFlowScalar;
 
 /**
  * Generator to iterate over tokens, skipping space and newline tokens.
@@ -103,9 +101,7 @@ function isSpace<T extends YAML.CST.Token["type"]>(token: {
 }
 
 export type ContentPropertyToken =
-  | CommentSourceToken
-  | TagSourceToken
-  | AnchorSourceToken;
+  CommentSourceToken | TagSourceToken | AnchorSourceToken;
 /**
  * Type guard to check if a token is a content property token (comment, tag, or anchor).
  */
