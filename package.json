@@ -44,7 +44,7 @@
     "@vitest/coverage-v8": "4.1.10",
     "eslint": "10.8.0",
     "eslint-config-prettier": "10.1.8",
-    "eslint-plugin-simple-import-sort": "13.0.0",
+    "eslint-plugin-simple-import-sort": "14.0.0",
     "globals": "17.7.0",
     "jest-snapshot-serializer-raw": "2.0.0",
     "npm-run-all2": "9.0.2",
