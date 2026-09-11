@@ -41,7 +41,7 @@
   "devDependencies": {
     "@eslint/js": "10.0.1",
     "@types/node": "26.1.1",
-    "@vitest/coverage-v8": "4.1.10",
+    "@vitest/coverage-v8": "5.0.0",
     "eslint": "10.8.0",
     "eslint-config-prettier": "10.1.8",
     "eslint-plugin-simple-import-sort": "14.0.0",
@@ -54,7 +54,8 @@
     "tsdown": "0.22.14",
     "typescript": "6.0.3",
     "typescript-eslint": "8.65.0",
-    "vitest": "4.1.11",
+    "vite": "8.3.0",
+    "vitest": "5.0.0",
     "yaml-test-suite": "0.1.0"
   },
   "engines": {
