@@ -54,6 +54,7 @@
     "tsdown": "0.22.14",
     "typescript": "6.0.3",
     "typescript-eslint": "8.65.0",
+    "vite": "8.3.0",
     "vitest": "5.0.0",
     "yaml-test-suite": "0.1.0"
   },
