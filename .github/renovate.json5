@@ -19,6 +19,10 @@
       groupName: "Prettier",
       matchPackageNames: ["prettier"],
     },
+    {
+      groupName: "Vitest",
+      matchPackageNames: ["vitest", "@vitest/*", "vite"],
+    },
   ],
   ignoreDeps: ["node"],
 }
